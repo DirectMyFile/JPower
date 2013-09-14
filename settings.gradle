@@ -1,0 +1,5 @@
+include 'Socket'
+
+rootProject.children.each { prj ->
+    prj.projectDir = new File("$rootDir/modules/$prj.name")
+}

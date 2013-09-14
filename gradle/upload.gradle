@@ -1,0 +1,50 @@
+allprojects {
+    apply plugin: 'maven'
+
+    if (!hasProperty('sonatypeUsername')) {ext.sonatypeUsername = ''}
+    if (!hasProperty('sonatypePassword')) {ext.sonatypePassword = ''}
+
+    [install, uploadArchives]*.with {
+        groupId = 'com.directmyfile'
+        artifactId = 'JPower'
+        version = rootProject.ext.jpowerVersion
+        project {
+            name 'JPower'
+            packaging 'jar'
+            description 'A Collection of useful Java Libraries'
+            inceptionYear '2013'
+            url 'http://www.directmyfile.com/'
+
+            scm {
+                url 'https://github.com/DirectMyFile/JPower/'
+                connection 'scm:git:git://github.com/DirectMyFile/JPower.git'
+                developerConnection 'scm:git:git@github.com:DirectMyFile/JPower.git'
+            }
+
+            issueManagement {
+                system 'jira'
+                url 'https://directmyfile.atlassian.net/'
+            }
+
+            licenses {
+                license {
+                    name 'GNU Lesser General Public License (LGPL), Version 3'
+                    url 'http://www.gnu.org/licenses/lgpl.txt'
+                    distribution 'repo'
+                }
+            }
+        }
+    }
+
+    uploadArchives {
+        repositories.mavenDeployer {
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+        }
+    }
+}
