@@ -8,10 +8,10 @@ import java.util.concurrent.Executors;
 
 public class EventBus {
     private EventHandler handler;
-    private JPowerSocket powerSocket;
+    private Socket powerSocket;
     private ExecutorService threadPool;
 
-    protected EventBus(JPowerSocket powerSocket) {
+    protected EventBus(Socket powerSocket) {
         this.handler = powerSocket.getEventHandler();
         this.powerSocket = powerSocket;
         this.threadPool = Executors.newFixedThreadPool(500);
@@ -58,7 +58,7 @@ public class EventBus {
             } else if (event instanceof LineReceivedEvent) {
                 handler.onLineReceived((LineReceivedEvent) event);
             } else {
-                handler.onError(new ErrorEvent(0, new InvalidEventException("JPowerSocket found an invalid event when trying to dispatch the event of type: " + event.getClass().getName()), powerSocket));
+                handler.onError(new ErrorEvent(0, new InvalidEventException("Socket found an invalid event when trying to dispatch the event of type: " + event.getClass().getName()), powerSocket));
             }
             handler.onEvent(event);
         }

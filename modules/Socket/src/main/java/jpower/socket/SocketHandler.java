@@ -5,21 +5,27 @@ import jpower.socket.event.ErrorEvent;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 
+/**
+ * Handles all socket related Functions
+ */
 public class SocketHandler {
-    private Socket socket;
+    private java.net.Socket socket;
     private InputHandler inputHandler;
     private OutputHandler outputHandler;
     private InetSocketAddress address;
-    private JPowerSocket powerSocket;
+    private Socket powerSocket;
 
     public SocketHandler(String host, int port) {
-        socket = new Socket();
+        socket = new java.net.Socket();
         address = new InetSocketAddress(host, port);
     }
 
-    protected void setPowerSocket(JPowerSocket powerSocket) {
+    /**
+     * Sets the Socket Instance
+     * @param powerSocket Socket
+     */
+    protected void setPowerSocket(Socket powerSocket) {
         this.powerSocket = powerSocket;
     }
 
@@ -55,7 +61,7 @@ public class SocketHandler {
         outputHandler.send(line);
     }
 
-    public Socket getSocket() {
+    public java.net.Socket getSocket() {
         return socket;
     }
 
@@ -63,7 +69,7 @@ public class SocketHandler {
         return powerSocket.getEventBus();
     }
 
-    public JPowerSocket getPowerSocket() {
+    public Socket getPowerSocket() {
         return powerSocket;
     }
 }

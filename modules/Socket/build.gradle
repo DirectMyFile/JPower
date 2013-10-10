@@ -1,6 +1,8 @@
 apply plugin: 'java'
 
-def libraryVersion = '1.4'
+dependencies {
+   compile project(':Core')
+}
 
 jar {
     manifest {

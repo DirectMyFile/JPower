@@ -1,18 +1,20 @@
 package jpower.socket;
 
-public class Event {
+import jpower.core.IEvent;
 
-    protected JPowerSocket powerSocket;
+public class Event implements IEvent {
 
-    public Event(JPowerSocket powerSocket) {
+    protected Socket powerSocket;
+
+    public Event(Socket powerSocket) {
         this.powerSocket = powerSocket;
     }
 
     /**
-     * Get the JPowerSocket instance
+     * Get the Socket instance
       * @return the PowerSocket source of the event
      */
-    public JPowerSocket getPowerSocket() {
+    public Socket getPowerSocket() {
         return powerSocket;
     }
 

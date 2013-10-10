@@ -3,20 +3,20 @@ package jpower.socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class JPowerSocket {
-    private JPowerSocketBuilder builder;
+public class Socket {
+    private SocketBuilder builder;
     private SocketHandler socketHandler;
     private EventHandler handler;
     private EventBus eventBus;
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    protected JPowerSocket(JPowerSocketBuilder builder) {
+    protected Socket(SocketBuilder builder) {
         this.builder = builder;
         setup();
     }
 
-    public JPowerSocket(String host, int port, EventHandler handler) {
-        builder = new JPowerSocketBuilder().setHost(host).setPort(port).setEventHandler(handler);
+    public Socket(String host, int port, EventHandler handler) {
+        builder = new SocketBuilder().setHost(host).setPort(port).setEventHandler(handler);
     }
 
     public Logger getLogger() {
@@ -57,5 +57,9 @@ public class JPowerSocket {
 
     public void setLogLevel(Level level) {
         logger.setLevel(level);
+    }
+
+    public boolean isConnected() {
+        return getSocketHandler().isConnected();
     }
 }

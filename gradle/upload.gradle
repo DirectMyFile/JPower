@@ -1,12 +1,16 @@
-allprojects {
+subprojects {
     apply plugin: 'maven'
 
-    if (!hasProperty('sonatypeUsername')) {ext.sonatypeUsername = ''}
-    if (!hasProperty('sonatypePassword')) {ext.sonatypePassword = ''}
+    if (!hasProperty('sonatypeUsername')) {
+        ext.sonatypeUsername = ''
+    }
+    if (!hasProperty('sonatypePassword')) {
+        ext.sonatypePassword = ''
+    }
 
-    [install, uploadArchives]*.with {
-        groupId = 'com.directmyfile'
-        artifactId = 'JPower'
+    def mavenPom = pom {
+        groupId = 'com.directmyfile.jpower'
+        artifactId = "jpower-${project.name.toLowerCase()}"
         version = rootProject.ext.jpowerVersion
         project {
             name 'JPower'
@@ -45,6 +49,13 @@ allprojects {
             snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
                 authentication(userName: sonatypeUsername, password: sonatypePassword)
             }
+            pom = mavenPom
+        }
+    }
+
+    install {
+        repositories.mavenInstaller {
+            pom = mavenPom
         }
     }
 }

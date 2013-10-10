@@ -1,12 +1,12 @@
 package jpower.socket.event;
 
 import jpower.socket.Event;
-import jpower.socket.JPowerSocket;
+import jpower.socket.Socket;
 
 public class LineSentEvent extends Event {
     private String line;
 
-    public LineSentEvent(JPowerSocket powerSocket, String line) {
+    public LineSentEvent(Socket powerSocket, String line) {
         super(powerSocket);
         this.line = line;
     }

@@ -1,13 +1,13 @@
 package jpower.socket.event;
 
 import jpower.socket.Event;
-import jpower.socket.JPowerSocket;
+import jpower.socket.Socket;
 
 public class ErrorEvent extends Event {
     private int errorId;
     private Exception exception;
 
-    public ErrorEvent(int errorId, Exception exception, JPowerSocket powerSocket) {
+    public ErrorEvent(int errorId, Exception exception, Socket powerSocket) {
         super(powerSocket);
         this.errorId = errorId;
         this.exception = exception;
@@ -21,7 +21,7 @@ public class ErrorEvent extends Event {
         return exception;
     }
 
-    public JPowerSocket getPowerSocket() {
+    public Socket getPowerSocket() {
         return powerSocket;
     }
 }

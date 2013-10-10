@@ -1,11 +1,11 @@
 package jpower.socket.event;
 
 import jpower.socket.Event;
-import jpower.socket.JPowerSocket;
+import jpower.socket.Socket;
 
 public class DisconnectEvent extends Event {
 
-    public DisconnectEvent(JPowerSocket powerSocket) {
+    public DisconnectEvent(Socket powerSocket) {
         super(powerSocket);
     }
 }

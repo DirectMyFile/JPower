@@ -1,29 +1,29 @@
 package jpower.socket;
 
-public class JPowerSocketBuilder {
+public class SocketBuilder {
     private String host;
     private int port;
     private EventHandler eventHandler;
 
-    public JPowerSocketBuilder() {
+    public SocketBuilder() {
 
     }
 
-    public JPowerSocket create() {
-        return new JPowerSocket(this);
+    public Socket create() {
+        return new Socket(this);
     }
 
-    public JPowerSocketBuilder setHost(String host) {
+    public SocketBuilder setHost(String host) {
         this.host = host;
         return this;
     }
 
-    public JPowerSocketBuilder setPort(int port) {
+    public SocketBuilder setPort(int port) {
         this.port = port;
         return this;
     }
 
-    public JPowerSocketBuilder setEventHandler(EventHandler eventHandler) {
+    public SocketBuilder setEventHandler(EventHandler eventHandler) {
         this.eventHandler = eventHandler;
         return this;
     }

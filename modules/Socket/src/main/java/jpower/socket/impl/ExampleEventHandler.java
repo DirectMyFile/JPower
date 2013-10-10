@@ -1,5 +1,6 @@
 package jpower.socket.impl;
 
+import jpower.core.utils.ThreadUtils;
 import jpower.socket.Event;
 import jpower.socket.EventHandler;
 import jpower.socket.event.*;
@@ -13,18 +14,14 @@ public class ExampleEventHandler extends EventHandler {
     @Override
     public void onConnect(ConnectEvent event) {
         int loopCount = 0;
-        while(event.getPowerSocket().getSocketHandler().getSocket().isConnected()) {
+        while(event.getPowerSocket().isConnected()) {
             loopCount++;
             if (loopCount==20) {
                 event.getPowerSocket().sendLine("STOP");
                 break;
             }
             event.getPowerSocket().sendLine("TEST#: " + loopCount);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            ThreadUtils.sleep(2000);
         }
     }
 
