@@ -8,7 +8,6 @@ public class EventBus {
 
     public void register(Object object) {
         handlers.add(new RegisteredHandler(object));
-        System.out.println("Registered Handlers");
     }
 
     public void post(Object event) {

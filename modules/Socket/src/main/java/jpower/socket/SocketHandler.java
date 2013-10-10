@@ -30,6 +30,7 @@ public class SocketHandler {
     }
 
     public void connect() {
+        if (socket.isClosed()) socket = new java.net.Socket();
         try {
             socket.connect(address);
             inputHandler = new InputHandler(this);
@@ -59,6 +60,10 @@ public class SocketHandler {
 
     public void sendLine(String line) {
         outputHandler.send(line);
+    }
+
+    public void sendBytes(byte[] bytes) {
+        outputHandler.send(bytes);
     }
 
     public java.net.Socket getSocket() {

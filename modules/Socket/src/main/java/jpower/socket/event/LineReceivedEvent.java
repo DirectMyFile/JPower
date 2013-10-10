@@ -16,6 +16,6 @@ public class LineReceivedEvent extends Event {
     }
 
     public void sendLine(String line) {
-        powerSocket.sendLine(line);
+        powerSocket.send(line);
     }
 }

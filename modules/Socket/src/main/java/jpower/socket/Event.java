@@ -14,7 +14,7 @@ public class Event implements IEvent {
      * Get the Socket instance
       * @return the PowerSocket source of the event
      */
-    public Socket getPowerSocket() {
+    public Socket getSocket() {
         return powerSocket;
     }
 

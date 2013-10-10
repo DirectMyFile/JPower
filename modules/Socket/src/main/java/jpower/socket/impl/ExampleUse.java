@@ -11,7 +11,7 @@ public class ExampleUse {
 
     public static void main(String[] args) {
         ExampleEventHandler eventHandler = new ExampleEventHandler();
-        socket = new SocketBuilder().setHost("localhost").setPort(10008).setEventHandler(eventHandler).create();
+        socket = new SocketBuilder().setHost("irc.esper.net").setPort(6667).setEventHandler(eventHandler).create();
         socket.setLogLevel(Level.ALL);
         socket.getLogger().addHandler(new ConsoleHandler());
         socket.connect();

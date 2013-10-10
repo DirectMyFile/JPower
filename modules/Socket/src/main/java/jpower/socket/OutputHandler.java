@@ -31,6 +31,15 @@ public class OutputHandler {
         eventBus.dispatchEvent(new LineSentEvent(handler.getPowerSocket(), line));
     }
 
+    public void send(byte[] bytes) {
+        try {
+            stream.write(bytes);
+            eventBus.dispatchEvent(new LineSentEvent(handler.getPowerSocket(), new String(bytes)));
+        } catch (IOException e) {
+            eventBus.dispatchEvent(new ErrorEvent(6, e, getSocketHandler().getPowerSocket()));
+        }
+    }
+
     public SocketHandler getSocketHandler() {
         return handler;
     }

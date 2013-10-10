@@ -21,7 +21,7 @@ public class ErrorEvent extends Event {
         return exception;
     }
 
-    public Socket getPowerSocket() {
+    public Socket getSocket() {
         return powerSocket;
     }
 }

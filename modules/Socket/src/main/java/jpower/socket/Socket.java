@@ -43,8 +43,12 @@ public class Socket {
         return socketHandler;
     }
 
-    public void sendLine(String line) {
+    public void send(String line) {
         socketHandler.sendLine(line);
+    }
+
+    public void send(byte[] bytes) {
+        socketHandler.sendBytes(bytes);
     }
 
     public void connect() {
