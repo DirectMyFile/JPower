@@ -9,20 +9,30 @@ public class Worker implements Runnable {
     private Thread thread;
     private boolean stop = false;
 
-    public LinkedBlockingQueue<Task> tasks = new LinkedBlockingQueue<Task>();
+    public LinkedBlockingQueue<Task> queue;
+
+    public Worker() {
+        this.queue = new LinkedBlockingQueue<Task>();
+    }
+
+    public Worker(int queueSize) {
+        this.queue = new LinkedBlockingQueue<Task>(queueSize);
+    }
 
     public void addTask(Task task) {
-        tasks.add(task);
+        queue.add(task);
     }
 
     @Override
     public void run() {
         while (!stop) {
             try {
-                Task task = tasks.poll(250, TimeUnit.MILLISECONDS);
-                isWorking = true;
-                task.execute();
-                isWorking = false;
+                Task task = queue.poll(250, TimeUnit.MILLISECONDS);
+                if (!task.isCanceled()) {
+                    isWorking = true;
+                    task.execute();
+                    isWorking = false;
+                }
             } catch (InterruptedException ignored) {
 
             }
@@ -40,5 +50,17 @@ public class Worker implements Runnable {
     public void start() {
         if (thread==null) thread = new Thread(this);
         thread.start();
+    }
+
+    public int remainingCapacity() {
+        return queue.remainingCapacity();
+    }
+
+    public boolean remove(Task task) {
+        return queue.remove(task);
+    }
+
+    public int size() {
+        return queue.size();
     }
 }
