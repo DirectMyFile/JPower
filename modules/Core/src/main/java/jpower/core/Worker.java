@@ -63,4 +63,8 @@ public class Worker implements Runnable {
     public int size() {
         return queue.size();
     }
+
+    public void waitFor() {
+        while (isWorking());
+    }
 }

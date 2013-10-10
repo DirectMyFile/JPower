@@ -21,7 +21,7 @@ public class WorkerTest {
             }
         });
         ThreadUtils.sleep(100);
-        while (worker.isWorking());
+        worker.waitFor();
         assertTrue("Task was executed on Worker.", didWork[0]);
     }
 
@@ -42,7 +42,7 @@ public class WorkerTest {
             }
         }));
         ThreadUtils.sleep(100);
-        while (worker.isWorking());
+        worker.waitFor();
         assertTrue("Both tasks were executed on Worker.", didWork[0] && didWork[1]);
     }
 }
