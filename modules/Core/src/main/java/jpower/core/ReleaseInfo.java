@@ -1,5 +1,8 @@
 package jpower.core;
 
+/**
+ * JPower Release Information
+ */
 public class ReleaseInfo {
     private static String VERSION = "%%JPOWER_VERSION%%";
 

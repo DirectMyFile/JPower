@@ -7,5 +7,8 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
+/**
+ * Marks a Method as an Event Handler
+ */
 public @interface EventHandler {
 }

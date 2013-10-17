@@ -1,5 +1,8 @@
 package jpower.core;
 
+/**
+ * Operating System Utilities
+ */
 public class OperatingSystem {
 
     private static String OS = System.getProperty("os.name").toLowerCase();

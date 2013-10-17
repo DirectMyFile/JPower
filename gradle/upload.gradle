@@ -11,7 +11,7 @@ subprojects {
     def mavenPom = pom {
         groupId = 'com.directmyfile.jpower'
         artifactId = "jpower-${project.name.toLowerCase()}"
-        version = rootProject.ext.jpowerVersion
+        version = "${rootProject.ext.version}-SNAPSHOT"
         project {
             name 'JPower'
             packaging 'jar'
