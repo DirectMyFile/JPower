@@ -1,4 +1,4 @@
-package jpower.test;
+package jpower.socket.test;
 
 import jpower.socket.EventHandler;
 import jpower.socket.Socket;

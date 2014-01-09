@@ -6,7 +6,7 @@ package jpower.core;
  */
 public abstract class Factory<T> {
     /**
-     * Creates a New Instance of the Target Object
+     * Creates a New Instance of the Object
      * @return New Instance
      */
     public abstract T newInstance();
