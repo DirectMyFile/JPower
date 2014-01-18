@@ -1,21 +1,17 @@
+def sonatypeUsername = hasProperty("sonatypeUsername") ? getProperty("sonatypeUsername") : ""
+def sonatypePassword = hasProperty("sonatypePassword") ? getProperty("sonatypePassword") : ""
+
 subprojects {
     apply plugin: 'maven'
 
-    if (!hasProperty('sonatypeUsername')) {
-        ext.sonatypeUsername = ''
-    }
-    if (!hasProperty('sonatypePassword')) {
-        ext.sonatypePassword = ''
-    }
-
     def mavenPom = pom {
-        groupId = 'com.directmyfile.jpower'
+        groupId = rootProject.group
         artifactId = "jpower-${project.name.toLowerCase()}"
-        version = "${rootProject.ext.version}-SNAPSHOT"
+        version = "${rootProject.version}-SNAPSHOT"
         project {
-            name 'JPower'
+            name rootProject.name
             packaging 'jar'
-            description 'A Collection of useful Java Libraries'
+            description rootProject.description
             inceptionYear '2013'
             url 'http://www.directmyfile.com/'
 

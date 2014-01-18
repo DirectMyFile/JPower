@@ -1,3 +1,6 @@
+group = 'com.directmyfile.jpower'
+version = '1.2.0'
+
 subprojects {
     apply plugin: 'java'
 
@@ -19,10 +22,23 @@ subprojects {
     }
 }
 
+task jarAll(type: Jar) {
+    destinationDir = file("${buildDir}/libs/")
+    classifier = "${project.name}-${project.version}-all"
+    childProjects.values().each { child ->
+        dependsOn.add(child.tasks.getByName("classes"))
+        dependsOn.add(child.tasks.getByName("processResources"))
+        from "${child.buildDir}/classes/main"
+        from "${child.buildDir}/resources/main"
+    }
+}
+
+artifacts {
+
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = "1.9"
 }
-
-ext.version = '1.2'
 
 apply from: 'gradle/upload.gradle'

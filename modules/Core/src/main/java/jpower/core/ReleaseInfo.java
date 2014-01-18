@@ -1,19 +1,29 @@
 package jpower.core;
 
-import jpower.core.annotation.Incomplete;
+import jpower.core.utils.IOUtils;
 
 /**
  * JPower Release Information
  */
-@Incomplete
 public class ReleaseInfo {
-    private static String VERSION = "%%JPOWER_VERSION%%";
+    private static String VERSION;
 
     public static String getVersion() {
+        if (VERSION == null) {
+            String v = IOUtils.getResourceAsString(ReleaseInfo.class, "release");
+            if (v == null)
+                VERSION = "UNKNOWN";
+            else
+                VERSION = v;
+        }
         return VERSION;
     }
 
     public static String[] getVersionMetadata() {
-        return VERSION.split("\\.");
+        return getVersion().split("\\.");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("JPower v" + getVersion());
     }
 }

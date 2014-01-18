@@ -3,3 +3,5 @@ include 'Core', 'Socket', 'Event'
 rootProject.children.each { prj ->
     prj.projectDir = new File("$rootDir/modules/$prj.name")
 }
+
+rootProject.name = "JPower"
