@@ -4,7 +4,6 @@ import jpower.core.utils.NetUtils;
 import jpower.core.utils.ThreadUtils;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class UtilsTest {
@@ -16,10 +15,12 @@ public class UtilsTest {
     @Test
     public void testThreadSleep() {
         int time = 1000;
+        int range = 20;
         long begin = System.currentTimeMillis();
         ThreadUtils.sleep(time);
         long end = System.currentTimeMillis();
         long slept = end - begin;
-        assertEquals(time, slept);
+        boolean decent = slept < time + range || slept > time + range;
+        assertTrue("Expected " + time + "ms of sleep, but got " + slept + "ms of sleep.", decent);
     }
 }

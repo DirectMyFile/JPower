@@ -4,17 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fast Event Bus (Not Threaded)
+ * Simple Annotation-based Event Bus
+ * TODO: Create EventBus Listeners and Dead Event Support
  */
 public class EventBus {
-    private List<RegisteredHandler> handlers = new ArrayList<RegisteredHandler>();
+    protected final List<RegisteredHandler> handlers;
+
+    public EventBus() {
+        this.handlers = new ArrayList<RegisteredHandler>();
+    }
 
     /**
      * Register an Event Handler
      * @param object Object
      */
-    public void register(Object object) {
-        handlers.add(new RegisteredHandler(object));
+    public void register(final Object object) {
+        handlers.add(new RegisteredHandler(object).setAnnotationType(EventHandler.class).registerMethods());
     }
 
     /**
@@ -22,14 +27,14 @@ public class EventBus {
      * @param object Object
      * @return handler was removed
      */
-    public boolean unregister(Object object) {
+    public boolean unregister(final Object object) {
         RegisteredHandler handlerToRemove = null;
         for (RegisteredHandler handler : handlers) {
-            if (handler.getObject()==object) {
+            if (handler.getObject() == object) {
                 handlerToRemove = handler;
             }
         }
-        if (handlerToRemove==null) {
+        if (handlerToRemove == null) {
             return false;
         }
         handlers.remove(handlerToRemove);
@@ -40,7 +45,7 @@ public class EventBus {
      * Post an Event to the Bus
      * @param event Event to Post
      */
-    public void post(Object event) {
+    public void post(final Object event) {
         for (RegisteredHandler handler : handlers) {
             handler.executeEvent(event);
         }

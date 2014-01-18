@@ -40,6 +40,7 @@ public class EventBus {
             this.event = event;
         }
 
+        @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
         @Override
         public void run() {
             if (event instanceof DisconnectEvent) {

@@ -71,7 +71,8 @@ public class Worker implements Runnable {
      * Starts the Worker
      */
     public void start() {
-        if (thread==null) thread = new Thread(this);
+        if (thread == null)
+            thread = new Thread(this);
         thread.start();
     }
 
