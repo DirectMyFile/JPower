@@ -1,8 +1,11 @@
-group = 'com.directmyfile.jpower'
-version = '1.2.1'
+apply plugin: "build-dashboard"
+apply plugin: "project-report"
+
+group = "com.directmyfile.jpower"
+version = "1.2.1"
 
 subprojects {
-    apply plugin: 'java'
+    apply plugin: "java"
 
     repositories {
         mavenCentral()
@@ -13,12 +16,12 @@ subprojects {
     }
 
     dependencies {
-       testCompile 'junit:junit:4.11'
+        testCompile "junit:junit:4.11"
     }
 
     compileJava {
-        sourceCompatibility = '1.6'
-        targetCompatibility = '1.6'
+        sourceCompatibility = 1.6
+        targetCompatibility = 1.6
     }
 }
 
@@ -33,12 +36,9 @@ task jarAll(type: Jar) {
     }
 }
 
-artifacts {
-
-}
-
 task wrapper(type: Wrapper) {
     gradleVersion = "1.11"
 }
 
+apply from: 'gradle/version.gradle'
 apply from: 'gradle/upload.gradle'

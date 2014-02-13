@@ -7,7 +7,7 @@ subprojects {
     def mavenPom = pom {
         groupId = rootProject.group
         artifactId = "jpower-${project.name.toLowerCase()}"
-        version = "${rootProject.version}-SNAPSHOT"
+        version = "${rootProject.versionInfo.maven}"
         project {
             name rootProject.name
             packaging 'jar'

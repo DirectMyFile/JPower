@@ -26,4 +26,8 @@ public class OperatingSystem {
     public static boolean isUnknown() {
         return !(isUnix() || isSolaris() || isMac() || isWindows());
     }
+
+    public static boolean isCaseSensitive() {
+        return isUnix();
+    }
 }

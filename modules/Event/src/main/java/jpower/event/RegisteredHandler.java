@@ -28,12 +28,15 @@ public class RegisteredHandler {
         return this;
     }
 
-    public void executeEvent(Object event) {
+    public boolean executeEvent(Object event) {
+        boolean executed = false;
         for (RegisteredMethod method : methods) {
             if (method.getEventType().isAssignableFrom(event.getClass())) {
                 method.invoke(object, event);
+                executed = true;
             }
         }
+        return executed;
     }
 
     public Object getObject() {

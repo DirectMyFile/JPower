@@ -46,8 +46,14 @@ public class EventBus {
      * @param event Event to Post
      */
     public void post(final Object event) {
+        boolean didRun = false;
         for (RegisteredHandler handler : handlers) {
-            handler.executeEvent(event);
+            if (handler.executeEvent(event)) {
+                didRun = true;
+            }
+        }
+        if(!(event.getClass().isAssignableFrom(DeadEvent.class)) && !didRun) {
+            post(new DeadEvent(event));
         }
     }
 }
