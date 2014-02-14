@@ -5,6 +5,7 @@ import java.io.*;
 public class IOUtils {
     /**
      * Retrieves a Resource as a String if exists, else returns null
+     *
      * @param resource resource name
      * @return resource as string
      */
@@ -12,17 +13,25 @@ public class IOUtils {
         InputStream stream = clazz.getResourceAsStream(resource);
         if (stream == null)
             return null;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        return toString(stream);
+    }
+
+    public static String toString(InputStream stream) {
+        BufferedReader reader = createBufferedReader(stream);
         StringWriter writer = new StringWriter();
-        String line;
+        int b;
         try {
-            while ((line = reader.readLine()) != null) {
-                writer.append('\n').append(line);
+            while ((b = reader.read()) != -1) {
+                writer.write(b);
             }
-            writer.getBuffer().replace(0, 1, ""); // Gets rid of newline at beginning
         } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
         return writer.toString();
+    }
+
+    public static BufferedReader createBufferedReader(InputStream stream) {
+        return new BufferedReader(new InputStreamReader(stream));
     }
 }

@@ -1,5 +1,7 @@
 package jpower.core;
 
+import jpower.core.utils.ThreadUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class WorkerPool {
 
     /**
      * Creates a Worker Pool of specified size
+     *
      * @param size size of pool
      */
     public WorkerPool(int size) {
@@ -28,12 +31,13 @@ public class WorkerPool {
 
     /**
      * Submit a Task to the Queue
+     *
      * @param task Task
      * @return Was added to Queue
      */
     public boolean submit(Task task) {
         Worker worker = pullWorker();
-        if (worker==null) {
+        if (worker == null) {
             return false;
         }
         worker.addTask(task);
@@ -43,6 +47,7 @@ public class WorkerPool {
     /**
      * Retrieves an Open Worker, or creates one, if there is not one available.
      * It does however follow the Size Limit.
+     *
      * @return A Worker if Found, else Null
      */
     public Worker pullWorker() {
@@ -61,10 +66,11 @@ public class WorkerPool {
 
     /**
      * Creates a New Worker
+     *
      * @return Worker
      */
     private Worker newWorker() {
-        if (workers.size()==size) {
+        if (workers.size() == size) {
             return null;
         }
         Worker worker = new Worker();
@@ -74,6 +80,7 @@ public class WorkerPool {
 
     /**
      * Gets a list of all Workers
+     *
      * @return Worker List
      */
     public List<Worker> getWorkers() {
@@ -87,13 +94,16 @@ public class WorkerPool {
         List<Worker> temp = new ArrayList<Worker>(workers);
         for (Worker worker : temp) {
             worker.stop();
-            while (worker.isWorking());
+            while (worker.isWorking()) {
+                ThreadUtils.sleep(1);
+            }
             workers.remove(worker);
         }
     }
 
     /**
      * Gets Current amount of Workers
+     *
      * @return Amount of Workers
      */
     public int currentWorkers() {

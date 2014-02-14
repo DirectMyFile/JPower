@@ -11,7 +11,7 @@ public class FactoryTest {
 
     @Test
     public void testTaskFactory() {
-        final boolean[] checks = new boolean[] {false, false};
+        final boolean[] checks = new boolean[]{false, false};
         TaskFactory factory = new TaskFactory(new Task() {
             @Override
             public void execute() {
@@ -22,7 +22,7 @@ public class FactoryTest {
         factory.newInstance().execute();
         factory.newInstance().execute();
         if (!(checks[0] && checks[1])) {
-            fail();
+            fail("Task Factory failed to recreate the task.");
         }
     }
 }

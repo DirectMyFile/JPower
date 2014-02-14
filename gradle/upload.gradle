@@ -9,28 +9,28 @@ subprojects {
         artifactId = "jpower-${project.name.toLowerCase()}"
         version = "${rootProject.versionInfo.maven}"
         project {
-            name rootProject.name
-            packaging 'jar'
-            description rootProject.description
-            inceptionYear '2013'
-            url 'http://www.directmyfile.com/'
+            name = rootProject.name
+            packaging = 'jar'
+            description = rootProject.description
+            inceptionYear = '2013'
+            url = 'http://www.directmyfile.com/'
 
             scm {
-                url 'https://github.com/DirectMyFile/JPower/'
-                connection 'scm:git:git://github.com/DirectMyFile/JPower.git'
-                developerConnection 'scm:git:git@github.com:DirectMyFile/JPower.git'
+                url = 'https://github.com/DirectMyFile/JPower/'
+                connection = 'scm:git:git://github.com/DirectMyFile/JPower.git'
+                developerConnection = 'scm:git:git@github.com:DirectMyFile/JPower.git'
             }
 
             issueManagement {
-                system 'jira'
-                url 'https://directmyfile.atlassian.net/'
+                system = 'jira'
+                url = 'https://directmyfile.atlassian.net/'
             }
 
             licenses {
                 license {
-                    name 'GNU Lesser General Public License (LGPL), Version 3'
-                    url 'http://www.gnu.org/licenses/lgpl.txt'
-                    distribution 'repo'
+                    name = 'GNU Lesser General Public License (LGPL), Version 3'
+                    url = 'http://www.gnu.org/licenses/lgpl.txt'
+                    distribution = 'repo'
                 }
             }
         }
