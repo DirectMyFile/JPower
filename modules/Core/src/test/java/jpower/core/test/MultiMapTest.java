@@ -16,5 +16,6 @@ public class MultiMapTest {
     public void testAdd() {
         multiMap.add("Tests", "Test1");
         multiMap.add("Tests", "Test2");
+
     }
 }

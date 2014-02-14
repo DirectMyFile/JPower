@@ -2,10 +2,13 @@ package jpower.core;
 
 import jpower.core.utils.IOUtils;
 
+import java.util.regex.Pattern;
+
 /**
  * JPower Release Information
  */
 final class ReleaseInfo {
+    private static final Pattern SPLIT_BY_DOT = Pattern.compile("\\.");
     private static String VERSION;
 
     private static String getVersion() {
@@ -20,7 +23,7 @@ final class ReleaseInfo {
     }
 
     public static String[] getVersionMetadata() {
-        return getVersion().split("\\.");
+        return SPLIT_BY_DOT.split(getVersion());
     }
 
     public static void main(String[] args) {

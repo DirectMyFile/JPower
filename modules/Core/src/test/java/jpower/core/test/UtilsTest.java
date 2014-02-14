@@ -4,12 +4,15 @@ import jpower.core.utils.NetUtils;
 import jpower.core.utils.ThreadUtils;
 import org.junit.Test;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
 import static org.junit.Assert.assertTrue;
 
 public class UtilsTest {
     @Test
-    public void testNetPing() {
-        assertTrue(NetUtils.ping("127.0.0.1"));
+    public void testNetPing() throws UnknownHostException {
+        assertTrue(NetUtils.ping(Inet4Address.getLocalHost().getHostAddress()));
     }
 
     @Test

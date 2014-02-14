@@ -40,5 +40,6 @@ task wrapper(type: Wrapper) {
     gradleVersion = "1.11"
 }
 
+apply from: 'gradle/pmd.gradle'
 apply from: 'gradle/version.gradle'
 apply from: 'gradle/upload.gradle'

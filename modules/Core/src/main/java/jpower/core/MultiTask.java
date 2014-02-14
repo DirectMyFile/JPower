@@ -24,7 +24,7 @@ public class MultiTask extends Task {
      * @param tasks Tasks to Combine
      */
     public MultiTask(Collection<Task> tasks) {
-        this.tasks = (Task[]) tasks.toArray();
+        this.tasks = tasks.toArray(new Task[tasks.size()]);
     }
 
     @Override

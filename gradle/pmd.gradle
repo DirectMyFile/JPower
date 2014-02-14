@@ -1,0 +1,11 @@
+subprojects {
+    apply plugin: "pmd"
+
+    dependencies {
+        pmd "net.sourceforge.pmd:pmd:5.1.0"
+    }
+
+    pmd {
+        ruleSetFiles = rootProject.files("gradle/pmd.xml")
+    }
+}

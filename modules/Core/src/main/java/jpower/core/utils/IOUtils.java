@@ -16,7 +16,7 @@ public final class IOUtils {
         return toString(stream);
     }
 
-    private static String toString(InputStream stream) {
+    public static String toString(InputStream stream) {
         BufferedReader reader = createBufferedReader(stream);
         StringWriter writer = new StringWriter();
         int b;
