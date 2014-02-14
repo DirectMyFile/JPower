@@ -8,8 +8,8 @@ import jpower.socket.WorkerServer;
 import java.io.IOException;
 
 @Incomplete
-public class ServerEventBus extends CustomEventBus {
-    private WorkerServer workerServer;
+class ServerEventBus extends CustomEventBus {
+    private final WorkerServer workerServer;
 
     public ServerEventBus(String host, int port) throws IOException {
         workerServer = new WorkerServer(host, port);

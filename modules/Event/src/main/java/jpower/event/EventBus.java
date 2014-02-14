@@ -8,10 +8,10 @@ import java.util.List;
  * TODO: Create EventBus Listeners and Dead Event Support
  */
 public class EventBus {
-    protected final List<RegisteredHandler> handlers;
+    final List<RegisteredHandler> handlers;
 
     public EventBus() {
-        this.handlers = new ArrayList<RegisteredHandler>();
+        handlers = new ArrayList<RegisteredHandler>();
     }
 
     /**
@@ -52,7 +52,7 @@ public class EventBus {
                 didRun = true;
             }
         }
-        if(!(event.getClass().isAssignableFrom(DeadEvent.class)) && !didRun) {
+        if(!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun) {
             post(new DeadEvent(event));
         }
     }

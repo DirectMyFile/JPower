@@ -5,7 +5,7 @@ package jpower.core;
  */
 public class TaskFactory extends Factory<Task> {
 
-    private Task original;
+    private final Task original;
 
     public TaskFactory(Task original) {
         this.original = original;

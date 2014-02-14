@@ -8,12 +8,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class AsyncBusTest {
-    public int worked = 0;
+    private int worked = 0;
 
     @EventHandler
     public void handleTestEvent(TestEvent event) {
         if (event.getPayload().equals("Success")) {
-            this.worked = 1;
+            worked = 1;
         }
     }
 

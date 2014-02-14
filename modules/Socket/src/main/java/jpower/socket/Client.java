@@ -6,21 +6,21 @@ import java.io.*;
 import java.net.Socket;
 
 public class Client {
-    private Socket socket;
-    private BufferedReader reader;
-    private PrintWriter writer;
-    private ObjectOutputStream objectOut;
-    private ObjectInputStream objectIn;
+    private final Socket socket;
+    private final BufferedReader reader;
+    private final PrintWriter writer;
+    private final ObjectOutputStream objectOut;
+    private final ObjectInputStream objectIn;
 
     Client(Socket socket) throws IOException {
         this.socket = socket;
-        this.reader = IOUtils.createBufferedReader(socket.getInputStream());
-        this.writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-        this.objectOut = new ObjectOutputStream(socket.getOutputStream());
-        this.objectIn = new ObjectInputStream(socket.getInputStream());
+        reader = IOUtils.createBufferedReader(socket.getInputStream());
+        writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+        objectOut = new ObjectOutputStream(socket.getOutputStream());
+        objectIn = new ObjectInputStream(socket.getInputStream());
     }
 
-    public void write(String text) {
+    void write(String text) {
         writer.write(text);
         writer.flush();
     }

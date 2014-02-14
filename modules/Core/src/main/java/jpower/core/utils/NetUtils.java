@@ -3,7 +3,7 @@ package jpower.core.utils;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class NetUtils {
+public final class NetUtils {
     /**
      * Checks if the Host is Reachable
      * @param host Hostname

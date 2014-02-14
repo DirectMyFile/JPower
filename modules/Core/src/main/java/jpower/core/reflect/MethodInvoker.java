@@ -9,18 +9,18 @@ import java.lang.reflect.Method;
  * Invokes Methods in Certain Fashions
  */
 @Incomplete
-public class MethodInvoker {
-    private Object object;
-    private Class<?> clazz;
+class MethodInvoker {
+    private final Object object;
+    private final Class<?> clazz;
 
     public MethodInvoker(Object object) {
         this.object = object;
-        this.clazz = object.getClass();
+        clazz = object.getClass();
     }
 
     public MethodInvoker(Class<?> clazz) {
         this.clazz = clazz;
-        this.object = null;
+        object = null;
     }
 
     public Object invokeMethod(String name, Object... args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {

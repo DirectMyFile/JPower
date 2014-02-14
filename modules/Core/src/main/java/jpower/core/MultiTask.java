@@ -1,13 +1,13 @@
 package jpower.core;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Combines multiple tasks into One
  */
 public class MultiTask extends Task {
 
-    private Task[] tasks;
+    private final Task[] tasks;
 
     /**
      * Creates a MultiTask
@@ -23,7 +23,7 @@ public class MultiTask extends Task {
      *
      * @param tasks Tasks to Combine
      */
-    public MultiTask(List<Task> tasks) {
+    public MultiTask(Collection<Task> tasks) {
         this.tasks = (Task[]) tasks.toArray();
     }
 

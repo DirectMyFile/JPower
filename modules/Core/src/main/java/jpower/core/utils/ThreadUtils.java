@@ -1,6 +1,6 @@
 package jpower.core.utils;
 
-public class ThreadUtils {
+public final class ThreadUtils {
     /**
      * Sleeps without Exceptions
      *

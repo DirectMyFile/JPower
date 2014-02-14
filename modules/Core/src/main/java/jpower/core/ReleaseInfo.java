@@ -5,10 +5,10 @@ import jpower.core.utils.IOUtils;
 /**
  * JPower Release Information
  */
-public class ReleaseInfo {
+final class ReleaseInfo {
     private static String VERSION;
 
-    public static String getVersion() {
+    private static String getVersion() {
         if (VERSION == null) {
             String v = IOUtils.getResourceAsString(ReleaseInfo.class, "release");
             if (v == null)

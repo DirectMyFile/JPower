@@ -14,8 +14,7 @@ public class AsyncEventBus extends CustomEventBus {
      *
      * @param workerPool Worker Pool
      */
-    public AsyncEventBus(WorkerPool workerPool) {
-        super();
+    private AsyncEventBus(WorkerPool workerPool) {
         this.workerPool = workerPool;
     }
 

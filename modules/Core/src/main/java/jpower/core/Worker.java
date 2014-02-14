@@ -1,5 +1,7 @@
 package jpower.core;
 
+import jpower.core.utils.ThreadUtils;
+
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -12,13 +14,13 @@ public class Worker implements Runnable {
     private Thread thread;
     private boolean stop = false;
 
-    public LinkedBlockingQueue<Task> queue;
+    private final LinkedBlockingQueue<Task> queue;
 
     /**
      * Create a Worker with the Default Queue Size
      */
     public Worker() {
-        this.queue = new LinkedBlockingQueue<Task>();
+        queue = new LinkedBlockingQueue<Task>();
     }
 
     /**
@@ -26,7 +28,7 @@ public class Worker implements Runnable {
      * @param queueSize Task Queue Size
      */
     public Worker(int queueSize) {
-        this.queue = new LinkedBlockingQueue<Task>(queueSize);
+        queue = new LinkedBlockingQueue<Task>(queueSize);
     }
 
     /**
@@ -66,7 +68,7 @@ public class Worker implements Runnable {
      * Stops the Worker (Takes no more than 250 milliseconds)
      */
     public void stop() {
-        this.stop = true;
+        stop = true;
     }
 
     /**
@@ -107,6 +109,8 @@ public class Worker implements Runnable {
      * Wait for the task queue to be empty
      */
     public void waitFor() {
-        while (isWorking() || !queue.isEmpty());
+        while (isWorking() || !queue.isEmpty()) {
+            ThreadUtils.sleep(1);
+        }
     }
 }

@@ -2,8 +2,8 @@ package jpower.event;
 
 import jpower.core.IEvent;
 
-public class DeadEvent implements IEvent {
-    private Object event;
+class DeadEvent implements IEvent {
+    private final Object event;
 
     public DeadEvent(Object event) {
         this.event = event;

@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class BusTest {
-    public int worked = 0;
+    private int worked = 0;
 
     public static void main(String[] args) {
         new BusTest().testEventExecution();
@@ -17,7 +17,7 @@ public class BusTest {
     @EventHandler
     public void handleTestEvent(TestEvent event) {
         if (event.getPayload().equals("Success")) {
-           this.worked = 1;
+            worked = 1;
         }
     }
 

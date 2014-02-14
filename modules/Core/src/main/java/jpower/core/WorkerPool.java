@@ -9,9 +9,9 @@ import java.util.List;
  * Manages a Collection of Workers
  */
 public class WorkerPool {
-    private List<Worker> workers = new ArrayList<Worker>();
+    private final List<Worker> workers = new ArrayList<Worker>();
 
-    private int size;
+    private final int size;
 
     /**
      * Creates a Worker Pool of specified size
@@ -26,7 +26,7 @@ public class WorkerPool {
      * Creates a Worker Pool of the Default Size (50 Workers)
      */
     public WorkerPool() {
-        this.size = 50;
+        size = 50;
     }
 
     /**
@@ -50,7 +50,7 @@ public class WorkerPool {
      *
      * @return A Worker if Found, else Null
      */
-    public Worker pullWorker() {
+    Worker pullWorker() {
         if (workers.isEmpty()) {
             Worker worker = newWorker();
             workers.add(worker);
@@ -91,7 +91,7 @@ public class WorkerPool {
      * Stops all Workers
      */
     public void stopWorkers() {
-        List<Worker> temp = new ArrayList<Worker>(workers);
+        Iterable<Worker> temp = new ArrayList<Worker>(workers);
         for (Worker worker : temp) {
             worker.stop();
             while (worker.isWorking()) {

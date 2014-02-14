@@ -3,12 +3,12 @@ package jpower.event;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class RegisteredHandler {
-    private Object object;
-    private List<RegisteredMethod> methods = new ArrayList<RegisteredMethod>();
-    protected Class<? extends Annotation> annotationType;
+    private final Object object;
+    private final Collection<RegisteredMethod> methods = new ArrayList<RegisteredMethod>();
+    private Class<? extends Annotation> annotationType;
 
     public RegisteredHandler(Object object) {
         this.object = object;
@@ -19,7 +19,7 @@ public class RegisteredHandler {
         return this;
     }
 
-    protected RegisteredHandler registerMethods() {
+    RegisteredHandler registerMethods() {
         for (Method method : object.getClass().getMethods()) {
             if (method.isAnnotationPresent(annotationType)) {
                 methods.add(new RegisteredMethod(method));

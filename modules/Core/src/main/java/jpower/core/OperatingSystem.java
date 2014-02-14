@@ -3,23 +3,24 @@ package jpower.core;
 /**
  * Operating System Utilities
  */
-public class OperatingSystem {
+final class OperatingSystem {
 
-    private static String OS = System.getProperty("os.name").toLowerCase();
+    private static final String OS = System.getProperty("os.name").toLowerCase();
 
-    public static boolean isWindows() {
+    private static boolean isWindows() {
         return OS.contains("win");
     }
 
-    public static boolean isMac() {
+    private static boolean isMac() {
         return OS.contains("mac");
     }
 
-    public static boolean isUnix() {
+    private static boolean isUnix() {
         return OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
     }
 
-    public static boolean isSolaris() {
+    private static boolean isSolaris() {
+        //noinspection SpellCheckingInspection
         return OS.contains("sunos");
     }
 
