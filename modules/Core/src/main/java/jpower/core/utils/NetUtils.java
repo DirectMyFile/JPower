@@ -1,7 +1,10 @@
 package jpower.core.utils;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class NetUtils {
     /**
@@ -16,5 +19,9 @@ public class NetUtils {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    public static HttpURLConnection getConnection(String url) throws IOException {
+        return (HttpURLConnection) new URL(url).openConnection();
     }
 }

@@ -10,7 +10,6 @@ public class VersionApp extends GuiApp {
     @Override
     public void build() {
         JLabel version = (JLabel) getFrame().add(new JLabel("JPower v" + JPower.getVersion()));
-        version.setLabelFor(getFrame());
         version.setVisible(true);
         version.setVerticalAlignment(SwingConstants.CENTER);
         version.setHorizontalAlignment(SwingConstants.CENTER);
