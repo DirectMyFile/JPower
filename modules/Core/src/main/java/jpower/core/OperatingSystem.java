@@ -3,7 +3,7 @@ package jpower.core;
 /**
  * Operating System Utilities
  */
-final class OperatingSystem {
+public class OperatingSystem {
 
     private static final String OS = System.getProperty("os.name").toLowerCase();
 

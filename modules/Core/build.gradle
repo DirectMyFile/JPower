@@ -1,5 +1,5 @@
 processResources {
     expand([
-            "jpowerVersion": rootProject.version
+            "jpowerVersion": project.version
     ])
 }
