@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 dependencies {
-   compile project(':Core')
+    compile project(':Core')
 }
 
 jar {

@@ -19,4 +19,11 @@ public class ThreadUtils {
         thread.start();
         return thread;
     }
+
+    public static Thread startDaemon(Runnable runnable) {
+        Thread thread = new Thread(runnable);
+        thread.setDaemon(true);
+        thread.start();
+        return thread;
+    }
 }

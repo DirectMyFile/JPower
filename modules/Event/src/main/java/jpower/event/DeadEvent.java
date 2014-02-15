@@ -1,6 +1,8 @@
 package jpower.event;
 
-class DeadEvent {
+import java.io.Serializable;
+
+public class DeadEvent implements Serializable {
     private final Object event;
 
     public DeadEvent(Object event) {

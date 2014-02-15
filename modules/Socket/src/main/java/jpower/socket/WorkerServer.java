@@ -1,6 +1,5 @@
 package jpower.socket;
 
-import jpower.core.Task;
 import jpower.core.WorkerPool;
 import jpower.core.utils.ThreadUtils;
 

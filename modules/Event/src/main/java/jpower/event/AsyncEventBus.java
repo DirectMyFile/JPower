@@ -39,7 +39,7 @@ public class AsyncEventBus extends CustomEventBus {
      * @param event Event to Post
      */
     @Override
-    public void post(final Object event) {
+    public void post(Object event) {
         workerPool.submit(() -> handlers.forEach(handler -> {
             handler.executeEvent(event);
         }));

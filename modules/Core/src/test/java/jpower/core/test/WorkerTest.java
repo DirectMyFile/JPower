@@ -1,7 +1,6 @@
 package jpower.core.test;
 
 import jpower.core.MultiTask;
-import jpower.core.Task;
 import jpower.core.Worker;
 import jpower.core.utils.ThreadUtils;
 import org.junit.Test;

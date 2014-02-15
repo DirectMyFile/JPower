@@ -12,7 +12,7 @@ public class Client {
     private final ObjectOutputStream objectOut;
     private final ObjectInputStream objectIn;
 
-    Client(Socket socket) throws IOException {
+    public Client(Socket socket) throws IOException {
         this.socket = socket;
         reader = IOUtils.createBufferedReader(socket.getInputStream());
         writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));

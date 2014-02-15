@@ -48,7 +48,7 @@ public class EventBus {
      *
      * @param event Event to Post
      */
-    public void post(final Object event) {
+    public void post(Object event) {
         boolean didRun = false;
         for (RegisteredHandler handler : handlers) {
             if (handler.executeEvent(event)) {

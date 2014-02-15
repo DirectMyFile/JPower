@@ -1,6 +1,8 @@
 package jpower.event.test;
 
-class TestEvent {
+import java.io.Serializable;
+
+class TestEvent implements Serializable {
     public String getPayload() {
         return "Success";
     }
