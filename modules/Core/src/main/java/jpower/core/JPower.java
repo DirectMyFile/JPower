@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 /**
  * JPower Release Information
  */
-final class ReleaseInfo {
+public final class JPower {
     private static final Pattern SPLIT_BY_DOT = Pattern.compile("\\.");
     private static String VERSION;
 
-    private static String getVersion() {
+    public static String getVersion() {
         if (VERSION == null) {
-            String v = IOUtils.getResourceAsString(ReleaseInfo.class, "release");
-            if (v == null)
+            String v = IOUtils.getResourceAsString(JPower.class, "release");
+            if (v == null || v.equals("${jpowerVersion}"))
                 VERSION = "UNKNOWN";
             else
                 VERSION = v;
