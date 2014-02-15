@@ -1,6 +1,5 @@
 package jpower.event;
 
-import jpower.core.Task;
 import jpower.core.WorkerPool;
 
 /**
@@ -41,13 +40,8 @@ public class AsyncEventBus extends CustomEventBus {
      */
     @Override
     public void post(final Object event) {
-        workerPool.submit(new Task() {
-            @Override
-            public void execute() {
-                for (RegisteredHandler handler : handlers) {
-                    handler.executeEvent(event);
-                }
-            }
-        });
+        workerPool.submit(() -> handlers.forEach(handler -> {
+            handler.executeEvent(event);
+        }));
     }
 }

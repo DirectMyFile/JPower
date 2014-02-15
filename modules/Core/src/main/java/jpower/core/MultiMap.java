@@ -3,28 +3,22 @@ package jpower.core;
 import java.util.*;
 
 public class MultiMap<K, V> {
-    private Map<K, Collection<V>> delegate;
+    private final Map<K, Collection<V>> delegate;
 
-    public void put(K key, Collection<V> values) {
-        createMap();
-        delegate.put(key, values);
+    public MultiMap() {
+        delegate = new HashMap<>();
     }
 
-    /**
-     * Lazy Allocation of HashMap improves memory usage.
-     * <p>See http://www.youtube.com/watch?v=FLcXf9pO27w</p>
-     */
-    private void createMap() {
-        if (delegate == null) {
-            delegate = new HashMap<K, Collection<V>>();
-        }
+    public void put(K key, Collection<V> values) {
+        delegate.put(key, values);
     }
 
     public Collection<V> getAll(K key) {
         if (getAll().containsKey(key)) {
             return getAll().get(key);
         } else {
-            return getAll().put(key, new LinkedList<V>());
+            put(key, new LinkedList<>());
+            return delegate.get(key);
         }
     }
 
@@ -37,18 +31,15 @@ public class MultiMap<K, V> {
     }
 
     public void clear() {
-        /* Reduces Capacity, which can provide us with less memory usage */
-        delegate = null;
-        createMap();
+        delegate.clear();
     }
 
     public void clear(K key) {
         /* Reduces Capacity, which can provide us with less memory usage */
-        put(key, new LinkedList<V>());
+        put(key, new LinkedList<>());
     }
 
     public Map<K, Collection<V>> getAll() {
-        createMap();
         return delegate;
     }
 

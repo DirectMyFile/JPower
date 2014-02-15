@@ -1,35 +1,35 @@
 package jpower.core;
 
-public abstract class Task implements Runnable {
+public interface Task extends Runnable {
 
-    private boolean canceled;
+    Wrapper<Boolean> canceled = new Wrapper<>(false);
 
     /**
      * Used to run in Threads
      */
     @Override
-    public void run() {
+    public default void run() {
         execute();
     }
 
     /**
      * Executes this Task
      */
-    public abstract void execute();
+    public void execute();
 
     /**
-     * Is this task Cancelled
-     * @return true if canceled
+     * Checks if this task is canceled
+     *
+     * @return Task is Canceled
      */
-    public boolean isCanceled() {
-        return canceled;
+    public default boolean isCanceled() {
+        return canceled.get();
     }
 
     /**
-     * Sets if the Task is Canceled
-     * @param canceled task canceled
+     * Cancels the Task
      */
-    public void setCanceled(boolean canceled) {
-        this.canceled = canceled;
+    public default void cancel() {
+        canceled.set(true);
     }
 }

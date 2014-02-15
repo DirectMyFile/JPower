@@ -14,11 +14,8 @@ public class WorkerTest {
         final boolean[] didWork = {false};
         Worker worker = new Worker();
         worker.start();
-        worker.addTask(new Task() {
-            @Override
-            public void execute() {
-                didWork[0] = true;
-            }
+        worker.addTask(() -> {
+            didWork[0] = true;
         });
         ThreadUtils.sleep(100);
         worker.waitFor();
@@ -31,16 +28,10 @@ public class WorkerTest {
         final boolean[] didWork = {false, false};
         Worker worker = new Worker();
         worker.start();
-        worker.addTask(new MultiTask(new Task() {
-            @Override
-            public void execute() {
-                didWork[0] = true;
-            }
-        }, new Task() {
-            @Override
-            public void execute() {
-                didWork[1] = true;
-            }
+        worker.addTask(new MultiTask(() -> {
+            didWork[0] = true;
+        }, () -> {
+            didWork[1] = true;
         }));
         ThreadUtils.sleep(100);
         worker.waitFor();

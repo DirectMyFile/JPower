@@ -29,21 +29,15 @@ public class WorkerServer {
     public void start() throws IOException {
         shouldRun = true;
         server.bind(address);
-        acceptThread = ThreadUtils.start(new Runnable() {
-            @Override
-            public void run() {
-                while (shouldRun) {
-                    workerPool.submit(new Task() {
-                        @Override
-                        public void execute() {
-                            try {
-                                clientHandler.handleClient(new Client(server.accept()));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
+        acceptThread = ThreadUtils.start(() -> {
+            while (shouldRun) {
+                workerPool.submit(() -> {
+                    try {
+                        clientHandler.handleClient(new Client(server.accept()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
             }
         });
     }

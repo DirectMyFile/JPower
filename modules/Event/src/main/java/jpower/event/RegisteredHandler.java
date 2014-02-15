@@ -1,5 +1,7 @@
 package jpower.event;
 
+import jpower.core.Wrapper;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Collection;
 
 public class RegisteredHandler {
     private final Object object;
-    private final Collection<RegisteredMethod> methods = new ArrayList<RegisteredMethod>();
+    private final Collection<RegisteredMethod> methods = new ArrayList<>();
     private Class<? extends Annotation> annotationType;
 
     public RegisteredHandler(Object object) {
@@ -29,14 +31,14 @@ public class RegisteredHandler {
     }
 
     public boolean executeEvent(Object event) {
-        boolean executed = false;
-        for (RegisteredMethod method : methods) {
+        Wrapper<Boolean> executed = new Wrapper<>(false);
+        methods.forEach(method -> {
             if (method.getEventType().isAssignableFrom(event.getClass())) {
                 method.invoke(object, event);
-                executed = true;
+                executed.set(true);
             }
-        }
-        return executed;
+        });
+        return executed.get();
     }
 
     public Object getObject() {

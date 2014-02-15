@@ -3,7 +3,7 @@ package jpower.core;
 /**
  * Clones a Task, so it may be created multiple times.
  */
-public class TaskFactory extends Factory<Task> {
+public class TaskFactory implements Factory<Task> {
 
     private final Task original;
 
@@ -13,11 +13,6 @@ public class TaskFactory extends Factory<Task> {
 
     @Override
     public Task newInstance() {
-        return new Task() {
-            @Override
-            public void execute() {
-                original.execute();
-            }
-        };
+        return original::execute;
     }
 }

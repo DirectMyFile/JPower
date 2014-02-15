@@ -1,11 +1,12 @@
 package jpower.core;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 /**
  * Combines multiple tasks into One
  */
-public class MultiTask extends Task {
+public class MultiTask implements Task {
 
     private final Task[] tasks;
 
@@ -29,8 +30,6 @@ public class MultiTask extends Task {
 
     @Override
     public void execute() {
-        for (Task task : tasks) {
-            task.execute();
-        }
+        Stream.of(tasks).forEach(Task::execute);
     }
 }

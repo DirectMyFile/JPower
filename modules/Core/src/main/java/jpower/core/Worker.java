@@ -20,19 +20,21 @@ public class Worker implements Runnable {
      * Create a Worker with the Default Queue Size
      */
     public Worker() {
-        queue = new LinkedBlockingQueue<Task>();
+        queue = new LinkedBlockingQueue<>();
     }
 
     /**
      * Create a Worker with the specified Task Queue Size
+     *
      * @param queueSize Task Queue Size
      */
     public Worker(int queueSize) {
-        queue = new LinkedBlockingQueue<Task>(queueSize);
+        queue = new LinkedBlockingQueue<>(queueSize);
     }
 
     /**
      * Adds a Task to the Queue
+     *
      * @param task task to add
      */
     public void addTask(Task task) {
@@ -58,6 +60,7 @@ public class Worker implements Runnable {
 
     /**
      * Gets if the Worker is currently working.
+     *
      * @return Is Worker Working
      */
     public boolean isWorking() {
@@ -82,6 +85,7 @@ public class Worker implements Runnable {
 
     /**
      * Gets the remaining capacity of the Task Queue
+     *
      * @return Remaining Capacity
      */
     public int remainingCapacity() {
@@ -90,6 +94,7 @@ public class Worker implements Runnable {
 
     /**
      * Remove a Task from the Queue
+     *
      * @param task task
      * @return if it was removed
      */
@@ -99,6 +104,7 @@ public class Worker implements Runnable {
 
     /**
      * The current size of the Task Queue
+     *
      * @return Size
      */
     public int size() {

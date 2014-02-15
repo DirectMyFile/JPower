@@ -2,7 +2,7 @@ package jpower.core.utils;
 
 import java.io.*;
 
-public final class IOUtils {
+public class IOUtils {
     /**
      * Retrieves a Resource as a String if exists, else returns null
      *

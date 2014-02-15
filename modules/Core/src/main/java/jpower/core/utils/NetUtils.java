@@ -3,9 +3,10 @@ package jpower.core.utils;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public final class NetUtils {
+public class NetUtils {
     /**
      * Checks if the Host is Reachable
+     *
      * @param host Hostname
      * @return is reachable
      */

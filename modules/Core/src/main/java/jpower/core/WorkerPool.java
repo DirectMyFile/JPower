@@ -9,7 +9,7 @@ import java.util.List;
  * Manages a Collection of Workers
  */
 public class WorkerPool {
-    private final List<Worker> workers = new ArrayList<Worker>();
+    private final List<Worker> workers = new ArrayList<>();
 
     private final int size;
 
@@ -91,14 +91,14 @@ public class WorkerPool {
      * Stops all Workers
      */
     public void stopWorkers() {
-        Iterable<Worker> temp = new ArrayList<Worker>(workers);
-        for (Worker worker : temp) {
+        Iterable<Worker> temp = new ArrayList<>(workers);
+        temp.forEach(worker -> {
             worker.stop();
             while (worker.isWorking()) {
                 ThreadUtils.sleep(1);
             }
             workers.remove(worker);
-        }
+        });
     }
 
     /**
@@ -114,8 +114,6 @@ public class WorkerPool {
      * Waits for all Workers to be Open
      */
     public void waitForAll() {
-        for (Worker worker : workers) {
-            worker.waitFor();
-        }
+        workers.forEach(Worker::waitFor);
     }
 }

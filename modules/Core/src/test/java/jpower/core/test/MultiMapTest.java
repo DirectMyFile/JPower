@@ -9,7 +9,7 @@ public class MultiMapTest {
 
     @Before
     public void beforeTest() {
-        multiMap = new MultiMap<String, String>();
+        multiMap = new MultiMap<>();
     }
 
     @Test

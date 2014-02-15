@@ -11,11 +11,12 @@ public class EventBus {
     final List<RegisteredHandler> handlers;
 
     public EventBus() {
-        handlers = new ArrayList<RegisteredHandler>();
+        handlers = new ArrayList<>();
     }
 
     /**
      * Register an Event Handler
+     *
      * @param object Object
      */
     public void register(final Object object) {
@@ -24,6 +25,7 @@ public class EventBus {
 
     /**
      * Unregister an Event Handler
+     *
      * @param object Object
      * @return handler was removed
      */
@@ -43,6 +45,7 @@ public class EventBus {
 
     /**
      * Post an Event to the Bus
+     *
      * @param event Event to Post
      */
     public void post(final Object event) {
@@ -52,7 +55,7 @@ public class EventBus {
                 didRun = true;
             }
         }
-        if(!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun) {
+        if (!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun) {
             post(new DeadEvent(event));
         }
     }
