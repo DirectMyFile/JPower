@@ -14,7 +14,7 @@ public class Worker implements Runnable {
     private Thread thread;
     private boolean stop = false;
 
-    private final LinkedBlockingQueue<Task> queue;
+    protected final LinkedBlockingQueue<Task> queue;
 
     /**
      * Create a Worker with the Default Queue Size
