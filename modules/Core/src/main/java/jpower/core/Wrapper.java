@@ -16,4 +16,12 @@ public class Wrapper<T> {
         this.value = value;
         return old;
     }
+
+    public boolean isNull() {
+        return get() == null;
+    }
+
+    public boolean isNotNull() {
+        return !isNull();
+    }
 }
