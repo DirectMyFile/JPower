@@ -1,8 +1,8 @@
 package jpower.core;
 
-public interface Task extends Runnable {
+import jpower.core.internal.CancelStateTracker;
 
-    Wrapper<Boolean> canceled = new Wrapper<>(false);
+public interface Task extends Runnable {
 
     /**
      * Used to run in Threads
@@ -23,13 +23,20 @@ public interface Task extends Runnable {
      * @return Task is Canceled
      */
     public default boolean isCanceled() {
-        return canceled.get();
+        return CancelStateTracker.isCanceled(this);
     }
 
     /**
      * Cancels the Task
      */
     public default void cancel() {
-        canceled.set(true);
+        CancelStateTracker.setCanceled(this, true);
+    }
+
+    /**
+     * Actives the Task if it is canceled
+     */
+    public default void activate() {
+        CancelStateTracker.setCanceled(this, false);
     }
 }
