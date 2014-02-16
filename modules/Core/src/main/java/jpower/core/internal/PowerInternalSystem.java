@@ -11,6 +11,7 @@ public class PowerInternalSystem {
         PowerInternalSystem.inst = inst;
     }
 
+    @SuppressWarnings({"unchecked", "UseOfObsoleteCollectionType"})
     public static Class[] getLoadedClasses(ClassLoader loader) {
         try {
             Field f = ClassLoader.class.getDeclaredField("classes");

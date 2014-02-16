@@ -10,7 +10,7 @@ public class AlphabetTest {
     public void testUppercase() {
         char[] uppercase = Alphabet.uppercase();
         for (char letter : uppercase) {
-            assertFalse(Character.isUpperCase(letter));
+            assertFalse(Character.isLowerCase(letter));
         }
     }
 }

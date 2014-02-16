@@ -38,7 +38,7 @@ public class Alphabet {
     public static char[] uppercase() {
         char[] uppercase = new char[ALPHABET.length];
         for (int i = 0; i < ALPHABET.length; i++) {
-            uppercase[i] = ALPHABET[i];
+            uppercase[i] = Character.toUpperCase(ALPHABET[i]);
         }
         return uppercase;
     }
