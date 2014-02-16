@@ -11,7 +11,9 @@ public class Wrapper<T> {
         return value;
     }
 
-    public void set(T value) {
+    public T set(T value) {
+        T old = get();
         this.value = value;
+        return old;
     }
 }

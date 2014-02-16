@@ -13,7 +13,8 @@ public class AsyncEventBus extends CustomEventBus {
      *
      * @param workerPool Worker Pool
      */
-    private AsyncEventBus(WorkerPool workerPool) {
+    private AsyncEventBus(WorkerPool workerPool, boolean globalEnabled) {
+        super(globalEnabled);
         this.workerPool = workerPool;
     }
 
@@ -21,7 +22,7 @@ public class AsyncEventBus extends CustomEventBus {
      * Create an AsyncEventBus
      */
     public AsyncEventBus() {
-        this(new WorkerPool());
+        this(new WorkerPool(), false);
     }
 
     /**
@@ -30,7 +31,7 @@ public class AsyncEventBus extends CustomEventBus {
      * @param workers number of workers
      */
     public AsyncEventBus(int workers) {
-        this(new WorkerPool(workers));
+        this(new WorkerPool(workers), false);
     }
 
     /**
@@ -40,8 +41,6 @@ public class AsyncEventBus extends CustomEventBus {
      */
     @Override
     public void post(Object event) {
-        workerPool.submit(() -> handlers.forEach(handler -> {
-            handler.executeEvent(event);
-        }));
+        workerPool.submit(() -> super.post(event));
     }
 }

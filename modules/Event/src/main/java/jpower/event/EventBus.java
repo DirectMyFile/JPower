@@ -1,17 +1,24 @@
 package jpower.event;
 
+import jpower.core.Wrapper;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * Simple Annotation-based Event Bus
  */
 public class EventBus {
     final List<RegisteredHandler> handlers;
+    final boolean globalEnabled;
 
     public EventBus() {
+        this(true);
+    }
+
+    public EventBus(boolean globalEnabled) {
         handlers = new ArrayList<>();
+        this.globalEnabled = globalEnabled;
     }
 
     /**
@@ -49,14 +56,18 @@ public class EventBus {
      * @param event Event to Post
      */
     public void post(Object event) {
-        boolean didRun = false;
-        for (RegisteredHandler handler : handlers) {
+        Wrapper<Boolean> didRun = new Wrapper<>(false);
+        handlers.forEach(handler -> {
             if (handler.executeEvent(event)) {
-                didRun = true;
+                didRun.set(true);
             }
-        }
-        if (!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun) {
+        });
+        //noinspection InstanceofThis
+        if (!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun.get() && !(this instanceof GlobalEventBus)) {
             post(new DeadEvent(event));
+        }
+        if (!event.getClass().isAssignableFrom(DeadEvent.class) && globalEnabled) {
+            GlobalEventBus.get().post(event);
         }
     }
 }
