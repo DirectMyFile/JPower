@@ -7,10 +7,10 @@ import javax.swing.*;
 public abstract class GuiApp {
     private final JFrame frame = new JFrame();
     private final EventBus eventBus = new EventBus();
+    private boolean built = false;
 
     public GuiApp() {
         setDefaults();
-        build();
     }
 
     private void setDefaults() {
@@ -32,10 +32,18 @@ public abstract class GuiApp {
     }
 
     public void show() {
+        if (!built) {
+            built = true;
+            build();
+        }
         frame.setVisible(true);
     }
 
     public EventBus getEventBus() {
         return eventBus;
+    }
+
+    public void showDialog(String title, String message, int type) {
+        JOptionPane.showMessageDialog(frame, message, title, type);
     }
 }
