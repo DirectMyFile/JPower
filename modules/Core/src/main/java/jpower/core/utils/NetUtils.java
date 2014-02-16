@@ -1,5 +1,6 @@
 package jpower.core.utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
@@ -23,5 +24,9 @@ public class NetUtils {
 
     public static HttpURLConnection getConnection(String url) throws IOException {
         return (HttpURLConnection) new URL(url).openConnection();
+    }
+
+    public static void download(String url, File location) throws IOException {
+        IOUtils.write(IOUtils.getBytes(getConnection(url).getInputStream()), location);
     }
 }

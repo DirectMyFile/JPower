@@ -26,6 +26,7 @@ public class MultiTask implements Task {
      */
     public MultiTask(Collection<Task> tasks) {
         this.tasks = tasks.toArray(new Task[tasks.size()]);
+
     }
 
     @Override

@@ -1,6 +1,8 @@
 package jpower.core.utils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class IOUtils {
     /**
@@ -29,6 +31,19 @@ public class IOUtils {
             return null;
         }
         return writer.toString();
+    }
+
+    public static byte[] getBytes(InputStream stream) throws IOException {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        byte b;
+        while ((b = (byte) stream.read()) != -1) {
+            buffer.write(b);
+        }
+        return buffer.toByteArray();
+    }
+
+    public static void write(byte[] bytes, File file) throws IOException {
+        Files.write(file.toPath(), bytes);
     }
 
     public static BufferedReader createBufferedReader(InputStream stream) {
