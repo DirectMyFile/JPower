@@ -12,7 +12,7 @@ public class TaskFactory implements Factory<Task> {
     }
 
     @Override
-    public Task newInstance() {
+    public Task create() {
         return original::execute;
     }
 }

@@ -11,5 +11,5 @@ public interface Factory<T> {
      *
      * @return New Instance
      */
-    public abstract T newInstance();
+    public abstract T create();
 }

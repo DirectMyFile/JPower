@@ -15,8 +15,8 @@ public class FactoryTest {
             checks[count] = true;
             count++;
         });
-        factory.newInstance().execute();
-        factory.newInstance().execute();
+        factory.create().execute();
+        factory.create().execute();
         if (!(checks[0] && checks[1])) {
             fail("Task Factory failed to recreate the task.");
         }
