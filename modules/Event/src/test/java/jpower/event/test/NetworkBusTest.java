@@ -11,14 +11,14 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
-public class NetworkEventBusTest {
+public class NetworkBusTest {
 
     private boolean worked = false;
 
     private ServerEventBus server;
 
     @Before
-    public void setup() {
+    public void prepare() {
         try {
             server = new ServerEventBus("127.0.0.1", 46839);
         } catch (IOException e) {

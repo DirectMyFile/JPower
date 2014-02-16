@@ -56,6 +56,7 @@ public class Worker implements Runnable {
             } catch (InterruptedException ignored) {
             }
         }
+        thread = null;
     }
 
     /**
@@ -78,9 +79,10 @@ public class Worker implements Runnable {
      * Starts the Worker
      */
     public void start() {
-        if (thread == null)
+        if (!isRunning()) {
             thread = new Thread(this);
-        thread.start();
+            thread.start();
+        }
     }
 
     /**
@@ -118,5 +120,9 @@ public class Worker implements Runnable {
         while (isWorking() || !queue.isEmpty()) {
             ThreadUtils.sleep(1);
         }
+    }
+
+    public boolean isRunning() {
+        return thread != null;
     }
 }

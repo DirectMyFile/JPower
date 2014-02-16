@@ -7,11 +7,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BusTest {
+public class BaseBusTest {
     private int worked = 0;
 
     public static void main(String[] args) {
-        new BusTest().testEventExecution();
+        new BaseBusTest().testEventExecution();
     }
 
     @EventHandler

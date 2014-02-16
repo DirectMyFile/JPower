@@ -3,3 +3,9 @@ processResources {
             "jpowerVersion": project.version
     ])
 }
+
+jar {
+    manifest {
+        attributes("Premain-Class": "jpower.core.internal.PowerInternalSystem")
+    }
+}

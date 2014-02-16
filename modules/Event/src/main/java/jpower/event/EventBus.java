@@ -2,10 +2,10 @@ package jpower.event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Simple Annotation-based Event Bus
- * TODO: Create EventBus Listeners and Dead Event Support
  */
 public class EventBus {
     final List<RegisteredHandler> handlers;
