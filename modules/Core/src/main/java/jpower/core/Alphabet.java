@@ -1,8 +1,5 @@
 package jpower.core;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 public class Alphabet {
 
     private static final char[] ALPHABET = {
