@@ -2,7 +2,6 @@ package jpower.core.utils;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class IOUtils {
     /**
@@ -26,8 +25,8 @@ public class IOUtils {
             while ((b = reader.read()) != -1) {
                 writer.write(b);
             }
+            stream.close();
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
         }
         return writer.toString();

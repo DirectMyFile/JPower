@@ -22,8 +22,7 @@ public class ServerEventBus extends CustomEventBus {
                 while (!client.getSocket().isClosed()) {
                     try {
                         post(client.readObject());
-                    } catch (IOException | ClassNotFoundException e) {
-                        e.printStackTrace();
+                    } catch (IOException | ClassNotFoundException ignored) {
                     }
                 }
             }
@@ -41,8 +40,7 @@ public class ServerEventBus extends CustomEventBus {
             clients.forEach(client -> {
                 try {
                     client.writeObject(event);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException ignored) {
                 }
             });
         }

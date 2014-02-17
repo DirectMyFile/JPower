@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@SuppressWarnings("ReturnOfThis")
 public class RegisteredHandler {
     private final Object object;
     private final Collection<RegisteredMethod> methods = new ArrayList<>();

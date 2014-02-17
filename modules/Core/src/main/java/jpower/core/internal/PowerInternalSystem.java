@@ -19,9 +19,8 @@ public class PowerInternalSystem {
             Vector<Class> classList = (Vector<Class>) f.get(loader);
             return classList.toArray(new Class[classList.size()]);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public static Instrumentation getInstrumentation() {

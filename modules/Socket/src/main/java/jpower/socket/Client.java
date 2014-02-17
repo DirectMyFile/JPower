@@ -31,7 +31,7 @@ public class Client {
     }
 
     public void writeLine(String line) {
-        write(line + '\n');
+        write(line + System.lineSeparator());
     }
 
     public Object readObject() throws IOException, ClassNotFoundException {

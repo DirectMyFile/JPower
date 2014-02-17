@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+@SuppressWarnings("ZeroLengthArrayAllocation")
 public class PowerClassLoader extends URLClassLoader {
 
     private boolean autoload = false;
@@ -16,7 +17,7 @@ public class PowerClassLoader extends URLClassLoader {
     private Consumer<String> onClassFound;
 
     public PowerClassLoader() {
-        this(new URL[1]);
+        this(new URL[0]);
     }
 
     public PowerClassLoader(URL[] urls) {

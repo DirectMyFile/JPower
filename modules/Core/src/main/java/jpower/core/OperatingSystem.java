@@ -20,7 +20,6 @@ public class OperatingSystem {
     }
 
     private static boolean isSolaris() {
-        //noinspection SpellCheckingInspection
         return OS.contains("sunos");
     }
 

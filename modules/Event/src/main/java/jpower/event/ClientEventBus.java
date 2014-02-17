@@ -24,8 +24,7 @@ public class ClientEventBus extends CustomEventBus {
             while (!client.getSocket().isClosed()) {
                 try {
                     post(client.readObject());
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
+                } catch (IOException | ClassNotFoundException ignored) {
                 }
             }
         });
@@ -37,8 +36,7 @@ public class ClientEventBus extends CustomEventBus {
         if (event instanceof Serializable) {
             try {
                 client.writeObject(event);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ignored) {
             }
         }
     }

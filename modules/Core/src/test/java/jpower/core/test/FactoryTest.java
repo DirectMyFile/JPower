@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.fail;
 
+@SuppressWarnings("TypeMayBeWeakened")
 public class FactoryTest {
     private int count = 0;
 

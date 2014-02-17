@@ -13,8 +13,7 @@ class RegisteredMethod {
     public void invoke(Object instance, Object event) {
         try {
             method.invoke(instance, event);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException | InvocationTargetException ignored) {
         }
     }
 

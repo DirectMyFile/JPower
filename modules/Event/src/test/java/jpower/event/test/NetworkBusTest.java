@@ -21,30 +21,25 @@ public class NetworkBusTest {
     public void prepare() {
         try {
             server = new ServerEventBus("127.0.0.1", 46839);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 
     @Test
-    public void testServerClientInteraction() {
-        try {
-            server.start();
-            server.register(this);
-            ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
-            client.connect();
-            client.post(new TestEvent());
-            ThreadUtils.sleep(500);
-            assertTrue(worked);
-            worked = false;
-            server.unregister(this);
-            client.register(this);
-            server.post(new TestEvent());
-            ThreadUtils.sleep(500);
-            assertTrue(worked);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void testServerClientInteraction() throws IOException {
+        server.start();
+        server.register(this);
+        ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
+        client.connect();
+        client.post(new TestEvent());
+        ThreadUtils.sleep(500);
+        assertTrue(worked);
+        worked = false;
+        server.unregister(this);
+        client.register(this);
+        server.post(new TestEvent());
+        ThreadUtils.sleep(500);
+        assertTrue(worked);
     }
 
     @EventHandler

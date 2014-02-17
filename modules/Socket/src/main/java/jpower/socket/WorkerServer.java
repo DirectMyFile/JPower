@@ -12,6 +12,7 @@ public class WorkerServer {
     private final InetSocketAddress address;
     private final WorkerPool workerPool;
     private ClientHandler clientHandler;
+    @SuppressWarnings("FieldCanBeLocal")
     private Thread acceptThread;
     private boolean shouldRun = false;
 
@@ -34,7 +35,6 @@ public class WorkerServer {
                     try {
                         clientHandler.handleClient(new Client(server.accept()));
                     } catch (IOException e) {
-                        e.printStackTrace();
                     }
                 });
             }
