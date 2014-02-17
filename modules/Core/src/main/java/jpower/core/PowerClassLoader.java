@@ -1,5 +1,7 @@
 package jpower.core;
 
+import jpower.core.internal.PowerInternalSystem;
+
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -40,7 +42,7 @@ public class PowerClassLoader extends URLClassLoader {
         super.addURL(url);
         if (autoload) {
             try {
-                if (!url.getFile().endsWith(".jar")) {
+                if (!url.toString().endsWith(".jar")) {
                     return;
                 }
                 JarInputStream stream = new JarInputStream(url.openStream());
@@ -63,6 +65,10 @@ public class PowerClassLoader extends URLClassLoader {
 
     public void enableAutoLoading() {
         autoload = true;
+    }
+
+    public Class<?>[] getLoadedClasses() {
+        return PowerInternalSystem.getLoadedClasses(this);
     }
 
     public Collection<URL> getURLS() {
