@@ -11,4 +11,4 @@ JPower is a modular set of libraries similar to Apache Commons.
 
 Host: irc.esper.net
 
-Channel: #DirectMyFile
+Channel: #directcode
