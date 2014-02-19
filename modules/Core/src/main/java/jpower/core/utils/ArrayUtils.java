@@ -4,6 +4,7 @@ import jpower.core.Wrapper;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class ArrayUtils {
@@ -28,5 +29,11 @@ public class ArrayUtils {
             }
         });
         return count.get();
+    }
+
+    public static <T> List<T> toList(T[] array) {
+        List<T> list = new LinkedList<>();
+        Stream.of(array).forEach(list::add);
+        return list;
     }
 }

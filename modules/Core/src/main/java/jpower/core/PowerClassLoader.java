@@ -1,15 +1,19 @@
 package jpower.core;
 
 import jpower.core.internal.PowerInternalSystem;
+import jpower.core.utils.ArrayUtils;
 
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
+import java.util.stream.Stream;
 
 @SuppressWarnings("ZeroLengthArrayAllocation")
 public class PowerClassLoader extends URLClassLoader {
@@ -67,12 +71,14 @@ public class PowerClassLoader extends URLClassLoader {
         autoload = true;
     }
 
-    public Class<?>[] getLoadedClasses() {
-        return PowerInternalSystem.getLoadedClasses(this);
+    public Set<Class<?>> getLoadedClasses() {
+        Set<Class<?>> classes = new HashSet<>();
+        Stream.of(PowerInternalSystem.getLoadedClasses(this)).forEach(classes::add);
+        return classes;
     }
 
-    public Collection<URL> getURLS() {
-        return Arrays.asList(getURLs());
+    public Collection<URL> getUrls() {
+        return ArrayUtils.toList(super.getURLs());
     }
 
     public void onClassLoaded(Consumer<Class<?>> onClassLoaded) {
@@ -81,5 +87,15 @@ public class PowerClassLoader extends URLClassLoader {
 
     public void onClassFound(Consumer<String> onClassFound) {
         this.onClassFound = onClassFound;
+    }
+
+    public Set<Class<?>> getClassesImplementing(Class<?> clazz) {
+        Set<Class<?>> classes = new HashSet<>();
+        classes.forEach(c -> {
+            if (c.isAssignableFrom(clazz)) {
+                classes.add(c);
+            }
+        });
+        return classes;
     }
 }

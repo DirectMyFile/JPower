@@ -4,7 +4,7 @@ public class StringUtils {
     public static String random(int length) {
         char[] chars = new char[length];
         for (int i = 0; i < chars.length; i++) {
-            chars[i] = CharUtils.random();
+            chars[i] = CharUtils.randomUppercase();
         }
         return new String(chars);
     }
