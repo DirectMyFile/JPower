@@ -1,5 +1,9 @@
 package jpower.core.utils;
 
+import jpower.core.reflect.MethodInvoker;
+
+import java.lang.reflect.InvocationTargetException;
+
 public class ThreadUtils {
     /**
      * Sleeps without Exceptions
@@ -25,5 +29,15 @@ public class ThreadUtils {
         thread.setDaemon(true);
         thread.start();
         return thread;
+    }
+
+    public static Thread[] getAllThreads() {
+        MethodInvoker invoker = new MethodInvoker(Thread.class);
+        try {
+            return (Thread[]) invoker.invokeMethod("getThreads");
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

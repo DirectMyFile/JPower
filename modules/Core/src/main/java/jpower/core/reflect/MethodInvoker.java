@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * Invokes Methods in Certain Fashions
  */
 @Incomplete
-class MethodInvoker {
+public class MethodInvoker {
     private final Object object;
     private final Class<?> clazz;
 
@@ -28,7 +28,10 @@ class MethodInvoker {
         for (int i = 0; i < args.length; i++) {
             paramTypes[i] = args[i].getClass();
         }
-        Method method = clazz.getMethod(name, paramTypes);
+        Method method = clazz.getDeclaredMethod(name, paramTypes);
+        if (!method.isAccessible()) {
+            method.setAccessible(true);
+        }
         return method.invoke(object, args);
     }
 }

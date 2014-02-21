@@ -1,6 +1,9 @@
 package jpower.core;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class MultiMap<K, V> {
     private final Map<K, Collection<V>> delegate;
