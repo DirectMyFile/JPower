@@ -18,7 +18,6 @@ public class LoadTest {
     @Test
     public void testWorkerLoad() {
         new Repeater(count -> worker.addTask(() -> {
-            System.out.println("Task #" + count);
             ThreadUtils.sleep(20);
         })).run(500);
     }

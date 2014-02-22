@@ -2,6 +2,9 @@ package jpower.core.utils;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.function.Consumer;
 
 public class IOUtils {
     /**
@@ -47,5 +50,18 @@ public class IOUtils {
 
     public static BufferedReader createBufferedReader(InputStream stream) {
         return new BufferedReader(new InputStreamReader(stream));
+    }
+
+    public static void eachLine(BufferedReader reader, Consumer<String> handler) throws IOException {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            handler.accept(line);
+        }
+    }
+
+    public static Collection<String> readLines(BufferedReader reader) throws IOException {
+        Collection<String> lines = new LinkedList<>();
+        eachLine(reader, lines::add);
+        return lines;
     }
 }

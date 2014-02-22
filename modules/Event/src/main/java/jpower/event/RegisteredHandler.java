@@ -24,6 +24,9 @@ public class RegisteredHandler {
 
     RegisteredHandler registerMethods() {
         for (Method method : object.getClass().getMethods()) {
+            if (annotationType == EventHandler.class && !method.getAnnotation(EventHandler.class).enabled()) {
+                continue;
+            }
             if (method.isAnnotationPresent(annotationType)) {
                 methods.add(new RegisteredMethod(method));
             }

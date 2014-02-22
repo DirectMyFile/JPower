@@ -20,7 +20,7 @@ public class Client {
         objectIn = new ObjectInputStream(socket.getInputStream());
     }
 
-    void write(String text) {
+    public void write(String text) {
         writer.write(text);
         writer.flush();
     }
