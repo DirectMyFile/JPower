@@ -37,8 +37,17 @@ public class Worker implements Runnable {
      *
      * @param task task to add
      */
-    public void addTask(Task task) {
-        queue.add(task);
+    public boolean addTask(Task task) {
+        try {
+            queue.put(task);
+        } catch (InterruptedException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean offer(Task task, long time, TimeUnit unit) throws InterruptedException {
+        return queue.offer(task, time, unit);
     }
 
     @Override
