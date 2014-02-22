@@ -1,10 +1,10 @@
 package jpower.core.config;
 
-import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Property {
-    private final Collection<String> comments = new LinkedList<>();
+    private final List<String> comments = new LinkedList<>();
     private final String key;
     private String value;
 
@@ -16,15 +16,11 @@ public class Property {
         this.value = value;
     }
 
-    public String get() {
-        return value;
-    }
-
     public void addComment(String comment) {
         comments.add(comment);
     }
 
-    public Collection<String> getComments() {
+    public List<String> comments() {
         return comments;
     }
 
@@ -38,8 +34,8 @@ public class Property {
         return builder.toString();
     }
 
-    public Collection<String> toLines() {
-        Collection<String> lines = new LinkedList<>();
+    public List<String> toLines() {
+        List<String> lines = new LinkedList<>();
         comments.forEach(comment -> lines.add("# " + comment));
         lines.add(key + ": " + value);
         return lines;
@@ -47,5 +43,9 @@ public class Property {
 
     public String key() {
         return key;
+    }
+
+    public String value() {
+        return value;
     }
  }

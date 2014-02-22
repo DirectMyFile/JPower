@@ -8,11 +8,12 @@ import java.nio.file.Files;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class Configuration {
     private static final Pattern KEY_VALUE_SPLIT = Pattern.compile(":");
-    private final Collection<Property> props;
+    private final List<Property> props;
 
     public Configuration() {
         props = new LinkedList<>();
@@ -48,7 +49,7 @@ public class Configuration {
                 String key = parts[0];
                 String value = parts[1].substring(1);
                 Property property = new Property(key);
-                property.getComments().addAll(comments);
+                property.comments().addAll(comments);
                 comments.clear();
                 property.set(value);
                 props.add(property);
@@ -65,7 +66,10 @@ public class Configuration {
     }
 
     public void save(File file) throws IOException {
-        file.createNewFile();
+        if (file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+        }
         Files.write(file.toPath(), writeLines());
     }
 
@@ -77,7 +81,7 @@ public class Configuration {
         props.clear();
     }
 
-    public Collection<Property> getProperties() {
+    public List<Property> properties() {
         return props;
     }
 
@@ -95,7 +99,7 @@ public class Configuration {
         if (property == null) {
             return null;
         }
-        return property.get();
+        return property.value();
     }
 
     public Property set(String key, String value) {
@@ -107,4 +111,23 @@ public class Configuration {
         property.set(value);
         return property;
     }
+
+    public List<Property> group(String groupName) {
+        List<Property> group = new LinkedList<>();
+        props.forEach(property -> {
+            if (property.key().startsWith(groupName + '.')) {
+                group.add(property);
+            }
+        });
+        return group;
+    }
+
+    public Properties toProperties() {
+        Properties properties = new Properties();
+        props.forEach(property -> {
+            properties.setProperty(property.key(), property.value());
+        });
+        return properties;
+    }
+
 }

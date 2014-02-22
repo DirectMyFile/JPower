@@ -30,8 +30,8 @@ public class ConfigurationTest {
         testSave();
         config.load(new File("test.cfg"));
         Property test = config.getProperty("test");
-        assertEquals("hello", test.get());
-        assertEquals("This is a test property", test.getComments().toArray()[0]);
+        assertEquals("hello", test.value());
+        assertEquals("This is a test property", test.comments().get(0));
         new File("test.cfg").deleteOnExit();
     }
 }
