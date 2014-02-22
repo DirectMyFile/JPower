@@ -11,6 +11,9 @@ class RegisteredMethod {
     }
 
     public void invoke(Object instance, Object event) {
+        if (!method.getAnnotation(EventHandler.class).enabled()) {
+            return;
+        }
         try {
             method.invoke(instance, event);
         } catch (IllegalAccessException | InvocationTargetException ignored) {

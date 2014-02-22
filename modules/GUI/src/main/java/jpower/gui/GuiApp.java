@@ -3,6 +3,7 @@ package jpower.gui;
 import jpower.event.EventBus;
 
 import javax.swing.*;
+import java.awt.*;
 
 public abstract class GuiApp {
     private final JFrame frame = new JFrame();
@@ -20,8 +21,9 @@ public abstract class GuiApp {
         frame.setTitle("GUI");
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored) {
         }
+        frame.setLayout(new GridLayout());
     }
 
     public abstract void build();
