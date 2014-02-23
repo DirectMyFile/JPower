@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
  * Indicates that this class is Incomplete
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.PACKAGE, ElementType.CONSTRUCTOR})
 public @interface Incomplete {
 }
