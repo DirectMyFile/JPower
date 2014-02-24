@@ -1,7 +1,6 @@
 package jpower.core.utils;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.function.Consumer;
@@ -42,10 +41,6 @@ public class IOUtils {
             buffer.write(b);
         }
         return buffer.toByteArray();
-    }
-
-    public static void write(byte[] bytes, File file) throws IOException {
-        Files.write(file.toPath(), bytes);
     }
 
     public static BufferedReader createBufferedReader(InputStream stream) {

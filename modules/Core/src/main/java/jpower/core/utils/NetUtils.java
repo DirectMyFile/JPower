@@ -26,6 +26,6 @@ public class NetUtils {
     }
 
     public static void download(String url, File location) throws IOException {
-        IOUtils.write(IOUtils.getBytes(getConnection(url).getInputStream()), location);
+        FileUtils.write(location, IOUtils.getBytes(getConnection(url).getInputStream()));
     }
 }
