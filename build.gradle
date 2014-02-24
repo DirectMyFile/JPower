@@ -1,3 +1,5 @@
+import jpower.gradle.ReleaseTask
+
 apply plugin: "build-dashboard"
 apply plugin: "project-report"
 
@@ -41,6 +43,10 @@ task jarAll(type: Jar) {
 
 task wrapper(type: Wrapper) {
     gradleVersion = "1.11"
+}
+
+task release(type: ReleaseTask) {
+    git(tag: true, push: false)
 }
 
 apply from: 'gradle/pmd.gradle'
