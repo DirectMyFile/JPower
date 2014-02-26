@@ -1,6 +1,7 @@
 package jpower.core.config;
 
 import jpower.core.Wrapper;
+import jpower.core.utils.FileUtils;
 import jpower.core.utils.IOUtils;
 
 import java.io.*;
@@ -57,8 +58,8 @@ public class Configuration {
         });
     }
 
-    private Iterable<String> writeLines() {
-        Collection<String> lines = new LinkedList<>();
+    private List<String> generate() {
+        List<String> lines = new LinkedList<>();
         props.forEach(property -> {
             lines.addAll(property.toLines());
         });
@@ -70,11 +71,11 @@ public class Configuration {
             //noinspection ResultOfMethodCallIgnored
             file.delete();
         }
-        Files.write(file.toPath(), writeLines());
+        FileUtils.write(file, generate());
     }
 
     public void save(PrintStream stream) {
-        writeLines().forEach(stream::println);
+        generate().forEach(stream::println);
     }
 
     public void reset() {

@@ -22,6 +22,7 @@ public class ConfigurationTest {
     public void testSave() throws IOException {
         Property test = config.set("test", "hello");
         test.addComment("This is a test property");
+        assertEquals("# This is a test property" + System.lineSeparator() + "test: hello" + System.lineSeparator(), test.toString());
         config.save(new File("test.cfg"));
     }
 

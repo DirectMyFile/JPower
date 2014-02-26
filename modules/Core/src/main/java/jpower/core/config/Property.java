@@ -28,9 +28,9 @@ public class Property {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         comments.forEach(comment -> {
-            builder.append(comment).append('\n');
+            builder.append('#').append(' ').append(comment).append(System.lineSeparator());
         });
-        builder.append(key).append(':').append(' ').append(value).append('\n');
+        builder.append(key).append(':').append(' ').append(value).append(System.lineSeparator());
         return builder.toString();
     }
 

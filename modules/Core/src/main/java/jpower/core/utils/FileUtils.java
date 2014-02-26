@@ -35,6 +35,10 @@ public class FileUtils {
         write(file, text.getBytes());
     }
 
+    public static void write(File file, List<String> lines) throws IOException {
+        write(file, ListUtils.toString(lines));
+    }
+
     public static void write(File file, byte[] input) throws IOException {
         Files.write(file.toPath(), input);
     }
