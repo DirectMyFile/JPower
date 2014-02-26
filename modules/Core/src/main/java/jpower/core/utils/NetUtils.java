@@ -15,7 +15,7 @@ public class NetUtils {
      */
     public static boolean ping(String host) {
         try {
-            return InetAddress.getByName(host).isReachable(100);
+            return InetAddress.getByName(host).isReachable(1000);
         } catch (IOException e) {
             return false;
         }
