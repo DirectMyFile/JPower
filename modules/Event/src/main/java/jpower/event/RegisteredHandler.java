@@ -22,7 +22,7 @@ public class RegisteredHandler {
         return this;
     }
 
-    RegisteredHandler registerMethods() {
+    public RegisteredHandler registerMethods() {
         for (Method method : object.getClass().getMethods()) {
             if (method.isAnnotationPresent(annotationType)) {
                 methods.add(new RegisteredMethod(method));
