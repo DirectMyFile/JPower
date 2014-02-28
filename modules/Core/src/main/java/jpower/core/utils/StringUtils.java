@@ -1,5 +1,7 @@
 package jpower.core.utils;
 
+import java.util.List;
+
 public class StringUtils {
     public static String random(int length) {
         char[] chars = new char[length];
@@ -15,5 +17,9 @@ public class StringUtils {
             strings[i] = random(stringLength);
         }
         return strings;
+    }
+
+    public static List<String> tokenize(String input, String regex) {
+        return ArrayUtils.toList(input.split(regex));
     }
 }

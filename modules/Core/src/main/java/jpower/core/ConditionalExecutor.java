@@ -13,7 +13,7 @@ public class ConditionalExecutor {
     }
 
     public void until(Condition condition) {
-        while (!condition.check()) {
+        while (condition.inverted()) {
             task.run();
         }
     }

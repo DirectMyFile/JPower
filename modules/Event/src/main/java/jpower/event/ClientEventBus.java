@@ -28,6 +28,7 @@ public class ClientEventBus extends CustomEventBus {
                 }
             }
         });
+        client.writeObject("LOL");
     }
 
     @Override
