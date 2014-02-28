@@ -11,7 +11,7 @@ public class FileUtils {
         return new String(readBytes(file));
     }
 
-    public static boolean exists(File file) throws IOException {
+    public static boolean exists(File file) {
         return Files.exists(file.toPath());
     }
 

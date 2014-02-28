@@ -5,6 +5,9 @@ import jpower.core.Task;
 import java.util.Collection;
 import java.util.HashSet;
 
+/**
+ * TODO: Port this to use a lightweight system
+ */
 public class CancelStateTracker {
     private static final Collection<Task> states = new HashSet<>();
 

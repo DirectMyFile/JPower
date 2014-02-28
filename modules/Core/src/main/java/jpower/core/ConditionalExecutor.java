@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ConditionalExecutor {
 
-    private Runnable task;
+    private final Runnable task;
 
     public ConditionalExecutor(Runnable task) {
         this.task = task;
