@@ -1,5 +1,7 @@
 package jpower.core.internal;
 
+import sun.misc.Unsafe;
+
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
 import java.util.Vector;
@@ -25,5 +27,13 @@ public class PowerInternalSystem {
 
     public static Instrumentation getInstrumentation() {
         return inst;
+    }
+
+    public static Unsafe getUnsafe(Object object) {
+        try {
+            return (Unsafe) object.getClass().getDeclaredField("theUnsafe").get(object);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

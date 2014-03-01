@@ -27,6 +27,7 @@ public class Property {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        
         comments.forEach(comment -> {
             builder.append('#').append(' ').append(comment).append(System.lineSeparator());
         });
