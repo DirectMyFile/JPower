@@ -1,6 +1,6 @@
 package jpower.core.reflect;
 
-import jpower.core.annotation.Incomplete;
+import jpower.core.utils.ThreadUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 /**
  * Invokes Methods in Certain Fashions
  */
-@Incomplete
 public class MethodInvoker {
     private final Object object;
     private final Class<?> clazz;
@@ -33,5 +32,20 @@ public class MethodInvoker {
             method.setAccessible(true);
         }
         return method.invoke(object, args);
+    }
+
+    public void invokeAsync(InvokeListener listener, String name, Object... args) {
+        ThreadUtils.startDaemon(() -> {
+            listener.before();
+            try {
+                listener.after(invokeMethod(name, args));
+            } catch (Exception e) {
+                listener.error(e);
+            }
+        });
+    }
+
+    public void invokeAsync(String name, Object... args) {
+        invokeAsync(InvokeListener.fake(), name, args);
     }
 }
