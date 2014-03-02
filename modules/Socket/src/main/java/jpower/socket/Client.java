@@ -4,6 +4,7 @@ import jpower.core.utils.IOUtils;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketAddress;
 
 public class Client {
     private final Socket socket;
@@ -30,6 +31,10 @@ public class Client {
         objectOut.flush();
     }
 
+    public SocketAddress address() {
+        return socket.getRemoteSocketAddress();
+    }
+
     public void writeLine(String line) {
         write(line + System.lineSeparator());
     }
@@ -42,11 +47,15 @@ public class Client {
         return reader.readLine();
     }
 
-    public Socket getSocket() {
+    public Socket socket() {
         return socket;
     }
 
     public void end() throws IOException {
         socket.close();
+    }
+
+    public boolean closed() {
+        return socket().isClosed();
     }
 }

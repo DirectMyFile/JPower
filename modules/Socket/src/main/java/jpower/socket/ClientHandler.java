@@ -1,5 +1,5 @@
 package jpower.socket;
 
-public abstract class ClientHandler {
-    public abstract void handleClient(Client client);
+public interface ClientHandler {
+    public void handleClient(Client client);
 }

@@ -34,7 +34,7 @@ public class WorkerServer {
                 workerPool.submit(() -> {
                     try {
                         clientHandler.handleClient(new Client(server.accept()));
-                    } catch (IOException e) {
+                    } catch (IOException ignored) {
                     }
                 });
             }

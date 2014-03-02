@@ -21,14 +21,13 @@ public class ClientEventBus extends CustomEventBus {
         socket.connect(address);
         client = new Client(socket);
         ThreadUtils.startDaemon(() -> {
-            while (!client.getSocket().isClosed()) {
+            while (!client.closed()) {
                 try {
                     post(client.readObject());
                 } catch (IOException | ClassNotFoundException ignored) {
                 }
             }
         });
-        client.writeObject("LOL");
     }
 
     @Override
