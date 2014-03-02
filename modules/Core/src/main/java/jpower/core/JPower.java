@@ -14,7 +14,7 @@ public final class JPower {
     public static String getVersion() {
         if (VERSION == null) {
             String v = IOUtils.getResourceAsString(JPower.class, "release");
-            if ((v == null) || v.equals("${jpowerVersion}"))
+            if (v == null || v.equals("${jpowerVersion}"))
                 VERSION = "UNKNOWN";
             else
                 VERSION = v;

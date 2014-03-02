@@ -31,9 +31,9 @@ public class UtilsTest {
 
     @Test
     public void testByteReverse() {
-        byte[] bytes = { 5, 3, 2, 56, 7, 3, 9 };
+        byte[] bytes = {5, 3, 2, 56, 7, 3, 9};
         byte[] reversed = ByteUtils.reverse(bytes);
-        assertArrayEquals(new byte[] {
+        assertArrayEquals(new byte[]{
                 9,
                 3,
                 7,
