@@ -3,9 +3,10 @@ package jpower.core.utils;
 public class ByteUtils {
     public static byte[] reverse(byte[] original) {
         byte[] reversed = new byte[original.length];
-        for (int i = 0, originalLength = original.length; i < originalLength; i++) {
-            byte b = original[i];
-            reversed[i] = b;
+        int count = 0;
+        for (int i = original.length - 1; i >= 0; i--) {
+            reversed[i] = original[count];
+            count++;
         }
         return reversed;
     }
