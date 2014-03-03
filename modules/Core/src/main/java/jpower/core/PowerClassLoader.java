@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("ZeroLengthArrayAllocation")
 public class PowerClassLoader extends URLClassLoader {
 
-    private boolean autoload = false;
+    private boolean autoload;
     private Consumer<Class<?>> onClassLoaded;
     private Consumer<String> onClassFound;
 

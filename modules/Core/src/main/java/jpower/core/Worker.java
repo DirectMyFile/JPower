@@ -12,7 +12,7 @@ public class Worker implements Runnable {
 
     private boolean isWorking;
     private Thread thread;
-    private boolean stop = false;
+    private boolean stop;
 
     protected final LinkedBlockingQueue<Task> queue;
 

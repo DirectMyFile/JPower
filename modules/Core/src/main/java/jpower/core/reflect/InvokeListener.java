@@ -1,11 +1,11 @@
 package jpower.core.reflect;
 
 public interface InvokeListener {
-    public void before();
-    public void error(Exception e);
-    public void after(Object returned);
+    void before();
+    void error(Exception e);
+    void after(Object returned);
 
-    public static InvokeListener fake() {
+    static InvokeListener fake() {
         return new InvokeListener() {
             @Override
             public void before() {

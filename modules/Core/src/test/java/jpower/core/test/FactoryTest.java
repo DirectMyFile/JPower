@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 
 @SuppressWarnings("TypeMayBeWeakened")
 public class FactoryTest {
-    private int count = 0;
+    private int count;
 
     @Test
     public void testTaskFactory() {

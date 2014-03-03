@@ -1,9 +1,9 @@
 package jpower.core;
 
 public interface Condition {
-    public boolean check();
+    boolean check();
 
-    public default boolean inverted() {
+    default boolean inverted() {
         return !check();
     }
 }

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 public class NetworkBusTest {
 
-    private boolean worked = false;
+    private boolean worked;
 
     private ServerEventBus server;
 

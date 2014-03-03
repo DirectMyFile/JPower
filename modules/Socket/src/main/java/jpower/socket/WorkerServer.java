@@ -14,7 +14,7 @@ public class WorkerServer {
     private ClientHandler clientHandler;
     @SuppressWarnings("FieldCanBeLocal")
     private Thread acceptThread;
-    private boolean shouldRun = false;
+    private boolean shouldRun;
 
     public WorkerServer(String host, int port) throws IOException {
         server = new ServerSocket();

@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class AsyncBusTest {
-    private int worked = 0;
+    private int worked;
 
     @EventHandler
     public void handleTestEvent(TestEvent event) {

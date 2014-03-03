@@ -7,7 +7,7 @@ import javax.swing.*;
 public abstract class GuiApp {
     private final JFrame frame = new JFrame();
     private final EventBus eventBus = new EventBus();
-    private boolean built = false;
+    private boolean built;
 
     public GuiApp() {
         setDefaults();

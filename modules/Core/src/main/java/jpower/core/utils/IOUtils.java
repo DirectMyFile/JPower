@@ -54,7 +54,7 @@ public class IOUtils {
         }
     }
 
-    public static Collection<String> readLines(BufferedReader reader) throws IOException {
+    public static Iterable<String> readLines(BufferedReader reader) throws IOException {
         Collection<String> lines = new LinkedList<>();
         eachLine(reader, lines::add);
         return lines;

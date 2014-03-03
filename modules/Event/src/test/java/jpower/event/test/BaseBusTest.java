@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class BaseBusTest {
-    private int worked = 0;
+    private int worked;
 
     public static void main(String[] args) {
         new BaseBusTest().testEventExecution();
