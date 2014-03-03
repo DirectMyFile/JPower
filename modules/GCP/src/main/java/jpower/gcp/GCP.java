@@ -1,27 +1,26 @@
 package jpower.gcp;
 
+import jpower.core.utils.StringUtils;
+
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GCP {
-    public Line parse(String input) {
-        return null;
-    }
-
-    static class Line {
-        private String command;
-        private Map<String, String> opts;
-
-        public Line(String command, Map<String, String> opts) {
-            this.command = command;
-            this.opts = opts;
+    public static GCPLine parse(String input) {
+        List<String> parts = StringUtils.tokenize(input, ":");
+        if (parts.size() <= 1) {
+            throw new RuntimeException(new LineParseException("Invalid GCP Line: " + input));
         }
-
-        public String command() {
-            return command;
-        }
-
-        public Map<String, String> opts() {
-            return opts;
-        }
+        String command = parts.remove(0);
+        Map<String, String> opts = new HashMap<>();
+        parts.forEach(part -> {
+            String[] keyValue = part.split(part, 2);
+            if (keyValue.length != 2) {
+                throw new RuntimeException(new LineParseException("Invalid GCP Line: " + input));
+            }
+            opts.put(keyValue[0], keyValue[1]);
+        });
+        return new GCPLine(command, opts);
     }
 }
