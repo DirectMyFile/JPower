@@ -5,7 +5,7 @@ public interface InvokeListener {
     void error(Exception e);
     void after(Object returned);
 
-    static InvokeListener fake() {
+    static InvokeListener ignore() {
         return new InvokeListener() {
             @Override
             public void before() {
