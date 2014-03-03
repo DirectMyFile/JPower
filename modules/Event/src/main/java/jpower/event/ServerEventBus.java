@@ -19,7 +19,7 @@ public class ServerEventBus extends CustomEventBus {
             @Override
             public void handleClient(Client client) {
                 clients.add(client);
-                while (!client.getSocket().isClosed()) {
+                while (!client.socket().isClosed()) {
                     try {
                         post(client.readObject());
                     } catch (IOException | ClassNotFoundException ignored) {
