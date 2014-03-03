@@ -56,7 +56,7 @@ public class Worker implements Runnable {
             try {
                 Task task = queue.poll(250, TimeUnit.MILLISECONDS);
                 if (task == null)
-                    return;
+                    continue;
                 if (!task.isCanceled()) {
                     isWorking = true;
                     task.execute();
