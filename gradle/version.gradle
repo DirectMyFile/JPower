@@ -1,3 +1,0 @@
-import jpower.gradle.Version
-
-rootProject.ext.versionInfo = new Version(project.version as String)

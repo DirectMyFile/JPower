@@ -1,4 +1,4 @@
-import jpower.gradle.ReleaseTask
+import jpower.gradle.*
 
 apply plugin: "build-dashboard"
 apply plugin: "project-report"
@@ -10,6 +10,9 @@ subprojects {
     apply plugin: "java"
 
     version = rootProject.version
+
+    JPower.setProject(project)
+    JPower.setup()
 
     repositories {
         mavenCentral()
@@ -30,15 +33,7 @@ subprojects {
     }
 }
 
-task jarAll(type: Jar) {
-    destinationDir = file("${buildDir}/libs/")
-    classifier = "${project.name}-${project.version}-all"
-    childProjects.values().each { child ->
-        dependsOn.add(child.tasks.getByName("classes"))
-        dependsOn.add(child.tasks.getByName("processResources"))
-        from "${child.buildDir}/classes/main"
-        from "${child.buildDir}/resources/main"
-    }
+task jarAll(type: JarAllTask) {
 }
 
 task wrapper(type: Wrapper) {
@@ -50,5 +45,3 @@ task release(type: ReleaseTask) {
 }
 
 apply from: 'gradle/pmd.gradle'
-apply from: 'gradle/version.gradle'
-apply from: 'gradle/upload.gradle'
