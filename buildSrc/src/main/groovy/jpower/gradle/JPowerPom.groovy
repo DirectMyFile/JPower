@@ -1,17 +1,16 @@
 package jpower.gradle
 
 import org.gradle.api.Action
-import org.gradle.api.Project
 import org.gradle.api.XmlProvider
 import org.gradle.api.publish.maven.MavenPom
 
 class JPowerPom {
-    static MavenPom setup(Project project, MavenPom pom) {
-        return pom.withXml(generate(project))
+    static MavenPom setup(MavenPom pom) {
+        return pom.withXml(generate())
     }
 
-    static Action<XmlProvider> generate(Project project) {
-        def a = new Action<XmlProvider>() {
+    static Action<XmlProvider> generate() {
+        new Action<XmlProvider>() {
             @Override
             void execute(XmlProvider provider) {
                 def xml = provider.asNode()

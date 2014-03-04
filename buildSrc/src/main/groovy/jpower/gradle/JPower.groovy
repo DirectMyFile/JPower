@@ -10,7 +10,7 @@ class JPower {
     static Project project
 
     static MavenPom pom(MavenPom pom) {
-        return JPowerPom.setup(project, pom)
+        return JPowerPom.setup(pom)
     }
 
     static void setup() {
