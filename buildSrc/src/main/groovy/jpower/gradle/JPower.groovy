@@ -1,9 +1,11 @@
 package jpower.gradle
-
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPom
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.SourceSetContainer
+import org.gradle.api.tasks.bundling.Jar
+import org.gradle.api.tasks.javadoc.Javadoc
 
 class JPower {
 
@@ -17,6 +19,24 @@ class JPower {
         def versionInfo = project.rootProject.ext.versionInfo = new Version(project.rootProject.version as String)
         def sonatypeUsername = project.hasProperty("sonatypeUsername") ? project.property("sonatypeUsername") : ""
         def sonatypePassword = project.hasProperty("sonatypePassword") ? project.property("sonatypePassword") : ""
+
+        def sourceJar = project.tasks.create("sourcesJar", Jar) as Jar
+
+        sourceJar.dependsOn("classes")
+
+        def javadocJar = project.tasks.create("javadocJar", Jar) as Jar
+
+        javadocJar.dependsOn("javadoc")
+
+        sourceJar.with {
+            classifier = "sources"
+            from((project.sourceSets as SourceSetContainer).getByName("main").allSource)
+        }
+
+        javadocJar.with {
+            classifier = "javadoc"
+            from((project.tasks.getByName("javadoc") as Javadoc).destinationDir)
+        }
 
         project.apply plugin: "maven-publish"
 
