@@ -49,6 +49,8 @@ class JPower {
                 artifactId "jpower-${project.name.toLowerCase()}"
                 version versionInfo.maven
                 pom(delegate.pom)
+                artifact sourceJar
+                artifact javadocJar
             }
         }
 
