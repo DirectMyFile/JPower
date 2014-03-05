@@ -19,7 +19,7 @@ class JPowerPom {
 
                     appendNode("licenses").with {
                         appendNode("license").with {
-                            appendNode("name",  "GNU Lesser General Public License (LGPL), Version 3")
+                            appendNode("name", "GNU Lesser General Public License (LGPL), Version 3")
                             appendNode("url", "http://www.gnu.org/licenses/lgpl.txt")
                             appendNode("distribution", "repo")
                         }
