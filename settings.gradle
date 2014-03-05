@@ -1,4 +1,4 @@
-include 'Core', 'Socket', 'Event', 'GUI', 'GCP'
+include 'Core', 'Socket', 'Event', 'GUI', 'GCP', 'Groovy'
 
 rootProject.children.each { prj ->
     prj.projectDir = new File("$rootDir/modules/$prj.name")

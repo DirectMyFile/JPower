@@ -1,0 +1,3 @@
+moduleName = JPowerModule
+moduleVersion = ${jpowerVersion}
+extensionClasses = jpower.groovy.JPowerExtension
