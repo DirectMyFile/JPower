@@ -10,6 +10,4 @@ JPower is a modular set of libraries similar to Apache Commons, with a twist. It
 
 # IRC
 
-The JPower team can be found on EsperNet :)
-Host: irc.esper.net
-Channel: #directcode
+The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://www.directmyfile.com/)
