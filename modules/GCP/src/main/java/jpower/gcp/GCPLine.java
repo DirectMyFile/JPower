@@ -18,4 +18,17 @@ public class GCPLine {
     public Map<String, String> opts() {
         return opts;
     }
+
+    @SuppressWarnings("HardcodedLineSeparator")
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(command()).append(GCP.COLON);
+        opts().keySet().forEach(key -> {
+            builder.append(GCP.COLON).append(key).append(GCP.EQUALS).append(opts().get(key));
+        });
+
+        return builder.toString();
+    }
 }

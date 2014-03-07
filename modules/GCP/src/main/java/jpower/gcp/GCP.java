@@ -1,6 +1,8 @@
 package jpower.gcp;
 
 import jpower.core.utils.StringUtils;
+import jpower.socket.Client;
+import jpower.socket.ClientFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,16 @@ public class GCP {
     public static final String COLON = "\u0001";
     public static final String EQUALS = "\u0002";
     private static final Pattern EQUALS_PATTERN = Pattern.compile(EQUALS);
+
+
+    private Client client;
+
+    public GCP() {
+    }
+
+    public void connect(String host, int port) {
+        client = ClientFactory.create(host, port);
+    }
 
     public static GCPLine parse(String input) {
         List<String> parts = StringUtils.tokenize(input, COLON);
@@ -27,5 +39,9 @@ public class GCP {
             opts.put(keyValue[0], keyValue[1]);
         });
         return new GCPLine(command, opts);
+    }
+
+    public void send(GCPLine line) {
+        client.writeLine(line.toString());
     }
 }

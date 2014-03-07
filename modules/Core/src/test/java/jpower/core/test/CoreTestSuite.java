@@ -17,7 +17,8 @@ import org.junit.runners.Suite;
         RandomTest.class,
         ThreadUtilsTest.class,
         UtilsTest.class,
-        WorkerTest.class
+        WorkerTest.class,
+        GenericSnifferTest.class
 })
 public class CoreTestSuite {
 }

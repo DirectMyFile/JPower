@@ -28,4 +28,8 @@ public class ClientFactory implements Factory<Client> {
             throw new RuntimeException(e);
         }
     }
+
+    public static Client create(String host, int port) {
+        return new ClientFactory(host, port).create();
+    }
 }
