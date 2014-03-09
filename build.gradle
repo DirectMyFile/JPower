@@ -37,7 +37,7 @@ task jarAll(type: JarAllTask) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "1.11"
+    gradleVersion = "1.12-20140307230018+0000"
 }
 
 task release(type: ReleaseTask) {

@@ -31,4 +31,8 @@ public class GCPLine {
 
         return builder.toString();
     }
+
+    public String opt(String name) {
+        return opts().get(name);
+    }
 }

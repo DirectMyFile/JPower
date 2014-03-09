@@ -1,6 +1,8 @@
 package jpower.gcp;
 
 import jpower.core.utils.StringUtils;
+import jpower.event.AsyncEventBus;
+import jpower.event.EventBus;
 import jpower.socket.Client;
 import jpower.socket.ClientFactory;
 
@@ -14,8 +16,8 @@ public class GCP {
     public static final String EQUALS = "\u0002";
     private static final Pattern EQUALS_PATTERN = Pattern.compile(EQUALS);
 
-
     private Client client;
+    private final AsyncEventBus eventBus = new AsyncEventBus(4);
 
     public GCP() {
     }
@@ -43,5 +45,9 @@ public class GCP {
 
     public void send(GCPLine line) {
         client.writeLine(line.toString());
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
     }
 }

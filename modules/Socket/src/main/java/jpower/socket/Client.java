@@ -5,6 +5,7 @@ import jpower.core.utils.IOUtils;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.function.Consumer;
 
 public class Client {
     private final Socket socket;
@@ -57,5 +58,12 @@ public class Client {
 
     public boolean closed() {
         return socket().isClosed();
+    }
+
+    public void eachLine(Consumer<String> consumer) throws IOException {
+        String line;
+        while ((line = readLine()) != null) {
+            consumer.accept(line);
+        }
     }
 }
