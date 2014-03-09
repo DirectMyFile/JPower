@@ -12,6 +12,10 @@ public class ClientEventBus extends CustomEventBus {
     private Client client;
     private final InetSocketAddress address;
 
+    public ClientEventBus(int port) {
+        this("127.0.0.1", port);
+    }
+
     public ClientEventBus(String host, int port) {
         address = new InetSocketAddress(host, port);
     }
