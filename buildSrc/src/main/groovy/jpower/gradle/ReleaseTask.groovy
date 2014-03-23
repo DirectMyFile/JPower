@@ -35,6 +35,12 @@ class ReleaseTask extends DefaultTask {
         def nextVersion = new Version(project.version).increment().toString()
         def propFile = project.file("gradle.properties")
         propFile.text = propFile.text.replace("jpower.version=${project.version}", "jpower.version=${nextVersion}")
+        project.exec {
+            commandLine "git", "add", "gradle.properties"
+        }
+        project.exec {
+            commandLine "git", "commit", "-m", "Update Version to v${nextVersion}"
+        }
     }
 
     void git(Map<String, Boolean> options) {
