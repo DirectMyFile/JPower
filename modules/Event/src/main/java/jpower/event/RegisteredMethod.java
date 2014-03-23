@@ -3,7 +3,7 @@ package jpower.event;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-class RegisteredMethod {
+public class RegisteredMethod {
     private final Method method;
 
     public RegisteredMethod(Method method) {

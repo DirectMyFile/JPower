@@ -16,7 +16,7 @@ public class EventBus {
         this(true);
     }
 
-    public EventBus(boolean globalEnabled) {
+    public EventBus(final boolean globalEnabled) {
         handlers = new ArrayList<>();
         this.globalEnabled = globalEnabled;
     }
@@ -55,7 +55,7 @@ public class EventBus {
      *
      * @param event Event to Post
      */
-    public void post(Object event) {
+    public void post(final Object event) {
         Wrapper<Boolean> didRun = new Wrapper<>(false);
         handlers.forEach(handler -> {
             if (handler.executeEvent(event)) {
