@@ -28,20 +28,32 @@ subprojects {
     }
 
     compileJava {
+        options.warnings = false
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
 }
 
 task jarAll(type: JarAllTask) {
+    group = "build"
+    description = "Builds a Jar with all JPower Modules"
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "1.12-20140307230018+0000"
+    group = "build setup"
+    description = "Builds/Updates the Gradle Wrapper"
+    gradleVersion = "2.0-20140322230012+0000"
 }
 
 task release(type: ReleaseTask) {
+    group = "publishing"
+    description = "Releases JPower as configured"
     git(tag: true, push: false)
+}
+
+tasks.getByName("buildDashboard").with {
+    group = "reporting"
+    description = "Creates a project report site"
 }
 
 apply from: 'gradle/pmd.gradle'
