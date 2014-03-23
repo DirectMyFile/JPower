@@ -30,6 +30,13 @@ class ReleaseTask extends DefaultTask {
         }
     }
 
+    @TaskAction
+    void updateVersion() {
+        def nextVersion = new Version(project.version).increment().toString()
+        def propFile = project.file("gradle.properties")
+        propFile.text = propFile.text.replace("jpower.version=${project.version}", "jpower.version=${nextVersion}")
+    }
+
     void git(Map<String, Boolean> options) {
         tagRelease = options["tag"] as boolean
         pushRelease = options["push"] as boolean
