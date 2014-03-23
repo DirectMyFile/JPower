@@ -2,8 +2,8 @@ package jpower.core.reflect;
 
 public interface InvokeListener {
     void before();
-    void error(Exception e);
     void after(Object returned);
+    void error(Exception e);
 
     static InvokeListener ignore() {
         return new InvokeListener() {
@@ -13,12 +13,12 @@ public interface InvokeListener {
             }
 
             @Override
-            public void error(Exception e) {
+            public void after(Object returned) {
 
             }
 
             @Override
-            public void after(Object returned) {
+            public void error(Exception e) {
 
             }
         };
