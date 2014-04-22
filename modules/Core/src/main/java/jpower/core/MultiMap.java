@@ -49,7 +49,7 @@ public class MultiMap<K, V>
 
    public void clear(K key)
    {
-        /* Reduces Capacity, which can provide us with less memory usage */
+      /* Reduces Capacity, which can provide us with less memory usage */
       put(key, new LinkedList<>());
    }
 
