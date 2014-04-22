@@ -1,5 +1,11 @@
 package jpower.core;
 
+import java.util.Arrays;
+
+/**
+ * Represents the English alphabet.
+ * Contains various utilities to manipulate it.
+ */
 public class Alphabet
 {
 
@@ -25,5 +31,33 @@ public class Alphabet
    public static char[] lowercase()
    {
       return get();
+   }
+
+   public static char get(int index)
+   {
+      return ALPHABET[index];
+   }
+
+   public static int length()
+   {
+      return ALPHABET.length;
+   }
+
+   public static char[] getRange(int index)
+   {
+      if (index < 0 || index > ALPHABET.length)
+      {
+         throw new IndexOutOfBoundsException();
+      }
+      return Arrays.copyOfRange(ALPHABET, index, ALPHABET.length);
+   }
+
+   public static char[] getRange(int firstIndex, int lastIndex)
+   {
+      if (firstIndex < 0 || firstIndex > ALPHABET.length || lastIndex < 0 || lastIndex > ALPHABET.length)
+      {
+         throw new IndexOutOfBoundsException();
+      }
+      return Arrays.copyOfRange(ALPHABET, firstIndex, lastIndex);
    }
 }
