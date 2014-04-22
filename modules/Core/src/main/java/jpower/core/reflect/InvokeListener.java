@@ -1,26 +1,34 @@
 package jpower.core.reflect;
 
-public interface InvokeListener {
-    void before();
-    void after(Object returned);
-    void error(Exception e);
+public interface InvokeListener
+{
+   void before();
 
-    static InvokeListener ignore() {
-        return new InvokeListener() {
-            @Override
-            public void before() {
+   void after(Object returned);
 
-            }
+   void error(Exception e);
 
-            @Override
-            public void after(Object returned) {
+   static InvokeListener ignore()
+   {
+      return new InvokeListener()
+      {
+         @Override
+         public void before()
+         {
 
-            }
+         }
 
-            @Override
-            public void error(Exception e) {
+         @Override
+         public void after(Object returned)
+         {
 
-            }
-        };
-    }
+         }
+
+         @Override
+         public void error(Exception e)
+         {
+
+         }
+      };
+   }
 }

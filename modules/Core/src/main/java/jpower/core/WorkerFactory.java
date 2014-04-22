@@ -1,18 +1,22 @@
 package jpower.core;
 
-public class WorkerFactory implements Factory<Worker> {
-    private final int size;
+public class WorkerFactory implements Factory<Worker>
+{
+   private final int size;
 
-    public WorkerFactory(int size) {
-        this.size = size;
-    }
+   public WorkerFactory(int size)
+   {
+      this.size = size;
+   }
 
-    public WorkerFactory(Worker worker) {
-        this(worker.queue.size());
-    }
+   public WorkerFactory(Worker worker)
+   {
+      this(worker.queue.size());
+   }
 
-    @Override
-    public Worker create() {
-        return new Worker(size);
-    }
+   @Override
+   public Worker create()
+   {
+      return new Worker(size);
+   }
 }

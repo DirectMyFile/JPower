@@ -5,10 +5,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
-public class InternalTest {
-    @Test
-    public void testAllClasses() {
-        Class<?>[] classes = PowerInternalSystem.getLoadedClasses(getClass().getClassLoader());
-        assertNotNull(classes);
-    }
+public class InternalTest
+{
+   @Test
+   public void testAllClasses()
+   {
+      Class<?>[] classes = PowerInternalSystem.getLoadedClasses(getClass().getClassLoader());
+      assertNotNull(classes);
+   }
 }

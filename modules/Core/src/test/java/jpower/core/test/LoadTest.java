@@ -6,17 +6,20 @@ import jpower.core.utils.ThreadUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoadTest {
-    private Worker worker;
+public class LoadTest
+{
+   private Worker worker;
 
-    @Before
-    public void prepare() {
-        worker = new Worker(50);
-        worker.start();
-    }
+   @Before
+   public void prepare()
+   {
+      worker = new Worker(50);
+      worker.start();
+   }
 
-    @Test
-    public void testWorkerLoad() {
-        new Repeater(count -> worker.addTask(() -> ThreadUtils.sleep(2))).run(500);
-    }
+   @Test
+   public void testWorkerLoad()
+   {
+      new Repeater(count -> worker.addTask(() -> ThreadUtils.sleep(2))).run(500);
+   }
 }

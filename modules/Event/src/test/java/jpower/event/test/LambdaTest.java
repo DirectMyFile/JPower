@@ -9,20 +9,23 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class LambdaTest {
-    private EventBus eventBus;
+public class LambdaTest
+{
+   private EventBus eventBus;
 
-    @Before
-    public void prepare() {
-        eventBus = new EventBus();
-    }
+   @Before
+   public void prepare()
+   {
+      eventBus = new EventBus();
+   }
 
-    @Test
-    public void testLambdaSupport() {
-        Wrapper<Boolean> worked = new Wrapper<>(false);
-        eventBus.register((Handler<TestEvent>) event -> worked.set(event.getPayload().equals("Success")));
-        eventBus.post(new TestEvent());
-        ThreadUtils.sleep(100);
-        assertTrue(worked.get());
-    }
+   @Test
+   public void testLambdaSupport()
+   {
+      Wrapper<Boolean> worked = new Wrapper<>(false);
+      eventBus.register((Handler<TestEvent>) event -> worked.set(event.getPayload().equals("Success")));
+      eventBus.post(new TestEvent());
+      ThreadUtils.sleep(100);
+      assertTrue(worked.get());
+   }
 }

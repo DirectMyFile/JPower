@@ -1,11 +1,14 @@
 package jpower.core;
 
-public interface Service {
-    void start();
-    void stop();
+public interface Service
+{
+   void start();
 
-    default void restart() {
-        stop();
-        start();
-    }
+   void stop();
+
+   default void restart()
+   {
+      stop();
+      start();
+   }
 }

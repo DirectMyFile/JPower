@@ -10,20 +10,23 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.assertFalse;
 
-public class LineTest {
+public class LineTest
+{
 
-    private final Collection<String> inputs = new LinkedList<>();
+   private final Collection<String> inputs = new LinkedList<>();
 
-    @Before
-    public void prepare() {
-        inputs.add("MSG\u0001User\u0002TestUser\u0001Message\u0002Hello World");
-    }
+   @Before
+   public void prepare()
+   {
+      inputs.add("MSG\u0001User\u0002TestUser\u0001Message\u0002Hello World");
+   }
 
-    @Test
-    public void testLineExamples() {
-        inputs.forEach(input -> {
-            GCPLine line = GCP.parse(input);
-            assertFalse(line.opts().isEmpty());
-        });
-    }
+   @Test
+   public void testLineExamples()
+   {
+      inputs.forEach(input -> {
+         GCPLine line = GCP.parse(input);
+         assertFalse(line.opts().isEmpty());
+      });
+   }
 }

@@ -1,5 +1,6 @@
 package jpower.core.load;
 
-public interface Loadable {
-    void load();
+public interface Loadable
+{
+   void load();
 }

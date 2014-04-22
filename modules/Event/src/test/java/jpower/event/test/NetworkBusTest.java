@@ -11,39 +11,46 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
-public class NetworkBusTest {
+public class NetworkBusTest
+{
 
-    private boolean worked;
+   private boolean worked;
 
-    private ServerEventBus server;
+   private ServerEventBus server;
 
-    @Before
-    public void prepare() {
-        try {
-            server = new ServerEventBus("127.0.0.1", 46839);
-        } catch (IOException ignored) {
-        }
-    }
+   @Before
+   public void prepare()
+   {
+      try
+      {
+         server = new ServerEventBus("127.0.0.1", 46839);
+      }
+      catch (IOException ignored)
+      {
+      }
+   }
 
-    @Test
-    public void testServerClientInteraction() throws IOException {
-        server.start();
-        server.register(this);
-        ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
-        client.connect();
-        client.post(new TestEvent());
-        ThreadUtils.sleep(500);
-        assertTrue(worked);
-        worked = false;
-        server.unregister(this);
-        client.register(this);
-        server.post(new TestEvent());
-        ThreadUtils.sleep(500);
-        assertTrue(worked);
-    }
+   @Test
+   public void testServerClientInteraction() throws IOException
+   {
+      server.start();
+      server.register(this);
+      ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
+      client.connect();
+      client.post(new TestEvent());
+      ThreadUtils.sleep(500);
+      assertTrue(worked);
+      worked = false;
+      server.unregister(this);
+      client.register(this);
+      server.post(new TestEvent());
+      ThreadUtils.sleep(500);
+      assertTrue(worked);
+   }
 
-    @EventHandler
-    public void handleEvent(TestEvent event) {
-        worked = event.getPayload().equals("Success");
-    }
+   @EventHandler
+   public void handleEvent(TestEvent event)
+   {
+      worked = event.getPayload().equals("Success");
+   }
 }
