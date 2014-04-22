@@ -2,6 +2,8 @@ import jpower.gradle.*
 
 apply plugin: "build-dashboard"
 apply plugin: "project-report"
+apply plugin: "idea"
+apply plugin: "eclipse"
 
 group = "com.directmyfile.jpower"
 version = getProperty("jpower.version")
