@@ -2,9 +2,10 @@
 
 ![JPower Logo](docs/logo.png)
 
-JPower is a modular set of libraries similar to Apache Commons, with a twist. It's written to be used with Java 8's new features!
+JPower is a modular set of libraries similar to Apache Commons and Guava, with a twist. It's written to be used with Java 8's new features!
 
 # Authors
+
 - Logan Gorence - Current Maintainer
 - Kenneth Endfinger - Co-maintainer
 
@@ -12,8 +13,7 @@ JPower is a modular set of libraries similar to Apache Commons, with a twist. It
 
 - [Issue Tracker](https://github.com/DirectMyFile/JPower/issues)
 - [Wiki](https://github.com/DirectMyFile/JPower/wiki)
-- [GitHub](https://github.com/DirectMyFile/JPower)
 
-# IRC
+# Contact Us
 
 The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://www.directmyfile.com/)
