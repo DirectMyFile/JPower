@@ -21,7 +21,7 @@ public class FieldAccessor
 
    public Field field(String name) throws NoSuchFieldException
    {
-      Field field = clazz.getDeclaredField(name);
+      Field field = clazz.getField(name);
       if (!field.isAccessible())
       {
          field.setAccessible(true);
