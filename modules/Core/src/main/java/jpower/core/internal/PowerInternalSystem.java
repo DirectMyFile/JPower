@@ -20,7 +20,7 @@ public class PowerInternalSystem
    {
       try
       {
-         Vector<Class> classList = (Vector<Class>) new FieldAccessor(loader).get("classes");
+         Vector<Class> classList = (Vector<Class>) new FieldAccessor(ClassLoader.class, loader).get("classes");
          return classList.toArray(new Class[classList.size()]);
       }
       catch (NoSuchFieldException | IllegalAccessException e)
@@ -34,9 +34,9 @@ public class PowerInternalSystem
       return inst;
    }
 
-   public static Unsafe getUnsafe(Object object)  {
+   public static Unsafe getUnsafe()  {
        try {
-           return (Unsafe) new FieldAccessor(object).get("theUnsafe");
+           return (Unsafe) new FieldAccessor(Unsafe.class).get("theUnsafe");
        } catch (Throwable e) {
            return null;
        }

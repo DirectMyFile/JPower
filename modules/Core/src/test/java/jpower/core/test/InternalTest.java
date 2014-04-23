@@ -17,6 +17,6 @@ public class InternalTest
    @Test
    public void testGetUnsafeWorks()
    {
-      assertNotNull(PowerInternalSystem.getUnsafe(this));
+      assertNotNull(PowerInternalSystem.getUnsafe());
    }
 }
