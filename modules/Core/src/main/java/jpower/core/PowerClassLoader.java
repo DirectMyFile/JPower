@@ -14,6 +14,10 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 import java.util.stream.Stream;
 
+/**
+ * A new ClassLoader built upon URLClassLoader
+ * and adds some useful events for class loads.
+ */
 @SuppressWarnings("ZeroLengthArrayAllocation")
 public class PowerClassLoader extends URLClassLoader
 {

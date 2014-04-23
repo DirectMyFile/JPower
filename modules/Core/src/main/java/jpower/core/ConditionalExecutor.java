@@ -4,6 +4,11 @@ import jpower.core.utils.ThreadUtils;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Utility to run a task with multiple different
+ * methods to check for conditions while running
+ * that task.
+ */
 public class ConditionalExecutor
 {
 

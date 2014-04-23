@@ -2,6 +2,10 @@ package jpower.core.math;
 
 import java.math.BigInteger;
 
+/**
+ * Utility class that contains many different
+ * math utilities for anything and everything.
+ */
 public class PowerMath
 {
 

@@ -3,7 +3,7 @@ package jpower.core;
 /**
  * Operating System Utilities
  */
-public class OperatingSystem
+public final class OperatingSystem
 {
 
    private static final String OS = System.getProperty("os.name").toLowerCase();
@@ -36,5 +36,10 @@ public class OperatingSystem
    public static boolean isCaseSensitive()
    {
       return isUnix();
+   }
+
+   public static String getName()
+   {
+      return OS;
    }
 }
