@@ -7,7 +7,12 @@ package jpower.event;
 @SuppressWarnings("Singleton")
 public class GlobalEventBus extends EventBus
 {
-   private static final GlobalEventBus INSTANCE = new GlobalEventBus();
+   private static final GlobalEventBus INSTANCE;
+
+   static
+   {
+      INSTANCE = new GlobalEventBus();
+   }
 
    private GlobalEventBus()
    {
