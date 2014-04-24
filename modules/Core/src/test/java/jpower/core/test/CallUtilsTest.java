@@ -17,9 +17,6 @@ public class CallUtilsTest
       CallUtils.tryCatch(() -> {
          throw new Exception("This should be caught");
       }, caught::set);
-      CallUtils.tryCatch(() -> {
-         throw new Exception("LOL");
-      }, Throwable::printStackTrace);
       assertNotNull(caught.get());
       assertEquals("This should be caught", caught.get().getMessage());
    }
