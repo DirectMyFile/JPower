@@ -12,3 +12,4 @@ classes/
 builds.json
 build-number.txt
 .c9*
+/gen_docs/
