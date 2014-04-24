@@ -7,6 +7,7 @@ import jpower.event.Handler;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LambdaTest
@@ -26,6 +27,8 @@ public class LambdaTest
       eventBus.register((Handler<TestEvent>) event -> worked.set(event.getPayload().equals("Success")));
       eventBus.post(new TestEvent());
       ThreadUtils.sleep(100);
-      assertTrue(worked.get());
+      assertTrue(worked.set(false));
+      eventBus.post(new TestEventTwo());
+      assertFalse(worked.get());
    }
 }

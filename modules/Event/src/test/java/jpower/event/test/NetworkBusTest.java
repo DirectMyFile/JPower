@@ -38,13 +38,13 @@ public class NetworkBusTest
       ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
       client.connect();
       client.post(new TestEvent());
-      ThreadUtils.sleep(500);
+      ThreadUtils.sleep(1000);
       assertTrue(worked);
       worked = false;
       server.unregister(this);
       client.register(this);
       server.post(new TestEvent());
-      ThreadUtils.sleep(500);
+      ThreadUtils.sleep(1000);
       assertTrue(worked);
    }
 
