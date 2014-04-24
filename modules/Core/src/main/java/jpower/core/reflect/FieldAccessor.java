@@ -6,22 +6,32 @@ public class FieldAccessor
 {
    private final Object object;
    private final Class<?> clazz;
+   private final boolean declared;
 
    public FieldAccessor(Class<?> clazz)
    {
-      this.clazz = clazz;
-      this.object = null;
+      this(clazz, null);
    }
 
    public FieldAccessor(Object object)
    {
+      this(object.getClass(), object);
+   }
+
+   public FieldAccessor(Class<?> clazz, Object object)
+   {
+      this(clazz, object, true);
+   }
+
+   public FieldAccessor(Class<?> clazz, Object object, boolean declared) {
+      this.clazz = clazz;
       this.object = object;
-      this.clazz = object.getClass();
+      this.declared = declared;
    }
 
    public Field field(String name) throws NoSuchFieldException
    {
-      Field field = clazz.getDeclaredField(name);
+      Field field = declared ? clazz.getDeclaredField(name) : clazz.getField(name);
       if (!field.isAccessible())
       {
          field.setAccessible(true);

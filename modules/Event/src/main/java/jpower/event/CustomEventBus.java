@@ -7,6 +7,7 @@ public abstract class CustomEventBus extends EventBus
 {
    public CustomEventBus()
    {
+       super();
    }
 
    public CustomEventBus(boolean globalEnabled)

@@ -13,4 +13,10 @@ public class InternalTest
       Class<?>[] classes = PowerInternalSystem.getLoadedClasses(getClass().getClassLoader());
       assertNotNull(classes);
    }
+
+   @Test
+   public void testGetUnsafeWorks()
+   {
+      assertNotNull(PowerInternalSystem.getUnsafe());
+   }
 }

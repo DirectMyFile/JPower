@@ -114,7 +114,7 @@ public class PowerClassLoader extends URLClassLoader
    public Set<Class<?>> getClassesImplementing(Class<?> clazz)
    {
       Set<Class<?>> classes = new HashSet<>();
-      classes.forEach(c -> {
+      getLoadedClasses().forEach(c -> {
          if (c.isAssignableFrom(clazz))
          {
             classes.add(c);

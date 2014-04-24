@@ -1,9 +1,9 @@
 package jpower.core.internal;
 
+import jpower.core.reflect.FieldAccessor;
 import sun.misc.Unsafe;
 
 import java.lang.instrument.Instrumentation;
-import java.lang.reflect.Field;
 import java.util.Vector;
 
 public class PowerInternalSystem
@@ -20,9 +20,7 @@ public class PowerInternalSystem
    {
       try
       {
-         Field f = ClassLoader.class.getDeclaredField("classes");
-         f.setAccessible(true);
-         Vector<Class> classList = (Vector<Class>) f.get(loader);
+         Vector<Class> classList = (Vector<Class>) new FieldAccessor(ClassLoader.class, loader).get("classes");
          return classList.toArray(new Class[classList.size()]);
       }
       catch (NoSuchFieldException | IllegalAccessException e)
@@ -36,15 +34,11 @@ public class PowerInternalSystem
       return inst;
    }
 
-   public static Unsafe getUnsafe(Object object)
-   {
-      try
-      {
-         return (Unsafe) object.getClass().getDeclaredField("theUnsafe").get(object);
-      }
-      catch (Exception e)
-      {
-         return null;
-      }
+   public static Unsafe getUnsafe()  {
+       try {
+           return (Unsafe) new FieldAccessor(Unsafe.class).get("theUnsafe");
+       } catch (Throwable e) {
+           return null;
+       }
    }
 }
