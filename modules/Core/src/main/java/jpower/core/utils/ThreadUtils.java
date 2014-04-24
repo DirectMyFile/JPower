@@ -47,7 +47,6 @@ public class ThreadUtils
       }
       catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e)
       {
-         e.printStackTrace();
          return null;
       }
    }
