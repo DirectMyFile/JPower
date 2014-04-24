@@ -34,11 +34,15 @@ public class PowerInternalSystem
       return inst;
    }
 
-   public static Unsafe getUnsafe()  {
-       try {
-           return (Unsafe) new FieldAccessor(Unsafe.class).get("theUnsafe");
-       } catch (Throwable e) {
-           return null;
-       }
+   public static Unsafe getUnsafe()
+   {
+      try
+      {
+         return (Unsafe) new FieldAccessor(Unsafe.class).get("theUnsafe");
+      }
+      catch (Throwable e)
+      {
+         return null;
+      }
    }
 }

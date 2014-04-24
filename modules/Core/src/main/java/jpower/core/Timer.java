@@ -9,14 +9,20 @@ public class Timer
 
    public void start()
    {
-      if (running) return;
+      if (running)
+      {
+         return;
+      }
       running = true;
       startTime = System.currentTimeMillis();
    }
 
    public void stop()
    {
-      if (!running) return;
+      if (!running)
+      {
+         return;
+      }
       running = false;
       endTime = System.currentTimeMillis();
    }
@@ -30,7 +36,10 @@ public class Timer
 
    public long getTime()
    {
-      if (running) return System.currentTimeMillis() - startTime;
+      if (running)
+      {
+         return System.currentTimeMillis() - startTime;
+      }
       return endTime - startTime;
    }
 }
