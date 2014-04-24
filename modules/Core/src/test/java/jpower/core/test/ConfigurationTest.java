@@ -34,7 +34,7 @@ public class ConfigurationTest
       Property test = config.set("test", "hello");
       test.addComment("This is a test property");
       assertEquals("# This is a test property" + System.lineSeparator() + "test: hello" + System.lineSeparator(),
-                   test.toString());
+              test.toString());
       config.save(configFile);
    }
 
