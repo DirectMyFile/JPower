@@ -6,8 +6,8 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 # Authors
 
-- Logan Gorence - Current Maintainer
-- Kenneth Endfinger - Co-maintainer
+- Logan Gorence - Project Leader
+- Kenneth Endfinger - Creator and Developer
 
 # Links
 
