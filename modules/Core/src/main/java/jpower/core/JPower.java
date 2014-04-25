@@ -1,15 +1,15 @@
 package jpower.core;
 
 import jpower.core.utils.IOUtils;
+import jpower.core.utils.StringUtils;
 
-import java.util.regex.Pattern;
+import java.util.List;
 
 /**
  * JPower Release Information
  */
 public final class JPower
 {
-   private static final Pattern SPLIT_BY_DOT = Pattern.compile("\\.");
    private static String VERSION;
 
    public static String getVersion()
@@ -20,8 +20,7 @@ public final class JPower
          if (v == null || v.equals("${jpowerVersion}"))
          {
             VERSION = "UNKNOWN";
-         }
-         else
+         } else
          {
             VERSION = v;
          }
@@ -29,9 +28,9 @@ public final class JPower
       return VERSION;
    }
 
-   public static String[] getVersionMetadata()
+   public static List<String> getVersionMetadata()
    {
-      return SPLIT_BY_DOT.split(getVersion());
+      return StringUtils.tokenizeByDot(getVersion());
    }
 
    public static void main(String[] args)

@@ -76,8 +76,7 @@ public class PowerClassLoader extends URLClassLoader
                   loadClass(className);
                }
             }
-         }
-         catch (IOException | ClassNotFoundException ignored)
+         } catch (IOException | ClassNotFoundException ignored)
          {
             System.out.println("Failed to autoload!");
          }

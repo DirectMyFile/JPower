@@ -33,8 +33,8 @@ public class FieldAccessor
    public Field field(String name) throws NoSuchFieldException
    {
       Field field = declared
-                    ? clazz.getDeclaredField(name)
-                    : clazz.getField(name);
+              ? clazz.getDeclaredField(name)
+              : clazz.getField(name);
       if (!field.isAccessible())
       {
          field.setAccessible(true);

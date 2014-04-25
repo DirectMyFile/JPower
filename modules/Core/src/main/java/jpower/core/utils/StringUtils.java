@@ -24,6 +24,11 @@ public class StringUtils
       return strings;
    }
 
+   public static List<String> tokenizeByDot(String input)
+   {
+      return tokenize(input, "\\.");
+   }
+
    public static List<String> tokenize(String input, String regex)
    {
       return ArrayUtils.toList(input.split(regex));

@@ -16,8 +16,7 @@ public class ThreadUtils
       try
       {
          Thread.sleep(time);
-      }
-      catch (InterruptedException ignored)
+      } catch (InterruptedException ignored)
       {
          // Do Nothing
       }
@@ -44,8 +43,7 @@ public class ThreadUtils
       try
       {
          return (Thread[]) invoker.invokeMethod("getThreads");
-      }
-      catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e)
+      } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e)
       {
          return null;
       }

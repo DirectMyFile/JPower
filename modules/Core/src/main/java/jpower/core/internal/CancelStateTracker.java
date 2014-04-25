@@ -17,8 +17,7 @@ public class CancelStateTracker
       if (cancel)
       {
          states.add(task);
-      }
-      else
+      } else
       {
          states.remove(task);
       }

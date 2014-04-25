@@ -19,8 +19,7 @@ public class NetUtils
       try
       {
          return InetAddress.getByName(host).isReachable(1000);
-      }
-      catch (IOException e)
+      } catch (IOException e)
       {
          return false;
       }
