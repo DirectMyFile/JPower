@@ -1,5 +1,6 @@
 package jpower.core.test;
 
+import jpower.core.Timer;
 import jpower.core.Wrapper;
 import jpower.core.utils.ArrayUtils;
 import jpower.core.utils.ThreadUtils;
@@ -30,6 +31,16 @@ public class ThreadUtilsTest
       assertTrue(thread.isDaemon());
       ThreadUtils.sleep(40);
       assertTrue(value.get());
+   }
+
+   @Test
+   public void testThreadSleep()
+   {
+      int time = 1000;
+      int range = 20;
+      long slept = Timer.timeOf(() -> ThreadUtils.sleep(time));
+      boolean decent = slept < time + range || slept > time + range;
+      assertTrue("Expected " + time + "ms of sleep, but got " + slept + "ms of sleep.", decent);
    }
 
    @Test
