@@ -1,11 +1,11 @@
 package jpower.core.config;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Property
 {
-   private final List<String> comments = new LinkedList<>();
+   private final List<String> comments = new ArrayList<>();
    private final String key;
    private String value;
 
@@ -43,7 +43,7 @@ public class Property
 
    public List<String> toLines()
    {
-      List<String> lines = new LinkedList<>();
+      List<String> lines = new ArrayList<>();
       comments.forEach(comment -> lines.add("# " + comment));
       lines.add(key + ": " + value);
       return lines;

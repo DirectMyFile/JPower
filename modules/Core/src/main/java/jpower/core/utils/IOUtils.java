@@ -1,13 +1,8 @@
 package jpower.core.utils;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class IOUtils
@@ -40,8 +35,7 @@ public class IOUtils
             writer.write(b);
          }
          stream.close();
-      }
-      catch (IOException e)
+      } catch (IOException e)
       {
          return null;
       }
@@ -75,7 +69,7 @@ public class IOUtils
 
    public static Iterable<String> readLines(BufferedReader reader) throws IOException
    {
-      Collection<String> lines = new LinkedList<>();
+      Collection<String> lines = new ArrayList<>();
       eachLine(reader, lines::add);
       return lines;
    }

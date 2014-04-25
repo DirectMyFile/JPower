@@ -2,8 +2,8 @@ package jpower.core.utils;
 
 import jpower.core.Wrapper;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -11,14 +11,13 @@ public class ArrayUtils
 {
    public static boolean containsDuplicates(Object[] objects)
    {
-      Collection<Object> list = new LinkedList<>();
+      Collection<Object> list = new ArrayList<>();
       Wrapper<Boolean> duplicates = new Wrapper<>(false);
       Stream.of(objects).forEach(obj -> {
          if (list.contains(obj))
          {
             duplicates.set(true);
-         }
-         else
+         } else
          {
             list.add(obj);
          }
@@ -40,7 +39,7 @@ public class ArrayUtils
 
    public static <T> List<T> toList(T[] array)
    {
-      List<T> list = new LinkedList<>();
+      List<T> list = new ArrayList<>();
       Stream.of(array).forEach(list::add);
       return list;
    }

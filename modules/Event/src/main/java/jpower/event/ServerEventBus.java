@@ -6,13 +6,13 @@ import jpower.socket.WorkerServer;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 public class ServerEventBus extends CustomEventBus
 {
    private final WorkerServer workerServer;
-   private final Collection<Client> clients = new LinkedList<>();
+   private final Collection<Client> clients = new ArrayList<>();
 
    public ServerEventBus(String host, int port) throws IOException
    {
@@ -28,8 +28,7 @@ public class ServerEventBus extends CustomEventBus
                try
                {
                   post(client.readObject());
-               }
-               catch (IOException | ClassNotFoundException ignored)
+               } catch (IOException | ClassNotFoundException ignored)
                {
                }
             }
@@ -52,8 +51,7 @@ public class ServerEventBus extends CustomEventBus
             try
             {
                client.writeObject(event);
-            }
-            catch (IOException ignored)
+            } catch (IOException ignored)
             {
             }
          });
