@@ -1,10 +1,11 @@
 package jpower.core;
 
 /**
- * A simple inteface that is applied to
+ * A simple interface that is applied to
  * anything that is true or false that
  * can be checked as a conditional.
  */
+@FunctionalInterface
 public interface Condition
 {
    public boolean check();

@@ -2,6 +2,7 @@ package jpower.core;
 
 import jpower.core.internal.CancelStateTracker;
 
+@FunctionalInterface
 public interface Task extends Runnable
 {
 

@@ -5,6 +5,7 @@ package jpower.core;
  *
  * @param <T> Target Object Type
  */
+@FunctionalInterface
 public interface Factory<T>
 {
    /**

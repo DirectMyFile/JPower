@@ -1,8 +1,8 @@
 package jpower.core;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 public class MultiMap<K, V>
@@ -24,10 +24,9 @@ public class MultiMap<K, V>
       if (getAll().containsKey(key))
       {
          return getAll().get(key);
-      }
-      else
+      } else
       {
-         put(key, new LinkedList<>());
+         put(key, new ArrayList<>());
          return delegate.get(key);
       }
    }
@@ -50,7 +49,7 @@ public class MultiMap<K, V>
    public void clear(K key)
    {
       /* Reduces Capacity, which can provide us with less memory usage */
-      put(key, new LinkedList<>());
+      put(key, new ArrayList<>());
    }
 
    public Map<K, Collection<V>> getAll()
