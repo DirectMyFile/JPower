@@ -15,6 +15,11 @@ public class PowerInternalSystem
       PowerInternalSystem.inst = inst;
    }
 
+   public static void agentmain(String args, Instrumentation inst)
+   {
+      PowerInternalSystem.inst = inst;
+   }
+
    @SuppressWarnings({"unchecked", "UseOfObsoleteCollectionType"})
    public static Class[] getLoadedClasses(ClassLoader loader)
    {
