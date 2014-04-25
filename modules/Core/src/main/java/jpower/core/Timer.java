@@ -42,4 +42,18 @@ public class Timer
       }
       return endTime - startTime;
    }
+
+   public static Timer of(Runnable task)
+   {
+      Timer timer = new Timer();
+      timer.start();
+      task.run();
+      timer.stop();
+      return timer;
+   }
+
+   public static long timeOf(Runnable task)
+   {
+      return of(task).getTime();
+   }
 }
