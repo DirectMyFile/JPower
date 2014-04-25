@@ -89,6 +89,11 @@ public class PowerClassLoader extends URLClassLoader
       autoload = true;
    }
 
+   public void disableAutoLoading()
+   {
+      autoload = false;
+   }
+
    public Set<Class<?>> getLoadedClasses()
    {
       Set<Class<?>> classes = new HashSet<>();
