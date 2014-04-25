@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -27,7 +27,7 @@ public class PathMatcher
 
    public List<Path> find() throws IOException
    {
-      List<Path> paths = new LinkedList<>();
+      List<Path> paths = new ArrayList<>();
       Files.walk(parent).forEach(path -> {
          if (matcher.test(path))
          {
