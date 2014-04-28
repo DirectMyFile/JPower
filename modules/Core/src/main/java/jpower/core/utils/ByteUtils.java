@@ -4,13 +4,26 @@ public class ByteUtils
 {
    public static byte[] reverse(byte[] original)
    {
-      byte[] reversed = new byte[original.length];
-      int count = 0;
-      for (int i = original.length - 1; i >= 0; i--)
+      return unwrap(ArrayUtils.reverse(wrap(original)));
+   }
+
+   public static Byte[] wrap(byte[] bytes)
+   {
+      Byte[] Bytes = new Byte[bytes.length];
+      for (int i = 0; i < bytes.length; i++)
       {
-         reversed[i] = original[count];
-         count++;
+         Bytes[i] = bytes[i];
       }
-      return reversed;
+      return Bytes;
+   }
+
+   public static byte[] unwrap(Byte[] Bytes)
+   {
+      byte[] bytes = new byte[Bytes.length];
+      for (int i = 0; i < bytes.length; i++)
+      {
+         bytes[i] = Bytes[i];
+      }
+      return bytes;
    }
 }

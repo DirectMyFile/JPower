@@ -2,9 +2,7 @@ package jpower.core.utils;
 
 import jpower.core.Wrapper;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class ArrayUtils
@@ -42,5 +40,30 @@ public class ArrayUtils
       List<T> list = new ArrayList<>();
       Stream.of(array).forEach(list::add);
       return list;
+   }
+
+   public static <T> Set<T> toSet(T[] array)
+   {
+      Set<T> set = new HashSet<>();
+      Stream.of(array).forEach(e -> {
+         if (!set.contains(e))
+         {
+            set.add(e);
+         }
+      });
+      return set;
+   }
+
+   @SuppressWarnings("unchecked")
+   public static <T> T[] reverse(T[] original)
+   {
+      T[] reversed = (T[]) new Object[original.length];
+      int count = 0;
+      for (int i = original.length - 1; i != 0; i--)
+      {
+         reversed[i] = original[count];
+         count++;
+      }
+      return reversed;
    }
 }
