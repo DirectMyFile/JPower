@@ -57,9 +57,9 @@ public class ArrayUtils
    @SuppressWarnings("unchecked")
    public static <T> T[] reverse(T[] original)
    {
-      T[] reversed = (T[]) new Object[original.length];
+      T[] reversed = original.clone();
       int count = 0;
-      for (int i = original.length - 1; i != 0; i--)
+      for (int i = original.length - 1; i >= 0; i--)
       {
          reversed[i] = original[count];
          count++;
