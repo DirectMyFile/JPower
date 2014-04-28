@@ -1,6 +1,7 @@
 package jpower.core.utils;
 
 import jpower.core.ActionThrowable;
+import jpower.core.reflect.MethodInvoker;
 
 import java.util.function.Consumer;
 
@@ -36,5 +37,15 @@ public class CallUtils
       {
          exceptionHandler.accept(e);
       }
+   }
+
+   public static MethodInvoker invokerOf(Class<?> clazz)
+   {
+      return new MethodInvoker(clazz);
+   }
+
+   public static MethodInvoker invokerOf(Object object)
+   {
+      return new MethodInvoker(object);
    }
 }
