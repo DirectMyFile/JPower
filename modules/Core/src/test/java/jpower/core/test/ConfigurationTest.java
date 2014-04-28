@@ -9,8 +9,9 @@ import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ConfigurationTest
 {
@@ -47,5 +48,30 @@ public class ConfigurationTest
       assertEquals("hello", test.value());
       assertEquals("This is a test property", test.comments().get(0));
       configFile.deleteOnExit();
+   }
+
+   @Test
+   public void testPropertyCreation() throws IOException
+   {
+      Property test = new Property("test");
+      test.addComment("Hello There");
+      assertTrue(test.comments().contains("Hello There"));
+      assertEquals("test", test.key());
+      assertNull(test.value());
+      test.set("this is a value");
+      assertEquals("this is a value", test.value());
+   }
+
+   @Test
+   public void testGrouping()
+   {
+      config.set("letter.a", "Letter A");
+      config.set("letter.b", "Letter B");
+      config.set("letter.c", "Letter C");
+      List<Property> letters = config.group("letter");
+      assertEquals(3, letters.size());
+      assertEquals("Letter A", letters.get(0).value());
+      assertEquals("Letter B", letters.get(1).value());
+      assertEquals("Letter C", letters.get(2).value());
    }
 }

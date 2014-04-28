@@ -54,6 +54,11 @@ public class Property
       return key;
    }
 
+   public String get()
+   {
+      return value;
+   }
+
    public String value()
    {
       return value;
