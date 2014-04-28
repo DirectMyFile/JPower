@@ -10,7 +10,6 @@ import org.gradle.api.tasks.javadoc.Javadoc
 
 class JPower
 {
-
     static Project project
 
     static void pom(MavenPom pom)
