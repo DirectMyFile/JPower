@@ -1,4 +1,6 @@
-import jpower.gradle.*
+import jpower.gradle.JPower
+import jpower.gradle.JarAllTask
+import jpower.gradle.ReleaseTask
 
 apply plugin: "build-dashboard"
 apply plugin: "project-report"
@@ -31,6 +33,7 @@ subprojects {
 
     compileJava {
         options.warnings = false
+        options.compilerArgs << '-XDignore.symbol.file'
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
