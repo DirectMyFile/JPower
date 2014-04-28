@@ -32,7 +32,7 @@ class ReleaseTask extends DefaultTask {
 
     @TaskAction
     void updateVersion() {
-        def nextVersion = new Version(project.version).increment().toString()
+        def nextVersion = new Version(project.version as String).increment().toString()
         def propFile = project.file("gradle.properties")
         propFile.text = propFile.text.replace("jpower.version=${project.version}", "jpower.version=${nextVersion}")
         project.exec {
