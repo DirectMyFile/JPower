@@ -6,6 +6,7 @@ import org.gradle.api.tasks.TaskAction
 class ReleaseTask extends DefaultTask {
     boolean tagRelease = false
     boolean pushRelease = false
+    boolean rebaseMaster = false
 
     ReleaseTask() {
     }
@@ -15,13 +16,36 @@ class ReleaseTask extends DefaultTask {
         if (pushRelease) {
             logger.lifecycle "Pushing to Git Repository"
             project.exec {
-                commandLine "git", "push"
+                commandLine "git", "push", "origin", "develop"
             }
         }
         if (tagRelease) {
             logger.lifecycle "Creating Tag v${project.version}"
             project.exec {
                 commandLine "git", "tag", "v${project.version}"
+            }
+        }
+        if (rebaseMaster) {
+            logger.lifecycle "Updating Master Branch"
+            project.exec {
+                commandLine "git", "checkout", "master"
+            }
+            project.exec {
+                commandLine "git", "rebase", "v${nextVersion}"
+            }
+            if (pushRelease) {
+                project.exec {
+                    commandLine "git", "push", "origin", "master"
+                }
+            }
+            project.exec {
+                commandLine "git", "checkout", "develop"
+            }
+        }
+        if (pushRelease) {
+            logger.lifecycle "Pushing Tags to Git Repository"
+            project.exec {
+                commandLine "git", "push", "--tags"
             }
         }
         def nextVersion = new Version(project.version as String).increment().toString()
@@ -33,16 +57,14 @@ class ReleaseTask extends DefaultTask {
         project.exec {
             commandLine "git", "commit", "-m", "Update Version to v${nextVersion}"
         }
-        if (pushRelease) {
-            logger.lifecycle "Pushing Tags to Git Repository"
-            project.exec {
-                commandLine "git", "push", "--tags"
-            }
+        project.exec {
+            commandLine "git", "push", "origin", "develop"
         }
     }
 
     void git(Map<String, Boolean> options) {
         tagRelease = options["tag"] as boolean
         pushRelease = options["push"] as boolean
+        rebaseMaster = options["updateMaster"] as boolean
     }
 }
