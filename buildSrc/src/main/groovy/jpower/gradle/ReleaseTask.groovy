@@ -13,6 +13,7 @@ class ReleaseTask extends DefaultTask {
 
     @TaskAction
     void release() {
+        def nextVersion = new Version(project.version as String).increment().toString()
         if (pushRelease) {
             logger.lifecycle "Pushing to Git Repository"
             project.exec {
@@ -48,7 +49,6 @@ class ReleaseTask extends DefaultTask {
                 commandLine "git", "push", "--tags"
             }
         }
-        def nextVersion = new Version(project.version as String).increment().toString()
         def propFile = project.file("gradle.properties")
         propFile.text = propFile.text.replace("jpower.version=${project.version}", "jpower.version=${nextVersion}")
         project.exec {
