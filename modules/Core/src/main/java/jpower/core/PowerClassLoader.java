@@ -76,9 +76,9 @@ public class PowerClassLoader extends URLClassLoader
                   loadClass(className);
                }
             }
-         } catch (IOException | ClassNotFoundException ignored)
+         } catch (IOException | ClassNotFoundException e)
          {
-            System.out.println("Failed to autoload!");
+            throw new RuntimeException("Failed to auto-load classes.", e);
          }
       }
    }
@@ -118,12 +118,7 @@ public class PowerClassLoader extends URLClassLoader
    public Set<Class<?>> getClassesImplementing(Class<?> clazz)
    {
       Set<Class<?>> classes = new HashSet<>();
-      getLoadedClasses().forEach(c -> {
-         if (c.isAssignableFrom(clazz))
-         {
-            classes.add(c);
-         }
-      });
+      getLoadedClasses().stream().filter(c -> c.isAssignableFrom(clazz)).forEach(classes::add);
       return classes;
    }
 }
