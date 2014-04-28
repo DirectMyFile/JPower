@@ -13,6 +13,7 @@ class ReleaseTask extends DefaultTask {
 
     @TaskAction
     void release() {
+
         def nextVersion = new Version(project.version as String).increment().toString()
 
         /* Git Preparation Stuff */
@@ -93,6 +94,8 @@ class ReleaseTask extends DefaultTask {
                 commandLine "git", "push", "origin", "develop"
             }
         })()
+
+        logger.lifecycle "Sucessfully Released v${project.version} and pushed the first commit of v${nextVersion}"
     }
 
     void git(Map<String, Boolean> options) {
