@@ -57,7 +57,7 @@ class ReleaseTask extends DefaultTask {
                     commandLine "git", "checkout", "master"
                 }
                 project.exec {
-                    commandLine "git", "rebase", "v${nextVersion}"
+                    commandLine "git", "rebase", "v${project.version}"
                 }
                 if (pushRelease)
                 {
