@@ -1,5 +1,6 @@
 package jpower.socket;
 
+import jpower.core.AdvancedService;
 import jpower.core.WorkerPool;
 import jpower.core.utils.ThreadUtils;
 
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
-public class WorkerServer
+public class WorkerServer implements AdvancedService
 {
    private final ServerSocket server;
    private final InetSocketAddress address;
@@ -29,6 +30,7 @@ public class WorkerServer
       this.clientHandler = clientHandler;
    }
 
+   @Override
    public void start() throws IOException
    {
       shouldRun = true;
@@ -49,6 +51,7 @@ public class WorkerServer
       });
    }
 
+   @Override
    public void stop()
    {
       shouldRun = false;
