@@ -1,7 +1,10 @@
 package jpower.core.test;
 
+import jpower.core.ParseException;
 import jpower.core.config.Configuration;
 import jpower.core.config.Property;
+import jpower.core.utils.FileUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -47,7 +50,6 @@ public class ConfigurationTest
       Property test = config.getProperty("test");
       assertEquals("hello", test.value());
       assertEquals("This is a test property", test.comments().get(0));
-      configFile.deleteOnExit();
    }
 
    @Test
@@ -73,5 +75,26 @@ public class ConfigurationTest
       assertEquals("Letter A", letters.get(0).value());
       assertEquals("Letter B", letters.get(1).value());
       assertEquals("Letter C", letters.get(2).value());
+   }
+
+   @Test(expected = ParseException.class)
+   public void testFailureToParseNoSpaces() throws IOException
+   {
+      FileUtils.write(configFile, "key:value");
+      config.load(configFile);
+   }
+
+   @Test(expected = ParseException.class)
+   public void testFailureToParseRandomStuff() throws IOException
+   {
+      FileUtils.write(configFile, "dlfjkasl;djf;sldnvcmxn,e:dj:fjhds:fhfhfhueudjjf:\nfjfjdskl\n\fdsjfjs\n\n\n");
+      config.load(configFile);
+   }
+
+   @SuppressWarnings("ResultOfMethodCallIgnored")
+   @After
+   public void cleanup()
+   {
+      configFile.delete();
    }
 }
