@@ -13,8 +13,7 @@ public class GenericSnifferTest
    @Test
    public void testSniff()
    {
-       Type type = new GenericSniffer<List<String>>() {
-       }.sniff();
+      Type type = new GenericSniffer<List<String>>(){}.sniff();
       assertEquals(type.getTypeName(), "java.util.List<java.lang.String>");
    }
 }
