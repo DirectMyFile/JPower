@@ -121,4 +121,9 @@ public class PowerClassLoader extends URLClassLoader
       getLoadedClasses().stream().filter(c -> c.isAssignableFrom(clazz)).forEach(classes::add);
       return classes;
    }
+
+   public boolean isAutoLoadEnabled()
+   {
+      return autoload;
+   }
 }
