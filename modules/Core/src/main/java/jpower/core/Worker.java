@@ -39,6 +39,7 @@ public class Worker implements Runnable
     * Adds a Task to the Queue
     *
     * @param task task to add
+    * @return if the task was added to the queue
     */
    public boolean addTask(Task task)
    {
