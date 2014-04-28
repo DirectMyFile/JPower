@@ -15,6 +15,13 @@ class ReleaseTask extends DefaultTask {
     void release() {
         def nextVersion = new Version(project.version as String).increment().toString()
 
+        /* Git Preparation Stuff */
+        ({
+            project.exec {
+                commandLine "git", "pull", "--all"
+            }
+        })()
+
         /* Actually Release */
         ({
             if (pushRelease)
@@ -31,6 +38,16 @@ class ReleaseTask extends DefaultTask {
                 project.exec {
                     commandLine "git", "tag", "v${project.version}"
                 }
+            }
+
+            project.exec {
+                commandLine "git", "checkout", "-b", "origin/master"
+                ignoreExitValue = true
+            }
+
+            project.exec {
+                commandLine "git", "checkout", "develop"
+                ignoreExitValue = true
             }
 
             if (rebaseMaster)
