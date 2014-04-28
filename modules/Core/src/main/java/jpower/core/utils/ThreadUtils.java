@@ -22,16 +22,16 @@ public class ThreadUtils
       }
    }
 
-   public static Thread start(Runnable runnable)
+   public static Thread start(Runnable action)
    {
-      Thread thread = new Thread(runnable);
+      Thread thread = new Thread(action);
       thread.start();
       return thread;
    }
 
-   public static Thread startDaemon(Runnable runnable)
+   public static Thread startDaemon(Runnable action)
    {
-      Thread thread = new Thread(runnable);
+      Thread thread = new Thread(action);
       thread.setDaemon(true);
       thread.start();
       return thread;
