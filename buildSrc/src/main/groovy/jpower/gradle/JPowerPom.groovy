@@ -5,8 +5,9 @@ import org.gradle.api.XmlProvider
 import org.gradle.api.publish.maven.MavenPom
 
 class JPowerPom {
-    static MavenPom setup(MavenPom pom) {
-        return pom.withXml(generate())
+    static void setup(MavenPom pom)
+    {
+        pom.withXml(generate())
     }
 
     static Action<XmlProvider> generate() {
@@ -14,7 +15,7 @@ class JPowerPom {
             @Override
             void execute(XmlProvider provider) {
                 def xml = provider.asNode()
-                xml.with {
+                xml.with { node ->
                     appendNode("url", "http://www.directmyfile.com/")
 
                     appendNode("licenses").with {

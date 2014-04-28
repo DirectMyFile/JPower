@@ -8,15 +8,18 @@ import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.api.tasks.javadoc.Javadoc
 
-class JPower {
+class JPower
+{
 
     static Project project
 
-    static MavenPom pom(MavenPom pom) {
-        return JPowerPom.setup(pom)
+    static void pom(MavenPom pom)
+    {
+        JPowerPom.setup(pom)
     }
 
-    static void setup() {
+    static void setup()
+    {
         def versionInfo = project.rootProject.ext.versionInfo = new Version(project.rootProject.version as String)
         def sonatypeUsername = project.hasProperty("sonatypeUsername") ? project.property("sonatypeUsername") : ""
         def sonatypePassword = project.hasProperty("sonatypePassword") ? project.property("sonatypePassword") : ""
