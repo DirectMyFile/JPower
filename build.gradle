@@ -53,7 +53,7 @@ task wrapper(type: Wrapper) {
 task release(type: ReleaseTask) {
     group = "publishing"
     description = "Releases JPower as configured"
-    git(tag: true, push: false)
+    git(tag: true, push: true)
 }
 
 tasks.getByName("buildDashboard").with {

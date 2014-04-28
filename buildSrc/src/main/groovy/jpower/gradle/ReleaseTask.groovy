@@ -11,27 +11,19 @@ class ReleaseTask extends DefaultTask {
     }
 
     @TaskAction
-    void tagRelease() {
-        if (tagRelease) {
-            logger.lifecycle "Creating Tag v${project.version}"
-            project.exec {
-                commandLine "git", "tag", "v${project.version}"
-            }
-        }
-    }
-
-    @TaskAction
-    void pushRelease() {
+    void release() {
         if (pushRelease) {
             logger.lifecycle "Pushing to Git Repository"
             project.exec {
                 commandLine "git", "push"
             }
         }
-    }
-
-    @TaskAction
-    void updateVersion() {
+        if (tagRelease) {
+            logger.lifecycle "Creating Tag v${project.version}"
+            project.exec {
+                commandLine "git", "tag", "v${project.version}"
+            }
+        }
         def nextVersion = new Version(project.version as String).increment().toString()
         def propFile = project.file("gradle.properties")
         propFile.text = propFile.text.replace("jpower.version=${project.version}", "jpower.version=${nextVersion}")
@@ -40,6 +32,12 @@ class ReleaseTask extends DefaultTask {
         }
         project.exec {
             commandLine "git", "commit", "-m", "Update Version to v${nextVersion}"
+        }
+        if (pushRelease) {
+            logger.lifecycle "Pushing Tags to Git Repository"
+            project.exec {
+                commandLine "git", "push", "--tags"
+            }
         }
     }
 
