@@ -1,5 +1,6 @@
 package jpower.core.config;
 
+import jpower.core.ParseException;
 import jpower.core.Wrapper;
 import jpower.core.utils.FileUtils;
 import jpower.core.utils.IOUtils;
@@ -51,13 +52,16 @@ public class Configuration
             comments.add(line);
          } else
          {
-            String[] parts = KEY_VALUE_SPLIT.split(line, 2);
+            String[] parts = KEY_VALUE_SPLIT.split(line, 2); /* Splits at the first index of ':' */
             if (parts.length != 2)
             {
-               throw new RuntimeException(
-                       "Error parsing configuration at line " + lineNumber.get() + ": Invalid Configuration Line: " + line);
+               throw new ParseException(lineNumber.get(), "Invalid Configuration Entry: " + line);
             }
             String key = parts[0];
+            if (parts[1].charAt(0) != ' ')
+            {
+               throw new ParseException(lineNumber.get(), line.indexOf('A') + 1, "A space is required after the ':' and before the value");
+            }
             String value = parts[1].substring(1);
             Property property = new Property(key);
             property.comments().addAll(comments);
