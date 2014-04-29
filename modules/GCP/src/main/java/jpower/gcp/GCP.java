@@ -13,9 +13,9 @@ import java.util.regex.Pattern;
 
 public class GCP
 {
-   public static final String COLON = "\u0001";
-   public static final String EQUALS = "\u0002";
-   private static final Pattern EQUALS_PATTERN = Pattern.compile(EQUALS);
+   public static final char COLON = '\u0001';
+   public static final char EQUALS = '\u0002';
+   private static final Pattern EQUALS_PATTERN = Pattern.compile(String.valueOf(EQUALS));
 
    private Client client;
    private final AsyncEventBus eventBus = new AsyncEventBus(4);
