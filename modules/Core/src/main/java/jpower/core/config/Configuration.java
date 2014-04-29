@@ -26,7 +26,7 @@ public class Configuration
    {
       if (!file.exists())
       {
-         return;
+         throw new FileNotFoundException(file.getAbsolutePath() + " does not exist.");
       }
       List<String> lines = FileUtils.readLines(file);
       processLines(lines);
@@ -153,9 +153,7 @@ public class Configuration
    public Properties toProperties()
    {
       Properties properties = new Properties();
-      props.forEach(property -> {
-         properties.setProperty(property.key(), property.value());
-      });
+      props.forEach(property -> properties.setProperty(property.key(), property.value()));
       return properties;
    }
 
