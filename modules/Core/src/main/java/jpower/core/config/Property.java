@@ -35,9 +35,9 @@ public class Property
       StringBuilder builder = new StringBuilder();
 
       comments.forEach(comment -> {
-         builder.append('#').append(' ').append(comment).append(System.lineSeparator());
+         builder.append('#').append(' ').append(comment).append("\n");
       });
-      builder.append(key).append(':').append(' ').append(value).append(System.lineSeparator());
+      builder.append(key).append(':').append(' ').append(value).append("\n");
       return builder.toString();
    }
 

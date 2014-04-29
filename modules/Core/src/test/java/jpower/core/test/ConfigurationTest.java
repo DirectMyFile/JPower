@@ -40,6 +40,7 @@ public class ConfigurationTest
       assertEquals("# This is a test property" + System.lineSeparator() + "test: hello" + System.lineSeparator(),
               test.toString());
       config.save(configFile);
+      assertEquals("# This is a test property\ntest: hello\n", config.toString());
    }
 
    @Test
@@ -48,6 +49,7 @@ public class ConfigurationTest
       testSave();
       config.load(configFile);
       Property test = config.getProperty("test");
+      assertNotNull(test);
       assertEquals("hello", test.value());
       assertEquals("This is a test property", test.comments().get(0));
    }

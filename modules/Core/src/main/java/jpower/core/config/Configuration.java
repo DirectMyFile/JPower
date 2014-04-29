@@ -28,6 +28,7 @@ public class Configuration
       {
          throw new FileNotFoundException(file.getAbsolutePath() + " does not exist.");
       }
+      reset();
       List<String> lines = FileUtils.readLines(file);
       processLines(lines);
    }
@@ -158,4 +159,12 @@ public class Configuration
       return properties;
    }
 
+   @Override
+   public String toString() {
+      StringBuilder builder = new StringBuilder();
+      properties().forEach(property -> {
+         builder.append(property.toString());
+      });
+      return builder.toString();
+   }
 }
