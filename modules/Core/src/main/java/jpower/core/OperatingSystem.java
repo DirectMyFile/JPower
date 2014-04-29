@@ -5,41 +5,57 @@ package jpower.core;
  */
 public final class OperatingSystem
 {
+   private static final OperatingSystem current = forName(System.getProperty("os.name"));
 
-   private static final String OS = System.getProperty("os.name").toLowerCase();
+   private final String name;
 
-   private static boolean isWindows()
+   private OperatingSystem(String name)
    {
-      return OS.contains("win");
+      this.name = name.toLowerCase();
    }
 
-   private static boolean isMac()
+   public static OperatingSystem current()
    {
-      return OS.contains("mac");
+      return current;
    }
 
-   private static boolean isUnix()
+   public static OperatingSystem forName(String name)
    {
-      return OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
+      return new OperatingSystem(name);
    }
 
-   private static boolean isSolaris()
+   public boolean isWindows()
    {
-      return OS.contains("sunos");
+      return name.contains("win");
    }
 
-   public static boolean isUnknown()
+   public boolean isMac()
+   {
+      return name.contains("mac");
+   }
+
+   public boolean isUnix()
+   {
+      return name.contains("nix") || name.contains("nux") || name.contains("aix");
+   }
+
+   public boolean isSolaris()
+   {
+      return name.contains("sunos");
+   }
+
+   public boolean isUnknown()
    {
       return !(isUnix() || isSolaris() || isMac() || isWindows());
    }
 
-   public static boolean isCaseSensitive()
+   public boolean isCaseSensitive()
    {
       return isUnix();
    }
 
-   public static String getName()
+   public String getName()
    {
-      return OS;
+      return name;
    }
 }

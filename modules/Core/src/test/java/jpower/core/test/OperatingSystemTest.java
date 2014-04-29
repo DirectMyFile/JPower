@@ -10,6 +10,6 @@ public class OperatingSystemTest
    @Test
    public void testForUnknownOperatingSystems()
    {
-      assertFalse(OperatingSystem.isUnknown());
+      assertFalse(OperatingSystem.current().isUnknown());
    }
 }
