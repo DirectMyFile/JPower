@@ -37,7 +37,7 @@ public class ConditionalExecutor
 
    public void intervalUntil(long amount, TimeUnit unit, Condition condition)
    {
-      while (!condition.check())
+      while (condition.inverted())
       {
          task.run();
          ThreadUtils.sleep(unit.toMillis(amount));
