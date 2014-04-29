@@ -9,7 +9,8 @@ import static org.junit.Assert.assertEquals;
 public class RepeaterTest
 {
    @Test
-   public void testRepeatingWorks() {
+   public void testRepeatingWorks()
+   {
       Wrapper<Integer> count = new Wrapper<>(0);
       Repeater repeater = new Repeater(i -> {
          count.set(count.get() + 1);

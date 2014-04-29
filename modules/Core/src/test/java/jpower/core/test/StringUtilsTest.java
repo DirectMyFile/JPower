@@ -12,12 +12,13 @@ public class StringUtilsTest
    @Test
    public void testTokenizeDefault()
    {
-      assertEquals(new ArrayList<String>() {{
-         add("A");
-         add("B");
-         add("C");
-         add("D");
-      }}, StringUtils.tokenize("A|B|C|D", '|'));
+      assertEquals(new ArrayList<String>()
+      {{
+            add("A");
+            add("B");
+            add("C");
+            add("D");
+         }}, StringUtils.tokenize("A|B|C|D", '|'));
    }
 
    @Test

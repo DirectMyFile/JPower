@@ -4,11 +4,7 @@ import jpower.core.ParseException;
 import jpower.core.config.Configuration;
 import jpower.core.config.Property;
 import jpower.core.utils.FileUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;

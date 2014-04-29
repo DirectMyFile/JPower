@@ -15,38 +15,45 @@ public class OperatingSystemTest
    }
 
    @Test
-   public void testWindowsDetection() {
+   public void testWindowsDetection()
+   {
       assertTrue(OperatingSystem.forName("Windows").isWindows());
    }
 
    @Test
-   public void testLinuxDetection() {
+   public void testLinuxDetection()
+   {
       assertTrue(OperatingSystem.forName("Linux").isUnix());
    }
 
    @Test
-   public void testUnixDetection() {
+   public void testUnixDetection()
+   {
       assertTrue(OperatingSystem.forName("Unix").isUnix());
    }
 
    @Test
-   public void testMacDetection() {
+   public void testMacDetection()
+   {
       assertTrue(OperatingSystem.forName("Mac OSX").isMac());
    }
 
    @Test
-   public void testSolarisDetection() {
+   public void testSolarisDetection()
+   {
       assertTrue(OperatingSystem.forName("SunOS").isSolaris());
    }
 
    @Test
-   public void testCaseSensitiveDetection() {
+   public void testCaseSensitiveDetection()
+   {
       assertTrue(OperatingSystem.forName("Unix").isCaseSensitive());
       assertFalse(OperatingSystem.forName("Windows").isCaseSensitive());
    }
 
    @Test
-   public void testLineSeparatorDetection() {
+   public void testLineSeparatorDetection()
+   {
       assertTrue(OperatingSystem.forName("Unix").lineSeparator().equals("\n"));
       assertTrue(OperatingSystem.forName("Windows").lineSeparator().equals("\r\n"));
       assertTrue(OperatingSystem.forName("Mac OSX").lineSeparator().equals("\r"));

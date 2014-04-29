@@ -12,12 +12,14 @@ public class ConditionalAdapterTest
    private ConditionalAdapter<String> adapter;
 
    @Before
-   public void prepare() {
+   public void prepare()
+   {
       adapter = new ConditionalAdapter<>("Hello World");
    }
 
    @Test
-   public void testBasicWhen() {
+   public void testBasicWhen()
+   {
       Wrapper<Boolean> worked = Wrapper.of(false);
       adapter.when("Hello World", () -> worked.set(true));
       assertTrue(worked.set(false));

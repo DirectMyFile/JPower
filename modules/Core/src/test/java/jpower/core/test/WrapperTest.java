@@ -10,7 +10,8 @@ import static org.junit.Assert.assertTrue;
 public class WrapperTest
 {
    @Test
-   public void test() {
+   public void test()
+   {
       Wrapper<String> hello = new Wrapper<>("Hello");
       assertEquals("Hello", hello.get());
       assertEquals("Hello".hashCode(), hello.hashCode());
