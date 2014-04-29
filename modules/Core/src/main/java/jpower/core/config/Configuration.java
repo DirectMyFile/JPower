@@ -6,17 +6,20 @@ import jpower.core.utils.FileUtils;
 import jpower.core.utils.IOUtils;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class Configuration
 {
    private static final Pattern KEY_VALUE_SPLIT = Pattern.compile(":");
-   private final HashSet<Property> props;
+   private final List<Property> props;
 
    public Configuration()
    {
-      props = new HashSet<>();
+      props = new ArrayList<>();
    }
 
    public void load(File file) throws IOException
@@ -76,13 +79,14 @@ public class Configuration
       return lines;
    }
 
+   @SuppressWarnings("ResultOfMethodCallIgnored")
    public void save(File file) throws IOException
    {
       if (file.exists())
       {
-         //noinspection ResultOfMethodCallIgnored
          file.delete();
       }
+      file.createNewFile();
       FileUtils.write(file, generate());
    }
 
@@ -96,7 +100,7 @@ public class Configuration
       props.clear();
    }
 
-   public Set<Property> properties()
+   public List<Property> properties()
    {
       return props;
    }
