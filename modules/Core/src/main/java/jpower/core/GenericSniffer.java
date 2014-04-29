@@ -3,6 +3,7 @@ package jpower.core;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+@SuppressWarnings("UnusedDeclaration")
 public class GenericSniffer<T>
 {
    public Type sniff()
