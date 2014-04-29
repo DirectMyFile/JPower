@@ -83,6 +83,6 @@ public class MethodInvoker
 
    public void invokeAsync(String name, Object... args)
    {
-      invokeAsync(InvokeListener.ignore(), name, args);
+      invokeAsync(InvokeListener.none(), name, args);
    }
 }

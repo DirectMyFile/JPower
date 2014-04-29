@@ -8,7 +8,7 @@ public interface InvokeListener
 
    void error(Exception e);
 
-   static InvokeListener ignore()
+   static InvokeListener none()
    {
       return new InvokeListener()
       {
