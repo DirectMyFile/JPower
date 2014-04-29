@@ -23,7 +23,8 @@ import org.junit.runners.Suite;
         CallUtilsTest.class,
         ServiceTest.class,
         WrapperTest.class,
-        RepeaterTest.class
+        RepeaterTest.class,
+        ConditionalAdapterTest.class
 })
 public class CoreTestSuite
 {
