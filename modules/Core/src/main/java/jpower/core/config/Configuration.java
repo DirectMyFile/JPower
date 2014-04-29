@@ -6,7 +6,6 @@ import jpower.core.utils.FileUtils;
 import jpower.core.utils.IOUtils;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,15 +28,14 @@ public class Configuration
       {
          return;
       }
-      List<String> lines = Files.readAllLines(file.toPath());
+      List<String> lines = FileUtils.readLines(file);
       processLines(lines);
    }
 
    public void load(Reader input) throws IOException
    {
       reset();
-      BufferedReader reader = new BufferedReader(input);
-      processLines(IOUtils.readLines(reader));
+      processLines(IOUtils.readLines(new BufferedReader(input)));
    }
 
    private void processLines(Iterable<String> lines)
