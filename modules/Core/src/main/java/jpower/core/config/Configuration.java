@@ -28,6 +28,7 @@ public class Configuration
       {
          return;
       }
+      reset();
       List<String> lines = FileUtils.readLines(file);
       processLines(lines);
    }
