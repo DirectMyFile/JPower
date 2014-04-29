@@ -36,6 +36,11 @@ class JPowerPom {
                         appendNode("name", "DirectCode")
                         appendNode("url", "http://directmyfile.github.io/")
                     }
+                    
+                    appendNode("issueManagement").with {
+                        appendNode("system", "GitHub")
+                        appendNode("url", "https://github.com/DirectMyFile/JPower/issues")
+                    }
                 }
             }
         }
