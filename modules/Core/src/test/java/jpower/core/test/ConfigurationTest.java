@@ -91,6 +91,13 @@ public class ConfigurationTest
       config.load(configFile);
    }
 
+   @Test(expected = ParseException.class)
+   public void testFailureToParseIncorrectFormat() throws IOException
+   {
+      FileUtils.write(configFile, "key=value");
+      config.load(configFile);
+   }
+
    @SuppressWarnings("ResultOfMethodCallIgnored")
    @After
    public void cleanup()
