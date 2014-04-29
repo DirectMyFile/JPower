@@ -1,9 +1,9 @@
 package jpower.core.test;
 
-import jpower.core.ParseException;
 import jpower.core.config.Configuration;
 import jpower.core.config.Property;
 import jpower.core.utils.FileUtils;
+import jpower.core.utils.TestUtils;
 import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
@@ -77,25 +77,25 @@ public class ConfigurationTest
       assertEquals("Letter C", letters.get(2).value());
    }
 
-   @Test(expected = ParseException.class)
+   @Test
    public void testFailureToParseNoSpaces() throws IOException
    {
       FileUtils.write(configFile, "key:value");
-      config.load(configFile);
+      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
    }
 
-   @Test(expected = ParseException.class)
+   @Test
    public void testFailureToParseRandomStuff() throws IOException
    {
       FileUtils.write(configFile, "dlfjkasl;djf;sldnvcmxn,e:dj:fjhds:fhfhfhueudjjf:\nfjfjdskl\n\fdsjfjs\n\n\n");
-      config.load(configFile);
+      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
    }
 
-   @Test(expected = ParseException.class)
+   @Test
    public void testFailureToParseIncorrectFormat() throws IOException
    {
       FileUtils.write(configFile, "key=value");
-      config.load(configFile);
+      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
    }
 
    @SuppressWarnings("ResultOfMethodCallIgnored")
