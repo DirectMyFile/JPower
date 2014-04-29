@@ -1,4 +1,4 @@
-# JPower [![Build Status](https://travis-ci.org/DirectMyFile/JPower.png?branch=master)](https://travis-ci.org/DirectMyFile/JPower)
+# JPower [![Build Status](https://travis-ci.org/DirectMyFile/JPower.svg?branch=develop)](https://travis-ci.org/DirectMyFile/JPower)
 
 ![JPower Logo](docs/logo.png)
 
