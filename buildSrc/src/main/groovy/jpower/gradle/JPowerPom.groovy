@@ -31,6 +31,11 @@ class JPowerPom {
                         appendNode("developerConnection", "scm:git:git@github.com:DirectMyFile/JPower.git")
                         appendNode("url", "https://github.com/DirectMyFile/JPower/")
                     }
+                    
+                    appendNode("organization").with {
+                        appendNode("name", "DirectCode")
+                        appendNode("url", "http://directmyfile.github.io/")
+                    }
                 }
             }
         }
