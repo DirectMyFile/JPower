@@ -54,6 +54,14 @@ public final class OperatingSystem
       return isUnix();
    }
 
+   public boolean isCurrent() {
+      return current().name.equals(name);
+   }
+
+   public String version() {
+      return isCurrent() ? System.getProperty("os.version") : "unknown";
+   }
+
    public String lineSeparator() {
       if (isUnix()) {
          return "\n";
