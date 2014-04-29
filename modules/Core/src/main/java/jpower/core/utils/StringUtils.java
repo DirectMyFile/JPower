@@ -30,7 +30,17 @@ public class StringUtils
       return tokenize(input, '.');
    }
 
+   public static List<String> words(String input)
+   {
+      return tokenize(input, ' ');
+   }
+
    public static List<String> tokenize(String input, char by)
+   {
+      return tokenize(input, by, false);
+   }
+
+   public static List<String> tokenize(String input, char by, boolean removeEmpty)
    {
       List<String> parts = new ArrayList<>();
       StringBuilder builder = new StringBuilder();
@@ -50,6 +60,10 @@ public class StringUtils
             builder.setLength(0);
             builder.trimToSize();
          }
+      }
+      if (removeEmpty)
+      {
+         parts.removeIf(String::isEmpty);
       }
       return parts;
    }
