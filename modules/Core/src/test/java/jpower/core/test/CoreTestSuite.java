@@ -21,7 +21,8 @@ import org.junit.runners.Suite;
         GenericSnifferTest.class,
         OperatingSystemTest.class,
         CallUtilsTest.class,
-        ServiceTest.class
+        ServiceTest.class,
+        WrapperTest.class
 })
 public class CoreTestSuite
 {
