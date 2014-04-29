@@ -6,20 +6,17 @@ import jpower.core.utils.FileUtils;
 import jpower.core.utils.IOUtils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Configuration
 {
    private static final Pattern KEY_VALUE_SPLIT = Pattern.compile(":");
-   private final List<Property> props;
+   private final HashSet<Property> props;
 
    public Configuration()
    {
-      props = new ArrayList<>();
+      props = new HashSet<>();
    }
 
    public void load(File file) throws IOException
@@ -99,7 +96,7 @@ public class Configuration
       props.clear();
    }
 
-   public List<Property> properties()
+   public Set<Property> properties()
    {
       return props;
    }
