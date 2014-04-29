@@ -1,5 +1,6 @@
 package jpower.core.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringUtils
@@ -26,11 +27,30 @@ public class StringUtils
 
    public static List<String> tokenizeByDot(String input)
    {
-      return tokenize(input, "\\.");
+      return tokenize(input, '.');
    }
 
-   public static List<String> tokenize(String input, String regex)
+   public static List<String> tokenize(String input, char by)
    {
-      return ArrayUtils.toList(input.split(regex));
+      List<String> parts = new ArrayList<>();
+      StringBuilder builder = new StringBuilder();
+      char[] chars = input.toCharArray();
+      for (int i = 0; i < chars.length; i++) {
+         char c = chars[i];
+         if (c == by)
+         {
+            parts.add(builder.toString());
+            builder.setLength(0);
+            builder.trimToSize();
+         } else {
+            builder.append(c);
+         }
+         if (i == chars.length - 1) {
+            parts.add(builder.toString());
+            builder.setLength(0);
+            builder.trimToSize();
+         }
+      }
+      return parts;
    }
 }
