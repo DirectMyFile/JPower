@@ -2,8 +2,6 @@ package jpower.core.utils;
 
 import jpower.core.reflect.MethodInvoker;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class ThreadUtils
 {
    /**
@@ -39,13 +37,6 @@ public class ThreadUtils
 
    public static Thread[] getAllThreads()
    {
-      MethodInvoker invoker = new MethodInvoker(Thread.class);
-      try
-      {
-         return (Thread[]) invoker.invokeMethod("getThreads");
-      } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e)
-      {
-         return null;
-      }
+      return (Thread[]) MethodInvoker.invokeSafe(Thread.class, "getThreads");
    }
 }
