@@ -54,6 +54,18 @@ public final class OperatingSystem
       return isUnix();
    }
 
+   public String lineSeparator() {
+      if (isUnix()) {
+         return "\n";
+      } else if (isWindows()) {
+         return "\r\n";
+      } else if (isMac()) {
+         return "\r";
+      } else {
+         return "\n";
+      }
+   }
+
    public String getName()
    {
       return name;

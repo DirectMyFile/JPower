@@ -44,4 +44,11 @@ public class OperatingSystemTest
       assertTrue(OperatingSystem.forName("Unix").isCaseSensitive());
       assertFalse(OperatingSystem.forName("Windows").isCaseSensitive());
    }
+
+   @Test
+   public void testLineSeparatorDetection() {
+      assertTrue(OperatingSystem.forName("Unix").lineSeparator().equals("\n"));
+      assertTrue(OperatingSystem.forName("Windows").lineSeparator().equals("\r\n"));
+      assertTrue(OperatingSystem.forName("Mac OSX").lineSeparator().equals("\r"));
+   }
 }
