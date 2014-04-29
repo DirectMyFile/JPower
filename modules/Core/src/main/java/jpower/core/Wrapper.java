@@ -28,6 +28,18 @@ public class Wrapper<T>
 
    public boolean isNotNull()
    {
-      return !isNull();
+      return get() != null;
+   }
+
+   @Override
+   public boolean equals(Object obj)
+   {
+      return value == obj || value != null && obj.getClass() == value.getClass() && value.equals(obj);
+   }
+
+   @Override
+   public int hashCode()
+   {
+      return value == null ? 0 : value.hashCode();
    }
 }
