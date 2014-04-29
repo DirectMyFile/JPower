@@ -1,8 +1,10 @@
 package jpower.core.utils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 public class ListUtils
 {
@@ -35,5 +37,14 @@ public class ListUtils
       {
          consumer.accept(that.get(i), i);
       }
+   }
+
+   public static <T, R> List<R> collect(List<T> input, Function<T, R> function)
+   {
+      List<R> newStuff = new ArrayList<>();
+      input.forEach(entry -> {
+         newStuff.add(function.apply(entry));
+      });
+      return newStuff;
    }
 }

@@ -3,6 +3,7 @@ package jpower.core.test;
 import jpower.core.config.Configuration;
 import jpower.core.config.Property;
 import jpower.core.utils.FileUtils;
+import jpower.core.utils.ListUtils;
 import jpower.core.utils.TestUtils;
 import org.junit.*;
 import org.junit.rules.TemporaryFolder;
@@ -70,11 +71,12 @@ public class ConfigurationTest
       config.set("letter.a", "Letter A");
       config.set("letter.b", "Letter B");
       config.set("letter.c", "Letter C");
-      List<Property> letters = config.group("letter");
+      List<Property> group = config.group("letter");
+      List<String> letters = ListUtils.collect(group, Property::value);
       assertEquals(3, letters.size());
-      assertEquals("Letter A", letters.get(0).value());
-      assertEquals("Letter B", letters.get(1).value());
-      assertEquals("Letter C", letters.get(2).value());
+      assertEquals("Letter A", letters.get(0));
+      assertEquals("Letter B", letters.get(1));
+      assertEquals("Letter C", letters.get(2));
    }
 
    @Test
