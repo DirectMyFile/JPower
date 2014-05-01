@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class FileUtils
@@ -59,5 +59,28 @@ public class FileUtils
    public static BufferedWriter newWriter(File file) throws IOException
    {
       return Files.newBufferedWriter(file.toPath());
+   }
+
+   public static void watch(File file, Function<WatchEvent<?>, Boolean> handler, WatchEvent.Kind<?>... kinds) throws IOException
+   {
+      WatchService watcher = FileSystems.getDefault().newWatchService();
+      Path path = file.toPath();
+      WatchKey key = path.register(watcher, kinds);
+      exit:
+      while (true)
+      {
+         for (WatchEvent<?> event : key.pollEvents())
+         {
+            if (!handler.apply(event))
+            {
+               break exit;
+            }
+         }
+         boolean valid = key.isValid();
+         if (!valid)
+         {
+            break;
+         }
+      }
    }
 }
