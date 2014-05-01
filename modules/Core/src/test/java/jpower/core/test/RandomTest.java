@@ -4,8 +4,6 @@ import jpower.core.utils.ArrayUtils;
 import jpower.core.utils.StringUtils;
 import org.junit.Test;
 
-import java.util.stream.Stream;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -19,7 +17,6 @@ public class RandomTest
       while (count < times)
       {
          String[] strings = StringUtils.random(50, 20);
-         Stream.of(strings).forEach(System.out::println);
          assertFalse(ArrayUtils.containsDuplicates(strings));
          count++;
       }
