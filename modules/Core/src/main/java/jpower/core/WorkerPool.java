@@ -55,7 +55,7 @@ public class WorkerPool
     *
     * @return A Worker if Found, else Null
     */
-   Worker pullWorker()
+   private Worker pullWorker()
    {
       if (workers.isEmpty())
       {
@@ -86,6 +86,7 @@ public class WorkerPool
       }
       Worker worker = new Worker();
       worker.start();
+      workers.add(worker);
       return worker;
    }
 
