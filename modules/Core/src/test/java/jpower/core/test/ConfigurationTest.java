@@ -11,8 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 
@@ -35,7 +34,7 @@ public class ConfigurationTest
    }
 
    @Test
-   public void testSave() throws IOException
+   public void testSaveToFile() throws IOException
    {
       Property test = config.set("test", "hello");
       test.addComment("This is a test property");
@@ -46,14 +45,35 @@ public class ConfigurationTest
    }
 
    @Test
-   public void testLoad() throws IOException
+   public void testLoadFromFile() throws IOException
    {
-      testSave();
+      testSaveToFile();
       config.load(configFile);
       Property test = config.getProperty("test");
       assertNotNull(test);
       assertEquals("hello", test.value());
       assertEquals("This is a test property", test.comments().get(0));
+   }
+
+   @Test
+   public void testSaveToWriter() throws IOException
+   {
+      Writer writer = new StringWriter();
+      config.set("letter.a", "Letter A")
+         .addComment("This is A of course");
+      config.set("letter.b", "Letter B");
+      config.save(writer);
+      assertEquals("# This is A of course\nletter.a: Letter A\nletter.b: Letter B\n", writer.toString());
+   }
+
+   @Test
+   public void testLoadFromReader() throws IOException
+   {
+      Reader reader = new StringReader("# This is A of course\nletter.a: Letter A\nletter.b: Letter B\n");
+      config.load(reader);
+      assertEquals("Letter A", config.get("letter.a"));
+      assertEquals("This is A of course", config.getProperty("letter.a").comments().get(0));
+      assertEquals("Letter B", config.get("letter.b"));
    }
 
    @Test

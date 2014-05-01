@@ -19,9 +19,10 @@ public class Property
       this.value = value;
    }
 
-   public void addComment(String comment)
+   public Property addComment(String comment)
    {
       comments.add(comment);
+      return this;
    }
 
    public List<String> comments()
