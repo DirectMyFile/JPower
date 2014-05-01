@@ -32,7 +32,8 @@ public class ListUtils
    }
 
    @SuppressWarnings("unchecked")
-   public static <T> boolean equals(@NotNull T[] array, @NotNull List<T> list) {
+   public static <T> boolean equals(@NotNull T[] array, @NotNull List<T> list)
+   {
       T[] listArray = (T[]) list.toArray();
       return Arrays.equals(array, listArray);
    }
@@ -45,7 +46,8 @@ public class ListUtils
       }
    }
 
-   public static <T> Set<T> toSet(List<T> list) {
+   public static <T> Set<T> toSet(List<T> list)
+   {
       return Collections.unmodifiableSet(new HashSet<>(list));
    }
 

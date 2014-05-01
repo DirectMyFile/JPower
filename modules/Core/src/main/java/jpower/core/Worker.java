@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class Worker implements Runnable
 {
-
    private boolean isWorking;
    private Thread thread;
    private boolean stop;

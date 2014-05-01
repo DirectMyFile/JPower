@@ -24,7 +24,8 @@ public class MultiMap<K, V>
       if (getAll().containsKey(key))
       {
          return getAll().get(key);
-      } else
+      }
+      else
       {
          put(key, new ArrayList<>());
          return delegate.get(key);

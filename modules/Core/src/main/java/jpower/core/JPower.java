@@ -20,7 +20,8 @@ public final class JPower
          if (v == null || v.equals("${jpowerVersion}"))
          {
             VERSION = "UNKNOWN";
-         } else
+         }
+         else
          {
             VERSION = v;
          }

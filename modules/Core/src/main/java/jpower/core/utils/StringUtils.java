@@ -53,7 +53,8 @@ public class StringUtils
             parts.add(builder.toString());
             builder.setLength(0);
             builder.trimToSize();
-         } else
+         }
+         else
          {
             builder.append(c);
          }

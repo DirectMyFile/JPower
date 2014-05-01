@@ -15,7 +15,8 @@ public class ArrayUtils
          if (list.contains(obj))
          {
             duplicates.set(true);
-         } else
+         }
+         else
          {
             list.add(obj);
          }

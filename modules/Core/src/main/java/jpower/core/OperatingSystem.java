@@ -69,13 +69,16 @@ public final class OperatingSystem
       if (isUnix())
       {
          return "\n";
-      } else if (isWindows())
+      }
+      else if (isWindows())
       {
          return "\r\n";
-      } else if (isMac())
+      }
+      else if (isMac())
       {
          return "\r";
-      } else
+      }
+      else
       {
          return "\n";
       }

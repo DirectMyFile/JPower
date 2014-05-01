@@ -49,7 +49,8 @@ public class Configuration
          if (line.startsWith("#"))
          {
             comments.add(line.substring(1).trim());
-         } else
+         }
+         else
          {
             String[] parts = KEY_VALUE_SPLIT.split(line, 2); /* Splits at the first index of ':' */
             if (parts.length != 2)
