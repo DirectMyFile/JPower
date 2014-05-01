@@ -2,10 +2,7 @@ package jpower.core.utils;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -46,6 +43,10 @@ public class ListUtils
       {
          consumer.accept(that.get(i), i);
       }
+   }
+
+   public static <T> Set<T> toSet(List<T> list) {
+      return Collections.unmodifiableSet(new HashSet<>(list));
    }
 
    public static <T, R> List<R> collect(List<T> input, Function<T, R> function)
