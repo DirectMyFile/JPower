@@ -14,6 +14,7 @@ import org.junit.rules.TemporaryFolder;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import static org.junit.Assert.*;
 
@@ -100,6 +101,18 @@ public class ConfigurationTest
    {
       FileUtils.write(configFile, "key=value");
       assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
+   }
+
+   @Test
+   public void testToJavaProperties()
+   {
+      config.set("letter.a", "Letter A");
+      config.set("letter.b", "Letter B");
+      config.set("letter.c", "Letter C");
+      Properties props = config.toProperties();
+      assertEquals(props.getProperty("letter.a"), "Letter A");
+      assertEquals(props.getProperty("letter.b"), "Letter B");
+      assertEquals(props.getProperty("letter.c"), "Letter C");
    }
 
    @SuppressWarnings("ResultOfMethodCallIgnored")
