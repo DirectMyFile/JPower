@@ -45,7 +45,7 @@ public class StringUtilsTest
       long split = Timer.timeOf(() -> lettersArray.set("A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P".split("\\|")));
       System.out.println("Tokenized to: " + lettersList.get().toString());
       System.out.println("Tokenizer took: " + tokenized + "ms");
-      System.out.println("Tokenized to: " + Arrays.toString(lettersArray.get()));
+      System.out.println("Split to: " + Arrays.toString(lettersArray.get()));
       System.out.println("Split took: " + split + "ms");
       assertArrayEquals(lettersList.get().toArray(), lettersArray.get());
       boolean decent = tokenized < split + 2 || tokenized > split + 2;
