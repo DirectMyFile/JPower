@@ -89,11 +89,6 @@ public class Configuration
       FileUtils.write(file, toString());
    }
 
-   public void save(PrintStream stream)
-   {
-      generate().forEach(stream::println);
-   }
-
    public void save(Writer writer) throws IOException
    {
       generate().forEach(line -> {
