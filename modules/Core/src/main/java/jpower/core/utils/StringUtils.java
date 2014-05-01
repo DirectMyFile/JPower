@@ -45,17 +45,20 @@ public class StringUtils
       List<String> parts = new ArrayList<>();
       StringBuilder builder = new StringBuilder();
       char[] chars = input.toCharArray();
-      for (int i = 0; i < chars.length; i++) {
+      for (int i = 0; i < chars.length; i++)
+      {
          char c = chars[i];
          if (c == by)
          {
             parts.add(builder.toString());
             builder.setLength(0);
             builder.trimToSize();
-         } else {
+         } else
+         {
             builder.append(c);
          }
-         if (i == chars.length - 1) {
+         if (i == chars.length - 1)
+         {
             parts.add(builder.toString());
             builder.setLength(0);
             builder.trimToSize();

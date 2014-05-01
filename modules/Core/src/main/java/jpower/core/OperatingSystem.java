@@ -54,22 +54,29 @@ public final class OperatingSystem
       return isUnix();
    }
 
-   public boolean isCurrent() {
+   public boolean isCurrent()
+   {
       return current().name.equals(name);
    }
 
-   public String version() {
+   public String version()
+   {
       return isCurrent() ? System.getProperty("os.version") : "unknown";
    }
 
-   public String lineSeparator() {
-      if (isUnix()) {
+   public String lineSeparator()
+   {
+      if (isUnix())
+      {
          return "\n";
-      } else if (isWindows()) {
+      } else if (isWindows())
+      {
          return "\r\n";
-      } else if (isMac()) {
+      } else if (isMac())
+      {
          return "\r";
-      } else {
+      } else
+      {
          return "\n";
       }
    }

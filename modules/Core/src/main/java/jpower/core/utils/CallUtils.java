@@ -17,6 +17,17 @@ public class CallUtils
       }
    }
 
+   public static void callAndRethrowUnchecked(ActionThrowable action)
+   {
+      try
+      {
+         action.run();
+      } catch (Throwable e)
+      {
+         throw new RuntimeException(e);
+      }
+   }
+
    public static void callPrintStackTrace(ActionThrowable action)
    {
       try

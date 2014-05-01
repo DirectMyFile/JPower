@@ -96,6 +96,20 @@ public class Configuration
       generate().forEach(stream::println);
    }
 
+   public void save(Writer writer) throws IOException
+   {
+      generate().forEach(line -> {
+         try
+         {
+            writer.write(line);
+            writer.write('\n');
+         } catch (IOException e)
+         {
+            throw new RuntimeException(e);
+         }
+      });
+   }
+
    public void reset()
    {
       props.clear();
@@ -160,7 +174,8 @@ public class Configuration
    }
 
    @Override
-   public String toString() {
+   public String toString()
+   {
       StringBuilder builder = new StringBuilder();
       properties().forEach(property -> {
          builder.append(property.toString());

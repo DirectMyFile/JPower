@@ -10,7 +10,7 @@ public class IOUtils
    /**
     * Retrieves a Resource as a String if exists, else returns null
     *
-    * @param clazz class to get resource for
+    * @param clazz    class to get resource for
     * @param resource resource name
     * @return resource as string
     */
