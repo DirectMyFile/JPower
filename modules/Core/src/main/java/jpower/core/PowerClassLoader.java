@@ -2,6 +2,7 @@ package jpower.core;
 
 import jpower.core.internal.PowerInternalSystem;
 import jpower.core.utils.ArrayUtils;
+import jpower.core.utils.ListUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,7 +13,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
-import java.util.stream.Stream;
 
 /**
  * A new ClassLoader built upon URLClassLoader
@@ -95,9 +95,7 @@ public class PowerClassLoader extends URLClassLoader
 
    public Set<Class<?>> getLoadedClasses()
    {
-      Set<Class<?>> classes = new HashSet<>();
-      Stream.of(PowerInternalSystem.getLoadedClasses(this)).forEach(classes::add);
-      return classes;
+      return ListUtils.toSet(ArrayUtils.toList(PowerInternalSystem.getLoadedClasses(this)));
    }
 
    public Collection<URL> getUrls()

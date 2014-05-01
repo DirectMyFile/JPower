@@ -99,6 +99,7 @@ public class Worker implements Runnable
    public void stop()
    {
       stop = true;
+      new ConditionalExecutor(() -> ThreadUtils.sleep(15)).until(() -> thread == null);
    }
 
    /**
