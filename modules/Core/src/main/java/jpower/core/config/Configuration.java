@@ -48,7 +48,7 @@ public class Configuration
          lineNumber.set(lineNumber.get() + 1);
          if (line.startsWith("#"))
          {
-            comments.add(line);
+            comments.add(line.substring(1).trim());
          } else
          {
             String[] parts = KEY_VALUE_SPLIT.split(line, 2); /* Splits at the first index of ':' */
@@ -88,7 +88,7 @@ public class Configuration
          file.delete();
       }
       file.createNewFile();
-      FileUtils.write(file, generate());
+      FileUtils.write(file, toString());
    }
 
    public void save(PrintStream stream)

@@ -5,7 +5,10 @@ import jpower.core.config.Property;
 import jpower.core.utils.FileUtils;
 import jpower.core.utils.ListUtils;
 import jpower.core.utils.TestUtils;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
@@ -35,14 +38,13 @@ public class ConfigurationTest
    {
       Property test = config.set("test", "hello");
       test.addComment("This is a test property");
-      assertEquals("# This is a test property" + System.lineSeparator() + "test: hello" + System.lineSeparator(),
+      assertEquals("# This is a test property\ntest: hello\n",
               test.toString());
       config.save(configFile);
-      assertEquals("# This is a test property\ntest: hello\n", config.toString());
+      assertEquals("# This is a test property\ntest: hello\n", FileUtils.toString(configFile));
    }
 
    @Test
-   @Ignore("Major Bugs")
    public void testLoad() throws IOException
    {
       testSave();
