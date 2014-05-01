@@ -89,7 +89,7 @@ public class Configuration
       FileUtils.write(file, toString());
    }
 
-   public void save(Writer writer) throws IOException
+   public void save(Writer writer)
    {
       generate().forEach(line -> {
          try

@@ -42,9 +42,7 @@ public class ListUtils
    public static <T, R> List<R> collect(List<T> input, Function<T, R> function)
    {
       List<R> newStuff = new ArrayList<>();
-      input.forEach(entry -> {
-         newStuff.add(function.apply(entry));
-      });
+      input.forEach(entry -> newStuff.add(function.apply(entry)));
       return newStuff;
    }
 }
