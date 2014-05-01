@@ -74,9 +74,7 @@ public class Configuration
    private List<String> generate()
    {
       List<String> lines = new ArrayList<>();
-      props.forEach(property -> {
-         lines.addAll(property.toLines());
-      });
+      props.forEach(property -> lines.addAll(property.toLines()));
       return lines;
    }
 
@@ -177,9 +175,7 @@ public class Configuration
    public String toString()
    {
       StringBuilder builder = new StringBuilder();
-      properties().forEach(property -> {
-         builder.append(property.toString());
-      });
+      properties().forEach(property -> builder.append(property.toString()));
       return builder.toString();
    }
 }
