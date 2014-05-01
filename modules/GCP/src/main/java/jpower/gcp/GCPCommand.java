@@ -1,12 +1,8 @@
 package jpower.gcp;
 
-public enum GCPCommand
+public interface GCPCommand
 {
-   JOIN, LEAVE, QUIT, MSG, PING, PONG, CONNECT, REGISTER, ERROR, SYNTAXERROR;
+   String name();
 
-   @Override
-   public String toString()
-   {
-      return name();
-   }
+   String[] opts();
 }
