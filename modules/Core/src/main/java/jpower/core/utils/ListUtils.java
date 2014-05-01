@@ -1,6 +1,9 @@
 package jpower.core.utils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -29,6 +32,12 @@ public class ListUtils
          builder.append(input);
       });
       return builder.toString();
+   }
+
+   @SuppressWarnings("unchecked")
+   public static <T> boolean equals(@NotNull T[] array, @NotNull List<T> list) {
+      T[] listArray = (T[]) list.toArray();
+      return Arrays.equals(array, listArray);
    }
 
    public static <T> void forEach(List<T> that, BiConsumer<T, Integer> consumer)
