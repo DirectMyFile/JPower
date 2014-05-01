@@ -108,10 +108,7 @@ public class WorkerPool
       Iterable<Worker> temp = new ArrayList<>(workers);
       temp.forEach(worker -> {
          worker.stop();
-         while (worker.isWorking())
-         {
-            ThreadUtils.sleep(1);
-         }
+         new ConditionalExecutor(() -> ThreadUtils.sleep(1)).until(worker::isWorking);
          workers.remove(worker);
       });
    }
