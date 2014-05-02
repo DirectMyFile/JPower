@@ -28,12 +28,17 @@ public class RegisteredHandler
    {
       for (Method method : object.getClass().getMethods())
       {
-         if (method.isAnnotationPresent(annotationType))
+         if (isEventMethod(method))
          {
             methods.add(new RegisteredMethod(method));
          }
       }
       return this;
+   }
+
+   private boolean isEventMethod(Method method)
+   {
+      return method.isAnnotationPresent(annotationType) && method.getParameterTypes().length == 1;
    }
 
    public boolean executeEvent(Object event)
