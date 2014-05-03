@@ -49,7 +49,7 @@ class Version {
     }
 
     boolean isRelease() {
-        return minor % 5 == 0
+        return major >= 2 && minor % 5 == 0
     }
 
     String getMaven() {
