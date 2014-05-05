@@ -1,7 +1,10 @@
 package jpower.json.serialization;
 
+import jpower.core.out.IndentPrinter;
 import jpower.json.ObjectMapper;
 
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.Map;
 
@@ -14,7 +17,7 @@ public class JSONSerializer
       this.style = style;
    }
 
-   public String serialize(Object object)
+   public String serialize(Object object) throws IOException
    {
       if (object.getClass().isAssignableFrom(Map.class))
       {
@@ -30,43 +33,46 @@ public class JSONSerializer
       }
    }
 
-   public String serialize(Map<?, ?> map)
+   public String serialize(Map<?, ?> map) throws IOException
    {
-      StringBuilder builder = new StringBuilder();
-      builder.append('{');
+      StringWriter writer = new StringWriter();
+      IndentPrinter out = new IndentPrinter(style.getIndention(), writer);
+      out.write('{');
 
+      out.increment();
       int count = 0;
       for (Object key : map.keySet())
       {
-         builder.append('\n');
+         out.println();
+         out.printIndent();
          count++;
          Object value = map.get(key);
-         builder.append(style.getIndention())
-                 .append('"')
-                 .append(key.toString())
-                 .append('"')
-                 .append(':')
-                 .append(' ');
+         out.write('"');
+         out.print(key.toString());
+         out.write('"');
+         out.write(':');
+         out.write(' ');
          if (value.getClass().isAssignableFrom(Integer.class)) {
-            builder.append(toJSON((int) value));
+            out.print(toJSON((int) value));
          } else if (value.getClass().isAssignableFrom(Long.class)) {
-            builder.append(toJSON((long) value));
+            out.print(toJSON((long) value));
          } else if (value.getClass().isAssignableFrom(String.class)) {
-            builder.append(toJSON((String) value, style));
+            out.print(toJSON((String) value, style));
          } else {
-            builder.append(serialize(value));
+            out.print(serialize(value));
          }
          if (count != map.keySet().size())
          {
-            builder.append(',');
+            out.write(',');
          }
          else
          {
-            builder.append('\n');
+            out.println();
          }
       }
-      builder.append('}');
-      return builder.toString();
+      out.decrement();
+      out.write('}');
+      return writer.toString();
    }
 
    public static String toJSON(int number) {
