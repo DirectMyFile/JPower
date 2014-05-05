@@ -26,7 +26,7 @@ public class JSONSerializer
       }
       else if (object.getClass().isAssignableFrom(Collection.class))
       {
-         return null;
+         return serialize((List<?>) object);
       }
       else
       {
@@ -42,12 +42,19 @@ public class JSONSerializer
       out.println();
       out.increment();
 
+      int count = 0;
       for (Object entry : list)
       {
+         count++;
          out.printIndent();
          toJSON(entry, out);
          out.println();
+         if (count != list.size())
+         {
+            out.write(',');
+         }
       }
+
       out.decrement();
       out.write(']');
       out.close();
@@ -94,13 +101,16 @@ public class JSONSerializer
       if (value.getClass().isAssignableFrom(Integer.class))
       {
          out.print(toJSON((int) value));
-      } else if (value.getClass().isAssignableFrom(Long.class))
+      }
+      else if (value.getClass().isAssignableFrom(Long.class))
       {
          out.print(toJSON((long) value));
-      } else if (value.getClass().isAssignableFrom(String.class))
+      }
+      else if (value.getClass().isAssignableFrom(String.class))
       {
          out.print(toJSON((String) value, style));
-      } else
+      }
+      else
       {
          out.print(serialize(value));
       }
