@@ -6,7 +6,6 @@ import jpower.json.ObjectMapper;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 public class JSONSerializer
@@ -26,7 +25,7 @@ public class JSONSerializer
       }
       else if (object.getClass().isAssignableFrom(Collection.class))
       {
-         return serialize((List<?>) object);
+         return serialize((Collection<?>) object);
       }
       else
       {
@@ -34,7 +33,7 @@ public class JSONSerializer
       }
    }
 
-   public String serialize(List<?> list) throws IOException
+   public String serialize(Collection<?> list) throws IOException
    {
       StringWriter writer = new StringWriter();
       IndentPrinter out = new IndentPrinter(style.getIndention(), writer);
