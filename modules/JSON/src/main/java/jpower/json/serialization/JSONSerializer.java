@@ -1,6 +1,6 @@
 package jpower.json.serialization;
 
-import jpower.json.serialization.utils.ObjectMapper;
+import jpower.json.ObjectMapper;
 
 import java.util.Collection;
 import java.util.Map;
@@ -26,8 +26,7 @@ public class JSONSerializer
       }
       else
       {
-         Map<String, Object> map = ObjectMapper.map(object);
-         return serialize(map);
+         return serialize(ObjectMapper.create(object));
       }
    }
 
@@ -39,6 +38,7 @@ public class JSONSerializer
       int count = 0;
       for (Object key : map.keySet())
       {
+         count++;
          Object value = map.get(key);
          builder.append(style.getIndention())
                  .append('"')
@@ -53,7 +53,9 @@ public class JSONSerializer
          {
             builder.append(',');
          }
+         builder.append('\n');
       }
+      builder.append('}');
       return builder.toString();
    }
 }
