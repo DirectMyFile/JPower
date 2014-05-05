@@ -44,6 +44,7 @@ public class IndentPrinter implements Closeable
    public void println(String line) throws IOException
    {
       writer.write(line);
+      writer.write('\n');
    }
 
    public void print(String str) throws IOException

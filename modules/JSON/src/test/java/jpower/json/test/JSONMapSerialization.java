@@ -29,6 +29,6 @@ public class JSONMapSerialization
       map.put("messageB", "LOL");
       map.put("numberA", 1);
       String output = new JSONSerializer(JSONStyle.defaultStyle()).serialize(map);
-      assertEquals(output, "{\n    \"messageA\": \"Hello World\",\n    \"messageB\": \"LOL\",\n    \"numberA\": 1\n}");
+      assertEquals("{\n    \"messageA\": \"Hello World\",\n    \"messageB\": \"LOL\",\n    \"numberA\": 1\n}", output);
    }
 }
