@@ -8,9 +8,13 @@ public class ObjectMapper
 {
    public static Map<String, Object> create(Object obj) {
       Map<String, Object> map = new LinkedHashMap<>();
-      for (Field field : obj.getClass().getFields()) {
+      for (Field field : obj.getClass().getDeclaredFields()) {
          try
          {
+            if (!field.isAccessible())
+            {
+               field.setAccessible(true);
+            }
             map.put(field.getName(), field.get(obj));
          } catch (IllegalAccessException e)
          {
