@@ -8,9 +8,33 @@ import java.io.IOException;
 public class JSON
 {
 
+   private final JSONStyle style;
+
+   private JSONSerializer serializer;
+
+   public JSON()
+   {
+      style = JSONStyle.defaultStyle();
+   }
+
+   public JSON(JSONStyle style)
+   {
+      this.style = style;
+   }
+
+   public static JSON create()
+   {
+      return new JSON();
+   }
+
+   public static JSON create(JSONStyle style)
+   {
+      return new JSON(style);
+   }
+
    public String serialize(Object object)
    {
-      JSONSerializer serializer = new JSONSerializer(JSONStyle.defaultStyle());
+      createIfNeeded(false, true);
       try
       {
          return serializer.serialize(object);
@@ -20,4 +44,11 @@ public class JSON
       }
    }
 
+   private void createIfNeeded(boolean createParser, boolean createSerializer)
+   {
+      if (createSerializer)
+      {
+         serializer = new JSONSerializer(style);
+      }
+   }
 }
