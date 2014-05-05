@@ -72,6 +72,7 @@ public class JSONSerializer
       }
       out.decrement();
       out.write('}');
+      out.close();
       return writer.toString();
    }
 

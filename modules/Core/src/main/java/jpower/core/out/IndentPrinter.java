@@ -6,9 +6,9 @@ import java.io.Writer;
 
 public class IndentPrinter implements Closeable
 {
-   private Writer writer;
+   private final Writer writer;
 
-   private String indention;
+   private final String indention;
 
    private int level = 0;
 
