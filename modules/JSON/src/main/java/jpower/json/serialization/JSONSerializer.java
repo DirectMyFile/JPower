@@ -38,6 +38,7 @@ public class JSONSerializer
       int count = 0;
       for (Object key : map.keySet())
       {
+         builder.append('\n');
          count++;
          Object value = map.get(key);
          builder.append(style.getIndention())
@@ -45,17 +46,38 @@ public class JSONSerializer
                  .append(key.toString())
                  .append('"')
                  .append(':')
-                 .append(' ')
-                 .append('"')
-                 .append(value.toString())
-                 .append('"');
+                 .append(' ');
+         if (value.getClass().isAssignableFrom(Integer.class)) {
+            builder.append(toJSON((int) value));
+         } else if (value.getClass().isAssignableFrom(Long.class)) {
+            builder.append(toJSON((long) value));
+         } else if (value.getClass().isAssignableFrom(String.class)) {
+            builder.append(toJSON((String) value, style));
+         } else {
+            builder.append(serialize(value));
+         }
          if (count != map.keySet().size())
          {
             builder.append(',');
          }
-         builder.append('\n');
+         else
+         {
+            builder.append('\n');
+         }
       }
       builder.append('}');
       return builder.toString();
+   }
+
+   public static String toJSON(int number) {
+      return Integer.toString(number);
+   }
+
+   public static String toJSON(long number) {
+      return Long.toString(number);
+   }
+
+   public static String toJSON(String str, JSONStyle style) {
+      return (style.isSingleQuotes() ? '\'' : '"') + str + (style.isSingleQuotes() ? '\'' : '"');
    }
 }
