@@ -26,7 +26,7 @@ public class JSONMapSerialization
       Map<String, Object> map = new LinkedHashMap<>();
       map.put("message", "Hello World");
       String output = json.serialize(map);
-      assertEquals("{\n    \"message\": \"Hello World\"\n}", output);
+      assertEquals("{\"message\":\"Hello World\"}", output);
    }
 
    @Test
@@ -37,6 +37,6 @@ public class JSONMapSerialization
       map.put("messageB", "LOL");
       map.put("numberA", 1);
       String output = json.serialize(map);
-      assertEquals("{\n    \"messageA\": \"Hello World\",\n    \"messageB\": \"LOL\",\n    \"numberA\": 1\n}", output);
+      assertEquals("{\"messageA\":\"Hello World\",\"messageB\":\"LOL\",\"numberA\":1}", output);
    }
 }

@@ -12,6 +12,14 @@ public class JSONObjectSerialization
    {
       JSON json = JSON.create();
       String output = json.serialize(new TestObject());
-      assertEquals("{\n    \"message\": \"Test\"\n}", output);
+      assertEquals("{\"message\":\"Test\"}", output);
+   }
+
+   @Test
+   public void testCustomKey()
+   {
+      JSON json = JSON.create();
+      String output = json.serialize(new TestObjectCustom());
+      assertEquals("{\"message\":\"Hello World\"}", output);
    }
 }
