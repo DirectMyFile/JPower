@@ -66,9 +66,9 @@ public class JSONSerializer
       {
          count++;
          Object value = map.get(key);
-         out.write('"');
+         out.write((style.isSingleQuotes() ? '\'' : '"'));
          out.print(key.toString());
-         out.write('"');
+         out.write((style.isSingleQuotes() ? '\'' : '"'));
          out.write(':');
          toJSON(value, out);
          if (count != map.keySet().size())
