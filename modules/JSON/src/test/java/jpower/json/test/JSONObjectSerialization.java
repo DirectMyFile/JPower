@@ -12,6 +12,6 @@ public class JSONObjectSerialization
    {
       JSON json = JSON.create();
       String output = json.serialize(new TestObject());
-      assertEquals("{\n    \"message\": \"Test\"\n}", output);
+      assertEquals("{\"message\":\"Test\"}", output);
    }
 }

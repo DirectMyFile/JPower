@@ -19,11 +19,11 @@ public class JSONSerializer
 
    public String serialize(Object object) throws IOException
    {
-      if (object.getClass().isAssignableFrom(Map.class))
+      if (Map.class.isAssignableFrom(object.getClass()))
       {
          return serialize((Map) object);
       }
-      else if (object.getClass().isAssignableFrom(Collection.class))
+      else if (Collection.class.isAssignableFrom(object.getClass()))
       {
          return serialize((Collection<?>) object);
       }
@@ -38,23 +38,18 @@ public class JSONSerializer
       StringWriter writer = new StringWriter();
       IndentPrinter out = new IndentPrinter(style.getIndention(), writer);
       out.write('[');
-      out.println();
-      out.increment();
 
       int count = 0;
       for (Object entry : list)
       {
          count++;
-         out.printIndent();
          toJSON(entry, out);
-         out.println();
          if (count != list.size())
          {
             out.write(',');
          }
       }
 
-      out.decrement();
       out.write(']');
       out.close();
       return writer.toString();
@@ -66,30 +61,21 @@ public class JSONSerializer
       IndentPrinter out = new IndentPrinter(style.getIndention(), writer);
       out.write('{');
 
-      out.increment();
       int count = 0;
       for (Object key : map.keySet())
       {
-         out.println();
-         out.printIndent();
          count++;
          Object value = map.get(key);
          out.write('"');
          out.print(key.toString());
          out.write('"');
          out.write(':');
-         out.write(' ');
          toJSON(value, out);
          if (count != map.keySet().size())
          {
             out.write(',');
          }
-         else
-         {
-            out.println();
-         }
       }
-      out.decrement();
       out.write('}');
       out.close();
       return writer.toString();
@@ -97,15 +83,19 @@ public class JSONSerializer
 
    public void toJSON(Object value, IndentPrinter out) throws IOException
    {
-      if (value.getClass().isAssignableFrom(Integer.class))
+      if (value == null) {
+         out.print("null");
+         return;
+      }
+      if (Integer.class.isAssignableFrom(value.getClass()))
       {
          out.print(toJSON((int) value));
       }
-      else if (value.getClass().isAssignableFrom(Long.class))
+      else if (Long.class.isAssignableFrom(value.getClass()))
       {
          out.print(toJSON((long) value));
       }
-      else if (value.getClass().isAssignableFrom(String.class))
+      else if (String.class.isAssignableFrom(value.getClass()))
       {
          out.print(toJSON((String) value, style));
       }
