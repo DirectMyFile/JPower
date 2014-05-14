@@ -1,5 +1,7 @@
 package jpower.core.reflect;
 
+import java.util.function.Consumer;
+
 public interface InvokeListener
 {
    void before();
