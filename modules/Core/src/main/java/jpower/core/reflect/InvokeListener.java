@@ -44,7 +44,7 @@ public interface InvokeListener
          @Override
          public void after(Object returned)
          {
-            handler(returned);
+            handler.accept(returned);
          }
 
          @Override
