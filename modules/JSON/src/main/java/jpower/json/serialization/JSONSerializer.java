@@ -86,9 +86,8 @@ public class JSONSerializer
       if (value == null)
       {
          out.print("null");
-         return;
       }
-      if (Number.class.isAssignableFrom(value.getClass()))
+      else if (Number.class.isAssignableFrom(value.getClass()))
       {
          out.print(toJSON((Number) value));
       }
