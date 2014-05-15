@@ -22,10 +22,12 @@ public class JSONSerializer
       if (Map.class.isAssignableFrom(object.getClass()))
       {
          return serialize((Map) object);
-      } else if (Collection.class.isAssignableFrom(object.getClass()))
+      }
+      else if (Collection.class.isAssignableFrom(object.getClass()))
       {
          return serialize((Collection<?>) object);
-      } else
+      }
+      else
       {
          return serialize(ObjectMapper.create(object));
       }
@@ -86,29 +88,23 @@ public class JSONSerializer
          out.print("null");
          return;
       }
-      if (Integer.class.isAssignableFrom(value.getClass()))
+      if (Number.class.isAssignableFrom(value.getClass()))
       {
-         out.print(toJSON((int) value));
-      } else if (Long.class.isAssignableFrom(value.getClass()))
-      {
-         out.print(toJSON((long) value));
-      } else if (String.class.isAssignableFrom(value.getClass()))
+         out.print(toJSON((Number) value));
+      }
+      else if (String.class.isAssignableFrom(value.getClass()))
       {
          out.print(toJSON((String) value, style));
-      } else
+      }
+      else
       {
          out.print(serialize(value));
       }
    }
 
-   public static String toJSON(int number)
+   public static String toJSON(Number number)
    {
-      return Integer.toString(number);
-   }
-
-   public static String toJSON(long number)
-   {
-      return Long.toString(number);
+      return number.toString();
    }
 
    public static String toJSON(String str, JSONStyle style)

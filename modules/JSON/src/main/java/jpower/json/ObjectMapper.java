@@ -8,9 +8,11 @@ import java.util.Map;
 
 public class ObjectMapper
 {
-   public static Map<String, Object> create(Object obj) {
+   public static Map<String, Object> create(Object obj)
+   {
       Map<String, Object> map = new LinkedHashMap<>();
-      for (Field field : obj.getClass().getDeclaredFields()) {
+      for (Field field : obj.getClass().getDeclaredFields())
+      {
          try
          {
             if (!field.isAccessible())
@@ -18,7 +20,8 @@ public class ObjectMapper
                field.setAccessible(true);
             }
             String name = field.getName();
-            if (field.isAnnotationPresent(JSONKey.class)) {
+            if (field.isAnnotationPresent(JSONKey.class))
+            {
                name = field.getAnnotation(JSONKey.class).value();
             }
             map.put(name, field.get(obj));
