@@ -22,4 +22,12 @@ public class JSONObjectSerialization
       String output = json.serialize(new TestObjectCustom());
       assertEquals("{\"message\":\"Hello World\"}", output);
    }
+
+   @Test
+   public void testContainingObject()
+   {
+      JSON json = JSON.create();
+      String output = json.serialize(new ContainingObject());
+      assertEquals("{\"test\":{\"message\":\"Test\"},\"custom\":{\"message\":\"Hello World\"}}", output);
+   }
 }
