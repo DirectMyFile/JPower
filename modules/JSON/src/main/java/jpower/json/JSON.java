@@ -46,7 +46,7 @@ public class JSON
 
    private void createIfNeeded(boolean createParser, boolean createSerializer)
    {
-      if (createSerializer)
+      if (createSerializer && serializer != null)
       {
          serializer = new JSONSerializer(style);
       }
