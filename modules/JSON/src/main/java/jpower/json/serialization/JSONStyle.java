@@ -14,7 +14,8 @@ public class JSONStyle
       this.indention = indention;
    }
 
-   public void setSingleQuotes(boolean singleQuotes) {
+   public void setSingleQuotes(boolean singleQuotes)
+   {
       this.singleQuotes = singleQuotes;
    }
 
