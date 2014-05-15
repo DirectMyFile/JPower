@@ -1,16 +1,24 @@
 package jpower.json.test;
 
 import jpower.json.JSON;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class JSONObjectSerialization
 {
+   private JSON json;
+
+   @Before
+   public void prepare()
+   {
+      json = JSON.create();
+   }
+
    @Test
    public void testGeneralObject()
    {
-      JSON json = JSON.create();
       String output = json.serialize(new TestObject());
       assertEquals("{\"message\":\"Test\"}", output);
    }
@@ -18,7 +26,6 @@ public class JSONObjectSerialization
    @Test
    public void testCustomKey()
    {
-      JSON json = JSON.create();
       String output = json.serialize(new TestObjectCustom());
       assertEquals("{\"message\":\"Hello World\"}", output);
    }
@@ -26,7 +33,6 @@ public class JSONObjectSerialization
    @Test
    public void testContainingObject()
    {
-      JSON json = JSON.create();
       String output = json.serialize(new ContainingObject());
       assertEquals("{\"test\":{\"message\":\"Test\"},\"custom\":{\"message\":\"Hello World\"}}", output);
    }
