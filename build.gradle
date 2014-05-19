@@ -44,7 +44,7 @@ task jarAll(type: JarAllTask) {
 task wrapper(type: Wrapper) {
     group = "build setup"
     description = "Builds/Updates the Gradle Wrapper"
-    gradleVersion = "2.0-20140422015459+0000"
+    gradleVersion = "2.1-20140518220026+0000"
 }
 
 task release(type: ReleaseTask) {
