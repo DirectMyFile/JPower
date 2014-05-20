@@ -62,6 +62,11 @@ task javadocAll(type: Javadoc) {
     classpath = (subprojects.sum { it.configurations.compile })
 }
 
+task ci(dependsOn: [ "test", "jar", "jarAll", "publish" ]) {
+    group = "build"
+    description = "Exectes a Build for Continuous Integration"
+}
+
 tasks.getByName("buildDashboard").with {
     group = "reporting"
     description = "Creates a project report site"
