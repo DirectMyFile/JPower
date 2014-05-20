@@ -65,6 +65,9 @@ task javadocAll(type: Javadoc) {
     source = (subprojects.sum { it.sourceSets.main.allJava })
     classpath = (subprojects.sum { it.configurations.compile })
     title = "JPower v${version}"
+    options.with {
+        links << "http://docs.oracle.com/javase/8/docs/api/"
+    }
 }
 
 tasks.getByName("buildDashboard").with {
