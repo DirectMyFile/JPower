@@ -30,6 +30,10 @@ subprojects {
         compile "org.jetbrains:annotations:13.0"
         testCompile "junit:junit:4.11"
     }
+    
+    publish {
+        shouldRunAfter "test"
+    }
 
     compileJava {
         options.warnings = false
@@ -71,8 +75,9 @@ task ci {
     group = "build"
     description = "Exectes a Build for Continuous Integration"
     for (prj in subprojects) {
-        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", "jarAll", ":${prj.name}:publish" ])
+        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
     }
+    dependsOn.addAll([ "jarAll", "javadocAll" ])
 }
 
 apply from: 'gradle/pmd.gradle'
