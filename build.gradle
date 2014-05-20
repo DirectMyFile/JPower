@@ -64,6 +64,7 @@ task javadocAll(type: Javadoc) {
     destinationDir = file("build/javadoc")
     source = (subprojects.sum { it.sourceSets.main.allJava })
     classpath = (subprojects.sum { it.configurations.compile })
+    title = "JPower v${version}"
 }
 
 tasks.getByName("buildDashboard").with {
