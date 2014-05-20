@@ -19,15 +19,9 @@ public class NetworkBusTest
    private ServerEventBus server;
 
    @Before
-   public void prepare()
+   public void prepare() throws IOException
    {
-      try
-      {
-         server = new ServerEventBus("127.0.0.1", 46839);
-      }
-      catch (IOException ignored)
-      {
-      }
+      server = new ServerEventBus("127.0.0.1", 46839);
    }
 
    @Test
