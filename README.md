@@ -13,6 +13,7 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 - [Issue Tracker](https://github.com/DirectMyFile/JPower/issues)
 - [Wiki](https://github.com/DirectMyFile/JPower/wiki)
+- [JavaDoc](https://kaendfinger.ci.cloudbees.com/job/JPower/javadoc/)
 
 # Contact Us
 
