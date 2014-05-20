@@ -71,7 +71,7 @@ task ci {
     group = "build"
     description = "Exectes a Build for Continuous Integration"
     for (prj in subprojects) {
-        dependsOn.addAll([ "${prj.name}:test", "${prj.name}:jar", "${prj.name}:jarAll", "${prj.name}:publish" ])
+        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", "jarAll", ":${prj.name}:publish" ])
     }
 }
 
