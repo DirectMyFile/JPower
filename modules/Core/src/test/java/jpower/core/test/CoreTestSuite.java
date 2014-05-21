@@ -25,7 +25,8 @@ import org.junit.runners.Suite;
         WrapperTest.class,
         RepeaterTest.class,
         ConditionalAdapterTest.class,
-        StringUtilsTest.class
+        StringUtilsTest.class,
+        ListUtilsTest.class
 })
 public class CoreTestSuite
 {
