@@ -6,6 +6,7 @@ apply plugin: "build-dashboard"
 apply plugin: "project-report"
 apply plugin: "idea"
 apply plugin: "eclipse"
+apply plugin: "project-report"
 
 group = "com.directmyfile.jpower"
 version = getProperty("jpower.version")
@@ -28,7 +29,7 @@ subprojects {
 
     dependencies {
         compile "org.jetbrains:annotations:13.0"
-        testCompile "junit:junit:4.11"
+        testCompile "junit:junit:4.12-SNAPSHOT"
     }
     
     publish {
