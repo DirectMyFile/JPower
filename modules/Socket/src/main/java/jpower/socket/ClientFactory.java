@@ -1,6 +1,7 @@
 package jpower.socket;
 
 import jpower.core.Factory;
+import jpower.core.utils.ExceptionUtils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -26,7 +27,8 @@ public class ClientFactory implements Factory<Client>
       }
       catch (IOException e)
       {
-         throw new RuntimeException(e);
+         ExceptionUtils.throwUnchecked(e);
+         return null;
       }
       try
       {
@@ -34,7 +36,8 @@ public class ClientFactory implements Factory<Client>
       }
       catch (IOException e)
       {
-         throw new RuntimeException(e);
+         ExceptionUtils.throwUnchecked(e);
+         return null;
       }
    }
 
