@@ -2,7 +2,7 @@ package jpower.core.utils;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class IOUtils
@@ -68,10 +68,15 @@ public class IOUtils
       }
    }
 
-   public static Iterable<String> readLines(BufferedReader reader) throws IOException
+   public static List<String> readLines(BufferedReader reader) throws IOException
    {
-      Collection<String> lines = new ArrayList<>();
+      List<String> lines = new ArrayList<>();
       eachLine(reader, lines::add);
       return lines;
+   }
+
+   public static void splitEachLine(BufferedReader reader, String by, Consumer<String[]> handler) throws IOException
+   {
+      eachLine(reader, line -> handler.accept(line.split(by)));
    }
 }
