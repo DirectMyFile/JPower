@@ -89,4 +89,21 @@ task ci {
         dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
     }
     dependsOn.addAll([ "jarAll", "javadocAll" ])
+    doLast {
+        println "Build Completed for CI (flavor: '${ciType}')"
+    }
+}
+
+gradle.taskGraph.whenReady { graph ->
+    if (graph.hasTask("ci")) {
+        /* Determine the CI */
+        if ("BUILD_NUMBER" in System.getenv().keySet()) {
+            ext.ciType = "Jenkins"
+        } else if ("TRAVIS_BUILD_NUMBER" in System.getenv().keySet()) {
+            ext.ciType = "Travis CI"
+        } else {
+            ext.ciType = "Unknown"
+        }
+        logger.lifecycle("Executing Build for CI (flavor: '${ciType}')")
+    }
 }
