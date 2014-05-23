@@ -4,7 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Writer;
 
-public class IndentPrinter implements Closeable
+public class IndentPrinter implements Closeable, AutoCloseable
 {
    private final Writer writer;
 
