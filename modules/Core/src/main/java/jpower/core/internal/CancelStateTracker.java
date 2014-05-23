@@ -28,4 +28,9 @@ public class CancelStateTracker
    {
       return states.contains(task);
    }
+
+   static void clear()
+   {
+      states.clear();
+   }
 }
