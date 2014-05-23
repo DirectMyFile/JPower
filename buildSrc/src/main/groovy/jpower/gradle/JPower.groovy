@@ -10,16 +10,15 @@ import org.gradle.api.tasks.javadoc.Javadoc
 
 class JPower
 {
-    static Project project
 
     static void pom(MavenPom pom)
     {
         JPowerPom.setup(pom)
     }
 
-    static void setup()
+    static void setup(Project project)
     {
-        def versionInfo = project.rootProject.ext.versionInfo = new Version(project.rootProject.version as String)
+        def versionInfo = project.rootProject.versionInfo as Version
         def sonatypeUsername = project.hasProperty("sonatypeUsername") ? project.property("sonatypeUsername") : ""
         def sonatypePassword = project.hasProperty("sonatypePassword") ? project.property("sonatypePassword") : ""
 
@@ -67,5 +66,10 @@ class JPower
                 }
             }
         }
+    }
+
+    static void init(Project project)
+    {
+        project.ext.versionInfo = new Version(project.version as String)
     }
 }

@@ -11,13 +11,13 @@ apply plugin: "project-report"
 group = "com.directmyfile.jpower"
 version = getProperty("jpower.version")
 
+JPower.init(project)
+
 subprojects {
     apply plugin: "java"
 
     version = rootProject.version
-
-    JPower.setProject(project)
-    JPower.setup()
+    JPower.setup(project)
 
     repositories {
         jcenter()
@@ -84,7 +84,7 @@ tasks.getByName("buildDashboard").with {
 
 task ci {
     group = "build"
-    description = "Exectes a Build for Continuous Integration"
+    description = "Executes a Build for Continuous Integration"
     for (prj in subprojects) {
         dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
     }
