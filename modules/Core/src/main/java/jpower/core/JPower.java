@@ -4,38 +4,58 @@ import jpower.core.utils.IOUtils;
 import jpower.core.utils.StringUtils;
 
 import java.util.List;
+import java.util.Properties;
+import java.util.Map;
+import java.util.HashMap;
+
+import java.util.regex.*;
 
 /**
  * JPower Release Information
  */
 public final class JPower
 {
-   private static String VERSION;
+   private static ReleaseInfo release;
 
-   public static String getVersion()
-   {
-      if (VERSION == null)
+   static {
+      String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
+      try
       {
-         String v = IOUtils.getResourceAsString(JPower.class, "release");
-         if (v == null || v.equals("${jpowerVersion}"))
+         Pattern pattern = Pattern.compile("^(.*)=(.*)$");
+         Matcher matcher = pattern.matcher(data);
+         Map<String, String> info = new HashMap<>();
+         while (matcher.find())
          {
-            VERSION = "UNKNOWN";
+            info.put(matcher.group(1), matcher.group(2));
          }
-         else
-         {
-            VERSION = v;
-         }
+         release = new ReleaseInfo(info);
       }
-      return VERSION;
+      catch (Exception ignored)
+      {
+      }
    }
 
-   public static List<String> getVersionMetadata()
+   public static ReleaseInfo getReleaseInfo()
    {
-      return StringUtils.tokenizeByDot(getVersion());
+      return release;
    }
 
    public static void main(String[] args)
    {
-      System.out.println("JPower v" + getVersion());
+      System.out.println("JPower v" + getReleaseInfo().getVersion());
+   }
+
+   public static class ReleaseInfo {
+      private String version;
+
+      public ReleaseInfo(Map<String, String> info)
+      {
+         this.version = info.get("version");
+      }
+
+      public String getVersion()
+      {
+         return version;
+      }
    }
 }
