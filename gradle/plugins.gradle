@@ -1,0 +1,6 @@
+apply plugin: "build-dashboard"
+apply plugin: "project-report"
+apply plugin: "idea"
+apply plugin: "eclipse"
+apply plugin: "project-report"
+
