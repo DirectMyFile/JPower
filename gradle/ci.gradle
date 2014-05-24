@@ -14,7 +14,9 @@ task ci {
     group = "build"
     description = "Executes a Build for Continuous Integration"
     for (prj in subprojects) {
-        finalizedBy ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish"
+        finalizedBy ":${prj.name}:test", ":${prj.name}:jar"
+        if (!(ciType in ["Travis CI", "Unknown"]))
+            finalizedBy ":${prj.name}:publish"
     }
 
     finalizedBy "jarAll", "javadocAll"
