@@ -1,0 +1,9 @@
+task ci {
+    group = "build"
+    description = "Executes a Build for Continuous Integration"
+    for (prj in subprojects) {
+        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
+    }
+    dependsOn.addAll([ "jarAll", "javadocAll" ])
+}
+

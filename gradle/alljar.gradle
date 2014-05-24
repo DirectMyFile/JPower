@@ -1,0 +1,6 @@
+import jpower.gradle.JarAllTask
+
+task jarAll(type: JarAllTask) {
+    group = "build"
+    description = "Builds a Jar with all JPower Modules"
+}

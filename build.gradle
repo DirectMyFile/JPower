@@ -1,6 +1,4 @@
 import jpower.gradle.JPower
-import jpower.gradle.JarAllTask
-import jpower.gradle.ReleaseTask
 
 apply plugin: "build-dashboard"
 apply plugin: "project-report"
@@ -50,43 +48,6 @@ subprojects {
     }
 }
 
-task jarAll(type: JarAllTask) {
-    group = "build"
-    description = "Builds a Jar with all JPower Modules"
-}
-
-task wrapper(type: Wrapper) {
-    group = "build setup"
-    description = "Builds/Updates the Gradle Wrapper"
-    gradleVersion = "2.1-20140523220021+0000"
-}
-
-task release(type: ReleaseTask) {
-    group = "publishing"
-    description = "Releases JPower as configured"
-    git(tag: true, push: true, updateMaster: true)
-}
-
-task javadocAll(type: Javadoc) {
-    destinationDir = file("build/javadoc")
-    source = (subprojects.sum { it.sourceSets.main.allJava })
-    classpath = (subprojects.sum { it.configurations.compile })
-    title = "JPower v${version}"
-    options.with {
-        links << "http://docs.oracle.com/javase/8/docs/api/"
-    }
-}
-
-tasks.getByName("buildDashboard").with {
-    group = "reporting"
-    description = "Creates a project report site"
-}
-
-task ci {
-    group = "build"
-    description = "Executes a Build for Continuous Integration"
-    for (prj in subprojects) {
-        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
-    }
-    dependsOn.addAll([ "jarAll", "javadocAll" ])
+fileTree(dir: 'gradle', include: '*.gradle').each { file ->
+    apply from: file
 }

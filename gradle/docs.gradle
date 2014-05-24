@@ -1,0 +1,10 @@
+task javadocAll(type: Javadoc) {
+    destinationDir = file("build/javadoc")
+    source = (subprojects.sum { it.sourceSets.main.allJava })
+    classpath = (subprojects.sum { it.configurations.compile })
+    title = "JPower v${version}"
+    options.with {
+        links << "http://docs.oracle.com/javase/8/docs/api/"
+    }
+}
+
