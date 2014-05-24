@@ -1,0 +1,36 @@
+import jpower.gradle.JPower
+
+apply plugin: "java"
+
+version = rootProject.version
+JPower.setup(project)
+
+repositories {
+    jcenter()
+
+    maven {
+        name = "snapshots"
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+dependencies {
+    compile "org.jetbrains:annotations:13.0"
+    testCompile "junit:junit:4.12-SNAPSHOT"
+}
+
+publish {
+    shouldRunAfter "test"
+}
+
+compileJava {
+    options.warnings = false
+    options.compilerArgs << '-XDignore.symbol.file'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+test {
+    maxParallelForks = 2 // Running Tests in Parallel really helps the build
+    useJUnit() // Ensure we use JUnit
+}
