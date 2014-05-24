@@ -1,6 +1,7 @@
 import jpower.gradle.JPower
 
 apply plugin: "java"
+apply plugin: 'java-library-distribution'
 
 version = rootProject.version
 JPower.setup(project)
@@ -33,4 +34,10 @@ compileJava {
 test {
     maxParallelForks = 2 // Running Tests in Parallel really helps the build
     useJUnit() // Ensure we use JUnit
+}
+
+distributions {
+    main {
+        baseName = "${project.name}"
+    }
 }
