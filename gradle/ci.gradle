@@ -1,9 +1,28 @@
+def sysenv = System.getenv()
+
+def ciType = ({
+    if ("JENKINS_URL" in sysenv.keySet()) {
+        "Jenkins"
+    } else if ("TRAVIS_BUILD_NUMBER" in sysenv.keySet()) {
+        "Travis CI"
+    } else {
+        "Unknown"
+    }
+})()
+
 task ci {
     group = "build"
     description = "Executes a Build for Continuous Integration"
     for (prj in subprojects) {
-        dependsOn.addAll([ ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish" ])
+        finalizedBy ":${prj.name}:test", ":${prj.name}:jar", ":${prj.name}:publish"
     }
-    dependsOn.addAll([ "jarAll", "javadocAll" ])
+
+    finalizedBy "jarAll", "javadocAll"
+
+    doFirst {
+        if (ciType == "Unknown") {
+            logger.lifecycle "[CI Build] Cannot detect CI Type"
+        }
+    }
 }
 
