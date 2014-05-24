@@ -9,3 +9,5 @@ jar {
         attributes("Premain-Class": "jpower.core.internal.PowerInternalSystem")
     }
 }
+
+test.include "jpower/core/test/**/*.java"

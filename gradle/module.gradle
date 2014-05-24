@@ -34,6 +34,9 @@ compileJava {
 test {
     maxParallelForks = 2 // Running Tests in Parallel really helps the build
     useJUnit() // Ensure we use JUnit
+
+    reports.html.enabled = true
+    reports.junitXml.enabled = true
 }
 
 distributions {
