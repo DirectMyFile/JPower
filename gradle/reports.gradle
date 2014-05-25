@@ -1,0 +1,9 @@
+task allTestsReport(type: TestReport) {
+    group = "reporting"
+    description = "Generates a Test Report with all modules included"
+    destinationDir = file("${buildDir}/reports/allTests/")
+    for (prj in subprojects) {
+         reportOn prj.tasks.getByName("test")
+         dependsOn ":${prj.name}:test"
+    }
+}
