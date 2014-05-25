@@ -1,0 +1,3 @@
+/**
+ * The JPower Core Module
+ */
