@@ -11,7 +11,7 @@ subprojects {
     apply from: "${rootProject.projectDir}/gradle/module.gradle"
 }
 
-fileTree(dir: 'gradle', include: '*.gradle', exclude: 'module.gradle').each { file ->
+fileTree(dir: 'gradle', include: '*.gradle', exclude: ['module.gradle', 'plugins.gradle']).each { file ->
     apply from: file
 }
 
