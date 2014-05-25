@@ -6,7 +6,7 @@ before_script:
 - git config --global user.email "kaendfinger@gmail.com"
 - git config --global user.name "Kenneth Endfinger"
 script:
-- TERM=dumb ./gradlew ci
+- TERM=dumb ./gradlew ci -PsonatypeUsername=${UPLOAD_USERNAME} -PsonatypePassword=${UPLOAD_PASSWORD}
 after_script:
 - bash gradle/ciupload.sh
 env:

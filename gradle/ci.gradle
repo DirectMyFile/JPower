@@ -16,7 +16,7 @@ task ci {
 
     for (prj in subprojects) {
         finalizedBy ":${prj.name}:test", ":${prj.name}:jar"
-        if (!(ciType in ["Travis CI", "Unknown"]))
+        if (ciType != "Unknown")
             finalizedBy ":${prj.name}:publish"
     }
 
