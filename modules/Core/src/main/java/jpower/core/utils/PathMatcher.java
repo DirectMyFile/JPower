@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 public class PathMatcher
 {
@@ -22,6 +23,14 @@ public class PathMatcher
    public PathMatcher(Path path, Predicate<Path> matcher)
    {
       this.matcher = matcher;
+      this.parent = path;
+   }
+
+   public PathMatcher(Path path, Pattern pattern)
+   {
+      this.matcher = input -> {
+          return pattern.matcher(input.toString()).matches();
+      };
       this.parent = path;
    }
 
