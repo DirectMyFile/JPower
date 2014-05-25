@@ -1,6 +1,6 @@
 def sysenv = System.getenv()
 
-def ciType = ({
+ext.ciType = ({
     if ("JENKINS_URL" in sysenv.keySet()) {
         "Jenkins"
     } else if ("TRAVIS_BUILD_NUMBER" in sysenv.keySet()) {
@@ -10,7 +10,7 @@ def ciType = ({
     }
 })()
 
-def uploadReports = { ->
+ext.uploadReports = { ->
     project.exec {
         commandLine "git", "clone", "git@github.com:DirectMyFile/tests.git", "tmp/"
     }
