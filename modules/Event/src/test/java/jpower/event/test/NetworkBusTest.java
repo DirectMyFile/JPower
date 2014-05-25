@@ -38,7 +38,7 @@ public class NetworkBusTest
       server.unregister(this);
       client.register(this);
       server.post(new TestEvent());
-      ThreadUtils.sleep(1000);
+      ThreadUtils.sleep(2000);
       assertTrue(worked);
    }
 
