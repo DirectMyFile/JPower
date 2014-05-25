@@ -6,10 +6,4 @@ task allTestsReport(type: TestReport) {
          reportOn prj.tasks.getByName("test")
          dependsOn ":${prj.name}:test"
     }
-
-    if (ciType == "Travis CI") {
-        doLast {
-            uploadTestReports()
-        }
-    }
 }

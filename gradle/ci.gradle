@@ -10,25 +10,6 @@ ext.ciType = ({
     }
 })()
 
-ext.uploadTestReports = { ->
-    project.exec {
-        commandLine "git", "clone", "https://${System.getenv('UPLOAD_USERNAME')}:${System.getenv('UPLOAD_PASSWORD')}@github.com/DirectMyFile/tests.git", "tmp/"
-    }
-    project.exec {
-        commandLine "bash", "tmp/copy.sh", "JPower", "${project.buildDir}/reports/allTests/"
-    }
-    project.exec {
-        commandLine "git", "add", "."
-    }
-    project.exec {
-        commandLine "git", "commit", "-m", "Updated Tests for JPower"
-    }
-    project.exec {
-        commandLine "git", "push", "origin", "gh-pages"
-    }
-    new File("tmp").deleteDir()
-}
-
 task ci {
     group = "build"
     description = "Executes a Build for Continuous Integration"
