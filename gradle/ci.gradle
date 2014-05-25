@@ -10,6 +10,25 @@ def ciType = ({
     }
 })()
 
+def uploadReports = { ->
+    project.exec {
+        commandLine "git", "clone", "git@github.com:DirectMyFile/tests.git", "tmp/"
+    }
+    project.exec {
+        commandLine "bash", "tmp/copy.sh", "JPower", "${project.buildDir}/reports/allTests/"
+    }
+    project.exec {
+        commandLine "git", "add", "."
+    }
+    project.exec {
+        commandLine "git", "commit", "-m", "Updated Tests for JPower"
+    }
+    project.exec {
+        commandLine "git", "push", "origin", "gh-pages"
+    }
+    new File("tmp").deleteDir()
+}
+
 task ci {
     group = "build"
     description = "Executes a Build for Continuous Integration"
@@ -29,3 +48,8 @@ task ci {
     }
 }
 
+if (ciType == "Travis CI") {
+    allTestsReport.doLast {
+        uploadReports()
+    }
+}
