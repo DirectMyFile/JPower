@@ -1,9 +1,11 @@
 import jpower.gradle.JPower
 
 apply plugin: "java"
-apply plugin: 'java-library-distribution'
+apply plugin: "java-library-distribution"
 
 version = rootProject.version
+description = "JPower ${project.name}"
+
 JPower.setup(project)
 
 repositories {
@@ -20,9 +22,7 @@ dependencies {
     testCompile "junit:junit:4.12-SNAPSHOT"
 }
 
-publish {
-    shouldRunAfter "test"
-}
+publish.shouldRunAfter "test"
 
 compileJava {
     options.warnings = false
@@ -39,8 +39,4 @@ test {
     reports.junitXml.enabled = true
 }
 
-distributions {
-    main {
-        baseName = "${project.name}"
-    }
-}
+distributions.main.baseName = "${project.name}"
