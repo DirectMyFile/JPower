@@ -10,14 +10,15 @@ import java.io.StringReader;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class IOUtilsTest
 {
    @Test
    public void testResourceToString()
    {
-      // String version = IOUtils.getResourceAsString(getClass(), "jpower/core/release");
-      // assertNotNull(version);
+      String version = IOUtils.getResourceAsString(getClass(), "jpower/core/release.properties");
+      assertNotNull(version, "IOUtils.getResourceAsString() failed");
    }
 
    @Test
