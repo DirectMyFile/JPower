@@ -21,7 +21,7 @@ public final class JPower
       String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
       try
       {
-         Pattern pattern = Pattern.compile("^(.*)=(.*)$");
+         Pattern pattern = Pattern.compile("(.*)=(.*)");
          Matcher matcher = pattern.matcher(data);
          Map<String, String> info = new HashMap<>();
          while (matcher.find())
@@ -47,15 +47,22 @@ public final class JPower
 
    public static class ReleaseInfo {
       private String version;
+      private String commit;
 
       public ReleaseInfo(Map<String, String> info)
       {
          this.version = info.get("version");
+         this.commit = info.get("commit");
       }
 
       public String getVersion()
       {
          return version;
+      }
+
+      public String getCommit()
+      {
+         return commit;
       }
    }
 }

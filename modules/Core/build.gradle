@@ -1,6 +1,15 @@
+String commit() {
+    try {
+        return "git log -1 --format=%H".execute(["PATH=${System.getenv("PATH")}"], rootProject.projectDir).text - "\n"
+    } catch (ignored) {
+        return "Unknown"
+    }
+}
+
 processResources {
     expand([
-            "jpowerVersion": project.version
+            "jpowerVersion": project.version,
+            "jpowerCommit": commit()
     ])
 }
 
