@@ -48,8 +48,3 @@ task ci {
     }
 }
 
-if (ciType == "Travis CI") {
-    allTestsReport.doLast {
-        uploadReports()
-    }
-}
