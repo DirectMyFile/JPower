@@ -1,4 +1,9 @@
-include 'Core', 'Socket', 'Event', 'GUI', 'GCP', 'JSON', 'YAML', 'IRC', 'Script'
+import groovy.io.FileType
+
+/* Find Modules in modules/ */
+new File("${rootDir}/modules/").eachFile(FileType.DIRECTORIES) { dir ->
+    include dir.name /* Include the Module */
+}
 
 rootProject.children.each { prj ->
     prj.projectDir = new File("${rootDir}/modules/${prj.name}")
