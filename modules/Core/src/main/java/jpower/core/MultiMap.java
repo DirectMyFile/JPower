@@ -80,4 +80,9 @@ public class MultiMap<K, V>
    {
       return getAll(key).contains(value);
    }
+
+   public boolean contains(K key)
+   {
+      return delegate.containsKey(key);
+   }
 }
