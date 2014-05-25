@@ -6,4 +6,14 @@ task allTestsReport(type: TestReport) {
          reportOn prj.tasks.getByName("test")
          dependsOn ":${prj.name}:test"
     }
+
+    doLast {
+        file("${buildDir}/tests/xml/").with {
+            deleteDir()
+            mkdirs()
+        }
+        fileTree(dir: "modules/", include: ["**/build/test-results/TEST-*.xml"]).each { file ->
+            new File("${buildDir}/tests/xml/", file.name).bytes = file.bytes
+        }
+    }
 }
