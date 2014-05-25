@@ -19,11 +19,14 @@ public class ObjectMapper
             {
                field.setAccessible(true);
             }
+
             String name = field.getName();
+
             if (field.isAnnotationPresent(JSONKey.class))
             {
                name = field.getAnnotation(JSONKey.class).value();
             }
+
             map.put(name, field.get(obj));
          } catch (IllegalAccessException e)
          {
