@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
 public class CallUtilsTest
@@ -27,5 +28,14 @@ public class CallUtilsTest
       CallUtils.callIgnoreExceptions(() -> {
          throw new Exception("SHOULD BE IGNORED");
       });
+   }
+
+   @Test
+   public void testInvokerOf() throws Exception
+   {
+      Wrapper<Boolean> worked = Wrapper.of(false);
+      Runnable action = () -> worked.set(true);
+      CallUtils.invokerOf(action).invokeMethod("run");
+      assertTrue(worked.get().booleanValue());
    }
 }
