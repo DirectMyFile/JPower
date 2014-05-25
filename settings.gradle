@@ -1,7 +1,14 @@
 include 'Core', 'Socket', 'Event', 'GUI', 'GCP', 'JSON', 'YAML', 'IRC', 'Script'
 
 rootProject.children.each { prj ->
-    prj.projectDir = new File("$rootDir/modules/$prj.name")
+    prj.projectDir = new File("${rootDir}/modules/${prj.name}")
+    if (new File("${rootDir}/modules/${prj.name}/build.gradle").exists()) {
+         prj.buildFileName = "build.gradle"
+    } else if (new File("${rootDir}/modules/${prj.name}/${prj.name}.gradle").exists()) {
+         prj.buildFileName = "${prj.name}.gradle"
+    } else {
+         throw new RuntimeException("module '${prj.name}': unable to find build script")
+    }
 }
 
 rootProject.name = "JPower"
