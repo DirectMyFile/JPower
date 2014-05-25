@@ -10,7 +10,7 @@ ext.ciType = ({
     }
 })()
 
-ext.uploadReports = { ->
+ext.uploadTestReports = { ->
     project.exec {
         commandLine "git", "clone", "git@github.com:DirectMyFile/tests.git", "tmp/"
     }
