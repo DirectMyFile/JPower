@@ -8,7 +8,7 @@ before_script:
 script:
 - TERM=dumb ./gradlew ci
 after_script:
-- bash gradle/uploadTests.sh
+- bash gradle/ciupload.sh
 env:
   global:
   - secure: kNqNsc6x3ESTmhA4DMqs0bH6rK+YtWsdmp/dv0n9Ojm7JVTG+wV8kcdaiHth0bKoCJvzZumPFoYF1rBbLmqUWU2w2Q03R4OaAA1UC9F3ghYdf8eTT4LsAtz0pZ3yEHT5mph2C5DqbxsojgpA7bseT9s15Ag53dSK9UAUlgMwej4=
