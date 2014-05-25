@@ -20,4 +20,16 @@ public class ReleaseInfoTest
       assertTrue(JPower.getReleaseInfo().getVersion().contains("."));
       assertEquals(3, JPower.getReleaseInfo().getVersion().split("\\.").length);
    }
+
+   @Test
+   public void testCommitNotNull()
+   {
+      assertNotNull(JPower.getReleaseInfo().getCommit());
+   }
+
+   @Test
+   public void testCommitValid()
+   {
+      assertTrue(JPower.getReleaseInfo().getCommit().length() > 15);
+   }
 }
