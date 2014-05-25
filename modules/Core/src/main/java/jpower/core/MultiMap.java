@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A MultiMap is a map of a key to a list of values. This MultiMap is backed by a LinkedHashMap.
+ */
 public class MultiMap<K, V>
 {
    private final Map<K, Collection<V>> delegate;
