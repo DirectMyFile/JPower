@@ -2,6 +2,9 @@ language: java
 jdk: oraclejdk8
 install:
 - echo 'Not Needed'
+before_script:
+- git config --global user.email "kaendfinger@gmail.com"
+- git config --global user.name "Kenneth Endfinger"
 script:
 - TERM=dumb ./gradlew ci
 env:
