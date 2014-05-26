@@ -6,7 +6,6 @@ import jpower.event.EventHandler;
 import jpower.event.ServerEventBus;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Ignore;
 
 import java.io.IOException;
 
@@ -26,7 +25,6 @@ public class NetworkBusTest
    }
 
    @Test
-   @Ignore("Unstable")
    public void testServerClientInteraction() throws IOException
    {
       server.start();
