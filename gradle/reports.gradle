@@ -30,3 +30,6 @@ task jpowerInfo {
         modulesFile.write(json.toPrettyString() + '\n')
     }
 }
+
+buildDashboard.aggregate htmlDependencyReport
+buildDashboard.reports.html.destination = file("${buildDir}/dashboard/")
