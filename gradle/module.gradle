@@ -46,4 +46,10 @@ test {
     reports.junitXml.enabled = true
 }
 
+jar {
+    manifest {
+        attributes "Implementation-Title": "JPower ${project.name} Module", "Implementation-Version": project.version
+    }
+}
+
 distributions.main.baseName = "${project.name}"
