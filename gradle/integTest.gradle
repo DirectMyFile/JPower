@@ -1,0 +1,20 @@
+subprojects {
+    sourceSets {
+        integTest {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+        }
+    }
+
+    task integTestJar(type: Jar) {
+        from sourceSets.integTest.output
+    }
+
+    task integTest(type: Test) {
+        testClassesDir = sourceSets.integTest.output.classesDir
+        classpath = sourceSets.integTest.runtimeClasspath
+    }
+
+    integTest.dependsOn test
+    test.finalizedBy integTest
+}

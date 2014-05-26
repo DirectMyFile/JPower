@@ -18,4 +18,4 @@ apply from: "gradle/wrapper.gradle"
 apply from: "gradle/alljar.gradle"
 apply from: "gradle/docs.gradle"
 apply from: "gradle/improvements.gradle"
-
+apply from: "gradle/integTest.gradle"
