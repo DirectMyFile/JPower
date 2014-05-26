@@ -17,3 +17,16 @@ task allTestsReport(type: TestReport) {
         }
     }
 }
+
+task jpowerInfo {
+    group = "reporting"
+    description = "Generates JPower Information"
+    doLast {
+        def metadataDir = file("${buildDir}/metadata/")
+        metadataDir.with { deleteDir() ; mkdirs() }
+        def modulesFile = new File(metadataDir, "modules.json")
+        def json = new groovy.json.JsonBuilder()
+        json(subprojects.collect { prj -> [ name: prj.name, description: prj.description ] })
+        modulesFile.write(json.toPrettyString() + '\n')
+    }
+}

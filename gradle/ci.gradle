@@ -20,7 +20,7 @@ task ci {
             finalizedBy ":${prj.name}:publish"
     }
 
-    finalizedBy "jarAll", "javadocAll", "allTestsReport", "dependencyReport", "htmlDependencyReport"
+    finalizedBy "jarAll", "javadocAll", "allTestsReport", "dependencyReport", "htmlDependencyReport", "jpowerInfo"
 
     doFirst {
         if (ciType == "Unknown") {
