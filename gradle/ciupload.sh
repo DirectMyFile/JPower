@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone Build Storage
-git clone https://${UPLOAD_USERNAME}:${UPLOAD_PASSWORD}@github.com/DirectMyFile/build.git .tmp/
+git clone --depth 1 https://${UPLOAD_USERNAME}:${UPLOAD_PASSWORD}@github.com/DirectMyFile/build.git .tmp/
 
 ORIGDIR=${PWD}
 
