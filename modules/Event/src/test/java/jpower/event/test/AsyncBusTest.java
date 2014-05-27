@@ -29,4 +29,19 @@ public class AsyncBusTest
       ThreadUtils.sleep(100);
       assertEquals(1, worked);
    }
+
+   @Test
+   public void testRegistration()
+   {
+      AsyncEventBus eventBus = new AsyncEventBus();
+      eventBus.register(this);
+      eventBus.post(new TestEvent());
+      ThreadUtils.sleep(100);
+      assertEquals(1, worked);
+      worked = 0;
+      eventBus.unregister(this);
+      eventBus.post(new TestEvent());
+      ThreadUtils.sleep(100);
+      assertEquals(0, worked);
+   }
 }

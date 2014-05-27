@@ -37,6 +37,10 @@ test {
 
     reports.html.enabled = true
     reports.junitXml.enabled = true
+
+    testLogging.lifecycle {
+        events = ["failed", "skipped"]
+    }
 }
 
 jar {

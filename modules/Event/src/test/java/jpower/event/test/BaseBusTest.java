@@ -34,4 +34,17 @@ public class BaseBusTest
       ThreadUtils.sleep(100);
       assertEquals(1, worked);
    }
+
+   @Test
+   public void testRegistration()
+   {
+      EventBus eventBus = new EventBus();
+      eventBus.register(this);
+      eventBus.post(new TestEvent());
+      assertEquals(1, worked);
+      worked = 0;
+      eventBus.unregister(this);
+      eventBus.post(new TestEvent());
+      assertEquals(0, worked);
+   }
 }

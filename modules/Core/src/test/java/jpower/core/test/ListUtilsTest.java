@@ -24,4 +24,19 @@ public class ListUtilsTest
       }};
       assertEquals(expected, ListUtils.collect(input, String::toUpperCase));
    }
+
+   @Test
+   public void testJoin()
+   {
+      List<String> input = new ArrayList<String>() {{
+         add("Hello");
+         add("World");
+      }};
+      String bySpace = ListUtils.join(input, " ");
+      System.out.println("Joined By Space: " + bySpace);
+      assertEquals("Hello World", bySpace);
+      String byComma = ListUtils.join(input, ",");
+      System.out.println("Joined By Comma: " + byComma);
+      assertEquals("Hello,World", byComma);
+   }
 }

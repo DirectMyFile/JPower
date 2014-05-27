@@ -22,7 +22,7 @@ public class ListUtils
    {
       StringBuilder builder = new StringBuilder();
       forEach(inputs, (input, i) -> {
-         if (i != 0 && i != inputs.size() - 1)
+         if (i != 0)
          {
             builder.append(joinBy);
          }
