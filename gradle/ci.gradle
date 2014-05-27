@@ -14,13 +14,15 @@ task ci {
     group = "build"
     description = "Executes a Build for Continuous Integration"
 
+    finalizedBy "allTests"
+
     for (prj in subprojects) {
-        finalizedBy ":${prj.name}:test", ":${prj.name}:jar"
+        finalizedBy ":${prj.name}:jar"
         if (ciType != "Unknown")
             finalizedBy ":${prj.name}:publish"
     }
 
-    finalizedBy "jarAll", "javadocAll", "allTestsReport", "dependencyReport", "htmlDependencyReport", "jpowerInfo"
+    finalizedBy "jarAll", "javadocAll", "dependencyReport", "htmlDependencyReport", "jpowerInfo"
 
     doFirst {
         if (ciType == "Unknown") {
