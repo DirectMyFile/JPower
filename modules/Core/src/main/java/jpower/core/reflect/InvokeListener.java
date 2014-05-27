@@ -33,8 +33,9 @@ public interface InvokeListener
          }
       };
    }
-   
-   static InvokeListener handle(Consumer<Object> handler) {
+
+   static InvokeListener handle(Consumer<Object> handler)
+   {
       return new InvokeListener()
       {
          @Override

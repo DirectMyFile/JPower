@@ -1,9 +1,9 @@
 package jpower.core.test;
 
+import jpower.core.reflect.FieldAccessor;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import jpower.core.reflect.*;
+import static org.junit.Assert.*;
 
 public class ReflectionTest
 {

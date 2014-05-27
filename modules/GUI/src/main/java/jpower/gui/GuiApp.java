@@ -24,8 +24,7 @@ public abstract class GuiApp
       try
       {
          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      }
-      catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored)
+      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored)
       {
       }
    }

@@ -1,7 +1,7 @@
 package jpower.core;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class GotoContext
 {
@@ -17,7 +17,7 @@ public class GotoContext
    {
       if (!actions.containsKey(name))
       {
-          throw new RuntimeException("no such actions: " + name);
+         throw new RuntimeException("no such actions: " + name);
       }
       actions.get(name).run();
       return this;

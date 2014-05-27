@@ -1,17 +1,16 @@
 package jpower.core.test;
 
 import jpower.core.JPower;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
-
-import org.junit.Test;
 
 public class ReleaseInfoTest
 {
    @Test
    public void testVersionNotNull()
    {
-       assertNotNull(JPower.getReleaseInfo().getVersion());
+      assertNotNull(JPower.getReleaseInfo().getVersion());
    }
 
    @Test

@@ -2,6 +2,7 @@ package jpower.core.test;
 
 import jpower.core.utils.TestUtils;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class TestUtilsTest

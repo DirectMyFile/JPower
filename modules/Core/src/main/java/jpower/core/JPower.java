@@ -1,14 +1,11 @@
 package jpower.core;
 
 import jpower.core.utils.IOUtils;
-import jpower.core.utils.StringUtils;
 
-import java.util.List;
-import java.util.Properties;
-import java.util.Map;
 import java.util.HashMap;
-
-import java.util.regex.*;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * JPower Release Information
@@ -17,7 +14,8 @@ public final class JPower
 {
    private static ReleaseInfo release;
 
-   static {
+   static
+   {
       String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
       try
       {
@@ -29,8 +27,7 @@ public final class JPower
             info.put(matcher.group(1), matcher.group(2));
          }
          release = new ReleaseInfo(info);
-      }
-      catch (Exception ignored)
+      } catch (Exception ignored)
       {
       }
    }
@@ -45,7 +42,8 @@ public final class JPower
       System.out.println("JPower v" + getReleaseInfo().getVersion());
    }
 
-   public static class ReleaseInfo {
+   public static class ReleaseInfo
+   {
       private String version;
       private String commit;
 

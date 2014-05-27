@@ -26,9 +26,8 @@ public class DebuggerApp extends GuiApp
          try
          {
             NetUtils.download("https://raw.github.com/git/git/master/Documentation/RelNotes/1.9.0.txt",
-                              new File("git-release-notes.txt"));
-         }
-         catch (IOException e)
+                    new File("git-release-notes.txt"));
+         } catch (IOException e)
          {
             showDialog("Error", "ERROR: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
          }
@@ -43,7 +42,7 @@ public class DebuggerApp extends GuiApp
       createButton("Start Worker", event -> worker.start());
       createButton("Stop Worker", event -> worker.stop());
       createButton("Test Worker",
-                   event -> worker.addTask(() -> showDialog("Hello", "Hello World!", JOptionPane.INFORMATION_MESSAGE)));
+              event -> worker.addTask(() -> showDialog("Hello", "Hello World!", JOptionPane.INFORMATION_MESSAGE)));
       getFrame().add(panel);
    }
 

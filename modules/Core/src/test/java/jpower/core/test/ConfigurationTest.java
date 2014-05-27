@@ -60,7 +60,7 @@ public class ConfigurationTest
    {
       Writer writer = new StringWriter();
       config.set("letter.a", "Letter A")
-         .addComment("This is A of course");
+              .addComment("This is A of course");
       config.set("letter.b", "Letter B");
       config.save(writer);
       assertEquals("# This is A of course\nletter.a: Letter A\nletter.b: Letter B\n", writer.toString());

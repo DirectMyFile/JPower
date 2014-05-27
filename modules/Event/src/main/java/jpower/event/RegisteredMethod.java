@@ -17,8 +17,7 @@ public class RegisteredMethod
       try
       {
          method.invoke(instance, event);
-      }
-      catch (IllegalAccessException | InvocationTargetException ignored)
+      } catch (IllegalAccessException | InvocationTargetException ignored)
       {
       }
    }

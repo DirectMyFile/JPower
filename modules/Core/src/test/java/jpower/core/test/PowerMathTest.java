@@ -1,10 +1,13 @@
 package jpower.core.test;
 
+import jpower.core.math.PowerMath;
+import jpower.core.utils.ArrayUtils;
+import jpower.core.utils.ListUtils;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import jpower.core.utils.*;
-import jpower.core.math.*;
+
 import java.math.BigInteger;
+
+import static org.junit.Assert.assertEquals;
 
 public class PowerMathTest
 {

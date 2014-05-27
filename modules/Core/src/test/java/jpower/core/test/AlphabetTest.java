@@ -3,7 +3,8 @@ package jpower.core.test;
 import jpower.core.Alphabet;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class AlphabetTest
 {

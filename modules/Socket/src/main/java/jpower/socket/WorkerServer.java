@@ -42,8 +42,7 @@ public class WorkerServer implements AdvancedService
                try
                {
                   clientHandler.handleClient(new Client(server.accept()));
-               }
-               catch (IOException ignored)
+               } catch (IOException ignored)
                {
                }
             });

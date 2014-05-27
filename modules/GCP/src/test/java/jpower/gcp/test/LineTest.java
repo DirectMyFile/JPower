@@ -5,9 +5,13 @@ import jpower.gcp.GCPLine;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LineTest
 {
@@ -17,11 +21,12 @@ public class LineTest
    @Before
    public void prepare()
    {
-      inputs.add(new LineExample("MSG\u0001User\u0002TestUser\u0001Message\u0002Hello World") {{
-         command("MSG");
-         opt("User", "TestUser");
-         opt("Message", "Hello World");
-      }});
+      inputs.add(new LineExample("MSG\u0001User\u0002TestUser\u0001Message\u0002Hello World")
+      {{
+            command("MSG");
+            opt("User", "TestUser");
+            opt("Message", "Hello World");
+         }});
    }
 
    @Test
@@ -37,7 +42,8 @@ public class LineTest
       });
    }
 
-   public static class LineExample {
+   public static class LineExample
+   {
       protected String line;
       protected String command;
       protected Map<String, String> opts = new HashMap<>();

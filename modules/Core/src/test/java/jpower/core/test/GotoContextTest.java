@@ -1,10 +1,10 @@
 package jpower.core.test;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
-import jpower.core.Wrapper;
 import jpower.core.GotoContext;
+import jpower.core.Wrapper;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class GotoContextTest
 {
@@ -26,7 +26,7 @@ public class GotoContextTest
       ctx.define("increment", () -> number.set(number.get() + 1));
       ctx.define("decrement", () -> number.set(number.get() - 1));
       ctx.run("increment")
-         .run("decrement");
+              .run("decrement");
       assertEquals(0, number.get().intValue());
    }
 }

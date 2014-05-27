@@ -7,4 +7,3 @@ tasks.getByName("buildDashboard").with {
     group = "reporting"
     description = "Creates a project report site"
 }
-

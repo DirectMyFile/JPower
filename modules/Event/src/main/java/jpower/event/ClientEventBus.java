@@ -34,8 +34,7 @@ public class ClientEventBus extends CustomEventBus
             try
             {
                post(client.readObject());
-            }
-            catch (IOException | ClassNotFoundException ignored)
+            } catch (IOException | ClassNotFoundException ignored)
             {
             }
          }
@@ -51,8 +50,7 @@ public class ClientEventBus extends CustomEventBus
          try
          {
             client.writeObject(event);
-         }
-         catch (IOException ignored)
+         } catch (IOException ignored)
          {
          }
       }

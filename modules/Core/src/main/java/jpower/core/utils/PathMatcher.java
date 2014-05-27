@@ -29,7 +29,7 @@ public class PathMatcher
    public PathMatcher(Path path, Pattern pattern)
    {
       this.matcher = input -> {
-          return pattern.matcher(input.toString()).matches();
+         return pattern.matcher(input.toString()).matches();
       };
       this.parent = path;
    }

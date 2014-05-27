@@ -5,9 +5,9 @@ import jpower.core.utils.IOUtils;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringReader;
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -26,14 +26,14 @@ public class IOUtilsTest
    public void testReadLines() throws IOException
    {
       BufferedReader input = new BufferedReader(new StringReader("Hello\nWorld"));
-      List<String> expected = ArrayUtils.toList(new String[] {
+      List<String> expected = ArrayUtils.toList(new String[]{
               "Hello",
               "World"
       });
       List<String> actual = IOUtils.readLines(input);
       assertEquals(expected, actual);
    }
-   
+
    public void testGetBytes() throws Exception
    {
       String line = "Hello";
