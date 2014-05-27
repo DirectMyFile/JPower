@@ -6,13 +6,12 @@ subprojects {
         }
     }
 
-    task integTestJar(type: Jar) {
-        from sourceSets.integTest.output
-    }
-
     task integTest(type: Test) {
+        group = "verification"
+        description = "Runs the integration tests."
         testClassesDir = sourceSets.integTest.output.classesDir
         classpath = sourceSets.integTest.runtimeClasspath
+        onlyIf { file("src/integTest/java/").exists() }
     }
 
     integTest.dependsOn test
