@@ -35,7 +35,7 @@ public class IOUtilsTest
    }
    
    @Test
-   public void testGetBytes()
+   public void testGetBytes() throws Exception
    {
       String line = "Hello";
       ByteArrayInputStream in = new ByteArrayInputStream(line.getBytes("UTF-8"));
