@@ -74,6 +74,16 @@ public class IOUtils
       eachLine(reader, lines::add);
       return lines;
    }
+   
+   public static List<String> readLines(InputStream stream) throws IOException
+   {
+      return readLines(createBufferedReader(stream));  
+   }
+   
+   public static void eachLine(InputStream stream, Consumer<String> handler) throws IOException
+   {
+      eachLine(createBufferedReader(stream), handler);
+   }
 
    public static void splitEachLine(BufferedReader reader, String by, Consumer<String[]> handler) throws IOException
    {
