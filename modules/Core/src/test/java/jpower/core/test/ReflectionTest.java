@@ -11,6 +11,10 @@ public class ReflectionTest
 
    public String INNER_FIELD = "Inner Hello World";
 
+   public static final String FINAL_FIELD = "Hello World";
+
+   private final String FINAL_INNER_FIELD = "Hello World";
+
    @Test
    public void testFieldAccessStatic() throws Exception
    {
@@ -46,5 +50,21 @@ public class ReflectionTest
       accessor.set("FIELD", "New Value");
       assertEquals("New Value", FIELD);
       FIELD = "Hello World";
+   }
+
+   @Test(expected = Exception.class)
+   public void testFieldSetFinalStatic() throws Exception
+   {
+      FieldAccessor accessor = new FieldAccessor(ReflectionTest.class);
+      accessor.set("FINAL_FIELD", "Test");
+      assertEquals("Hello World", FINAL_FIELD);
+   }
+
+   @Test
+   public void testFieldSetFinal() throws Exception
+   {
+      FieldAccessor accessor = new FieldAccessor(this);
+      accessor.set("FINAL_INNER_FIELD", "Test");
+      // assertEquals("Hello World", FINAL_INNER_FIELD);
    }
 }
