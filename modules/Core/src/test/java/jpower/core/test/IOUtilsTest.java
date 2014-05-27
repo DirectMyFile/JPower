@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -31,5 +32,13 @@ public class IOUtilsTest
       });
       List<String> actual = IOUtils.readLines(input);
       assertEquals(expected, actual);
+   }
+   
+   @Test
+   public void testGetBytes()
+   {
+      String line = "Hello";
+      ByteArrayInputStream in = new ByteArrayInputStream(line.getBytes("UTF-8"));
+      assertEquals(line.getBytes("UTF-8"), IOUtils.getBytes(in));
    }
 }
