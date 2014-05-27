@@ -1,12 +1,7 @@
 task allTestsReport(type: TestReport) {
     group = "reporting"
-    description = "Generates a Test Report with all modules included"
+    description = "Generates a Test Report with all tests included."
     destinationDir = file("${buildDir}/tests/")
-
-    for (prj in subprojects) {
-         reportOn prj.tasks.getByName("test")
-         dependsOn ":${prj.name}:test"
-    }
 
     doLast {
         file("${buildDir}/tests/xml/").with {
@@ -18,6 +13,16 @@ task allTestsReport(type: TestReport) {
             new File("${buildDir}/tests/xml/", file.name).bytes = file.bytes
         }
     }
+}
+
+task allTests(group: "verification", description: "Runs All Tests.") {
+    for (prj in subprojects) {
+        def testTask = prj.tasks.getByName("test")
+        dependsOn(testTask)
+        allTestsReport.reportOn(testTask)
+    }
+    
+    finalizedBy(allTestsReport)
 }
 
 task jpowerInfo {
