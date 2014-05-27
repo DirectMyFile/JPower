@@ -18,7 +18,7 @@ task allTestsReport(type: TestReport) {
 task allTests(group: "verification", description: "Runs All Tests.") {
     for (prj in subprojects) {
         def testTask = prj.tasks.getByName("test")
-        dependsOn(testTask)
+        finalizedBy(testTask)
         allTestsReport.reportOn(testTask)
     }
     
