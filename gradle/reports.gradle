@@ -2,6 +2,7 @@ task allTestsReport(type: TestReport) {
     group = "reporting"
     description = "Generates a Test Report with all modules included"
     destinationDir = file("${buildDir}/tests/")
+
     for (prj in subprojects) {
          reportOn prj.tasks.getByName("test")
          dependsOn ":${prj.name}:test"
@@ -12,6 +13,7 @@ task allTestsReport(type: TestReport) {
             deleteDir()
             mkdirs()
         }
+
         fileTree(dir: "modules/", include: ["**/build/test-results/TEST-*.xml"]).each { file ->
             new File("${buildDir}/tests/xml/", file.name).bytes = file.bytes
         }
