@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class ConditionTest
 {
    @Test
-   public void testConditionalExecutorUntil()
+   public void testUntil()
    {
       Wrapper<Integer> count = new Wrapper<>(0);
 
@@ -20,7 +20,7 @@ public class ConditionTest
    }
 
    @Test
-   public void testConditionalExecutorWhen()
+   public void testWhen()
    {
       Wrapper<Integer> count = new Wrapper<>(0);
 

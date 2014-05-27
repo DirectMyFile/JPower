@@ -16,4 +16,14 @@ public class AlphabetTest
          assertFalse(Character.isLowerCase(letter));
       }
    }
+
+   @Test
+   public void testLowercase()
+   {
+      char[] lowercase = Alphabet.lowercase();
+      for (char letter : lowercase)
+      {
+         assertFalse(Character.isUpperCase(letter));
+      }
+   }
 }
