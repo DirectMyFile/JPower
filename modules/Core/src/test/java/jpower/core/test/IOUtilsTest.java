@@ -34,7 +34,6 @@ public class IOUtilsTest
       assertEquals(expected, actual);
    }
    
-   @Test
    public void testGetBytes() throws Exception
    {
       String line = "Hello";
