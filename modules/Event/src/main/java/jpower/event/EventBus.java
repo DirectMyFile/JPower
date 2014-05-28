@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Simple Annotation-based Event Bus
  */
-public class EventBus
+public class EventBus implements IEventBus
 {
    final List<RegisteredHandler> handlers;
    final boolean globalEnabled;

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ServerEventBus extends CustomEventBus
+public class ServerEventBus extends AbstractEventBus
 {
    private final WorkerServer workerServer;
    private final Collection<Client> clients = new ArrayList<>();

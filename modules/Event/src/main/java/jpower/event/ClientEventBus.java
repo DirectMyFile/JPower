@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-public class ClientEventBus extends CustomEventBus
+public class ClientEventBus extends AbstractEventBus
 {
    private Client client;
    private final InetSocketAddress address;

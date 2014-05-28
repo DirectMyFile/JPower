@@ -5,7 +5,7 @@ import jpower.core.WorkerPool;
 /**
  * Provides an Asynchronous edition of the generic EventBus.
  */
-public class AsyncEventBus extends CustomEventBus
+public class AsyncEventBus extends AbstractEventBus
 {
    private final WorkerPool workerPool;
 

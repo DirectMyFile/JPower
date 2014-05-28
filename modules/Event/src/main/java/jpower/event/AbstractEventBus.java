@@ -3,14 +3,14 @@ package jpower.event;
 /**
  * A Custom Event Bus Implementation
  */
-public abstract class CustomEventBus extends EventBus
+public abstract class AbstractEventBus extends EventBus
 {
-   public CustomEventBus()
+   public AbstractEventBus()
    {
       super();
    }
 
-   public CustomEventBus(boolean globalEnabled)
+   public AbstractEventBus(boolean globalEnabled)
    {
       super(globalEnabled);
    }
