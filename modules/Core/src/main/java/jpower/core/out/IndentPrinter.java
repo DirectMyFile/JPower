@@ -1,10 +1,12 @@
 package jpower.core.out;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.Writer;
 
-public class IndentPrinter implements Closeable, AutoCloseable
+/**
+ * A delegating Writer for outputting data with dimensions
+ */
+public class IndentPrinter implements AutoCloseable
 {
    private final Writer writer;
 
