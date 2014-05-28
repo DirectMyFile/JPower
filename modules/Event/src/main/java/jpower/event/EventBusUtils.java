@@ -9,4 +9,12 @@ public class EventBusUtils
          bus.register(handler);
       }
    }
+   
+   public static void unregisterAll(IEventBus bus, Object... handlers)
+   {
+      for (Object handler : handlers)
+      {
+         bus.unregister(handler);
+      }
+   }
 }
