@@ -28,4 +28,41 @@ public class PowerMath
       }
       return digits;
    }
+
+   /**
+    * Calculates the Factorial of a number
+    *
+    * @param number number to get factorial of
+    * @return factorial
+    */
+   public static int factorial(int number)
+   {
+      return number == 1 ? 1 : number * factorial(number - 1);
+   }
+
+   /**
+    * Gets the highest number in the given numbers
+    *
+    * @param numbers input
+    * @return maximum number
+    */
+   public static int maximum(int... numbers)
+   {
+      boolean first = true;
+      int max = 0;
+      for (int n : numbers)
+      {
+         if (first)
+         {
+            max = n;
+            first = false;
+            continue;
+         }
+         if (n > max)
+         {
+            max = n;
+         }
+      }
+      return max;
+   }
 }

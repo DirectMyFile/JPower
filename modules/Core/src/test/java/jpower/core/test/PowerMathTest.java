@@ -18,4 +18,18 @@ public class PowerMathTest
       BigInteger[] ints = PowerMath.fibonacci(10);
       ListUtils.forEach(ArrayUtils.toList(ints), (a, i) -> assertEquals(("" + expected[i]), a.toString()));
    }
+
+   @Test
+   public void testMaxOf10Numbers()
+   {
+      int[] inputs = {0, 5, 300, 2, 4, 6, 5, 500, 53, 3};
+      assertEquals(500, PowerMath.maximum(inputs));
+   }
+
+   @Test
+   public void testFactorialOf5()
+   {
+      int input = 5;
+      assertEquals(120, PowerMath.factorial(input));
+   }
 }
