@@ -23,7 +23,7 @@ public class FieldAccessor
       this(clazz, object, true);
    }
 
-   public FieldAccessor(Class<?> clazz, Object object, boolean declared)
+   public FieldAccessor(Class<?> clazz, Object object, @SuppressWarnings("SameParameterValue") boolean declared)
    {
       this.clazz = clazz;
       this.object = object;

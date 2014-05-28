@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HashCodeBuilder
 {
-   private List<String> includes = new ArrayList<>();
+   private final List<String> includes = new ArrayList<>();
 
    public static HashCodeBuilder create()
    {

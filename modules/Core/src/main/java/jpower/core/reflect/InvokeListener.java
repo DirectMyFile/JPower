@@ -2,6 +2,7 @@ package jpower.core.reflect;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("EmptyMethod")
 public interface InvokeListener
 {
    void before();

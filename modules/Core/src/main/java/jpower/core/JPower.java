@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 public final class JPower
 {
-   private static ReleaseInfo release;
+   private static final ReleaseInfo release;
 
    static
    {
@@ -44,8 +44,8 @@ public final class JPower
 
    public static class ReleaseInfo
    {
-      private String version;
-      private String commit;
+      private final String version;
+      private final String commit;
 
       public ReleaseInfo(Map<String, String> info)
       {

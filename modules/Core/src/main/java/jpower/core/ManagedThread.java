@@ -7,7 +7,7 @@ package jpower.core;
  */
 public class ManagedThread extends Thread
 {
-   private Runnable action;
+   private final Runnable action;
    
    public ManagedThread(Runnable action)
    {
