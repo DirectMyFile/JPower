@@ -12,6 +12,8 @@ public class JSONSerializer
 {
    private final JSONStyle style;
 
+   private final ObjectMapper mapper = new ObjectMapper();
+
    public JSONSerializer(JSONStyle style)
    {
       this.style = style;
@@ -29,7 +31,7 @@ public class JSONSerializer
       }
       else
       {
-         return serialize(ObjectMapper.create(object));
+         return serialize(mapper.create(object));
       }
    }
 

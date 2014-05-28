@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ObjectMapper
 {
-   public static Map<String, Object> create(Object obj)
+   public Map<String, Object> create(Object obj)
    {
       Map<String, Object> map = new LinkedHashMap<>();
       for (Field field : obj.getClass().getDeclaredFields())
