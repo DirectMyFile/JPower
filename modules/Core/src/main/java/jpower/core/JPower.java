@@ -17,6 +17,7 @@ public final class JPower
    static
    {
       String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
+      ReleaseInfo relInfo;
       try
       {
          Pattern pattern = Pattern.compile("(.*)=(.*)");
@@ -26,11 +27,13 @@ public final class JPower
          {
             info.put(matcher.group(1), matcher.group(2));
          }
-         release = new ReleaseInfo(info);
+         relInfo = new ReleaseInfo(info);
       }
       catch (Exception ignored)
       {
+         relInfo = null;
       }
+      release = relInfo;
    }
 
    public static ReleaseInfo getReleaseInfo()
