@@ -34,7 +34,8 @@ public class ClientEventBus extends AbstractEventBus
             try
             {
                post(client.readObject());
-            } catch (IOException | ClassNotFoundException ignored)
+            }
+            catch (IOException | ClassNotFoundException ignored)
             {
             }
          }
@@ -50,7 +51,8 @@ public class ClientEventBus extends AbstractEventBus
          try
          {
             client.writeObject(event);
-         } catch (IOException ignored)
+         }
+         catch (IOException ignored)
          {
          }
       }

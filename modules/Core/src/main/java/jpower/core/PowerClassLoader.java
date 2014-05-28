@@ -76,7 +76,8 @@ public class PowerClassLoader extends URLClassLoader
                   loadClass(className);
                }
             }
-         } catch (IOException | ClassNotFoundException e)
+         }
+         catch (IOException | ClassNotFoundException e)
          {
             throw new RuntimeException("Failed to auto-load classes.", e);
          }

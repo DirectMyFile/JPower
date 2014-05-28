@@ -50,7 +50,8 @@ public class MethodInvoker
          try
          {
             listener.after(invokeMethod(name, args));
-         } catch (Exception e)
+         }
+         catch (Exception e)
          {
             listener.error(e);
          }

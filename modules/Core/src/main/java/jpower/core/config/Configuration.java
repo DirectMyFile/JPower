@@ -97,7 +97,8 @@ public class Configuration
          {
             writer.write(line);
             writer.write('\n');
-         } catch (IOException e)
+         }
+         catch (IOException e)
          {
             throw new RuntimeException(e);
          }

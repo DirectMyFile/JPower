@@ -7,8 +7,8 @@ public class EventBusUtils
 {
    /**
     * Registers all handlers for the specified event bus.
-    * 
-    * @param bus Event Bus
+    *
+    * @param bus      Event Bus
     * @param handlers event handlers
     */
    public static void registerAll(IEventBus bus, Object... handlers)
@@ -18,11 +18,11 @@ public class EventBusUtils
          bus.register(handler);
       }
    }
-   
+
    /**
     * Unregisters all handlers for the specified event bus.
-    * 
-    * @param bus Event Bus
+    *
+    * @param bus      Event Bus
     * @param handlers event handlers
     */
    public static void unregisterAll(IEventBus bus, Object... handlers)

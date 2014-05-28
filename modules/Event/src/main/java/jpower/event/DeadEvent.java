@@ -11,7 +11,7 @@ public class DeadEvent implements Serializable
 
    /**
     * Creates a new DeadEvent
-    * 
+    *
     * @param event event
     */
    public DeadEvent(Object event)
@@ -21,7 +21,7 @@ public class DeadEvent implements Serializable
 
    /**
     * Gets the Event Object
-    * 
+    *
     * @return event object
     */
    public Object getEvent()
@@ -31,7 +31,7 @@ public class DeadEvent implements Serializable
 
    /**
     * Gets the Event Type
-    * 
+    *
     * @return event class type
     */
    public Class<?> getType()

@@ -27,7 +27,8 @@ public class PowerInternalSystem
       {
          Vector<Class> classList = (Vector<Class>) new FieldAccessor(ClassLoader.class, loader).get("classes");
          return classList.toArray(new Class[classList.size()]);
-      } catch (NoSuchFieldException | IllegalAccessException e)
+      }
+      catch (NoSuchFieldException | IllegalAccessException e)
       {
          return null;
       }
@@ -43,7 +44,8 @@ public class PowerInternalSystem
       try
       {
          return (Unsafe) new FieldAccessor(Unsafe.class).get("theUnsafe");
-      } catch (Throwable e)
+      }
+      catch (Throwable e)
       {
          return null;
       }

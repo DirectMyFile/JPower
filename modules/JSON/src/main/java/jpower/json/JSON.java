@@ -38,7 +38,8 @@ public class JSON
       try
       {
          return serializer.serialize(object);
-      } catch (IOException e)
+      }
+      catch (IOException e)
       {
          throw new RuntimeException(e);
       }

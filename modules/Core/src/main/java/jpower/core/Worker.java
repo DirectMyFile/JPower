@@ -45,7 +45,8 @@ public class Worker implements Runnable
       try
       {
          queue.put(task);
-      } catch (InterruptedException e)
+      }
+      catch (InterruptedException e)
       {
          return false;
       }
@@ -75,7 +76,8 @@ public class Worker implements Runnable
                task.execute();
                isWorking = false;
             }
-         } catch (InterruptedException ignored)
+         }
+         catch (InterruptedException ignored)
          {
          }
       }

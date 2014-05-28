@@ -12,7 +12,8 @@ public class CallUtils
       try
       {
          action.run();
-      } catch (Throwable ignored)
+      }
+      catch (Throwable ignored)
       {
       }
    }
@@ -22,7 +23,8 @@ public class CallUtils
       try
       {
          action.run();
-      } catch (Throwable e)
+      }
+      catch (Throwable e)
       {
          throw new RuntimeException(e);
       }
@@ -33,7 +35,8 @@ public class CallUtils
       try
       {
          action.run();
-      } catch (Throwable e)
+      }
+      catch (Throwable e)
       {
          e.printStackTrace();
       }
@@ -44,7 +47,8 @@ public class CallUtils
       try
       {
          action.run();
-      } catch (Throwable e)
+      }
+      catch (Throwable e)
       {
          exceptionHandler.accept(e);
       }

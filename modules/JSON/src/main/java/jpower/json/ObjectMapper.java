@@ -28,7 +28,8 @@ public class ObjectMapper
             }
 
             map.put(name, field.get(obj));
-         } catch (IllegalAccessException e)
+         }
+         catch (IllegalAccessException e)
          {
             throw new RuntimeException(e);
          }

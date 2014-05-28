@@ -9,7 +9,8 @@ public class TestUtils
       try
       {
          action.run();
-      } catch (Throwable throwable)
+      }
+      catch (Throwable throwable)
       {
          return throwable;
       }

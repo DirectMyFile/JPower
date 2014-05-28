@@ -14,7 +14,8 @@ public class ThreadUtils
       try
       {
          Thread.sleep(time);
-      } catch (InterruptedException ignored)
+      }
+      catch (InterruptedException ignored)
       {
          // Do Nothing
       }

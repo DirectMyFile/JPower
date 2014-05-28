@@ -36,7 +36,8 @@ public class IOUtils
             writer.write(b);
          }
          stream.close();
-      } catch (IOException e)
+      }
+      catch (IOException e)
       {
          return null;
       }

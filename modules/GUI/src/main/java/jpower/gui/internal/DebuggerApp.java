@@ -27,7 +27,8 @@ public class DebuggerApp extends GuiApp
          {
             NetUtils.download("https://raw.github.com/git/git/master/Documentation/RelNotes/1.9.0.txt",
                     new File("git-release-notes.txt"));
-         } catch (IOException e)
+         }
+         catch (IOException e)
          {
             showDialog("Error", "ERROR: " + e.getMessage(), JOptionPane.ERROR_MESSAGE);
          }

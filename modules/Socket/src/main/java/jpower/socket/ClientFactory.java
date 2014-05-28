@@ -24,7 +24,8 @@ public class ClientFactory implements Factory<Client>
       try
       {
          socket.connect(address);
-      } catch (IOException e)
+      }
+      catch (IOException e)
       {
          ExceptionUtils.throwUnchecked(e);
          return null;
@@ -32,7 +33,8 @@ public class ClientFactory implements Factory<Client>
       try
       {
          return new Client(socket);
-      } catch (IOException e)
+      }
+      catch (IOException e)
       {
          ExceptionUtils.throwUnchecked(e);
          return null;

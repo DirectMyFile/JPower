@@ -27,7 +27,8 @@ public final class JPower
             info.put(matcher.group(1), matcher.group(2));
          }
          release = new ReleaseInfo(info);
-      } catch (Exception ignored)
+      }
+      catch (Exception ignored)
       {
       }
    }
