@@ -73,11 +73,11 @@ public class EventBus implements IEventBus
          }
       });
       //noinspection InstanceofThis
-      if (!event.getClass().isAssignableFrom(DeadEvent.class) && !didRun.get() && !(this instanceof GlobalEventBus))
+      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && !didRun.get() && !(this instanceof GlobalEventBus))
       {
          post(new DeadEvent(event));
       }
-      if (!event.getClass().isAssignableFrom(DeadEvent.class) && globalEnabled)
+      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && globalEnabled)
       {
          GlobalEventBus.get().post(event);
       }
