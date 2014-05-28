@@ -6,18 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple Annotation-based Event Bus
+ * {@inheritDoc}
  */
 public class EventBus implements IEventBus
 {
    protected final List<RegisteredHandler> handlers;
    protected final boolean globalEnabled;
 
+   /**
+    * {@inheritDoc}
+    */
    public EventBus()
    {
       this(true);
    }
 
+   /**
+    * {@inheritDoc}
+    */
    public EventBus(final boolean globalEnabled)
    {
       handlers = new ArrayList<>();
@@ -25,9 +31,7 @@ public class EventBus implements IEventBus
    }
 
    /**
-    * Register an Event Handler
-    *
-    * @param object Object
+    * {@inheritDoc}
     */
    public void register(final Object object)
    {
@@ -35,10 +39,7 @@ public class EventBus implements IEventBus
    }
 
    /**
-    * Unregister an Event Handler
-    *
-    * @param object Object
-    * @return handler was removed
+    * {@inheritDoc}
     */
    public boolean unregister(final Object object)
    {
@@ -59,9 +60,7 @@ public class EventBus implements IEventBus
    }
 
    /**
-    * Post an Event to the Bus
-    *
-    * @param event Event to Post
+    * {@inheritDoc}
     */
    public void post(final Object event)
    {
