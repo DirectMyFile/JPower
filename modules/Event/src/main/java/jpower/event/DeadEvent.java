@@ -15,4 +15,9 @@ public class DeadEvent implements Serializable
    {
       return event;
    }
+
+   public Class<?> getType()
+   {
+      return event.getClass();
+   }
 }
