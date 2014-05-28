@@ -57,7 +57,22 @@ public class IOUtils
 
    public static BufferedReader createBufferedReader(InputStream stream)
    {
-      return new BufferedReader(new InputStreamReader(stream));
+      return createBufferedReader(createReader(stream));
+   }
+
+   public static BufferedReader createBufferedReader(Reader reader)
+   {
+      return new BufferedReader(reader);
+   }
+
+   public static Reader createReader(InputStream stream)
+   {
+      return new InputStreamReader(stream);
+   }
+
+   public static PrintStream createPrintStream(OutputStream stream)
+   {
+      return new PrintStream(stream);
    }
 
    public static void eachLine(BufferedReader reader, Consumer<String> handler) throws IOException
