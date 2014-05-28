@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class EventBus implements IEventBus
 {
-   final List<RegisteredHandler> handlers;
-   final boolean globalEnabled;
+   protected final List<RegisteredHandler> handlers;
+   protected final boolean globalEnabled;
 
    public EventBus()
    {
