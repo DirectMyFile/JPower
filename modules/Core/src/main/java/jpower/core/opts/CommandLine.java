@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Accessor for Command Line Options and Arguments
+ */
 public class CommandLine
 {
    private final Map<String, String> opts = new HashMap<>();

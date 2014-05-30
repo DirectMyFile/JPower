@@ -6,6 +6,9 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+/**
+ * Common List Utilities
+ */
 public class ListUtils
 {
    public static <T> List<T> singleton(T single)
@@ -13,11 +16,23 @@ public class ListUtils
       return Collections.singletonList(single);
    }
 
+   /**
+    * Joins each String by the line separator
+    *
+    * @param lines input strings
+    * @return string of each string joined by @code {System.lineSeparator()}
+    */
    public static String toString(List<String> lines)
    {
       return join(lines, System.lineSeparator());
    }
 
+   /**
+    * Joins a list of strings by the specified string
+    * @param inputs input strings
+    * @param joinBy joined by
+    * @return string joined by the specified string
+    */
    public static String join(List<String> inputs, String joinBy)
    {
       StringBuilder builder = new StringBuilder();

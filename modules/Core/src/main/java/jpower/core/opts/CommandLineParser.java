@@ -3,6 +3,9 @@ package jpower.core.opts;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Parses Command Line Arguments
+ */
 public class CommandLineParser
 {
 

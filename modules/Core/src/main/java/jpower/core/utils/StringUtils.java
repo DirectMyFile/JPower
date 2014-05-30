@@ -3,8 +3,17 @@ package jpower.core.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * String Utilities
+ */
 public class StringUtils
 {
+   /**
+    * Creates a Random String
+    *
+    * @param length length of string
+    * @return random string
+    */
    public static String random(int length)
    {
       char[] chars = new char[length];
@@ -15,6 +24,12 @@ public class StringUtils
       return new String(chars);
    }
 
+   /**
+    * Creates multiple random strings
+    * @param stringLength length of each string
+    * @param count number of strings to generate
+    * @return array of output strings
+    */
    public static String[] random(int stringLength, int count)
    {
       String[] strings = new String[count];
@@ -25,21 +40,44 @@ public class StringUtils
       return strings;
    }
 
+   /**
+    * Tokenizes the input by '.'
+    * @param input input string
+    * @return list of strings
+    */
    public static List<String> tokenizeByDot(String input)
    {
       return tokenize(input, '.');
    }
 
+   /**
+    * Tokenizes the input by ' ' (aka words)
+    * @param input input string
+    * @return list of strings
+    */
    public static List<String> words(String input)
    {
       return tokenize(input, ' ');
    }
 
+   /**
+    * Tokenizes a String by the specified character
+    * @param input input string
+    * @param by character to tokenize by
+    * @return list of strings
+    */
    public static List<String> tokenize(String input, char by)
    {
       return tokenize(input, by, false);
    }
 
+   /**
+    * Tokenizes a String by the specified character, removing empty string if specified
+    * @param input input string
+    * @param by character to tokenize by
+    * @param removeEmpty should remove empty strings
+    * @return list of strings
+    */
    public static List<String> tokenize(String input, char by, boolean removeEmpty)
    {
       List<String> parts = new ArrayList<>();
