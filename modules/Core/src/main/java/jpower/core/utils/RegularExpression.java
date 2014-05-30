@@ -1,5 +1,7 @@
 package jpower.core.utils;
 
+import org.intellij.lang.annotations.Language;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,7 +29,7 @@ public class RegularExpression
     *
     * @param pattern pattern
     */
-   public RegularExpression(String pattern)
+   public RegularExpression(@Language("RegExp") String pattern)
    {
       this.pattern = Pattern.compile(pattern);
    }
@@ -77,7 +79,7 @@ public class RegularExpression
     * @param input input string
     * @return array of capture groups
     */
-   public static String[] captures(String pattern, String input)
+   public static String[] captures(@Language("RegExp") String pattern, String input)
    {
       return captures(Pattern.compile(pattern), input);
    }

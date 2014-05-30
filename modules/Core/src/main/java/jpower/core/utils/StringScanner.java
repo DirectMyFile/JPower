@@ -1,5 +1,7 @@
 package jpower.core.utils;
 
+import org.intellij.lang.annotations.Language;
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -25,7 +27,7 @@ public class StringScanner
     * @param pattern pattern
     * @return matched
     */
-   public String scan(String pattern)
+   public String scan(@Language("RegExp") String pattern)
    {
       return scan(Pattern.compile(pattern));
    }
@@ -55,7 +57,7 @@ public class StringScanner
     *
     * @param pattern pattern
     */
-   public void skip(String pattern)
+   public void skip(@Language("RegExp") String pattern)
    {
       scanner.skip(pattern);
    }
@@ -66,7 +68,7 @@ public class StringScanner
     * @param pattern pattern
     */
    @SuppressWarnings("StatementWithEmptyBody")
-   public void skipUntil(String pattern)
+   public void skipUntil(@Language("RegExp") String pattern)
    {
       while (scan(pattern) != null)
       {
