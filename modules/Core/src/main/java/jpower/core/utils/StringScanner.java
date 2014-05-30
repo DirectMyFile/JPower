@@ -70,7 +70,6 @@ public class StringScanner
    {
       while (scan(pattern) != null)
       {
-         ;
       }
    }
 
@@ -84,7 +83,6 @@ public class StringScanner
    {
       while (scan(pattern) != null)
       {
-         ;
       }
    }
 }
