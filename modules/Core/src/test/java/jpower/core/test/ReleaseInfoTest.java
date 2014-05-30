@@ -12,6 +12,7 @@ public class ReleaseInfoTest
    @Test
    public void testVersionNotNull()
    {
+      assumeFalse(RuntimeUtils.classExists("com.intellij.rt.execution.application.AppMain"));
       assertNotNull(JPower.getReleaseInfo().getVersion());
    }
 
@@ -26,6 +27,7 @@ public class ReleaseInfoTest
    @Test
    public void testCommitNotNull()
    {
+      assumeFalse(RuntimeUtils.classExists("com.intellij.rt.execution.application.AppMain"));
       assertNotNull(JPower.getReleaseInfo().getCommit());
    }
 
