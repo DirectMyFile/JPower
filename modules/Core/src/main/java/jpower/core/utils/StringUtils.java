@@ -26,8 +26,9 @@ public class StringUtils
 
    /**
     * Creates multiple random strings
+    *
     * @param stringLength length of each string
-    * @param count number of strings to generate
+    * @param count        number of strings to generate
     * @return array of output strings
     */
    public static String[] random(int stringLength, int count)
@@ -42,6 +43,7 @@ public class StringUtils
 
    /**
     * Tokenizes the input by '.'
+    *
     * @param input input string
     * @return list of strings
     */
@@ -52,6 +54,7 @@ public class StringUtils
 
    /**
     * Tokenizes the input by ' ' (aka words)
+    *
     * @param input input string
     * @return list of strings
     */
@@ -62,8 +65,9 @@ public class StringUtils
 
    /**
     * Tokenizes a String by the specified character
+    *
     * @param input input string
-    * @param by character to tokenize by
+    * @param by    character to tokenize by
     * @return list of strings
     */
    public static List<String> tokenize(String input, char by)
@@ -73,8 +77,9 @@ public class StringUtils
 
    /**
     * Tokenizes a String by the specified character, removing empty string if specified
-    * @param input input string
-    * @param by character to tokenize by
+    *
+    * @param input       input string
+    * @param by          character to tokenize by
     * @param removeEmpty should remove empty strings
     * @return list of strings
     */

@@ -17,6 +17,7 @@ public class RegularExpression
 
    /**
     * Constructs a new Regular Expression Wrapper
+    *
     * @param pattern pattern
     */
    public RegularExpression(Pattern pattern)
@@ -47,8 +48,9 @@ public class RegularExpression
 
    /**
     * Checks if a String Matches a Pattern
+    *
     * @param pattern pattern
-    * @param input input string
+    * @param input   input string
     * @return true if it matches, otherwise false
     */
    public static boolean matches(Pattern pattern, String input)
@@ -58,8 +60,9 @@ public class RegularExpression
 
    /**
     * Gets the Capture Groups for the pattern again the input
+    *
     * @param pattern pattern
-    * @param input input string
+    * @param input   input string
     * @return array of capture groups
     */
    public static String[] captures(Pattern pattern, String input)
@@ -75,8 +78,9 @@ public class RegularExpression
 
    /**
     * Gets the Capture Groups for the pattern again the input
+    *
     * @param pattern pattern
-    * @param input input string
+    * @param input   input string
     * @return array of capture groups
     */
    public static String[] captures(@Language("RegExp") String pattern, String input)

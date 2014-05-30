@@ -24,6 +24,7 @@ public class StringScanner
 
    /**
     * Find the next string matching the pattern
+    *
     * @param pattern pattern
     * @return matched
     */
@@ -34,6 +35,7 @@ public class StringScanner
 
    /**
     * Find the next string matching the pattern
+    *
     * @param pattern pattern
     * @return matched
     */
