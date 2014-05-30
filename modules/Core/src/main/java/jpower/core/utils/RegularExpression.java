@@ -10,6 +10,28 @@ import java.util.regex.Pattern;
  */
 public class RegularExpression
 {
+
+   private Pattern pattern;
+
+   /**
+    * Constructs a new Regular Expression Wrapper
+    * @param pattern pattern
+    */
+   public RegularExpression(Pattern pattern)
+   {
+      this.pattern = pattern;
+   }
+
+   /**
+    * Constructs a new Regular Expression Wrapper
+    *
+    * @param pattern pattern
+    */
+   public RegularExpression(String pattern)
+   {
+      this.pattern = Pattern.compile(pattern);
+   }
+
    /**
     * Creates a String Scanner
     *
@@ -58,5 +80,27 @@ public class RegularExpression
    public static String[] captures(String pattern, String input)
    {
       return captures(Pattern.compile(pattern), input);
+   }
+
+   /**
+    * Gets the Capture Groups for the pattern again the input
+    *
+    * @param input input string
+    * @return array of capture groups
+    */
+   public String[] captures(String input)
+   {
+      return captures(pattern, input);
+   }
+
+   /**
+    * Checks if a String Matches the pattern
+    *
+    * @param input input string
+    * @return true if it matches, otherwise false
+    */
+   public boolean matches(String input)
+   {
+      return matches(pattern, input);
    }
 }
