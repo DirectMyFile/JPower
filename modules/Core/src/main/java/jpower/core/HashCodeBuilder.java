@@ -1,6 +1,7 @@
 package jpower.core;
 
 import jpower.core.reflect.FieldAccessor;
+import jpower.core.utils.ExceptionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class HashCodeBuilder
          }
          catch (NoSuchFieldException | IllegalAccessException e)
          {
-            throw new RuntimeException(e);
+            ExceptionUtils.throwUnchecked(e);
          }
       }
       return code;
