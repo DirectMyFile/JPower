@@ -43,4 +43,9 @@ public class CommandLine
    {
       return opt(key) != null && opt(key).equals("true");
    }
+
+   public boolean help()
+   {
+      return opts.containsKey("help");
+   }
 }
