@@ -3,6 +3,7 @@ package jpower.core.test;
 import jpower.core.JPower;
 import jpower.core.utils.RuntimeUtils;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import static org.junit.Assert.*;
 import static org.junit.Assume.assumeFalse;
