@@ -8,21 +8,36 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+/**
+ * Configuration File Wrapper
+ */
 public class ConfigFile implements Loadable, Reloadable
 {
    private final Path path;
    private final Configuration configuration = new Configuration();
 
+   /**
+    * Creates a ConfigFile from the path
+    *
+    * @param path path
+    */
    public ConfigFile(Path path)
    {
       this.path = path;
    }
 
+   /**
+    * Creates a ConfigFile from the file
+    * @param file file
+    */
    public ConfigFile(File file)
    {
       this.path = file.toPath();
    }
 
+   /**
+    * Loads the Configuration File
+    */
    @Override
    public void load()
    {
@@ -36,6 +51,9 @@ public class ConfigFile implements Loadable, Reloadable
       }
    }
 
+   /**
+    * Reloads the Configuration File
+    */
    @Override
    public void reload()
    {
@@ -43,6 +61,10 @@ public class ConfigFile implements Loadable, Reloadable
       load();
    }
 
+   /**
+    * Gets the Configuration from the File
+    * @return configuration
+    */
    public Configuration getConfiguration()
    {
       return configuration;
