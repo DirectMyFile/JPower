@@ -5,7 +5,7 @@ ext.ciType = ({
         "Jenkins"
     } else if ("TRAVIS_BUILD_NUMBER" in sysenv.keySet()) {
         "Travis CI"
-    } else if ("TEAMCITY_VERSION" in sysenv.keySet())
+    } else if ("TEAMCITY_VERSION" in sysenv.keySet()) {
         "TeamCity"
     } else {
         "Unknown"
