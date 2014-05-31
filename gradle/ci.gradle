@@ -5,6 +5,8 @@ ext.ciType = ({
         "Jenkins"
     } else if ("TRAVIS_BUILD_NUMBER" in sysenv.keySet()) {
         "Travis CI"
+    } else if ("TEAMCITY_VERSION" in sysenv.keySet())
+        "TeamCity"
     } else {
         "Unknown"
     }
@@ -18,7 +20,7 @@ task ci {
 
     for (prj in subprojects) {
         finalizedBy ":${prj.name}:jar"
-        if (ciType != "Unknown")
+        if (ciType == "TeamCity")
             finalizedBy ":${prj.name}:publish"
     }
 
