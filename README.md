@@ -23,4 +23,4 @@ The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](h
 
 JPower is sponsored by JetBrains!
 
-[![IntelliJ IDEA](http://www.jetbrains.com/idea/)](http://www.jetbrains.com/img/logos/logo_intellij_idea.png)
+[![IntelliJ IDEA](http://www.jetbrains.com/img/logos/logo_intellij_idea.png)](http://www.jetbrains.com/idea/)
