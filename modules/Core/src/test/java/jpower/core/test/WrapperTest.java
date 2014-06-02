@@ -47,6 +47,7 @@ public class WrapperTest
       assertTrue(obj.equals("Hello World"));
    }
 
+   @SuppressWarnings("ObjectEqualsNull")
    @Test
    public void testEqualsNull()
    {
