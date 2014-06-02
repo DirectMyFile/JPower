@@ -17,7 +17,7 @@ public class GotoContext
    {
       if (!actions.containsKey(name))
       {
-         throw new RuntimeException("no such actions: " + name);
+         throw new RuntimeException("no such action: " + name);
       }
       actions.get(name).run();
       return this;
