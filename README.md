@@ -18,3 +18,9 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 # Contact Us
 
 The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://www.directmyfile.com/)
+
+# Sponsors
+
+JPower is sponsored by JetBrains!
+
+[![IntelliJ IDEA](http://www.jetbrains.com/idea/)](http://www.jetbrains.com/img/logos/logo_intellij_idea.png)
