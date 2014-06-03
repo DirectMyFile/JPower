@@ -20,8 +20,11 @@ task ci {
 
     for (prj in subprojects) {
         finalizedBy ":${prj.name}:jar"
-        if (ciType == "TeamCity")
-            finalizedBy ":${prj.name}:publish"
+        if (ciType == "TeamCity") { // TeamCity Builds are Complex
+            if ((sysenv.BUILD_IS_PERSONAL != "true") && (sysenv.PUBLISH_BUILD == "true")) {
+                finalizedBy ":${prj.name}:publish"
+            }
+        }
     }
 
     finalizedBy "jarAll", "javadocAll", "dependencyReport", "htmlDependencyReport", "jpowerInfo"
