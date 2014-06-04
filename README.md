@@ -1,4 +1,4 @@
-# JPower [![Build Status](http://teamcity.directmyfile.com:8111/app/rest/builds/buildType:(id:JPOWER_MAIN)/statusIcon)](http://teamcity.directmyfile.com:8111/viewType.html?buildTypeId=JPOWER_MAIN&guest=1)
+# JPower [![Build Status](http://goo.gl/t9TsjZ)](http://goo.gl/x0mb1X)
 
 ![JPower Logo](docs/logo.png)
 
@@ -11,14 +11,14 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 # Links
 
-- [Issue Tracker](https://github.com/DirectMyFile/JPower/issues)
-- [Wiki](https://github.com/DirectMyFile/JPower/wiki)
-- [TeamCity](http://teamcity.directmyfile.com:8111/viewType.html?buildTypeId=JPOWER_MAIN&guest=1)
-- [JavaDoc](http://teamcity.directmyfile.com:8111/repository/download/JPOWER_MAIN/.lastSuccessful/javadoc/index.html?guest=1)
+- [Issue Tracker](http://goo.gl/C5NIcU)
+- [Wiki](http://goo.gl/ua6HNX)
+- [TeamCity](http://goo.gl/x0mb1X)
+- [JavaDoc](http://goo.gl/m2v7rb)
 
 # Contact Us
 
-The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://directmyfile.github.io/)
+The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://goo.gl/EA5bNW)
 
 # Sponsors
 
