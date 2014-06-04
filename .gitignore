@@ -1,7 +1,3 @@
-*.iml
-*.iws
-*.ipr
-/.idea/
 /out/
 /jar/
 /lib/
@@ -16,3 +12,4 @@ build-number.txt
 .c9*
 /gen_docs/
 .clover/
+.idea/workspace.xml

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/modules/Core/Core.iml" filepath="$PROJECT_DIR$/modules/Core/Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/Event/Event.iml" filepath="$PROJECT_DIR$/modules/Event/Event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/GCP/GCP.iml" filepath="$PROJECT_DIR$/modules/GCP/GCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/GUI/GUI.iml" filepath="$PROJECT_DIR$/modules/GUI/GUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/IRC/IRC.iml" filepath="$PROJECT_DIR$/modules/IRC/IRC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JPower.iml" filepath="$PROJECT_DIR$/JPower.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/JSON/JSON.iml" filepath="$PROJECT_DIR$/modules/JSON/JSON.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/Script/Script.iml" filepath="$PROJECT_DIR$/modules/Script/Script.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/Socket/Socket.iml" filepath="$PROJECT_DIR$/modules/Socket/Socket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/YAML/YAML.iml" filepath="$PROJECT_DIR$/modules/YAML/YAML.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
+    </modules>
+  </component>
+</project>
+
