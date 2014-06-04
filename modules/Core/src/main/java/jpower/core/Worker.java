@@ -152,7 +152,7 @@ public class Worker implements Runnable
    {
       while (isWorking() || !queue.isEmpty())
       {
-         ThreadUtils.sleep(1);
+         ThreadUtils.sleep(2);
       }
    }
 
