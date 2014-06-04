@@ -14,6 +14,9 @@ public final class JPower
 {
    private static final ReleaseInfo release;
 
+   /**
+    * Loads the Release Info
+    */
    static
    {
       String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
@@ -36,32 +39,63 @@ public final class JPower
       release = relInfo;
    }
 
+   /**
+    * Gets the JPower Release Info
+    *
+    * @return Release Info
+    */
    public static ReleaseInfo getReleaseInfo()
    {
       return release;
    }
 
+   /**
+    * Main Entry Point for Console
+    * @param args arguments
+    */
    public static void main(String[] args)
    {
       System.out.println("JPower v" + getReleaseInfo().getVersion());
    }
 
+   /**
+    * Release Information
+    */
    public static class ReleaseInfo
    {
+      /**
+       * JPower Version
+       */
       private final String version;
+
+      /**
+       * Git Commit
+       */
       private final String commit;
 
+      /**
+       * Creates a new Release Info Instance
+       * @param info map of information
+       */
       public ReleaseInfo(Map<String, String> info)
       {
          this.version = info.get("version");
          this.commit = info.get("commit");
       }
 
+      /**
+       * Gets the JPower Version
+       * @return Version
+       */
       public String getVersion()
       {
          return version;
       }
 
+      /**
+       * Gets the Git Commit that this build was built on
+       * @return Git Commit
+       */
       public String getCommit()
       {
          return commit;
