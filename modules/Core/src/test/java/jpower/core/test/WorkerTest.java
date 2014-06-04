@@ -18,10 +18,7 @@ public class WorkerTest
       final boolean[] didWork = {false};
       Worker worker = new Worker();
       worker.start();
-      worker.addTask(() -> {
-         didWork[0] = true;
-      });
-      ThreadUtils.sleep(100);
+      worker.addTask(() -> didWork[0] = true);
       worker.waitFor();
       worker.stop();
       assertTrue("Task was executed on Worker.", didWork[0]);
