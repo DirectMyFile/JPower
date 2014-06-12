@@ -1,10 +1,12 @@
 import groovy.json.JsonSlurper
 
-def latestNightly = new JsonSlurper().parseText("http://services.gradle.org/versions/nightly".toURL().text).version
+def track = "release-candidate" // 'current' / 'release-candidate' / 'nightly'
+
+def latestVersion = new JsonSlurper().parseText("http://services.gradle.org/versions/${track}".toURL().text).version
 
 task wrapper(type: Wrapper) {
     group = "build setup"
     description = "Builds/Updates the Gradle Wrapper"
-    gradleVersion = latestNightly
+    gradleVersion = latestVersion
 }
 
