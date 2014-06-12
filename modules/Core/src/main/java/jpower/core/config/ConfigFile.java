@@ -17,7 +17,7 @@ public class ConfigFile implements Loadable, Reloadable
    private final Configuration configuration = new Configuration();
 
    /**
-    * Creates a @link{ConfigFile} from the Path
+    * Creates a {@link ConfigFile} from the Path
     *
     * @param path the path to load the configuration from
     */
