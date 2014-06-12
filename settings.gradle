@@ -1,16 +1,27 @@
 import groovy.io.FileType
 
-/* Find Modules in modules/ */
-new File("${rootDir}/modules/").eachFile(FileType.DIRECTORIES) { dir ->
+def moduleDir = new File("${rootDir}/modules")
+
+/* Find Modules */
+moduleDir.eachDir { dir ->
     include dir.name /* Include the Module */
 }
 
+boolean fileExists(File rootDir = null, String name) {
+    if (rootDir != null)
+        return new File(rootDir, name).exists()
+    else
+        return new File("name").exists()
+}
+
 rootProject.children.each { prj ->
-    prj.projectDir = new File("${rootDir}/modules/${prj.name}")
-    if (new File("${rootDir}/modules/${prj.name}/build.gradle").exists()) {
+    def prjDir = prj.projectDir = new File(moduleDir, prj.name)
+    if (fileExists(prjDir, "build.gradle")) {
          prj.buildFileName = "build.gradle"
-    } else if (new File("${rootDir}/modules/${prj.name}/${prj.name}.gradle").exists()) {
+    } else if (fileExists(prjDir, "${prj.name}.gradle")) {
          prj.buildFileName = "${prj.name}.gradle"
+    } else if (fileExists(prjDir, "module.gradle")) {
+         prj.buildFileName = "module.gradle"
     } else {
          throw new RuntimeException("module '${prj.name}': unable to find build script")
     }
