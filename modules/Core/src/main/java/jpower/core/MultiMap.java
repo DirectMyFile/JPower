@@ -1,9 +1,6 @@
 package jpower.core;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * A MultiMap is a map of a key to a list of values. This MultiMap is backed by a LinkedHashMap.
@@ -14,7 +11,7 @@ public class MultiMap<K, V>
 
    public MultiMap()
    {
-      delegate = new HashMap<>();
+       delegate = new LinkedHashMap<>();
    }
 
    public void put(K key, Collection<V> values)
