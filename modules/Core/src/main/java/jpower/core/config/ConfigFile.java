@@ -13,37 +13,37 @@ import java.nio.file.Path;
  */
 public class ConfigFile implements Loadable, Reloadable
 {
-   private final Path path;
+   private final File file;
    private final Configuration configuration = new Configuration();
 
    /**
-    * Creates a ConfigFile from the path
+    * Creates a @link{ConfigFile} from the Path
     *
-    * @param path path
+    * @param path the path to load the configuration from
     */
    public ConfigFile(Path path)
    {
-      this.path = path;
+      this(path.toFile());
    }
 
    /**
-    * Creates a ConfigFile from the file
-    * @param file file
+    * Creates a {@link ConfigFile} from the file
+    * @param file the file to load the configuration from
     */
    public ConfigFile(File file)
    {
-      this.path = file.toPath();
+      this.file = file;
    }
 
    /**
-    * Loads the Configuration File
+    * Loads the configuration file
     */
    @Override
    public void load()
    {
       try
       {
-         configuration.load(path.toFile());
+         configuration.load(file);
       }
       catch (IOException e)
       {
@@ -52,7 +52,7 @@ public class ConfigFile implements Loadable, Reloadable
    }
 
    /**
-    * Reloads the Configuration File
+    * Reloads the configuration file
     */
    @Override
    public void reload()
@@ -62,7 +62,7 @@ public class ConfigFile implements Loadable, Reloadable
    }
 
    /**
-    * Gets the Configuration from the File
+    * Gets the {@link Configuration} from the File
     * @return configuration
     */
    public Configuration getConfiguration()
