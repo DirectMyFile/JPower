@@ -60,7 +60,7 @@ public class Configuration
             String key = parts[0];
             if (parts[1].charAt(0) != ' ')
             {
-               throw new ParseException(lineNumber.get(), line.indexOf('A') + 1, "A space is required after the ':' and before the value");
+               throw new ParseException(lineNumber.get(), line.indexOf(':') + 1, "A space is required after the ':' and before the value");
             }
             String value = parts[1].substring(1);
             Property property = new Property(key);
