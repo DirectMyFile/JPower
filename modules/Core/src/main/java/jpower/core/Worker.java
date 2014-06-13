@@ -110,7 +110,7 @@ public class Worker implements Runnable
    {
       if (!isRunning())
       {
-         ThreadUtils.start(this);
+         thread = ThreadUtils.start(this);
       }
    }
 
