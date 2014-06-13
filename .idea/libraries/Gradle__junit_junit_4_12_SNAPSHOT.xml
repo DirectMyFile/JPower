@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: junit:junit:4.12-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12-SNAPSHOT/d0f5ec9e335da2ea2827c781a46a02d8b6bbd556/junit-4.12-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12-SNAPSHOT/2f98eaeedfc588e4abc521d4e7a61c49f5149bd4/junit-4.12-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -18,7 +18,7 @@ public class CommandLineParser
       for (String arg : args)
       {
 
-         if (arg.startsWith("-") || arg.startsWith("--"))
+         if (arg.startsWith("-")) // Assume it is an option
          {
             Matcher matcher = ARG_PATTERN.matcher(arg);
             if (matcher.find()) /* Assume Options */
