@@ -65,7 +65,7 @@ public class Worker implements Runnable
       {
          try
          {
-            Task task = queue.poll(250, TimeUnit.MILLISECONDS);
+            Task task = queue.poll(100, TimeUnit.MILLISECONDS);
             if (task == null)
             {
                continue;
@@ -95,7 +95,7 @@ public class Worker implements Runnable
    }
 
    /**
-    * Stops the Worker (Takes no more than 250 milliseconds)
+    * Stops the Worker (Takes no more than 100 milliseconds)
     */
    public void stop()
    {
