@@ -41,28 +41,53 @@ public class PowerMath
    }
 
    /**
-    * Gets the highest number in the given numbers
+    * Gets the largest number in the given numbers
     *
     * @param numbers input
-    * @return maximum number
+    * @return largest number
     */
-   public static int maximum(int... numbers)
+   public static int largest(int... numbers)
    {
       boolean first = true;
-      int max = 0;
+      int highest = 0;
       for (int n : numbers)
       {
          if (first)
          {
-            max = n;
+            highest = n;
             first = false;
             continue;
          }
-         if (n > max)
+         if (n > highest)
          {
-            max = n;
+            highest = n;
          }
       }
-      return max;
+      return highest;
+   }
+
+   /**
+    * Gets the smallest number in the given numbers
+    *
+    * @param numbers input
+    * @return smallest number
+    */
+   public static int smallest(int... numbers)
+   {
+      boolean first = true;
+      int lowest = 0;
+      for (int n : numbers)
+      {
+         if (first)
+         {
+            lowest = n;
+            first = false;
+         }
+         else if (n < lowest)
+         {
+            lowest = n;
+         }
+      }
+      return lowest;
    }
 }

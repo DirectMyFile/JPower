@@ -20,10 +20,17 @@ public class PowerMathTest
    }
 
    @Test
-   public void testMaxOf10Numbers()
+   public void testLargestOf10Numbers()
    {
       int[] inputs = {0, 5, 300, 2, 4, 6, 5, 500, 53, 3};
-      assertEquals(500, PowerMath.maximum(inputs));
+      assertEquals(500, PowerMath.largest(inputs));
+   }
+
+   @Test
+   public void testSmallestOf10Numbers()
+   {
+      int[] inputs = {0, 5, 300, -5, 2, 4, 6, 5, 500, 53, 3};
+      assertEquals(-5, PowerMath.smallest(inputs));
    }
 
    @Test
