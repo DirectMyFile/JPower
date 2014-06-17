@@ -21,12 +21,12 @@ public class PowerInternalSystem
    }
 
    @SuppressWarnings({"unchecked", "UseOfObsoleteCollectionType"})
-   public static Class[] getLoadedClasses(ClassLoader loader)
+   public static Class<?>[] getLoadedClasses(ClassLoader loader)
    {
       try
       {
-         Vector<Class> classList = (Vector<Class>) new FieldAccessor(ClassLoader.class, loader).get("classes");
-         return classList.toArray(new Class[classList.size()]);
+         Vector<Class<?>> classList = (Vector<Class<?>>) new FieldAccessor(ClassLoader.class, loader).get("classes");
+         return classList.toArray(new Class<?>[classList.size()]);
       }
       catch (NoSuchFieldException | IllegalAccessException e)
       {
