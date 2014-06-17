@@ -14,9 +14,8 @@ public class AsyncEventBus extends AbstractEventBus
     *
     * @param workerPool Worker Pool
     */
-   private AsyncEventBus(WorkerPool workerPool, boolean globalEnabled)
+   private AsyncEventBus(WorkerPool workerPool)
    {
-      super(globalEnabled);
       this.workerPool = workerPool;
    }
 
@@ -25,7 +24,7 @@ public class AsyncEventBus extends AbstractEventBus
     */
    public AsyncEventBus()
    {
-      this(new WorkerPool(), false);
+      this(new WorkerPool());
    }
 
    /**
@@ -35,7 +34,7 @@ public class AsyncEventBus extends AbstractEventBus
     */
    public AsyncEventBus(int workers)
    {
-      this(new WorkerPool(workers), false);
+      this(new WorkerPool(workers));
    }
 
    /**

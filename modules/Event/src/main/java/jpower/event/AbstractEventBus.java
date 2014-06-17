@@ -12,12 +12,4 @@ public abstract class AbstractEventBus extends EventBus
    {
       super();
    }
-
-   /**
-    * {@inheritDoc}
-    */
-   public AbstractEventBus(boolean globalEnabled)
-   {
-      super(globalEnabled);
-   }
 }

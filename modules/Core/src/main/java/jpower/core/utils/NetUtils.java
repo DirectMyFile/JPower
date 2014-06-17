@@ -35,4 +35,9 @@ public class NetUtils
    {
       FileUtils.write(location, IOUtils.getBytes(getConnection(url).getInputStream()));
    }
+
+   public static String localIPAddress()
+   {
+      return InetAddress.getLoopbackAddress().getHostAddress();
+   }
 }

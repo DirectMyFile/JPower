@@ -6,33 +6,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@inheritDoc}
+ * Base Implementation of the JPower Event Bus
  */
 public class EventBus implements IEventBus
 {
+   /**
+    * The Registered Handlers
+    */
    protected final List<RegisteredHandler> handlers;
-   protected final boolean globalEnabled;
 
    /**
-    * {@inheritDoc}
+    * Creates a new Event Bus
     */
    public EventBus()
    {
-      this(true);
-   }
-
-   /**
-    * {@inheritDoc}
-    */
-   public EventBus(final boolean globalEnabled)
-   {
       handlers = new ArrayList<>();
-      this.globalEnabled = globalEnabled;
    }
 
    /**
     * {@inheritDoc}
     */
+   @Override
    public void register(final Object object)
    {
       handlers.add(new RegisteredHandler(object).setAnnotationType(EventHandler.class).registerMethods());
@@ -41,6 +35,7 @@ public class EventBus implements IEventBus
    /**
     * {@inheritDoc}
     */
+   @Override
    public boolean unregister(final Object object)
    {
       RegisteredHandler handlerToRemove = null;
@@ -62,6 +57,7 @@ public class EventBus implements IEventBus
    /**
     * {@inheritDoc}
     */
+   @Override
    public void post(final Object event)
    {
       Wrapper<Boolean> didRun = new Wrapper<>(false);
@@ -71,14 +67,10 @@ public class EventBus implements IEventBus
             didRun.set(true);
          }
       });
-      //noinspection InstanceofThis
-      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && !didRun.get() && !(this instanceof GlobalEventBus))
+
+      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && !didRun.get())
       {
          post(new DeadEvent(event));
-      }
-      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && globalEnabled)
-      {
-         GlobalEventBus.get().post(event);
       }
    }
 }
