@@ -14,7 +14,6 @@ subprojects {
 apply from: "gradle/ci.gradle"
 apply from: "gradle/reports.gradle"
 apply from: "gradle/release.gradle"
-apply from: "gradle/wrapper.gradle"
 apply from: "gradle/alljar.gradle"
 apply from: "gradle/docs.gradle"
 apply from: "gradle/improvements.gradle"

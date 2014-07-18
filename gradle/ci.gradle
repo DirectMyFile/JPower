@@ -20,7 +20,7 @@ task ci {
 
     for (prj in subprojects) {
         finalizedBy ":${prj.name}:jar"
-        if (ciType == "TeamCity") { // TeamCity Builds are Complex
+        if (ciType == "TeamCity") { // TeamCity builds are complex
             if ((sysenv.BUILD_IS_PERSONAL != "true") && (sysenv.PUBLISH_BUILD == "true")) {
                 finalizedBy ":${prj.name}:publish"
             }
@@ -31,7 +31,7 @@ task ci {
 
     doFirst {
         if (ciType == "Unknown") {
-            logger.lifecycle "[CI Build] Cannot detect CI Type"
+            logger.lifecycle "[CI Build] Cannot detect CI type"
         }
     }
 }
