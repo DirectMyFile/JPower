@@ -13,3 +13,4 @@ build-number.txt
 /gen_docs/
 .clover/
 .idea/workspace.xml
+.local.vimrc
