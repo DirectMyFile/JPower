@@ -36,7 +36,7 @@ public class Property
       StringBuilder builder = new StringBuilder();
 
       comments.forEach(comment -> builder.append('#').append(' ').append(comment).append('\n'));
-      builder.append(key).append(':').append(' ').append(value).append('\n');
+      builder.append(key).append('=').append(value).append('\n');
 
       return builder.toString();
    }
@@ -45,7 +45,7 @@ public class Property
    {
       List<String> lines = new ArrayList<>();
       comments.forEach(comment -> lines.add("# " + comment));
-      lines.add(key + ": " + value);
+      lines.add(key + "=" + value);
       return lines;
    }
 

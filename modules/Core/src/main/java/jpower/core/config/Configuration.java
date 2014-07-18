@@ -14,29 +14,41 @@ import java.util.regex.Pattern;
 
 public class Configuration
 {
-   private static final Pattern KEY_VALUE_SPLIT = Pattern.compile(":");
-   private final List<Property> props;
+   private static final Pattern KEY_VALUE_SPLIT = Pattern.compile("=");
 
-   public Configuration()
+   private final List<Property> props = new ArrayList<>();
+   private final File file;
+
+   private boolean lock;
+
+   public Configuration(File file)
    {
-      props = new ArrayList<>();
+       this.file = file;
    }
 
-   public void load(File file) throws IOException
+   public void lock()
+   {
+      lock = true;
+   }
+
+   public void unlock()
+   {
+      lock = false;
+   }
+
+   public void load() throws IOException
    {
       if (!file.exists())
       {
          throw new FileNotFoundException(file.getAbsolutePath() + " does not exist.");
       }
-      reset();
+      else if (lock)
+      {
+         return;
+      }
+      props.clear();
       List<String> lines = FileUtils.readLines(file);
       processLines(lines);
-   }
-
-   public void load(Reader input) throws IOException
-   {
-      reset();
-      processLines(IOUtils.readLines(new BufferedReader(input)));
    }
 
    private void processLines(Iterable<String> lines)
@@ -52,18 +64,13 @@ public class Configuration
          }
          else
          {
-            String[] parts = KEY_VALUE_SPLIT.split(line, 2); /* Splits at the first index of ':' */
+            String[] parts = KEY_VALUE_SPLIT.split(line, 2); /* Splits at the first index of '=' */
             if (parts.length != 2)
             {
                throw new ParseException(lineNumber.get(), "Invalid Configuration Entry: " + line);
             }
-            String key = parts[0];
-            if (parts[1].charAt(0) != ' ')
-            {
-               throw new ParseException(lineNumber.get(), line.indexOf(':') + 1, "A space is required after the ':' and before the value");
-            }
-            String value = parts[1].substring(1);
-            Property property = new Property(key);
+            String value = parts[1];
+            Property property = new Property(parts[0]);
             property.comments().addAll(comments);
             comments.clear();
             property.set(value);
@@ -72,42 +79,21 @@ public class Configuration
       });
    }
 
-   private List<String> generate()
+   private List<String> toList()
    {
       List<String> lines = new ArrayList<>();
       props.forEach(property -> lines.addAll(property.toLines()));
       return lines;
    }
 
-   @SuppressWarnings("ResultOfMethodCallIgnored")
-   public void save(File file) throws IOException
+   public void save() throws IOException
    {
-      if (file.exists())
+      if (lock)
       {
-         file.delete();
+         return;
       }
       file.createNewFile();
       FileUtils.write(file, toString());
-   }
-
-   public void save(Writer writer)
-   {
-      generate().forEach(line -> {
-         try
-         {
-            writer.write(line);
-            writer.write('\n');
-         }
-         catch (IOException e)
-         {
-            throw new RuntimeException(e);
-         }
-      });
-   }
-
-   public void reset()
-   {
-      props.clear();
    }
 
    public List<Property> properties()

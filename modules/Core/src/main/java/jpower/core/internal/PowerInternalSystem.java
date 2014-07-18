@@ -10,14 +10,14 @@ public class PowerInternalSystem
 {
    private static Instrumentation inst;
 
-   public static void premain(String args, Instrumentation inst)
+   public static void premain(String args, Instrumentation i)
    {
-      PowerInternalSystem.inst = inst;
+      inst = i;
    }
 
-   public static void agentmain(String args, Instrumentation inst)
+   public static void agentmain(String args, Instrumentation i)
    {
-      PowerInternalSystem.inst = inst;
+      inst = i;
    }
 
    @SuppressWarnings({"unchecked", "UseOfObsoleteCollectionType"})

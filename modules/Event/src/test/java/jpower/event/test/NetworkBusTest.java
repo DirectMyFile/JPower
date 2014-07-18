@@ -22,7 +22,7 @@ public class NetworkBusTest
    @Before
    public void prepare() throws IOException
    {
-      server = new ServerEventBus(NetUtils.localIPAddress(), 0);
+      server = new ServerEventBus(NetUtils.localIPAddress(), 46839);
    }
 
    @Test

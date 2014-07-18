@@ -30,7 +30,7 @@ public class ConfigurationTest
    public void prepare() throws IOException
    {
       configFile = tempFolder.newFile("test.cfg");
-      config = new Configuration();
+      config = new Configuration(configFile);
    }
 
    @Test
@@ -38,42 +38,21 @@ public class ConfigurationTest
    {
       Property test = config.set("test", "hello");
       test.addComment("This is a test property");
-      assertEquals("# This is a test property\ntest: hello\n",
+      assertEquals("# This is a test property\ntest=hello\n",
               test.toString());
-      config.save(configFile);
-      assertEquals("# This is a test property\ntest: hello\n", FileUtils.toString(configFile));
+      config.save();
+      assertEquals("# This is a test property\ntest=hello\n", FileUtils.toString(configFile));
    }
 
    @Test
    public void testLoadFromFile() throws IOException
    {
       testSaveToFile();
-      config.load(configFile);
+      config.load();
       Property test = config.getProperty("test");
       assertNotNull(test);
       assertEquals("hello", test.value());
       assertEquals("This is a test property", test.comments().get(0));
-   }
-
-   @Test
-   public void testSaveToWriter() throws IOException
-   {
-      Writer writer = new StringWriter();
-      config.set("letter.a", "Letter A")
-              .addComment("This is A of course");
-      config.set("letter.b", "Letter B");
-      config.save(writer);
-      assertEquals("# This is A of course\nletter.a: Letter A\nletter.b: Letter B\n", writer.toString());
-   }
-
-   @Test
-   public void testLoadFromReader() throws IOException
-   {
-      Reader reader = new StringReader("# This is A of course\nletter.a: Letter A\nletter.b: Letter B\n");
-      config.load(reader);
-      assertEquals("Letter A", config.get("letter.a"));
-      assertEquals("This is A of course", config.getProperty("letter.a").comments().get(0));
-      assertEquals("Letter B", config.get("letter.b"));
    }
 
    @Test
@@ -106,21 +85,21 @@ public class ConfigurationTest
    public void testFailureToParseNoSpaces() throws IOException
    {
       FileUtils.write(configFile, "key:value");
-      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
+      assertNotNull(TestUtils.thrown(() -> config.load()));
    }
 
    @Test
    public void testFailureToParseRandomStuff() throws IOException
    {
       FileUtils.write(configFile, "dlfjkasl;djf;sldnvcmxn,e:dj:fjhds:fhfhfhueudjjf:\nfjfjdskl\n\fdsjfjs\n\n\n");
-      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
+      assertNotNull(TestUtils.thrown(() -> config.load()));
    }
 
    @Test
    public void testFailureToParseIncorrectFormat() throws IOException
    {
-      FileUtils.write(configFile, "key=value");
-      assertNotNull(TestUtils.thrown(() -> config.load(configFile)));
+      FileUtils.write(configFile, "key: value");
+      assertNotNull(TestUtils.thrown(() -> config.load()));
    }
 
    @Test
