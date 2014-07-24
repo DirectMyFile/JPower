@@ -15,3 +15,4 @@ build-number.txt
 .idea/workspace.xml
 .local.vimrc
 .*.swp
+modules/Test/
