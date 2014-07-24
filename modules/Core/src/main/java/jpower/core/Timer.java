@@ -7,6 +7,9 @@ public class Timer
    private long endTime;
    private boolean running;
 
+   /**
+    * Start the Timer
+    */
    public void start()
    {
       if (running)
@@ -17,6 +20,9 @@ public class Timer
       startTime = System.currentTimeMillis();
    }
 
+   /**
+    * Stop the Timer
+    */
    public void stop()
    {
       if (!running)
@@ -27,6 +33,9 @@ public class Timer
       endTime = System.currentTimeMillis();
    }
 
+   /**
+    * Reset the Timer
+    */
    public void reset()
    {
       running = false;
@@ -34,6 +43,10 @@ public class Timer
       endTime = 0;
    }
 
+   /**
+    * Get the length of time that the Timer was running
+    * @return time in milliseconds
+    */
    public long getTime()
    {
       if (running)
@@ -43,6 +56,10 @@ public class Timer
       return endTime - startTime;
    }
 
+   /**
+    * Time a Runnable task and return the Timer instance
+    * @return timer for length of operation
+    */
    public static Timer of(Runnable task)
    {
       Timer timer = new Timer();
@@ -52,6 +69,10 @@ public class Timer
       return timer;
    }
 
+   /**
+    * Time a Runnable task and return the length of time it took.
+    * @return length of time task took
+    */
    public static long timeOf(Runnable task)
    {
       return of(task).getTime();
