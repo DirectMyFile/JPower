@@ -6,19 +6,18 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 # Authors
 
-- Logan Gorence - Project Maintainer
+- Logan Gorence - Project Maintainer and Developer
 - Kenneth Endfinger - Creator and Developer
 
 # Links
 
-- [Issue Tracker](http://goo.gl/C5NIcU)
-- [Wiki](http://goo.gl/ua6HNX)
-- [TeamCity](http://goo.gl/x0mb1X)
-- [JavaDoc](http://goo.gl/m2v7rb)
+- [Issue Tracker](http://github.com/DirectMyFile/JPower/issues)
+- [Wiki](http://github.com/DirectMyFile/JPower/wiki)
+- [TeamCity](https://ci.directcode.org/viewType.html?buildTypeId=DirectCode_JPower_Primary)
 
 # Contact Us
 
-The JPower team can be found on [EsperNet](http://esper.net/) in [#directcode](http://goo.gl/EA5bNW)
+The JPower team can be found on [EsperNET](http://esper.net/) in [#directcode](http://goo.gl/EA5bNW)
 
 # Sponsors
 
