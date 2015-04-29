@@ -1,5 +1,3 @@
-apply from: "gradle/plugins.gradle"
-
 group = "org.directcode.jpower"
 version = "1.0-SNAPSHOT"
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
