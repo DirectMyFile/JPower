@@ -1,4 +1,4 @@
-# JPower [![Build Status](http://goo.gl/t9TsjZ)](http://goo.gl/x0mb1X)
+# JPower
 
 ![JPower Logo](docs/logo.png)
 
@@ -17,7 +17,7 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 # Contact Us
 
-The JPower team can be found on [EsperNET](http://esper.net/) in [#directcode](http://goo.gl/EA5bNW)
+The JPower team can be found on [EsperNET](http://esper.net/) in #directcode
 
 # Sponsors
 
