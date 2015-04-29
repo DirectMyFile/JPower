@@ -17,3 +17,4 @@ build-number.txt
 .*.swp
 modules/Test/
 *.iml
+.idea/
