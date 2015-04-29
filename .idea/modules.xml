@@ -12,8 +12,6 @@
       <module fileurl="file://$PROJECT_DIR$/modules/Script/Script.iml" filepath="$PROJECT_DIR$/modules/Script/Script.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/Socket/Socket.iml" filepath="$PROJECT_DIR$/modules/Socket/Socket.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/YAML/YAML.iml" filepath="$PROJECT_DIR$/modules/YAML/YAML.iml" />
-      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
     </modules>
   </component>
 </project>
-

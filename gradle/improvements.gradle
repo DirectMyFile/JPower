@@ -1,9 +1,0 @@
-tasks.getByName("cleanIdeaWorkspace").with {
-    group = "ide"
-    description = "Cleans up the generated IDEA Workspace"
-}
-
-tasks.getByName("buildDashboard").with {
-    group = "reporting"
-    description = "Creates a project report site"
-}

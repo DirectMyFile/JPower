@@ -1,7 +1,5 @@
-import jpower.gradle.ReleaseTask
-
-task release(type: ReleaseTask) {
-    group = "publishing"
-    description = "Releases JPower as configured"
-    git(tag: true, push: true, updateMaster: true)
+task uploadAll {
+    dependsOn {
+        subprojects.uploadArchives
+    }
 }

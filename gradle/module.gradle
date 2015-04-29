@@ -1,16 +1,13 @@
-import jpower.gradle.JPower
-
 apply plugin: "java"
-apply plugin: "java-library-distribution"
+apply plugin: "maven"
+apply plugin: "signing"
 
+group = rootProject.group
 version = rootProject.version
 description = "JPower ${project.name} Module"
 
-JPower.setup(project)
-
 repositories {
-    jcenter()
-
+    mavenCentral()
     maven {
         name = "snapshots"
         url = 'https://oss.sonatype.org/content/repositories/snapshots/'
@@ -19,10 +16,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains:annotations:13.0"
-    testCompile "junit:junit:4.12-SNAPSHOT"
+    testCompile "junit:junit:4.12"
 }
-
-publish.shouldRunAfter "test"
 
 compileJava {
     options.warnings = false
@@ -31,16 +26,13 @@ compileJava {
     targetCompatibility = 1.8
 }
 
+signing {
+    sign configurations.archives
+}
+
 test {
     maxParallelForks = 2 // Running Tests in Parallel really helps the build
     useJUnit() // Ensure we use JUnit
-
-    reports.html.enabled = true
-    reports.junitXml.enabled = true
-
-    testLogging.lifecycle {
-        events = ["failed", "skipped"]
-    }
 }
 
 jar {
@@ -49,4 +41,64 @@ jar {
     }
 }
 
-distributions.main.baseName = "${project.name}"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+            configuration = configurations.archives
+
+            repository(url: "http://nexus.directcode.org/nexus/content/repositories/${rootProject.ext.isReleaseVersion ? "releases" : "snapshots"}/") {
+                authentication(userName: project.property("dcUsername"), password: project.property("dcPassword"))
+            }
+
+            pom {
+                groupId = rootProject.group
+                version = project.version
+                artifactId = project.archivesBaseName
+
+                project {
+                    name project.archivesBaseName
+                    packaging 'jar'
+                    description "JPower ${project.name} Module"
+                    url 'http://github.com/DirectMyFile/JPower/'
+
+                    scm {
+                        url 'https://github.com/DirectMyFile/JPower'
+                        connection 'scm:git:git://github.com/DirectMyFile/JPower.git'
+                        developerConnection 'scm:git:git@github.com:DirectMyFile/JPower.git'
+                    }
+
+                    issueManagement {
+                        system 'github'
+                        url 'https://github.com/DirectMyFile/JPower/issues'
+                    }
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'http://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'kaendfinger'
+                            name 'Kenneth Endfinger'
+                            roles {
+                                role 'developer'
+                            }
+                        }
+                        developer {
+                            id 'logangorence'
+                            name 'Logan Gorence'
+                            roles {
+                                role 'developer'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

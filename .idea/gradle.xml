@@ -5,11 +5,10 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$USER_HOME$/.gvm/gradle/current" />
+        <option name="gradleHome" value="/usr/share/java/gradle" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/modules/Core" />
             <option value="$PROJECT_DIR$/modules/Event" />
             <option value="$PROJECT_DIR$/modules/GCP" />
@@ -25,4 +24,3 @@
     </option>
   </component>
 </project>
-

@@ -16,3 +16,4 @@ build-number.txt
 .local.vimrc
 .*.swp
 modules/Test/
+*.iml
