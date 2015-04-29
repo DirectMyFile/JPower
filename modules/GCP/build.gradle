@@ -1,5 +1,0 @@
-dependencies {
-    compile project(":Core")
-    compile project(":Event")
-    compile project(":Socket")
-}
