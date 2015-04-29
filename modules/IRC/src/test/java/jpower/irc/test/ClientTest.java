@@ -12,7 +12,7 @@ public class ClientTest
    @Test
    public void testConnect()
    {
-      PowerIrc irc = new PowerIrc("LoganBot", "LoganBot", "irc.esper.net", 6667);
-      irc.connect();
+      //PowerIrc irc = new PowerIrc("LoganBot", "LoganBot", "irc.esper.net", 6667);
+      //irc.connect();
    }
 }
