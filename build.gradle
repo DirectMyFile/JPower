@@ -1,5 +1,5 @@
 group = "org.directcode.jpower"
-version = "1.0.0"
+version = "1.1-SNAPSHOT"
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 subprojects {
