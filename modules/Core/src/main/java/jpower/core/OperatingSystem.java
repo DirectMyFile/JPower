@@ -112,17 +112,13 @@ public final class OperatingSystem
     */
    public String lineSeparator()
    {
-      if (isUnix())
+      if (isUnix() || isMac())
       {
          return "\n";
       }
       else if (isWindows())
       {
          return "\r\n";
-      }
-      else if (isMac()) // TODO: Checkup on Mac OSX Line Separator
-      {
-         return "\r";
       }
       else
       {
