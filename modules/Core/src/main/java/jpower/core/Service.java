@@ -1,22 +1,22 @@
 package jpower.core;
 
 /**
- * A Service is a thing that can be started and stopped.
+ * A Service is an entity that can be started and stopped.
  */
 public interface Service
 {
    /**
-    * Starts the Service
+    * Start the Service
     */
    void start();
 
    /**
-    * Stops the Service
+    * Stop the Service
     */
    void stop();
 
    /**
-    * Restarts the Service
+    * Restart the Service
     */
    default void restart()
    {
