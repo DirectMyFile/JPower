@@ -15,8 +15,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Gets the Current Operating System
-    *
+    * Get the current Operating System.
     * @return Current OS
     */
    public static OperatingSystem current()
@@ -25,7 +24,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Gets the specified Operating System
+    * Get the specified Operating System.
     * @param name OS Name
     * @return Operating System
     */
@@ -35,7 +34,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the Current OS is Windows
+    * Check if the Operating System is Windows.
     * @return true if Windows, otherwise false
     */
    public boolean isWindows()
@@ -44,7 +43,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the Current OS is Mac OSX
+    * Check if the Operating System is Mac OS X.
     * @return true if Mac OSX, otherwise false
     */
    public boolean isMac()
@@ -53,7 +52,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the Current OS is Unix
+    * Check if the Operating System is Unix-based.
     * @return true if Unix, otherwise false
     */
    public boolean isUnix()
@@ -62,7 +61,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the Current OS is Solaris
+    * Check if the Operating System is Solaris.
     * @return true if Solaris, otherwise false
     */
    public boolean isSolaris()
@@ -71,7 +70,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the OS could not be determined
+    * Check if the Operating System could not be determined.
     * @return true if not determined, otherwise false
     */
    public boolean isUnknown()
@@ -80,8 +79,8 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the OS is Case Sensitive
-    * @return true if case sensitive, otherwise false
+    * Check if the Operating System is case-sensitive.
+    * @return true if case-sensitive, otherwise false
     */
    public boolean isCaseSensitive()
    {
@@ -89,7 +88,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Checks if the Operating System is the same as the Current Operating System
+    * Check if this Operating System is equal to the current one.
     * @return true if the current os, otherwise false
     */
    public boolean isCurrent()
@@ -98,7 +97,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Gets the OS Version
+    * Get the Operating System version.
     * @return OS Version if the instance is the Current OS, otherwise "unknown"
     */
    public String version()
@@ -107,7 +106,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Gets the Line Separator for the OS
+    * Get the line separator for the operating system.
     * @return Line Separator
     */
    public String lineSeparator()
@@ -127,7 +126,7 @@ public final class OperatingSystem
    }
 
    /**
-    * Gets the OS Name
+    * Get the Operating System name.
     * @return OS Name
     */
    public String getName()
