@@ -39,7 +39,6 @@ repositories {
         url = "http://nexus.directcode.org/nexus/content/repositories/releases/"
     }
 }
-}
 ```
 
 # Sponsors
