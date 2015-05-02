@@ -19,13 +19,13 @@ JPower is a modular set of libraries similar to Apache Commons and Guava, with a
 
 The JPower team can be found on [EsperNET](http://esper.net/) in #directcode
 
-# Maven
+# Maven Artifacts
 
-You can use our artifacts via our Maven repository.
+You can depend on our artifacts via our Maven repository.
 
 ## Gradle
 
-You can pick from either of the follow repositories, depending on if you want the
+You can pick from either of the follow repositories, depending on if you need the
 latest stable version or a snapshot.
 
 ```
