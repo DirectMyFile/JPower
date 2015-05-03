@@ -1,4 +1,4 @@
-package jpower.irc;
+package jpower.irc.events;
 
 import java.util.List;
 

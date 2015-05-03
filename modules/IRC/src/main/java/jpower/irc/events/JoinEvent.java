@@ -1,6 +1,4 @@
-package jpower.irc;
-
-import java.io.Serializable;
+package jpower.irc.events;
 
 public class JoinEvent
 {

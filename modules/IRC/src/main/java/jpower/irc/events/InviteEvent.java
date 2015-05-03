@@ -1,4 +1,6 @@
-package jpower.irc;
+package jpower.irc.events;
+
+import jpower.irc.User;
 
 public class InviteEvent
 {

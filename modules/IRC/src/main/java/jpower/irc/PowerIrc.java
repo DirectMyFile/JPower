@@ -1,22 +1,21 @@
 package jpower.irc;
 
 import jpower.core.utils.IOUtils;
-
 import jpower.event.EventBus;
 import jpower.event.EventHandler;
+import jpower.irc.events.*;
 
-import java.lang.Thread;
-import java.net.Socket;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.OutputStreamWriter;
 import java.io.BufferedReader;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.List;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PowerIrc
 {
@@ -440,7 +439,7 @@ public class PowerIrc
                   eventBus.post(new MotdEvent(motd));
                   break;
                default:
-                  //System.out.println(read);
+                  System.out.println(read);
                   break;
             }
          }
