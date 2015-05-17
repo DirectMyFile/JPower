@@ -10,8 +10,7 @@ import java.util.regex.Pattern;
 /**
  * Regular Expression Utilities
  */
-public class RegularExpression
-{
+public class RegularExpression {
 
    private Pattern pattern;
 
@@ -20,8 +19,7 @@ public class RegularExpression
     *
     * @param pattern pattern
     */
-   public RegularExpression(Pattern pattern)
-   {
+   public RegularExpression(Pattern pattern) {
       this.pattern = pattern;
    }
 
@@ -30,8 +28,7 @@ public class RegularExpression
     *
     * @param pattern pattern
     */
-   public RegularExpression(@Language("RegExp") String pattern)
-   {
+   public RegularExpression(@Language("RegExp") String pattern) {
       this.pattern = Pattern.compile(pattern);
    }
 
@@ -41,8 +38,7 @@ public class RegularExpression
     * @param str input string
     * @return string scanner
     */
-   public static StringScanner scanner(String str)
-   {
+   public static StringScanner scanner(String str) {
       return new StringScanner(str);
    }
 
@@ -53,8 +49,7 @@ public class RegularExpression
     * @param input   input string
     * @return true if it matches, otherwise false
     */
-   public static boolean matches(Pattern pattern, String input)
-   {
+   public static boolean matches(Pattern pattern, String input) {
       return pattern.matcher(input).matches();
    }
 
@@ -65,12 +60,10 @@ public class RegularExpression
     * @param input   input string
     * @return array of capture groups
     */
-   public static String[] captures(Pattern pattern, String input)
-   {
+   public static String[] captures(Pattern pattern, String input) {
       List<String> captures = new ArrayList<>();
       Matcher matcher = pattern.matcher(input);
-      for (int i = 0; i < matcher.groupCount(); i++)
-      {
+      for (int i = 0; i < matcher.groupCount(); i++) {
          captures.add(matcher.group(i));
       }
       return captures.toArray(new String[captures.size()]);
@@ -83,8 +76,7 @@ public class RegularExpression
     * @param input   input string
     * @return array of capture groups
     */
-   public static String[] captures(@Language("RegExp") String pattern, String input)
-   {
+   public static String[] captures(@Language("RegExp") String pattern, String input) {
       return captures(Pattern.compile(pattern), input);
    }
 
@@ -94,8 +86,7 @@ public class RegularExpression
     * @param input input string
     * @return array of capture groups
     */
-   public String[] captures(String input)
-   {
+   public String[] captures(String input) {
       return captures(pattern, input);
    }
 
@@ -105,8 +96,7 @@ public class RegularExpression
     * @param input input string
     * @return true if it matches, otherwise false
     */
-   public boolean matches(String input)
-   {
+   public boolean matches(String input) {
       return matches(pattern, input);
    }
 }

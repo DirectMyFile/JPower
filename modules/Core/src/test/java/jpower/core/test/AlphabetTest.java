@@ -6,63 +6,52 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class AlphabetTest
-{
+public class AlphabetTest {
    @Test
-   public void testUppercase()
-   {
+   public void testUppercase() {
       char[] uppercase = Alphabet.uppercase();
-      for (char letter : uppercase)
-      {
+      for (char letter : uppercase) {
          assertFalse(Character.isLowerCase(letter));
       }
    }
 
    @Test
-   public void testLowercase()
-   {
+   public void testLowercase() {
       char[] lowercase = Alphabet.lowercase();
-      for (char letter : lowercase)
-      {
+      for (char letter : lowercase) {
          assertFalse(Character.isUpperCase(letter));
       }
    }
 
    @Test
-   public void testLength()
-   {
+   public void testLength() {
       assertEquals(26, Alphabet.length());
    }
 
    @Test(expected = IndexOutOfBoundsException.class)
-   public void testRangeSingleOutOfBounds()
-   {
+   public void testRangeSingleOutOfBounds() {
       Alphabet.getRange(-1);
    }
 
    @Test(expected = IndexOutOfBoundsException.class)
-   public void testRangeDoubleOutOfBounds()
-   {
+   public void testRangeDoubleOutOfBounds() {
       Alphabet.getRange(-1, -5);
    }
 
    @Test
-   public void testRangeAll()
-   {
+   public void testRangeAll() {
       char[] range = Alphabet.getRange(0);
       assertEquals(26, range.length);
    }
 
    @Test
-   public void testRangeSingle()
-   {
+   public void testRangeSingle() {
       char[] range = Alphabet.getRange(25);
       assertEquals(1, range.length);
    }
 
    @Test
-   public void testRangeDouble()
-   {
+   public void testRangeDouble() {
       char[] range = Alphabet.getRange(0, 3);
       assertEquals(3, range.length);
    }

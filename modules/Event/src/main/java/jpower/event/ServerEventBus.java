@@ -9,52 +9,38 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ServerEventBus extends AbstractEventBus
-{
+public class ServerEventBus extends AbstractEventBus {
    private final WorkerServer workerServer;
    private final Collection<Client> clients = new ArrayList<>();
 
-   public ServerEventBus(String host, int port) throws IOException
-   {
+   public ServerEventBus(String host, int port) throws IOException {
       workerServer = new WorkerServer(host, port);
-      workerServer.setClientHandler(new ClientHandler()
-      {
+      workerServer.setClientHandler(new ClientHandler() {
          @Override
-         public void handleClient(Client client)
-         {
+         public void handleClient(Client client) {
             clients.add(client);
-            while (!client.socket().isClosed())
-            {
-               try
-               {
+            while (!client.socket().isClosed()) {
+               try {
                   post(client.readObject());
-               }
-               catch (IOException | ClassNotFoundException ignored)
-               {
+               } catch (IOException | ClassNotFoundException ignored) {
                }
             }
          }
       });
    }
 
-   public void start() throws IOException
-   {
+   public void start() throws IOException {
       workerServer.start();
    }
 
    @Override
-   public void post(Object event)
-   {
+   public void post(Object event) {
       super.post(event);
-      if (event instanceof Serializable)
-      {
+      if (event instanceof Serializable) {
          clients.forEach(client -> {
-            try
-            {
+            try {
                client.writeObject(event);
-            }
-            catch (IOException ignored)
-            {
+            } catch (IOException ignored) {
             }
          });
       }

@@ -3,15 +3,13 @@ package jpower.core;
 import jpower.core.internal.CancelStateTracker;
 
 @FunctionalInterface
-public interface Task extends Runnable
-{
+public interface Task extends Runnable {
 
    /**
     * Used to run in Threads
     */
    @Override
-   default void run()
-   {
+   default void run() {
       execute();
    }
 
@@ -25,24 +23,21 @@ public interface Task extends Runnable
     *
     * @return Task is Canceled
     */
-   default boolean isCanceled()
-   {
+   default boolean isCanceled() {
       return CancelStateTracker.isCanceled(this);
    }
 
    /**
     * Cancels the Task
     */
-   default void cancel()
-   {
+   default void cancel() {
       CancelStateTracker.setCanceled(this, true);
    }
 
    /**
     * Actives the Task if it is canceled
     */
-   default void activate()
-   {
+   default void activate() {
       CancelStateTracker.setCanceled(this, false);
    }
 }

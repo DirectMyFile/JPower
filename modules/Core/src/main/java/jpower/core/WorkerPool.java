@@ -8,8 +8,7 @@ import java.util.List;
 /**
  * Manages a Collection of Workers
  */
-public class WorkerPool
-{
+public class WorkerPool {
    private final List<Worker> workers = new ArrayList<>();
 
    private final int size;
@@ -19,16 +18,14 @@ public class WorkerPool
     *
     * @param size size of pool
     */
-   public WorkerPool(int size)
-   {
+   public WorkerPool(int size) {
       this.size = size;
    }
 
    /**
     * Creates a Worker Pool of the Default Size (50 Workers)
     */
-   public WorkerPool()
-   {
+   public WorkerPool() {
       size = 50;
    }
 
@@ -38,11 +35,9 @@ public class WorkerPool
     * @param task Task
     * @return Was added to Queue
     */
-   public boolean submit(Task task)
-   {
+   public boolean submit(Task task) {
       Worker worker = pullWorker();
-      if (worker == null)
-      {
+      if (worker == null) {
          return false;
       }
       worker.addTask(task);
@@ -55,18 +50,14 @@ public class WorkerPool
     *
     * @return A Worker if Found, else Null
     */
-   private Worker pullWorker()
-   {
-      if (workers.isEmpty())
-      {
+   private Worker pullWorker() {
+      if (workers.isEmpty()) {
          Worker worker = newWorker();
          workers.add(worker);
          return worker;
       }
-      for (Worker worker : workers)
-      {
-         if (!worker.isWorking())
-         {
+      for (Worker worker : workers) {
+         if (!worker.isWorking()) {
             return worker;
          }
       }
@@ -78,10 +69,8 @@ public class WorkerPool
     *
     * @return Worker
     */
-   private Worker newWorker()
-   {
-      if (workers.size() == size)
-      {
+   private Worker newWorker() {
+      if (workers.size() == size) {
          return null;
       }
       Worker worker = new Worker();
@@ -95,16 +84,14 @@ public class WorkerPool
     *
     * @return Worker List
     */
-   public List<Worker> getWorkers()
-   {
+   public List<Worker> getWorkers() {
       return workers;
    }
 
    /**
     * Stops all Workers
     */
-   public void stopWorkers()
-   {
+   public void stopWorkers() {
       Iterable<Worker> temp = new ArrayList<>(workers);
       temp.forEach(worker -> {
          worker.stop();
@@ -118,16 +105,14 @@ public class WorkerPool
     *
     * @return Amount of Workers
     */
-   public int currentWorkers()
-   {
+   public int currentWorkers() {
       return workers.size();
    }
 
    /**
     * Waits for all Workers to be Open
     */
-   public void waitForAll()
-   {
+   public void waitForAll() {
       workers.forEach(Worker::waitFor);
    }
 }

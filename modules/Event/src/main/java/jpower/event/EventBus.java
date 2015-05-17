@@ -8,8 +8,7 @@ import java.util.List;
 /**
  * Base Implementation of the JPower Event Bus
  */
-public class EventBus implements IEventBus
-{
+public class EventBus implements IEventBus {
    /**
     * The Registered Handlers
     */
@@ -18,8 +17,7 @@ public class EventBus implements IEventBus
    /**
     * Creates a new Event Bus
     */
-   public EventBus()
-   {
+   public EventBus() {
       handlers = new ArrayList<>();
    }
 
@@ -27,8 +25,7 @@ public class EventBus implements IEventBus
     * {@inheritDoc}
     */
    @Override
-   public void register(final Object object)
-   {
+   public void register(final Object object) {
       handlers.add(new RegisteredHandler(object).setAnnotationType(EventHandler.class).registerMethods());
    }
 
@@ -36,18 +33,14 @@ public class EventBus implements IEventBus
     * {@inheritDoc}
     */
    @Override
-   public boolean unregister(final Object object)
-   {
+   public boolean unregister(final Object object) {
       RegisteredHandler handlerToRemove = null;
-      for (RegisteredHandler handler : handlers)
-      {
-         if (handler.getObject() == object)
-         {
+      for (RegisteredHandler handler : handlers) {
+         if (handler.getObject() == object) {
             handlerToRemove = handler;
          }
       }
-      if (handlerToRemove == null)
-      {
+      if (handlerToRemove == null) {
          return false;
       }
       handlers.remove(handlerToRemove);
@@ -58,18 +51,15 @@ public class EventBus implements IEventBus
     * {@inheritDoc}
     */
    @Override
-   public void post(final Object event)
-   {
+   public void post(final Object event) {
       Wrapper<Boolean> didRun = new Wrapper<>(false);
       handlers.forEach(handler -> {
-         if (handler.executeEvent(event))
-         {
+         if (handler.executeEvent(event)) {
             didRun.set(true);
          }
       });
 
-      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && !didRun.get())
-      {
+      if (!DeadEvent.class.isAssignableFrom(event.getClass()) && !didRun.get()) {
          post(new DeadEvent(event));
       }
    }

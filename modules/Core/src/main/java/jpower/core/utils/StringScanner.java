@@ -8,8 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Scans a String for Patterns
  */
-public class StringScanner
-{
+public class StringScanner {
    private Scanner scanner;
 
    /**
@@ -17,8 +16,7 @@ public class StringScanner
     *
     * @param str input string
     */
-   public StringScanner(String str)
-   {
+   public StringScanner(String str) {
       scanner = new Scanner(str);
    }
 
@@ -28,8 +26,7 @@ public class StringScanner
     * @param pattern pattern
     * @return matched
     */
-   public String scan(@Language("RegExp") String pattern)
-   {
+   public String scan(@Language("RegExp") String pattern) {
       return scan(Pattern.compile(pattern));
    }
 
@@ -39,8 +36,7 @@ public class StringScanner
     * @param pattern pattern
     * @return matched
     */
-   public String scan(Pattern pattern)
-   {
+   public String scan(Pattern pattern) {
       return scanner.hasNext(pattern) ? scanner.next(pattern) : null;
    }
 
@@ -49,8 +45,7 @@ public class StringScanner
     *
     * @param pattern pattern
     */
-   public void skip(Pattern pattern)
-   {
+   public void skip(Pattern pattern) {
       scanner.skip(pattern);
    }
 
@@ -59,8 +54,7 @@ public class StringScanner
     *
     * @param pattern pattern
     */
-   public void skip(@Language("RegExp") String pattern)
-   {
+   public void skip(@Language("RegExp") String pattern) {
       scanner.skip(pattern);
    }
 
@@ -70,10 +64,8 @@ public class StringScanner
     * @param pattern pattern
     */
    @SuppressWarnings("StatementWithEmptyBody")
-   public void skipUntil(@Language("RegExp") String pattern)
-   {
-      while (scan(pattern) != null)
-      {
+   public void skipUntil(@Language("RegExp") String pattern) {
+      while (scan(pattern) != null) {
       }
    }
 
@@ -83,10 +75,8 @@ public class StringScanner
     * @param pattern pattern
     */
    @SuppressWarnings("StatementWithEmptyBody")
-   public void skipUntil(Pattern pattern)
-   {
-      while (scan(pattern) != null)
-      {
+   public void skipUntil(Pattern pattern) {
+      while (scan(pattern) != null) {
       }
    }
 }

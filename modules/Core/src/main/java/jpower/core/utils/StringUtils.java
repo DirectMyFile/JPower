@@ -6,19 +6,16 @@ import java.util.List;
 /**
  * String Utilities
  */
-public class StringUtils
-{
+public class StringUtils {
    /**
     * Creates a Random String
     *
     * @param length length of string
     * @return random string
     */
-   public static String random(int length)
-   {
+   public static String random(int length) {
       char[] chars = new char[length];
-      for (int i = 0; i < chars.length; i++)
-      {
+      for (int i = 0; i < chars.length; i++) {
          chars[i] = CharUtils.randomUppercase();
       }
       return new String(chars);
@@ -31,11 +28,9 @@ public class StringUtils
     * @param count        number of strings to generate
     * @return array of output strings
     */
-   public static String[] random(int stringLength, int count)
-   {
+   public static String[] random(int stringLength, int count) {
       String[] strings = new String[count];
-      for (int i = 0; i < strings.length; i++)
-      {
+      for (int i = 0; i < strings.length; i++) {
          strings[i] = random(stringLength);
       }
       return strings;
@@ -47,8 +42,7 @@ public class StringUtils
     * @param input input string
     * @return list of strings
     */
-   public static List<String> tokenizeByDot(String input)
-   {
+   public static List<String> tokenizeByDot(String input) {
       return tokenize(input, '.');
    }
 
@@ -58,8 +52,7 @@ public class StringUtils
     * @param input input string
     * @return list of strings
     */
-   public static List<String> words(String input)
-   {
+   public static List<String> words(String input) {
       return tokenize(input, ' ');
    }
 
@@ -70,8 +63,7 @@ public class StringUtils
     * @param by    character to tokenize by
     * @return list of strings
     */
-   public static List<String> tokenize(String input, char by)
-   {
+   public static List<String> tokenize(String input, char by) {
       return tokenize(input, by, false);
    }
 
@@ -83,33 +75,26 @@ public class StringUtils
     * @param removeEmpty should remove empty strings
     * @return list of strings
     */
-   public static List<String> tokenize(String input, char by, boolean removeEmpty)
-   {
+   public static List<String> tokenize(String input, char by, boolean removeEmpty) {
       List<String> parts = new ArrayList<>();
       StringBuilder builder = new StringBuilder();
       char[] chars = input.toCharArray();
-      for (int i = 0; i < chars.length; i++)
-      {
+      for (int i = 0; i < chars.length; i++) {
          char c = chars[i];
-         if (c == by)
-         {
+         if (c == by) {
             parts.add(builder.toString());
             builder.setLength(0);
             builder.trimToSize();
-         }
-         else
-         {
+         } else {
             builder.append(c);
          }
-         if (i == chars.length - 1)
-         {
+         if (i == chars.length - 1) {
             parts.add(builder.toString());
             builder.setLength(0);
             builder.trimToSize();
          }
       }
-      if (removeEmpty)
-      {
+      if (removeEmpty) {
          parts.removeIf(String::isEmpty);
       }
       return parts;

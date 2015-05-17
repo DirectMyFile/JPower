@@ -2,25 +2,21 @@ package jpower.irc.events;
 
 import jpower.irc.User;
 
-public class InviteEvent
-{
+public class InviteEvent {
 
    private User sender;
    private String channel;
 
-   public InviteEvent(User sender, String channel)
-   {
+   public InviteEvent(User sender, String channel) {
       this.sender = sender;
       this.channel = channel;
    }
 
-   public User getSender()
-   {
+   public User getSender() {
       return sender;
    }
 
-   public String getChannel()
-   {
+   public String getChannel() {
       return channel;
    }
 

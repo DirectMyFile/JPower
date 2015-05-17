@@ -19,30 +19,25 @@ import java.util.jar.JarInputStream;
  * and adds some useful events for class loads.
  */
 @SuppressWarnings("ZeroLengthArrayAllocation")
-public class PowerClassLoader extends URLClassLoader
-{
+public class PowerClassLoader extends URLClassLoader {
 
    private boolean autoload;
    private Consumer<Class<?>> onClassLoaded;
    private Consumer<String> onClassFound;
 
-   public PowerClassLoader()
-   {
+   public PowerClassLoader() {
       this(new URL[0]);
    }
 
-   public PowerClassLoader(URL[] urls)
-   {
+   public PowerClassLoader(URL[] urls) {
       super(urls);
    }
 
    @Override
-   public Class<?> loadClass(String name) throws ClassNotFoundException
-   {
+   public Class<?> loadClass(String name) throws ClassNotFoundException {
       Class<?> clazz = loadClass(name, true);
 
-      if (onClassLoaded != null)
-      {
+      if (onClassLoaded != null) {
          onClassLoaded.accept(clazz);
       }
 
@@ -50,79 +45,62 @@ public class PowerClassLoader extends URLClassLoader
    }
 
    @Override
-   public void addURL(URL url)
-   {
+   public void addURL(URL url) {
       super.addURL(url);
-      if (autoload)
-      {
-         try
-         {
-            if (!url.toString().endsWith(".jar"))
-            {
+      if (autoload) {
+         try {
+            if (!url.toString().endsWith(".jar")) {
                return;
             }
             JarInputStream stream = new JarInputStream(url.openStream());
             JarEntry entry;
-            while ((entry = stream.getNextJarEntry()) != null)
-            {
+            while ((entry = stream.getNextJarEntry()) != null) {
                String entryName = entry.getName();
-               if (entryName.endsWith(".class"))
-               {
+               if (entryName.endsWith(".class")) {
                   String className = entryName.replace("/", ".").substring(0, entryName.length() - 6);
-                  if (onClassFound != null)
-                  {
+                  if (onClassFound != null) {
                      onClassFound.accept(className);
                   }
                   loadClass(className);
                }
             }
-         }
-         catch (IOException | ClassNotFoundException e)
-         {
+         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException("Failed to auto-load classes.", e);
          }
       }
    }
 
-   public void enableAutoLoading()
-   {
+   public void enableAutoLoading() {
       autoload = true;
    }
 
-   public void disableAutoLoading()
-   {
+   public void disableAutoLoading() {
       autoload = false;
    }
 
-   public Set<Class<?>> getLoadedClasses()
-   {
+   public Set<Class<?>> getLoadedClasses() {
       return ListUtils.toSet(ArrayUtils.toList(PowerInternalSystem.getLoadedClasses(this)));
    }
 
-   public Collection<URL> getUrls()
-   {
+   public Collection<URL> getUrls() {
       return ArrayUtils.toList(super.getURLs());
    }
 
-   public void onClassLoaded(Consumer<Class<?>> onClassLoaded)
-   {
+   public void onClassLoaded(Consumer<Class<?>> onClassLoaded) {
       this.onClassLoaded = onClassLoaded;
    }
 
-   public void onClassFound(Consumer<String> onClassFound)
-   {
+   public void onClassFound(Consumer<String> onClassFound) {
       this.onClassFound = onClassFound;
    }
 
-   public Set<Class<?>> getClassesImplementing(Class<?> clazz)
-   {
+   public Set<Class<?>> getClassesImplementing(Class<?> clazz) {
       Set<Class<?>> classes = new HashSet<>();
       getLoadedClasses().stream().filter(c -> c.isAssignableFrom(clazz)).forEach(classes::add);
       return classes;
    }
 
-   public boolean isAutoLoadEnabled()
-   {
+   public boolean isAutoLoadEnabled() {
       return autoload;
    }
 }

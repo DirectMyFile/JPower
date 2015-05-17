@@ -1,7 +1,6 @@
 package jpower.core.load;
 
 @FunctionalInterface
-public interface Unloadable
-{
+public interface Unloadable {
    void unload();
 }

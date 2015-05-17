@@ -1,10 +1,9 @@
 package jpower.irc;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Network
-{
+public class Network {
 
    private final String name;
    private final String server;
@@ -16,25 +15,22 @@ public class Network
    private List<String> init_channels;
    private PowerIrc instance;
 
-   public Network(String name, String server, int port, String nickname, String username, String realname)
-   {
+   public Network(String name, String server, int port, String nickname, String username, String realname) {
       this.name = name;
       this.server = server;
       this.port = port;
       this.nickname = nickname;
       this.username = username;
       this.realname = realname;
-      
+
       init_channels = new ArrayList<>();
    }
 
-   public void addInitChannel(String channel)
-   {
+   public void addInitChannel(String channel) {
       init_channels.add(channel);
    }
 
-   public void connect()
-   {
+   public void connect() {
       instance = new PowerIrc(username, nickname, realname, server, port, init_channels);
       instance.connect();
    }

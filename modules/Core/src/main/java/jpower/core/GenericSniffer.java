@@ -9,17 +9,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @SuppressWarnings("UnusedDeclaration")
-public class GenericSniffer<T>
-{
-   public Type[] sniff()
-   {
+public class GenericSniffer<T> {
+   public Type[] sniff() {
       Type superclass = getClass().getGenericSuperclass();
       return ((ParameterizedType) superclass).getActualTypeArguments();
    }
 
    @Override
-   public String toString()
-   {
+   public String toString() {
       StringBuilder builder = new StringBuilder();
       builder.append('[').append(' ');
       List<String> names = new ArrayList<>();

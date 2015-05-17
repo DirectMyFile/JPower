@@ -8,44 +8,36 @@ import java.util.Map;
 /**
  * Accessor for Command Line Options and Arguments
  */
-public class CommandLine
-{
+public class CommandLine {
    private final Map<String, String> opts = new HashMap<>();
 
    private final List<String> arguments = new ArrayList<>();
 
-   public String opt(String key)
-   {
+   public String opt(String key) {
       return opts.get(key);
    }
 
-   protected void set(String key, String value)
-   {
+   protected void set(String key, String value) {
       opts.put(key, value);
    }
 
-   public String opt(String key, String defaultValue)
-   {
+   public String opt(String key, String defaultValue) {
       return opts.getOrDefault(key, defaultValue);
    }
 
-   public Map<String, String> opts()
-   {
+   public Map<String, String> opts() {
       return opts;
    }
 
-   public List<String> arguments()
-   {
+   public List<String> arguments() {
       return arguments;
    }
 
-   public boolean bool(String key)
-   {
+   public boolean bool(String key) {
       return opt(key) != null && opt(key).equals("true");
    }
 
-   public boolean help()
-   {
+   public boolean help() {
       return opts.containsKey("help");
    }
 }

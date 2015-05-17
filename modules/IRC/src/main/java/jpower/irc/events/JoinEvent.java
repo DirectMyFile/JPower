@@ -1,13 +1,10 @@
 package jpower.irc.events;
 
-public class JoinEvent
-{
+import jpower.irc.events.abstraction.ChannelBasedEvent;
 
-   public String channel;
+public class JoinEvent extends ChannelBasedEvent {
 
-   public JoinEvent(String channel)
-   {
-      this.channel = channel;
+   public JoinEvent(String channel) {
+      super(channel);
    }
-
 }

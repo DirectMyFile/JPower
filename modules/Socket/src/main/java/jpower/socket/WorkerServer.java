@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 
-public class WorkerServer implements AdvancedService
-{
+public class WorkerServer implements AdvancedService {
    private final ServerSocket server;
    private final InetSocketAddress address;
    private final WorkerPool workerPool;
@@ -18,33 +17,26 @@ public class WorkerServer implements AdvancedService
    private Thread acceptThread;
    private boolean shouldRun;
 
-   public WorkerServer(String host, int port) throws IOException
-   {
+   public WorkerServer(String host, int port) throws IOException {
       server = new ServerSocket();
       workerPool = new WorkerPool(30);
       address = new InetSocketAddress(host, port);
    }
 
-   public void setClientHandler(ClientHandler clientHandler)
-   {
+   public void setClientHandler(ClientHandler clientHandler) {
       this.clientHandler = clientHandler;
    }
 
    @Override
-   public void start() throws IOException
-   {
+   public void start() throws IOException {
       shouldRun = true;
       server.bind(address);
       acceptThread = ThreadUtils.start(() -> {
-         while (shouldRun)
-         {
+         while (shouldRun) {
             workerPool.submit(() -> {
-               try
-               {
+               try {
                   clientHandler.handleClient(new Client(server.accept()));
-               }
-               catch (IOException ignored)
-               {
+               } catch (IOException ignored) {
                }
             });
          }
@@ -52,8 +44,7 @@ public class WorkerServer implements AdvancedService
    }
 
    @Override
-   public void stop()
-   {
+   public void stop() {
       shouldRun = false;
       workerPool.waitForAll();
    }

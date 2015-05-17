@@ -6,8 +6,7 @@ import java.util.Arrays;
  * Represents the English alphabet.
  * Contains various utilities to manipulate it.
  */
-public class Alphabet
-{
+public class Alphabet {
 
    private static final char[] ALPHABET =
            {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -20,8 +19,7 @@ public class Alphabet
     *
     * @return alphabet
     */
-   public static char[] get()
-   {
+   public static char[] get() {
       return ALPHABET;
    }
 
@@ -30,14 +28,11 @@ public class Alphabet
     *
     * @return uppercase alphabet
     */
-   public static char[] uppercase()
-   {
+   public static char[] uppercase() {
       /* Lazy Initialize Uppercase Letters */
-      if (UPPERCASE == null)
-      {
+      if (UPPERCASE == null) {
          char[] uppercase = new char[ALPHABET.length];
-         for (int i = 0; i < ALPHABET.length; i++)
-         {
+         for (int i = 0; i < ALPHABET.length; i++) {
             uppercase[i] = Character.toUpperCase(ALPHABET[i]);
          }
          UPPERCASE = uppercase;
@@ -50,8 +45,7 @@ public class Alphabet
     *
     * @return lowercase alphabet
     */
-   public static char[] lowercase()
-   {
+   public static char[] lowercase() {
       return get();
    }
 
@@ -61,10 +55,8 @@ public class Alphabet
     * @param index index
     * @return letter
     */
-   public static char get(int index)
-   {
-      if (index > length() || index < length())
-      {
+   public static char get(int index) {
+      if (index > length() || index < length()) {
          throw new IndexOutOfBoundsException();
       }
       return ALPHABET[index];
@@ -75,8 +67,7 @@ public class Alphabet
     *
     * @return length of alphabet
     */
-   public static int length()
-   {
+   public static int length() {
       return ALPHABET.length;
    }
 
@@ -86,10 +77,8 @@ public class Alphabet
     * @param index index
     * @return range
     */
-   public static char[] getRange(int index)
-   {
-      if (index < 0 || index > ALPHABET.length)
-      {
+   public static char[] getRange(int index) {
+      if (index < 0 || index > ALPHABET.length) {
          throw new IndexOutOfBoundsException();
       }
       return Arrays.copyOfRange(ALPHABET, index, ALPHABET.length);
@@ -102,10 +91,8 @@ public class Alphabet
     * @param lastIndex  last index
     * @return range
     */
-   public static char[] getRange(int firstIndex, int lastIndex)
-   {
-      if (firstIndex < 0 || firstIndex > ALPHABET.length || lastIndex < 0 || lastIndex > ALPHABET.length)
-      {
+   public static char[] getRange(int firstIndex, int lastIndex) {
+      if (firstIndex < 0 || firstIndex > ALPHABET.length || lastIndex < 0 || lastIndex > ALPHABET.length) {
          throw new IndexOutOfBoundsException();
       }
       return Arrays.copyOfRange(ALPHABET, firstIndex, lastIndex);

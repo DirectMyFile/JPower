@@ -1,8 +1,7 @@
 package jpower.event;
 
-public interface Cancelable
-{
-   void setCanceled(boolean cancel);
-
+public interface Cancelable {
    boolean isCanceled();
+
+   void setCanceled(boolean cancel);
 }

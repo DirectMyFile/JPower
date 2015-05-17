@@ -6,12 +6,10 @@ package jpower.core;
  * can be checked as a conditional.
  */
 @FunctionalInterface
-public interface Condition
-{
+public interface Condition {
    public boolean check();
 
-   public default boolean inverted()
-   {
+   public default boolean inverted() {
       return !check();
    }
 }

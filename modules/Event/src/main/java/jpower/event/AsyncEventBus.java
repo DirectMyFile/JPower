@@ -5,8 +5,7 @@ import jpower.core.WorkerPool;
 /**
  * Provides an Asynchronous edition of the generic EventBus.
  */
-public class AsyncEventBus extends AbstractEventBus
-{
+public class AsyncEventBus extends AbstractEventBus {
    private final WorkerPool workerPool;
 
    /**
@@ -14,16 +13,14 @@ public class AsyncEventBus extends AbstractEventBus
     *
     * @param workerPool Worker Pool
     */
-   private AsyncEventBus(WorkerPool workerPool)
-   {
+   private AsyncEventBus(WorkerPool workerPool) {
       this.workerPool = workerPool;
    }
 
    /**
     * Create an AsyncEventBus
     */
-   public AsyncEventBus()
-   {
+   public AsyncEventBus() {
       this(new WorkerPool());
    }
 
@@ -32,8 +29,7 @@ public class AsyncEventBus extends AbstractEventBus
     *
     * @param workers number of workers
     */
-   public AsyncEventBus(int workers)
-   {
+   public AsyncEventBus(int workers) {
       this(new WorkerPool(workers));
    }
 
@@ -43,8 +39,7 @@ public class AsyncEventBus extends AbstractEventBus
     * @param event Event to Post
     */
    @Override
-   public void post(Object event)
-   {
+   public void post(Object event) {
       workerPool.submit(() -> super.post(event));
    }
 }

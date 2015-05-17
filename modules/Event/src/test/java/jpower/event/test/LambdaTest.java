@@ -9,19 +9,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class LambdaTest
-{
+public class LambdaTest {
    private EventBus eventBus;
 
    @Before
-   public void prepare()
-   {
+   public void prepare() {
       eventBus = new EventBus();
    }
 
    @Test
-   public void testLambdaSupport()
-   {
+   public void testLambdaSupport() {
       Wrapper<Boolean> worked = new Wrapper<>(false);
       eventBus.register((Handler<TestEvent>) event -> worked.set(event.getPayload().equals("Success")));
       eventBus.post(new TestEvent());

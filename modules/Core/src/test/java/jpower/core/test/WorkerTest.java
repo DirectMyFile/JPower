@@ -10,11 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class WorkerTest
-{
+public class WorkerTest {
    @Test
-   public void testTaskExecution()
-   {
+   public void testTaskExecution() {
       @SuppressWarnings("MismatchedReadAndWriteOfArray") final boolean[] didWork = {false};
       Worker worker = new Worker();
       worker.start();
@@ -25,8 +23,7 @@ public class WorkerTest
    }
 
    @Test
-   public void testMultiTaskExecution()
-   {
+   public void testMultiTaskExecution() {
       final boolean[] didWork = {false, false};
       Worker worker = new Worker();
       worker.start();
@@ -42,8 +39,7 @@ public class WorkerTest
    }
 
    @Test
-   public void testWorkerFactory()
-   {
+   public void testWorkerFactory() {
       Factory factory = new WorkerFactory(50);
       Worker workerA = (Worker) factory.create();
       Worker workerB = (Worker) factory.create();

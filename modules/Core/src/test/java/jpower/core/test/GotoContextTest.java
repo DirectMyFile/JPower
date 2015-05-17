@@ -6,11 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GotoContextTest
-{
+public class GotoContextTest {
    @Test
-   public void testExecution()
-   {
+   public void testExecution() {
       GotoContext ctx = GotoContext.make();
       Wrapper<Integer> number = Wrapper.of(0);
       ctx.define("increment", () -> number.set(number.get() + 1));
@@ -19,8 +17,7 @@ public class GotoContextTest
    }
 
    @Test
-   public void testChaining()
-   {
+   public void testChaining() {
       GotoContext ctx = GotoContext.make();
       Wrapper<Integer> number = Wrapper.of(0);
       ctx.define("increment", () -> number.set(number.get() + 1));

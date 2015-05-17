@@ -1,17 +1,14 @@
 package jpower.irc.events;
 
-public class PingEvent
-{
+public class PingEvent {
 
    private String trail;
 
-   public PingEvent(String trail)
-   {
+   public PingEvent(String trail) {
       this.trail = trail;
    }
 
-   public String getTrail()
-   {
+   public String getTrail() {
       return trail;
    }
 

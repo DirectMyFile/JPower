@@ -8,29 +8,22 @@ import java.util.HashSet;
 /**
  * TODO: Port this to use a lightweight system
  */
-public class CancelStateTracker
-{
+public class CancelStateTracker {
    private static final Collection<Task> states = new HashSet<>();
 
-   public static void setCanceled(Task task, boolean cancel)
-   {
-      if (cancel)
-      {
+   public static void setCanceled(Task task, boolean cancel) {
+      if (cancel) {
          states.add(task);
-      }
-      else
-      {
+      } else {
          states.remove(task);
       }
    }
 
-   public static boolean isCanceled(Task task)
-   {
+   public static boolean isCanceled(Task task) {
       return states.contains(task);
    }
 
-   static void clear()
-   {
+   static void clear() {
       states.clear();
    }
 }

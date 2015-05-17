@@ -5,50 +5,39 @@ import jpower.json.serialization.JSONStyle;
 
 import java.io.IOException;
 
-public class JSON
-{
+public class JSON {
 
    private final JSONStyle style;
 
    private JSONSerializer serializer;
 
-   public JSON()
-   {
+   public JSON() {
       style = JSONStyle.defaultStyle();
    }
 
-   public JSON(JSONStyle style)
-   {
+   public JSON(JSONStyle style) {
       this.style = style;
    }
 
-   public static JSON create()
-   {
+   public static JSON create() {
       return new JSON();
    }
 
-   public static JSON create(JSONStyle style)
-   {
+   public static JSON create(JSONStyle style) {
       return new JSON(style);
    }
 
-   public String serialize(Object object)
-   {
+   public String serialize(Object object) {
       createIfNeeded(false, true);
-      try
-      {
+      try {
          return serializer.serialize(object);
-      }
-      catch (IOException e)
-      {
+      } catch (IOException e) {
          throw new RuntimeException(e);
       }
    }
 
-   private void createIfNeeded(boolean createParser, boolean createSerializer)
-   {
-      if (createSerializer && serializer == null)
-      {
+   private void createIfNeeded(boolean createParser, boolean createSerializer) {
+      if (createSerializer && serializer == null) {
          serializer = new JSONSerializer(style);
       }
    }

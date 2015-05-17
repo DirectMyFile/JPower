@@ -1,7 +1,6 @@
 package jpower.core.load;
 
 @FunctionalInterface
-public interface Loadable
-{
+public interface Loadable {
    void load();
 }

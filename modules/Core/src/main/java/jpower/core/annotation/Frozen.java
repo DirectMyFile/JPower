@@ -10,8 +10,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.PACKAGE})
-public @interface Frozen
-{
+public @interface Frozen {
    /**
     * The timestamp of being frozen
     *

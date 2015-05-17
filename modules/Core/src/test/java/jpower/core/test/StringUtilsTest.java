@@ -11,34 +11,28 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class StringUtilsTest
-{
+public class StringUtilsTest {
    @Test
-   public void testTokenizeDefault()
-   {
-      assertEquals(new ArrayList<String>()
-      {{
-            add("A");
-            add("B");
-            add("C");
-            add("D");
-         }}, StringUtils.tokenize("A|B|C|D", '|'));
+   public void testTokenizeDefault() {
+      assertEquals(new ArrayList<String>() {{
+         add("A");
+         add("B");
+         add("C");
+         add("D");
+      }}, StringUtils.tokenize("A|B|C|D", '|'));
    }
 
    @Test
-   public void testTokenizeWithRemoveEmptyOption()
-   {
-      assertEquals(new ArrayList<String>()
-      {{
-            add("A");
-            add("B");
-            add("D");
-         }}, StringUtils.tokenize("A|B||D", '|', true));
+   public void testTokenizeWithRemoveEmptyOption() {
+      assertEquals(new ArrayList<String>() {{
+         add("A");
+         add("B");
+         add("D");
+      }}, StringUtils.tokenize("A|B||D", '|', true));
    }
 
    @Test
-   public void testTokenizeSpeed()
-   {
+   public void testTokenizeSpeed() {
       Wrapper<List<String>> lettersList = Wrapper.of(null);
       Wrapper<String[]> lettersArray = Wrapper.of(null);
       long tokenized = Timer.timeOf(() -> lettersList.set(StringUtils.tokenize("A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P", '|')));

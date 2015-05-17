@@ -7,11 +7,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
-public class CallUtilsTest
-{
+public class CallUtilsTest {
    @Test
-   public void testTryCatch()
-   {
+   public void testTryCatch() {
       Wrapper<Throwable> caught = new Wrapper<>(null);
       CallUtils.tryCatch(() -> {
          throw new Exception("This should be caught");
@@ -21,16 +19,14 @@ public class CallUtilsTest
    }
 
    @Test
-   public void testCallIgnoreExceptions()
-   {
+   public void testCallIgnoreExceptions() {
       CallUtils.callIgnoreExceptions(() -> {
          throw new Exception("SHOULD BE IGNORED");
       });
    }
 
    @Test
-   public void testInvokerOf() throws Exception
-   {
+   public void testInvokerOf() throws Exception {
       Wrapper<Boolean> worked = Wrapper.of(false);
       Runnable action = () -> worked.set(true);
       CallUtils.invokerOf(action).invokeMethod("run");

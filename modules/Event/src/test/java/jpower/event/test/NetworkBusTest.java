@@ -12,22 +12,19 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
-public class NetworkBusTest
-{
+public class NetworkBusTest {
 
    private boolean worked;
 
    private ServerEventBus server;
 
    @Before
-   public void prepare() throws IOException
-   {
+   public void prepare() throws IOException {
       server = new ServerEventBus(NetUtils.localIPAddress(), 46839);
    }
 
    @Test
-   public void testServerClientInteraction() throws IOException
-   {
+   public void testServerClientInteraction() throws IOException {
       server.start();
       server.register(this);
       ClientEventBus client = new ClientEventBus("127.0.0.1", 46839);
@@ -44,8 +41,7 @@ public class NetworkBusTest
    }
 
    @EventHandler
-   public void handleEvent(TestEvent event)
-   {
+   public void handleEvent(TestEvent event) {
       worked = event.getPayload().equals("Success");
    }
 }

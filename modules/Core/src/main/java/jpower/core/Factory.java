@@ -6,8 +6,7 @@ package jpower.core;
  * @param <T> Target Object Type
  */
 @FunctionalInterface
-public interface Factory<T>
-{
+public interface Factory<T> {
    /**
     * Creates a New Instance of the Object
     *

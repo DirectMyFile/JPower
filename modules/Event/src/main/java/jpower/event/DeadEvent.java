@@ -5,8 +5,7 @@ import java.io.Serializable;
 /**
  * Represents an Event that did not get handled by any handlers
  */
-public class DeadEvent implements Serializable
-{
+public class DeadEvent implements Serializable {
    private final Object event;
 
    /**
@@ -14,8 +13,7 @@ public class DeadEvent implements Serializable
     *
     * @param event event
     */
-   public DeadEvent(Object event)
-   {
+   public DeadEvent(Object event) {
       this.event = event;
    }
 
@@ -24,8 +22,7 @@ public class DeadEvent implements Serializable
     *
     * @return event object
     */
-   public Object getEvent()
-   {
+   public Object getEvent() {
       return event;
    }
 
@@ -34,8 +31,7 @@ public class DeadEvent implements Serializable
     *
     * @return event class type
     */
-   public Class<?> getType()
-   {
+   public Class<?> getType() {
       return event.getClass();
    }
 }

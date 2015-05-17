@@ -6,8 +6,7 @@ import java.util.stream.Stream;
 /**
  * Combines multiple tasks into One
  */
-public class MultiTask implements Task
-{
+public class MultiTask implements Task {
 
    private final Task[] tasks;
 
@@ -16,8 +15,7 @@ public class MultiTask implements Task
     *
     * @param tasks Tasks to Combine
     */
-   public MultiTask(Task... tasks)
-   {
+   public MultiTask(Task... tasks) {
       this.tasks = tasks;
    }
 
@@ -26,14 +24,12 @@ public class MultiTask implements Task
     *
     * @param tasks Tasks to Combine
     */
-   public MultiTask(Collection<Task> tasks)
-   {
+   public MultiTask(Collection<Task> tasks) {
       this.tasks = tasks.toArray(new Task[tasks.size()]);
    }
 
    @Override
-   public void execute()
-   {
+   public void execute() {
       Stream.of(tasks).forEach(Task::execute);
    }
 }

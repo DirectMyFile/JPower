@@ -7,15 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class RandomTest
-{
+public class RandomTest {
    @Test
-   public void testStringRandomness()
-   {
+   public void testStringRandomness() {
       int times = 50;
       int count = 0;
-      while (count < times)
-      {
+      while (count < times) {
          String[] strings = StringUtils.random(50, 20);
          assertFalse(ArrayUtils.containsDuplicates(strings));
          count++;
@@ -23,8 +20,7 @@ public class RandomTest
    }
 
    @Test
-   public void testStringLength()
-   {
+   public void testStringLength() {
       String random = StringUtils.random(50);
       assertEquals(50, random.length());
    }

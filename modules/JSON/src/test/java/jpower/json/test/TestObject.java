@@ -1,6 +1,5 @@
 package jpower.json.test;
 
-public class TestObject
-{
+public class TestObject {
    private String message = "Test";
 }

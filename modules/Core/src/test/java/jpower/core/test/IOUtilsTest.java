@@ -13,18 +13,15 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class IOUtilsTest
-{
+public class IOUtilsTest {
    @Test
-   public void testResourceToString()
-   {
+   public void testResourceToString() {
       String version = IOUtils.getResourceAsString(getClass(), "jpower/core/release.properties");
       assertNotNull(version, "IOUtils.getResourceAsString() failed");
    }
 
    @Test
-   public void testReadLines() throws IOException
-   {
+   public void testReadLines() throws IOException {
       BufferedReader input = new BufferedReader(new StringReader("Hello\nWorld"));
       List<String> expected = ArrayUtils.toList(new String[]{
               "Hello",
@@ -34,8 +31,7 @@ public class IOUtilsTest
       assertEquals(expected, actual);
    }
 
-   public void testGetBytes() throws Exception
-   {
+   public void testGetBytes() throws Exception {
       String line = "Hello";
       ByteArrayInputStream in = new ByteArrayInputStream(line.getBytes("UTF-8"));
       assertEquals(line.getBytes("UTF-8"), IOUtils.getBytes(in));

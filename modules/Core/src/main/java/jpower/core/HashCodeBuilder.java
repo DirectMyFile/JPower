@@ -6,37 +6,28 @@ import jpower.core.utils.ExceptionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HashCodeBuilder
-{
+public class HashCodeBuilder {
    private final List<String> includes = new ArrayList<>();
 
-   public static HashCodeBuilder create()
-   {
+   public static HashCodeBuilder create() {
       return new HashCodeBuilder();
    }
 
-   public HashCodeBuilder include(String field)
-   {
+   public HashCodeBuilder include(String field) {
       includes.add(field);
       return this;
    }
 
-   public int hashCodeFor(Object obj)
-   {
+   public int hashCodeFor(Object obj) {
       FieldAccessor accessor = new FieldAccessor(obj);
       int code = 0;
-      for (String fieldName : includes)
-      {
-         try
-         {
+      for (String fieldName : includes) {
+         try {
             Object val = accessor.get(fieldName);
-            if (val != null)
-            {
+            if (val != null) {
                code += 31 * val.hashCode();
             }
-         }
-         catch (NoSuchFieldException | IllegalAccessException e)
-         {
+         } catch (NoSuchFieldException | IllegalAccessException e) {
             ExceptionUtils.throwUnchecked(e);
          }
       }

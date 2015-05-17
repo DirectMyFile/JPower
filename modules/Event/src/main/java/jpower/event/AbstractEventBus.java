@@ -3,13 +3,11 @@ package jpower.event;
 /**
  * {@inheritDoc}
  */
-public abstract class AbstractEventBus extends EventBus
-{
+public abstract class AbstractEventBus extends EventBus {
    /**
     * {@inheritDoc}
     */
-   public AbstractEventBus()
-   {
+   public AbstractEventBus() {
       super();
    }
 }

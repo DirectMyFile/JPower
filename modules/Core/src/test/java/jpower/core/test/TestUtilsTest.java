@@ -5,11 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TestUtilsTest
-{
+public class TestUtilsTest {
    @Test
-   public void testThrownRuntime()
-   {
+   public void testThrownRuntime() {
       Throwable thrown = TestUtils.thrown(() -> {
          throw new RuntimeException("This is a runtime exception");
       });
@@ -19,8 +17,7 @@ public class TestUtilsTest
    }
 
    @Test
-   public void testThrownChecked()
-   {
+   public void testThrownChecked() {
       Throwable thrown = TestUtils.thrown(() -> {
          throw new Exception("This is an exception");
       });
@@ -30,8 +27,7 @@ public class TestUtilsTest
    }
 
    @Test
-   public void testThrownNone()
-   {
+   public void testThrownNone() {
       Throwable thrown = TestUtils.thrown(() -> {
          return;
       });

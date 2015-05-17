@@ -6,19 +6,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class MultiMapTest
-{
+public class MultiMapTest {
    private MultiMap<String, String> multiMap;
 
    @Before
-   public void prepare()
-   {
+   public void prepare() {
       multiMap = new MultiMap<>();
    }
 
    @Test
-   public void testBasics()
-   {
+   public void testBasics() {
       multiMap.add("Tests", "Test1");
       multiMap.add("Tests", "Test2");
       assertEquals(2, multiMap.getAll("Tests").size());

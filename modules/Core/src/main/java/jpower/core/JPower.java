@@ -10,30 +10,24 @@ import java.util.regex.Pattern;
 /**
  * JPower Release Information
  */
-public final class JPower
-{
+public final class JPower {
    private static final ReleaseInfo release;
 
    /**
     * Loads the Release Info
     */
-   static
-   {
+   static {
       String data = IOUtils.getResourceAsString(JPower.class, "release.properties");
       ReleaseInfo relInfo;
-      try
-      {
+      try {
          Pattern pattern = Pattern.compile("(.*)=(.*)");
          Matcher matcher = pattern.matcher(data);
          Map<String, String> info = new HashMap<>();
-         while (matcher.find())
-         {
+         while (matcher.find()) {
             info.put(matcher.group(1), matcher.group(2));
          }
          relInfo = new ReleaseInfo(info);
-      }
-      catch (Exception ignored)
-      {
+      } catch (Exception ignored) {
          relInfo = null;
       }
       release = relInfo;
@@ -44,25 +38,23 @@ public final class JPower
     *
     * @return Release Info
     */
-   public static ReleaseInfo getReleaseInfo()
-   {
+   public static ReleaseInfo getReleaseInfo() {
       return release;
    }
 
    /**
     * Main Entry Point for Console
+    *
     * @param args arguments
     */
-   public static void main(String[] args)
-   {
+   public static void main(String[] args) {
       System.out.println("JPower v" + getReleaseInfo().getVersion());
    }
 
    /**
     * Release Information
     */
-   public static class ReleaseInfo
-   {
+   public static class ReleaseInfo {
       /**
        * JPower Version
        */
@@ -75,29 +67,29 @@ public final class JPower
 
       /**
        * Creates a new Release Info Instance
+       *
        * @param info map of information
        */
-      public ReleaseInfo(Map<String, String> info)
-      {
+      public ReleaseInfo(Map<String, String> info) {
          this.version = info.get("version");
          this.commit = info.get("commit");
       }
 
       /**
        * Gets the JPower Version
+       *
        * @return Version
        */
-      public String getVersion()
-      {
+      public String getVersion() {
          return version;
       }
 
       /**
        * Gets the Git Commit that this build was built on
+       *
        * @return Git Commit
        */
-      public String getCommit()
-      {
+      public String getCommit() {
          return commit;
       }
    }

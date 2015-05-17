@@ -1,10 +1,8 @@
 package jpower.core;
 
-public class Platform
-{
+public class Platform {
 
-   public static String getProcessorPlatform()
-   {
+   public static String getProcessorPlatform() {
       return System.getProperty("os.arch");
    }
 

@@ -7,33 +7,27 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ServiceTest
-{
+public class ServiceTest {
    private Service service;
    private boolean state;
 
    @Before
-   public void prepare()
-   {
-      service = new Service()
-      {
+   public void prepare() {
+      service = new Service() {
          @Override
-         public void start()
-         {
+         public void start() {
             state = true;
          }
 
          @Override
-         public void stop()
-         {
+         public void stop() {
             state = false;
          }
       };
    }
 
    @Test
-   public void test()
-   {
+   public void test() {
       assertFalse(state);
       service.start();
       assertTrue(state);

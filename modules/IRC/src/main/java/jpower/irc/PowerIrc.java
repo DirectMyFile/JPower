@@ -17,8 +17,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PowerIrc
-{
+public class PowerIrc {
 
    private static final Pattern PATTERN = Pattern.compile("^(:(?<prefix>\\S+) )?(?<command>\\S+)( (?!:)(?<params>.+?))?( :(?<trail>.+))?$");
    private static final Pattern HOSTMASK = Pattern.compile("[!@]");
@@ -35,13 +34,12 @@ public class PowerIrc
    private int port;
    private User me;
    private boolean ready;
-   private List<String>  motd;
+   private List<String> motd;
    private Map<String, User> users;
    private Map<String, Channel> channels;
    private List<String> init_channels;
 
-   public PowerIrc(String username, String nickname, String realname, String server, int port, List<String> init_channels)
-   {
+   public PowerIrc(String username, String nickname, String realname, String server, int port, List<String> init_channels) {
       this.username = username;
       this.nickname = nickname;
       this.realname = realname;
@@ -59,7 +57,7 @@ public class PowerIrc
 
       // Create the Users Map
       users = new HashMap<>();
-      
+
       // Create the Channels Map
       channels = new HashMap<>();
 
@@ -67,16 +65,12 @@ public class PowerIrc
       this.init_channels = init_channels;
    }
 
-   public void connect()
-   {
-      try
-      {
+   public void connect() {
+      try {
          socket = new Socket(server, port);
          writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
          reader = IOUtils.createBufferedReader(socket.getInputStream());
-      }
-      catch (IOException e)
-      {
+      } catch (IOException e) {
          e.printStackTrace();
       }
       worker = new Reader();
@@ -87,35 +81,32 @@ public class PowerIrc
 
    /**
     * Retrieve the event bus.
+    *
     * @return the event bus instance
     */
-   public EventBus getEventBus()
-   {
+   public EventBus getEventBus() {
       return eventBus;
    }
 
    /**
     * Write a line to the writer;
+    *
     * @param line line to write
     */
-   public void writeline(String line)
-   {
+   public void writeline(String line) {
       writer.write(line + "\r\n");
       writer.flush();
    }
 
    /**
     * Read a line from the reader;
+    *
     * @return line read from the reader
     */
-   public String readline()
-   {
-      try
-      {
+   public String readline() {
+      try {
          return reader.readLine();
-      }
-      catch (IOException e)
-      {
+      } catch (IOException e) {
          e.printStackTrace();
          return null;
       }
@@ -123,11 +114,11 @@ public class PowerIrc
 
    /**
     * Send the nick command.
+    *
     * @param nick nick to set/change
     * @TODO Add support for nick-in-use
     */
-   public void nick(String nick)
-   {
+   public void nick(String nick) {
       writeline("NICK " + nick);
       nickname = nick;
       me.setNickname(nick);
@@ -135,30 +126,30 @@ public class PowerIrc
 
    /**
     * Send the user command.
+    *
     * @param username username to send
     * @param realname realname to send
     */
-   private void user(String username, String realname)
-   {
+   private void user(String username, String realname) {
       writeline("USER " + username + " 8 * :" + realname);
    }
 
    /**
     * Join a channel.
+    *
     * @param channel channel name
     */
-   public void join(String channel)
-   {
+   public void join(String channel) {
       writeline("JOIN " + channel);
       eventBus.post(new JoinEvent(channel));
    }
 
    /**
     * Part a channel.
+    *
     * @param channel channel name
     */
-   public void part(String channel)
-   {
+   public void part(String channel) {
       writeline("PART " + channel);
       // TODO: eventBus.post(new PartEvent());
    }
@@ -166,50 +157,48 @@ public class PowerIrc
    /**
     * Join init_channels.
     */
-   private void joinChannels()
-   {
-      for (String channel : init_channels)
-      {
+   private void joinChannels() {
+      for (String channel : init_channels) {
          join(channel);
       }
    }
 
    /**
     * Send a private message to a user.
+    *
     * @param user target user
     * @param user message sent
     */
-   public void privmsg(User user, String message)
-   {
+   public void privmsg(User user, String message) {
       writeline("PRIVMSG " + user.getNickname() + " :" + message);
    }
 
    /**
     * Send a private message to a channel.
+    *
     * @param channel target channel
     * @param channel message sent
     */
-   public void privmsg(Channel channel, String message)
-   {
+   public void privmsg(Channel channel, String message) {
       writeline("PRIVMSG " + channel.getName() + " :" + message);
    }
 
    /**
     * Send a whois to the server with the specified nickname.
+    *
     * @param user target user
     */
-   public void whois(String user)
-   {
+   public void whois(String user) {
       writeline("WHOIS " + user);
    }
 
    /**
     * Parse normal whois object
+    *
     * @param params command parameters
-    * @param trail command trail
+    * @param trail  command trail
     */
-   public WhoisObject parseWhoisQuery(String params, String trail)
-   {
+   public WhoisObject parseWhoisQuery(String params, String trail) {
       String line = params + " " + trail;
       String[] split = line.split(" ", 5);
       String nickname = split[1];
@@ -221,11 +210,11 @@ public class PowerIrc
 
    /**
     * Send a notice to the specified user with a message.
-    * @param user target user
+    *
+    * @param user    target user
     * @param message message sent
     */
-   public void notice(User user, String message)
-   {
+   public void notice(User user, String message) {
       writeline("NOTICE " + user.getNickname() + " :" + message);
    }
 
@@ -233,8 +222,7 @@ public class PowerIrc
     * Handle ready event: join channels.
     */
    @EventHandler
-   public void ready(ReadyEvent event)
-   {
+   public void ready(ReadyEvent event) {
       joinChannels();
    }
 
@@ -242,8 +230,7 @@ public class PowerIrc
     * Handle message event(both private and channel)
     */
    @EventHandler
-   public void msg(MessageEvent event)
-   {
+   public void msg(MessageEvent event) {
       System.out.println("[" + event.getSender().getName() + "] -> [" + event.getTarget().getName() + "] " + event.getMessage());
    }
 
@@ -251,86 +238,76 @@ public class PowerIrc
     * Handle ping event
     */
    @EventHandler
-   public void ping(PingEvent event)
-   {
+   public void ping(PingEvent event) {
       writeline("PONG :" + event.getTrail());
    }
 
    @EventHandler
-   public void topicAdd(TopicAddEvent event)
-   {
+   public void topicAdd(TopicAddEvent event) {
       event.getChannel().setTopic(event.getTopic());
    }
 
    @EventHandler
-   public void topicChange(TopicChangeEvent event)
-   {
+   public void topicChange(TopicChangeEvent event) {
       event.getChannel().setTopic(event.getNewTopic());
    }
 
    @EventHandler
-   public void invited(InviteEvent event)
-   {
+   public void invited(InviteEvent event) {
       join(event.getChannel());
    }
 
    /**
     * Check if a prefix is for another client.
+    *
     * @param input string to check for hostmask
     */
-   public boolean isHostmask(String input)
-   {
+   public boolean isHostmask(String input) {
       return input.contains("!") &&
-             input.contains("@");
+              input.contains("@");
    }
 
    /**
     * Check if a prefix is for a server.
+    *
     * @param input string to check for server
     */
-   public boolean isServer(String input)
-   {
+   public boolean isServer(String input) {
       return !input.contains("!") &&
-             !input.contains("@") &&
-             input.contains(".");
+              !input.contains("@") &&
+              input.contains(".");
    }
 
    /**
     * Parse a hostmask, and create a user with the supplied information.
+    *
     * @param hostmask hostmask to parse
     */
-   public User parseHostmask(String hostmask)
-   {
+   public User parseHostmask(String hostmask) {
       String[] parts = HOSTMASK.split(hostmask);
       return new User(this, parts[1], parts[0], parts[2]);
    }
 
    /**
     * Update a user from a WhoisObject.
+    *
     * @param whois whois object to update from
     */
-   public void updateUser(WhoisObject whois)
-   {
-      if (users.containsKey(whois.getNickname()))
-      {
+   public void updateUser(WhoisObject whois) {
+      if (users.containsKey(whois.getNickname())) {
          users.get(whois.getUsername()).setNickname(whois.getNickname());
-      }
-      else
-      {
+      } else {
          users.put(whois.getNickname(), new User(this, whois.getUsername(), whois.getNickname(), whois.getHostname(), whois.getRealname()));
       }
    }
 
-   public class Reader extends Thread
-   {
-      
+   public class Reader extends Thread {
+
       @Override
-      public void run()
-      {
+      public void run() {
          String read;
          Message message;
-         while ((read = readline()) != null)
-         {
+         while ((read = readline()) != null) {
             Matcher matcher = PATTERN.matcher(read);
             matcher.matches();
 
@@ -339,14 +316,12 @@ public class PowerIrc
             String params = matcher.group("params");
             String trail = matcher.group("trail");
 
-            switch (command)
-            {
+            switch (command) {
                case "PING":
                   eventBus.post(new PingEvent(trail));
                   break;
                case "JOIN":
-                  if (parseHostmask(prefix).getUsername().substring(1).equals(username))
-                  {
+                  if (parseHostmask(prefix).getUsername().substring(1).equals(username)) {
                      channels.put(params, new Channel(PowerIrc.this, params));
                   }
                   break;
@@ -356,12 +331,9 @@ public class PowerIrc
                   eventBus.post(new TopicChangeEvent(channels.get(targeta), channels.get(targeta).getTopic(), trail));
                   break;
                case "PRIVMSG":
-                  if (params.equals(username))
-                  {
+                  if (params.equals(username)) {
                      eventBus.post(new MessageEvent(parseHostmask(prefix), me, trail));
-                  }
-                  else
-                  {
+                  } else {
                      eventBus.post(new MessageEvent(parseHostmask(prefix), channels.get(params), trail));
                   }
                   break;
@@ -375,10 +347,8 @@ public class PowerIrc
                case "005":
                   // This is the ISUPPORT
                   String[] supports = params.split(" ");
-                  for (String s : supports)
-                  {
-                     if (s.startsWith("CHANTYPES="))
-                     {
+                  for (String s : supports) {
+                     if (s.startsWith("CHANTYPES=")) {
                         System.out.println("Channel Prefixes: " + s.split("=")[1]);
                      }
                   }
@@ -397,26 +367,19 @@ public class PowerIrc
                   // Get #chan from "$USERNAME = $CHANNEL"
                   String chan = params.split(" ")[2];
                   if (!channels.containsKey(chan)) continue;
-                  for (String s : trail.split(" "))
-                  {
+                  for (String s : trail.split(" ")) {
                      String real = s.replace("@", "").replace("+", "");
                      User user;
                      Channel channel = channels.get(chan);
                      if (real.equals(nickname)) continue;
-                     if (users.containsKey(s))
-                     {
+                     if (users.containsKey(s)) {
                         user = users.get(real);
-                     }
-                     else
-                     {
+                     } else {
                         user = new User(PowerIrc.this, real);
                      }
-                     if (s.startsWith("@"))
-                     {
+                     if (s.startsWith("@")) {
                         channel.setOp(user);
-                     }
-                     else if (s.startsWith("+"))
-                     {
+                     } else if (s.startsWith("+")) {
                         channel.setVoice(user);
                      }
                      channel.addUser(user);

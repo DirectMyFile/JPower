@@ -8,11 +8,9 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class PowerLoaderTest
-{
+public class PowerLoaderTest {
    @Test
-   public void testLoaderAutoLoading()
-   {
+   public void testLoaderAutoLoading() {
       PowerClassLoader loader = new PowerClassLoader();
       loader.enableAutoLoading();
       loader.onClassFound(className -> System.out.println(className + " was found"));

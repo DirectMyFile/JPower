@@ -3,29 +3,22 @@ package jpower.core.utils;
 import java.io.File;
 import java.io.IOException;
 
-public class RuntimeUtils
-{
-   public static void exit(int code)
-   {
+public class RuntimeUtils {
+   public static void exit(int code) {
       Runtime.getRuntime().exit(code);
       ThreadUtils.sleep(500);
       Runtime.getRuntime().halt(code);
    }
 
-   public static Process execute(String[] command, File directory, String[] env) throws IOException
-   {
+   public static Process execute(String[] command, File directory, String[] env) throws IOException {
       return Runtime.getRuntime().exec(command, env, directory);
    }
 
-   public static boolean classExists(String className)
-   {
-      try
-      {
+   public static boolean classExists(String className) {
+      try {
          Class.forName(className);
          return true;
-      }
-      catch (ClassNotFoundException e)
-      {
+      } catch (ClassNotFoundException e) {
          return false;
       }
    }

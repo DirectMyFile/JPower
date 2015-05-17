@@ -10,11 +10,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @Ignore
-public class StringScannerTest
-{
+public class StringScannerTest {
    @Test
-   public void testHelloWorldScan()
-   {
+   public void testHelloWorldScan() {
       @Language("RegExp")
       String pattern = "(H|h)ello (W|w)orld";
 
@@ -26,8 +24,7 @@ public class StringScannerTest
    }
 
    @Test
-   public void testSkipping()
-   {
+   public void testSkipping() {
       @Language("RegExp")
       String skip = "\\|SKIPIT\\|";
 

@@ -6,18 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 @SuppressWarnings("EqualsBetweenInconvertibleTypes")
-public class WrapperTest
-{
+public class WrapperTest {
    @Test
-   public void testGet()
-   {
+   public void testGet() {
       Wrapper<String> hello = new Wrapper<>("Hello");
       assertEquals("Hello", hello.get());
    }
 
    @Test
-   public void testSet()
-   {
+   public void testSet() {
       Wrapper<String> hello = new Wrapper<>("Hello");
       assertEquals("Hello", hello.get());
       String old = hello.set("New Value");
@@ -26,53 +23,46 @@ public class WrapperTest
    }
 
    @Test
-   public void testIsNull()
-   {
+   public void testIsNull() {
       Wrapper<String> obj = new Wrapper<>(null);
       assertTrue(obj.isNull());
    }
 
    @Test
-   public void testIsNotNull()
-   {
+   public void testIsNotNull() {
       Wrapper<String> obj = new Wrapper<>("Hello World");
       assertFalse(obj.isNull());
       assertTrue(obj.isNotNull());
    }
 
    @Test
-   public void testEquals()
-   {
+   public void testEquals() {
       Wrapper<String> obj = new Wrapper<>("Hello World");
       assertTrue(obj.equals("Hello World"));
    }
 
    @SuppressWarnings("ObjectEqualsNull")
    @Test
-   public void testEqualsNull()
-   {
+   public void testEqualsNull() {
       Wrapper<String> obj = new Wrapper<>(null);
       assertTrue(obj.equals(null));
       assertFalse(obj.equals("Hello"));
    }
 
    @Test
-   public void testHashCode()
-   {
+   public void testHashCode() {
       Wrapper<String> obj = new Wrapper<>("Hello World");
       assertEquals("Hello World".hashCode(), obj.hashCode());
    }
 
    @Test
-   public void testHashCodeNull()
-   {
+   public void testHashCodeNull() {
       Wrapper<String> obj = new Wrapper<>(null);
       assertEquals(0, obj.hashCode());
    }
 
    @Test
-   public void testOf()
-   {
+   public void testOf() {
       assertEquals(Wrapper.of(null).hashCode(), new Wrapper<>(null).hashCode());
    }
 }

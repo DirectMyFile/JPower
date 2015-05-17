@@ -3,8 +3,7 @@ package jpower.event;
 /**
  * Base Interface for Event Bus Implementations
  */
-public interface IEventBus
-{
+public interface IEventBus {
    /**
     * Registers an Event Handler
     *

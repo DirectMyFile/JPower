@@ -6,11 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConditionTest
-{
+public class ConditionTest {
    @Test
-   public void testUntil()
-   {
+   public void testUntil() {
       Wrapper<Integer> count = new Wrapper<>(0);
 
       new ConditionalExecutor(() -> {
@@ -20,8 +18,7 @@ public class ConditionTest
    }
 
    @Test
-   public void testWhen()
-   {
+   public void testWhen() {
       Wrapper<Integer> count = new Wrapper<>(0);
 
       new ConditionalExecutor(() -> {

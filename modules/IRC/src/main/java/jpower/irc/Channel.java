@@ -1,10 +1,9 @@
 package jpower.irc;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-public class Channel implements Sendable
-{
+public class Channel implements Sendable {
 
    private final PowerIrc client;
    private final String name;
@@ -13,8 +12,7 @@ public class Channel implements Sendable
    private Map<String, User> ops;
    private Map<String, User> voices;
 
-   public Channel(PowerIrc client, String name)
-   {
+   public Channel(PowerIrc client, String name) {
       this.client = client;
       this.name = name;
       users = new HashMap<>();
@@ -22,85 +20,68 @@ public class Channel implements Sendable
       voices = new HashMap<>();
    }
 
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
-   protected void addUser(User user)
-   {
+   protected void addUser(User user) {
       if (users.containsKey(user)) return;
       users.put(user.getUsername(), user);
    }
 
-   protected void setOp(User user)
-   {
+   protected void setOp(User user) {
       if (ops.containsKey(user)) return;
       ops.put(user.getNickname(), user);
    }
 
-   protected void removeOp(User user)
-   {
+   protected void removeOp(User user) {
       ops.remove(user);
    }
 
-   protected void setVoice(User user)
-   {
-      try
-      {
+   protected void setVoice(User user) {
+      try {
          if (voices.containsKey(user)) return;
          voices.put(user.getNickname(), user);
-      }
-      catch (Exception e)
-      {
+      } catch (Exception e) {
          e.printStackTrace();
       }
    }
 
-   protected void removeVoice(User user)
-   {
+   protected void removeVoice(User user) {
       voices.remove(user);
    }
 
-   public void userJoin(User user)
-   {
+   public void userJoin(User user) {
       if (users.containsKey(user)) return;
       users.put(user.getUsername(), user);
    }
 
-   public void userPart(User user)
-   {
+   public void userPart(User user) {
       users.remove(user);
    }
 
-   public void message(String message)
-   {
+   public void message(String message) {
       client.privmsg(this, message);
    }
 
-   public Map<String, User> getUsers()
-   {
+   public Map<String, User> getUsers() {
       return users;
    }
 
-   public Map<String, User> getOps()
-   {
+   public Map<String, User> getOps() {
       return ops;
    }
 
-   public Map<String, User> getVoices()
-   {
+   public Map<String, User> getVoices() {
       return voices;
    }
 
-   public void setTopic(String topic)
-   {
-      this.topic = topic;
+   public String getTopic() {
+      return topic;
    }
 
-   public String getTopic()
-   {
-      return topic;
+   public void setTopic(String topic) {
+      this.topic = topic;
    }
 
 }
