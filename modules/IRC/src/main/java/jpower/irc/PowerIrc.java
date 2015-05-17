@@ -10,10 +10,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,44 +27,65 @@ public class PowerIrc {
    private String username;
    private String nickname;
    private String realname;
-   private String server;
+   private String hostname;
    private int port;
    private User me;
-   private boolean ready;
    private List<String> motd;
    private Map<String, User> users;
    private Map<String, Channel> channels;
-   private List<String> init_channels;
+   private Map<String, String> supports;
+   private List<String> initialChannels;
 
-   public PowerIrc(String username, String nickname, String realname, String server, int port, List<String> init_channels) {
-      this.username = username;
-      this.nickname = nickname;
-      this.realname = realname;
-      this.server = server;
-      this.port = port;
-
-      me = new User(this, username, nickname);
-
+   public PowerIrc() {
       // Initialize the Event Bus
       eventBus = new EventBus();
       eventBus.register(this);
 
-      // Create the MOTD List
+      // Create the MOTD list
       motd = new ArrayList<>();
 
-      // Create the Users Map
+      // Create the users map
       users = new HashMap<>();
 
-      // Create the Channels Map
+      // Create the channels map
       channels = new HashMap<>();
 
-      // Create the init Channels List
-      this.init_channels = init_channels;
+      // Create the supports map
+      supports = new HashMap<>();
+
+      // Create the initial channels list
+      initialChannels = new ArrayList<>();
+   }
+
+   protected void setHostname(String hostname) {
+      this.hostname = hostname;
+   }
+
+   protected void setPort(int port) {
+      this.port = port;
+   }
+
+   protected void setNickname(String nickname) {
+      this.nickname = nickname;
+   }
+
+   protected void setUsername(String username) {
+      this.username = username;
+   }
+
+   protected void setRealname(String realname) {
+      this.realname = realname;
+   }
+
+   protected void addInitialChannels(Collection<String> channels) {
+      initialChannels.addAll(channels);
    }
 
    public void connect() {
+      me = new User(this, username, nickname);
+
       try {
-         socket = new Socket(server, port);
+         socket = new Socket(hostname, port);
          writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
          reader = IOUtils.createBufferedReader(socket.getInputStream());
       } catch (IOException e) {
@@ -99,7 +117,7 @@ public class PowerIrc {
    }
 
    /**
-    * Read a line from the reader;
+    * Read a line from the reader.
     *
     * @return line read from the reader
     */
@@ -151,14 +169,14 @@ public class PowerIrc {
     */
    public void part(String channel) {
       writeline("PART " + channel);
-      // TODO: eventBus.post(new PartEvent());
+      eventBus.post(new PartEvent(channel));
    }
 
    /**
-    * Join init_channels.
+    * Join initial channels.
     */
    private void joinChannels() {
-      for (String channel : init_channels) {
+      for (String channel : initialChannels) {
          join(channel);
       }
    }
@@ -227,14 +245,6 @@ public class PowerIrc {
    }
 
    /**
-    * Handle message event(both private and channel)
-    */
-   @EventHandler
-   public void msg(MessageEvent event) {
-      System.out.println("[" + event.getSender().getName() + "] -> [" + event.getTarget().getName() + "] " + event.getMessage());
-   }
-
-   /**
     * Handle ping event
     */
    @EventHandler
@@ -250,11 +260,6 @@ public class PowerIrc {
    @EventHandler
    public void topicChange(TopicChangeEvent event) {
       event.getChannel().setTopic(event.getNewTopic());
-   }
-
-   @EventHandler
-   public void invited(InviteEvent event) {
-      join(event.getChannel());
    }
 
    /**
@@ -326,9 +331,8 @@ public class PowerIrc {
                   }
                   break;
                case "TOPIC":
-                  String targeta = params;
-                  if (!channels.containsKey(targeta)) continue;
-                  eventBus.post(new TopicChangeEvent(channels.get(targeta), channels.get(targeta).getTopic(), trail));
+                  if (!channels.containsKey(params)) continue;
+                  eventBus.post(new TopicChangeEvent(channels.get(params), channels.get(params).getTopic(), trail));
                   break;
                case "PRIVMSG":
                   if (params.equals(username)) {
@@ -345,17 +349,37 @@ public class PowerIrc {
                   // Ignore Initial NOTICE
                   break;
                case "005":
-                  // This is the ISUPPORT
+                  // ISUPPORT
                   String[] supports = params.split(" ");
                   for (String s : supports) {
-                     if (s.startsWith("CHANTYPES=")) {
-                        System.out.println("Channel Prefixes: " + s.split("=")[1]);
-                     }
+                     //System.out.println(s);
                   }
                   break;
+               case "251":
+                  // Network user information
+                  break;
+               case "252":
+                  // Number of IRC operators online
+                  break;
+               case "254":
+                  // Number of channels formed
+                  break;
+               case "255":
+                  // Server user information
+                  break;
+               case "250":
+                  // Past server statistics
+                  break;
                case "311":
+                  // Whois reply for user
                   WhoisObject whois = parseWhoisQuery(params, trail);
                   updateUser(whois);
+                  break;
+               case "312":
+                  // Whois reply for server
+                  break;
+               case "313":
+                  // Whois reply for IRC operator
                   break;
                case "332":
                   String target = params.split(" ")[1];
