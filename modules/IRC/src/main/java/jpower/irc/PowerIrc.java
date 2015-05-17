@@ -33,7 +33,7 @@ public class PowerIrc {
    private List<String> motd;
    private Map<String, User> users;
    private Map<String, Channel> channels;
-   private Map<String, String> supports;
+   private Map<String, Object> supports;
    private List<String> initialChannels;
 
    public PowerIrc() {
@@ -104,6 +104,10 @@ public class PowerIrc {
     */
    public EventBus getEventBus() {
       return eventBus;
+   }
+
+   public Map<String, Object> getSupports() {
+      return Collections.unmodifiableMap(supports);
    }
 
    /**
@@ -350,10 +354,18 @@ public class PowerIrc {
                   break;
                case "005":
                   // ISUPPORT
-                  String[] supports = params.split(" ");
-                  for (String s : supports) {
-                     //System.out.println(s);
+                  String[] rawSupports = params.split(" ");
+                  for (String s : rawSupports) {
+                     if (s.contains("=")) {
+                        String[] split = s.split("=");
+                        String key = split[0];
+                        String value = split[1];
+                        supports.put(key, value);
+                     } else {
+                        supports.put(s, true);
+                     }
                   }
+                  eventBus.post(new ServerSupportsEvent(supports));
                   break;
                case "251":
                   // Network user information
